@@ -94,7 +94,13 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), (req
     res.send();
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// Export the app for Vercel Serverless
+export default app;
+
+// Only listen if running locally (not in Vercel environment)
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}

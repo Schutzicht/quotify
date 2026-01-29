@@ -645,13 +645,62 @@ input::placeholder {
     width: 210px;
     height: 297px;
     background: white;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    /* Paper bg */
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    /* Soft shadow */
     transform: scale(0.6);
-    border: 1px solid #e2e8f0;
+    transform-origin: center;
+    border: none;
     overflow: hidden;
     user-select: none;
     pointer-events: none;
     transition: transform 0.5s ease;
+    border-radius: 4px;
+    /* Slight rounding like real paper stack */
+    position: relative;
+}
+
+/* Add nice shimmer or overlay if needed, or just keep clean */
+
+/* Floating Zoom Controls (Global) */
+.zoom-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 6px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.t-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.t-btn:hover {
+    background: var(--c-accent);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px var(--c-accent-glow);
+}
+
+.t-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2.5;
 }
 
 .modal-card:hover .modal-thumb {
@@ -885,8 +934,12 @@ input::placeholder {
         justify-content: space-between;
     }
 
+    /* --- ZOOM CONTROLS (Mobile Override) --- */
     .zoom-controls {
-        display: none;
-        /* Hide zoom on mobile, pinch zoom is native */
+        display: none !important;
     }
+}
+
+.hidden {
+    display: none !important;
 }
