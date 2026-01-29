@@ -475,19 +475,19 @@ input::placeholder {
 }
 
 /* Header refined */
+/* Header refined */
 .paper-header {
-    background: #f8fafc;
-    color: #0f172a;
+    background: #f8fafc !important;
+    /* Force Light BG */
+    color: #0f172a !important;
+    /* Force Dark Text */
     padding: 2.5rem 3rem;
-    /* Standard business padding */
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* Align top */
     border-bottom: 3px solid var(--c-accent);
     margin-bottom: 2.5rem;
     height: 140px;
-    /* Fixed height */
 }
 
 /* Document Title */
@@ -497,32 +497,46 @@ input::placeholder {
     letter-spacing: 0.1em;
     margin: 0;
     line-height: 1.2;
-    color: #0f172a;
+    color: #0f172a !important;
     text-transform: uppercase;
     text-align: right;
 }
 
+/* Meta Grid - Scanned & Aligned */
 .meta-grid {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 2rem;
-    margin-top: 0.75rem;
-    text-align: right;
+    display: flex;
+    /* Flex is easier for alignment control here */
+    gap: 3rem;
+    /* Wide clear spacing */
+    margin-top: 1rem;
+    justify-content: flex-end;
+    /* Push to right */
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Text aligns Left inside the block for clean read */
+    min-width: 80px;
 }
 
 .meta-item .label {
     font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #64748b;
+    color: #64748b !important;
     font-weight: 700;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .meta-item .val {
-    font-size: 11px;
-    font-weight: 600;
-    color: #0f172a;
+    font-size: 12px;
+    /* Slightly larger match body */
+    font-weight: 700;
+    color: #0f172a !important;
+    font-variant-numeric: tabular-nums;
+    /* Align numbers nicely */
 }
 
 /* Body Content */
