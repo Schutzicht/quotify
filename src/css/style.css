@@ -1350,7 +1350,6 @@ input::placeholder {
     /* Polish Config Scroll */
     .config-scroll {
         overflow: visible;
-        /* Let body scroll */
     }
 
     .sidebar {
@@ -1359,9 +1358,9 @@ input::placeholder {
     }
 }
 
-/* END OF MOBILE MEDIA QUERY (Corrected) */
+/* End of any previous mobile block */
 
-/* FORCE HIDE MOBILE ELEMENTS ON DESKTOP */
+/* --- DESKTOP CLEANUP (Strict Hiding) --- */
 @media (min-width: 769px) {
 
     .mobile-nav,
@@ -1371,28 +1370,41 @@ input::placeholder {
     }
 }
 
-/* Mobile Nav Bar - Premium Look (Should be wrapped in mobile query, but now handled by above hide) */
+/* --- UNIFIED MOBILE CSS (Max-Width: 768px) --- */
 @media (max-width: 768px) {
+
+    /* 1. Global Reset */
+    html,
+    body {
+        height: 100%;
+        overflow: hidden;
+        /* Prevent body scroll, use internal containers */
+        position: fixed;
+        width: 100%;
+    }
+
+    .gen3-layout {
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 2. Mobile Navigation */
     .mobile-nav {
         display: flex;
         position: fixed !important;
-        /* Force it */
         bottom: 0 !important;
         left: 0 !important;
         width: 100%;
         background: rgba(255, 255, 255, 0.95);
-        /* Slightly more opaque */
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-top: 1px solid rgba(0, 0, 0, 0.05);
         z-index: 99999 !important;
-        /* Highest layer */
         padding: 0.5rem 1rem max(1.5rem, env(safe-area-inset-bottom)) 1rem;
-        /* Safe area handling */
         gap: 1rem;
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
-        transform: translate3d(0, 0, 0);
-        /* GPU Fix for staying fixed */
     }
 
     .mn-btn {
@@ -1400,7 +1412,6 @@ input::placeholder {
         background: transparent;
         border: none;
         color: #94a3b8;
-        /* Inactive color */
         font-weight: 500;
         padding: 0.5rem;
         border-radius: 16px;
@@ -1409,24 +1420,19 @@ input::placeholder {
         align-items: center;
         gap: 4px;
         font-size: 0.75rem;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
-        overflow: hidden;
+    }
+
+    .mn-btn.active {
+        color: var(--c-accent);
+        background: rgba(37, 99, 235, 0.05);
     }
 
     .mn-btn svg {
         width: 24px;
         height: 24px;
         stroke-width: 2;
-        transition: transform 0.3s ease;
-    }
-
-    /* Active State */
-    .mn-btn.active {
-        color: var(--c-accent);
-        /* Use main accent color */
-        background: rgba(37, 99, 235, 0.05);
-        /* Very subtle tint */
+        transition: all 0.2s;
     }
 
     .mn-btn.active svg {
@@ -1434,12 +1440,83 @@ input::placeholder {
         stroke-width: 2.5;
     }
 
-    /* Remove emoji font size style */
-    .mn-btn span:first-child {
-        /* Was emoji sizing, now removed */
+    /* 3. Toolbar & Zoom Controls */
+    .toolbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid #cbd5e1;
+        padding: 0.75rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
 
-    /* Mobile Modal Override */
+    .zoom-controls {
+        display: none !important;
+    }
+
+    .mobile-zoom-wrapper {
+        display: flex !important;
+        align-items: center;
+        flex: 1;
+        max-width: 55%;
+        margin-right: 1rem;
+    }
+
+    #mobile-zoom-slider {
+        width: 100%;
+        height: 4px;
+        accent-color: var(--c-accent);
+    }
+
+    #download-trigger {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+        white-space: nowrap;
+    }
+
+    /* 4. TRUE ZOOM: Main Stage & Wrapper */
+    .gen3-layout.tab-preview .main-stage {
+        padding-top: 120px;
+        background: #e2e8f0;
+        height: 100%;
+        display: block;
+        overflow: auto;
+        /* ENABLE NATIVE SCROLL */
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y;
+    }
+
+    .gen3-layout.tab-preview .paper-wrapper {
+        display: block;
+        /* JS handles sizing */
+        margin: 0 auto;
+        padding: 0;
+        transform-origin: top left;
+        /* Width/Height set by JS */
+        background: transparent;
+        padding-bottom: 10rem;
+        padding-top: 10px;
+    }
+
+    .gen3-layout.tab-preview .paper-a4 {
+        width: 210mm !important;
+        min-width: 210mm !important;
+        height: 297mm !important;
+        min-height: 297mm !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        transform-origin: top left;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* 5. Modals */
     .modal-card {
         width: 100%;
         height: 100%;
@@ -1449,195 +1526,11 @@ input::placeholder {
     }
 
     .modal-left {
-        height: auto;
-        min-height: 140px;
-        flex: none;
-        padding: 1rem;
-        flex-direction: row;
-        gap: 1rem;
-        border-right: none;
-        border-bottom: 1px solid #e2e8f0;
-    }
-
-    .modal-thumb {
-        transform: scale(0.4);
-        transform-origin: center;
-        margin: 0 auto;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        display: none;
     }
 
     .modal-right {
+        width: 100%;
         padding: 1.5rem;
-        width: 100%;
     }
-
-    .paper-a4 {
-        margin: 0;
-        width: 100%;
-        min-width: 0;
-        /* Reset */
-        min-height: auto;
-        box-shadow: none;
-        border-radius: 0;
-    }
-
-    .paper-wrapper {
-        padding: 0;
-        /* Full width paper on mobile */
-        background: white;
-        /* Seamless background */
-    }
-
-    /* --- FINAL CLEAN MOBILE CSS (FIT PAGE & OVERFLOW FIX) --- */
-    @media (max-width: 768px) {
-
-        /* 1. Lock Root */
-        html,
-        body {
-            height: 100%;
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-        }
-
-        /* 2. Container Structure */
-        .gen3-layout {
-            height: 100%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* 3. Main Stage - The Scrolling Viewport */
-        .gen3-layout.tab-preview .main-stage {
-            padding-top: 60px;
-            /* Toolbar height */
-            background: #e2e8f0;
-            /* Darker bg for contrast */
-            height: 100%;
-            display: block;
-            overflow-y: auto;
-            overflow-x: hidden;
-            /* CRITICAL: Hide the layout width of scaled element */
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* 4. Paper Wrapper - Flex Centering */
-        .gen3-layout.tab-preview .paper-wrapper {
-            width: 100%;
-            min-height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 2rem;
-            padding-bottom: 10rem;
-            /* Deep scroll space */
-            overflow: visible;
-        }
-
-        /* 5. A4 Paper - The Scaled Object */
-        .gen3-layout.tab-preview .paper-a4 {
-            /* Define Exact A4 Dimensions */
-            width: 210mm !important;
-            min-width: 210mm !important;
-            height: 297mm !important;
-            min-height: 297mm !important;
-
-            /* Reset Styles */
-            margin: 0 !important;
-            border-radius: 0 !important;
-
-            /* TRANSFORM: Scale with Top Center Origin */
-            transform-origin: top center;
-            /* Scale to Fit Screen Width minus margins */
-            transform: scale(calc((100vw - 32px) / 794));
-
-            /* Pull layout up to avoid huge whitespace below */
-            margin-bottom: -50% !important;
-
-            /* Shadow for pop */
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
-        }
-
-        /* 6. Tools & Nav */
-        .gen3-layout.tab-preview .main-stage {
-            padding-top: 120px;
-            /* INCREASED: Space for Toolbar */
-            background: #e2e8f0;
-        }
-
-        .toolbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            z-index: 50;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid #cbd5e1;
-            padding: 0.75rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            /* Spreads components */
-            align-items: center;
-            gap: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .zoom-controls {
-            display: none !important;
-        }
-
-        .mobile-zoom-wrapper {
-            display: flex !important;
-            /* Show on mobile */
-            align-items: center;
-            flex: 1;
-            /* Slide takes available space */
-            max-width: 55%;
-            margin-right: 1rem;
-        }
-
-        #mobile-zoom-slider {
-            width: 100%;
-            height: 4px;
-            accent-color: var(--c-accent);
-            /* Brand color slider */
-        }
-
-        #download-trigger {
-            font-size: 0.85rem;
-            padding: 0.5rem 0.75rem;
-            white-space: nowrap;
-        }
-
-        .mobile-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100vw;
-            background: white;
-            border-top: 1px solid #e2e8f0;
-            z-index: 100;
-            padding-bottom: env(safe-area-inset-bottom);
-            display: flex;
-            justify-content: space-around;
-            padding-top: 0.5rem;
-        }
-
-        /* 7. Modal Fixes */
-        .modal-card {
-            width: 100%;
-            height: 100%;
-            max-height: 100%;
-            border-radius: 0;
-        }
-
-        .modal-left {
-            display: none;
-        }
-
-        .modal-right {
-            padding: 1.5rem;
-            width: 100%;
-        }
-    }
+}
