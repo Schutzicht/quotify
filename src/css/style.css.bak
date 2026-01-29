@@ -453,6 +453,7 @@ input::placeholder {
     padding: 2rem;
 }
 
+/* --- PAPER PREVIEW (Business Professional Layout) --- */
 .paper-a4 {
     width: 210mm;
     min-width: 210mm;
@@ -463,10 +464,249 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     margin-bottom: 4rem;
-    color: #0f172a;
-    /* Ink Color */
+    color: #1e293b;
+    /* Dark Slate 800 */
     position: relative;
     flex-shrink: 0;
+    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    /* Smaller base font for professional look */
+    line-height: 1.5;
+}
+
+/* Header refined */
+/* Header refined */
+.paper-header {
+    background: #f8fafc !important;
+    /* Force Light BG */
+    color: #0f172a !important;
+    /* Force Dark Text */
+    padding: 2.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 3px solid var(--c-accent);
+    margin-bottom: 2.5rem;
+    height: 140px;
+}
+
+/* Document Title */
+.doc-type {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin: 0;
+    line-height: 1.2;
+    color: #0f172a !important;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+/* Meta Grid - Scanned & Aligned */
+.meta-grid {
+    display: flex;
+    /* Flex is easier for alignment control here */
+    gap: 3rem;
+    /* Wide clear spacing */
+    margin-top: 1rem;
+    justify-content: flex-end;
+    /* Push to right */
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Text aligns Left inside the block for clean read */
+    min-width: 80px;
+}
+
+.meta-item .label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b !important;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.meta-item .val {
+    font-size: 12px;
+    /* Slightly larger match body */
+    font-weight: 700;
+    color: #0f172a !important;
+    font-variant-numeric: tabular-nums;
+    /* Align numbers nicely */
+}
+
+/* Body Content */
+.paper-body {
+    padding: 0 3rem 3rem 3rem;
+    flex: 1;
+}
+
+/* Address Grid - Perfectly Aligned */
+.address-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 2rem;
+}
+
+.addr-col .label {
+    display: block;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.addr-lines {
+    font-size: 13px;
+    color: #334155;
+}
+
+.addr-lines strong {
+    font-size: 14px;
+    color: #0f172a;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+/* Tables - Strict Alignment */
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 12px;
+}
+
+.modern-table th {
+    text-align: left;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modern-table td {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+    color: #334155;
+}
+
+.modern-table .right,
+.modern-table th.right {
+    text-align: right;
+}
+
+.modern-table .center {
+    text-align: center;
+}
+
+/* Fixed Column Widths for alignment */
+.col-desc {
+    width: 55%;
+}
+
+.col-qty {
+    width: 10%;
+    text-align: center;
+}
+
+.col-price {
+    width: 17.5%;
+    text-align: right;
+}
+
+.col-total {
+    width: 17.5%;
+    text-align: right;
+}
+
+/* Totals Section - Aligned Right */
+.totals-section {
+    margin-top: 2rem;
+    margin-left: auto;
+    width: 40%;
+    /* Compact width */
+    border-top: 2px solid #0f172a;
+    padding-top: 1rem;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.total-row.final {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Signature - Balanced */
+.signature-section {
+    margin-top: 4rem;
+    display: flex;
+    gap: 4rem;
+}
+
+.sig-block {
+    flex: 1;
+}
+
+.sig-line {
+    border-bottom: 1px solid #cbd5e1;
+    height: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.sig-label {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Mobile Preview Zoom - AGGRESSIVE */
+@media (max-width: 768px) {
+    .gen3-layout.tab-preview .main-stage {
+        padding-top: 2rem;
+        align-items: flex-start;
+        /* Top align */
+        overflow-x: hidden;
+    }
+
+    .gen3-layout.tab-preview .paper-wrapper {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+    }
+
+    .gen3-layout.tab-preview .paper-a4 {
+        transform-origin: top center;
+        /* Force Small Scale: (100vw - 120px) creates significant margin */
+        transform: scale(calc((100vw - 100px) / 794));
+        margin-bottom: -60%;
+        /* Pull layout up */
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
 }
 
 .paper-header {

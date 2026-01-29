@@ -409,13 +409,15 @@ function updatePreview() {
     // 3. Address
     const senderHtml = buildAddressBlock(state.sender);
     const senderBlock = $('prev-sender-block');
-    if (senderBlock) senderBlock.innerHTML = `<strong>${state.sender.company || 'Jouw Bedrijf'}</strong>${senderHtml}`;
+    // FIX: Remove 'Jouw Bedrijf' fallback. Empty is empty.
+    if (senderBlock) senderBlock.innerHTML = `<strong>${state.sender.company || ''}</strong>${senderHtml}`;
 
     const clientHtml = buildAddressBlock(state.client);
     const clientBlock = $('prev-client-block');
     if (clientBlock) {
+        // FIX: Remove 'De Klant' fallback.
         clientBlock.innerHTML = `
-            <strong>${state.client.company || 'De Klant'}</strong>
+            <strong>${state.client.company || ''}</strong>
             ${state.client.contact ? `<div>T.a.v. ${state.client.contact}</div>` : ''}
             ${clientHtml}
             ${state.client.reference ? `<div style="margin-top:0.5rem; font-size:0.8em; color:#6B7280">Ref: ${state.client.reference}</div>` : ''}
