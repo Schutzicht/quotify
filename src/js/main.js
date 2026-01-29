@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePreview();
 
     console.log('OfferteGeneratory Gen 3 :: Initialized');
-    console.log('VERSION: 2.0.0 - EMBEDDED CHECKOUT LIVE');
+    console.log('VERSION: 2.1.0 - VERCEL CONFIG FIX');
 });
 
 async function checkPaymentSuccess() {
