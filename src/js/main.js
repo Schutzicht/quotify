@@ -618,6 +618,10 @@ function openModal() {
     const thumbBox = $('modal-thumb');
     const original = $('pdf-preview');
     if (!modal || !original) return;
+
+    // Set Summary to Fixed Fee
+    setText('summary-total', '€ 0,50');
+
     const clone = original.cloneNode(true);
     thumbBox.innerHTML = '';
     thumbBox.appendChild(clone);
@@ -641,8 +645,8 @@ async function processPayment() {
     btn.style.opacity = '0.7';
 
     try {
-        // Dynamic Amount from State
-        const amount = state.total;
+        // Service Fee (Fixed)
+        const amount = 0.50;
         if (amount <= 0) { alert('Totaalbedrag moet groter zijn dan 0.'); btn.textContent = originalText; btn.style.opacity = '1'; return; }
 
         const response = await fetch('/api/create-checkout-session', {
