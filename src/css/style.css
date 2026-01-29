@@ -925,27 +925,37 @@ input::placeholder {
     display: none !important;
 }
 
-/* --- MOBILE RESPONSIVE OVERRIDES --- */
+/* --- MOBILE RESPONSIVE OVERRIDES (APP SHELL MODEL) --- */
 @media (max-width: 768px) {
+    html {
+        height: 100%;
+        overflow: hidden;
+        /* Prevent elastic scroll on root */
+    }
 
-    html,
     body {
-        height: auto !important;
-        min-height: 100vh;
-        overflow-y: auto !important;
-        /* Force native scroll */
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
+        height: 100dvh;
+        /* Use dynamic viewport height */
+        overflow: hidden;
+        /* Lock body */
+        position: fixed;
+        /* Prevent bouncy scrolling */
+        width: 100%;
+        overscroll-behavior: none;
     }
 
     .gen3-layout {
-        flex-direction: column;
-        height: auto !important;
-        min-height: 100vh;
+        display: block;
+        /* Normal block flow for scrolling */
+        height: 100%;
+        /* Fill body */
+        overflow-y: auto;
+        /* Internal scroll container */
+        -webkit-overflow-scrolling: touch;
+        /* Momentum scroll */
+        padding-bottom: 120px;
+        /* Space for fixed nav */
         position: relative;
-        overflow: visible !important;
-        /* Allow children to scroll body */
-        display: flex;
     }
 
     /* Common Mobile States */
@@ -953,14 +963,14 @@ input::placeholder {
     .main-stage {
         width: 100%;
         height: auto !important;
-        min-height: 100vh;
+        min-height: auto;
         /* Default hidden state */
         display: none;
         opacity: 0;
         transition: opacity 0.3s ease;
-        padding-bottom: 120px;
-        /* Space for nav */
         overflow: visible !important;
+        padding-bottom: 0;
+        /* Parent handles padding */
     }
 
     /* --- SIDEBAR (CONFIG) STATE --- */
