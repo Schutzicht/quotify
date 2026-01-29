@@ -9,19 +9,27 @@ export default async function handler(req, res) {
     }
 
     try {
+        const { amount } = req.body; // Expecting amount in EUR (e.g. 10.00)
+
         const session = await stripe.checkout.sessions.create({
+            ui_mode: 'embedded',
             line_items: [
                 {
-                    price: process.env.STRIPE_PRICE_ID,
+                    price_data: {
+                        currency: 'eur',
+                        product_data: {
+                            name: 'Offerte Betaling',
+                        },
+                        unit_amount: Math.round(amount * 100), // Convert to cents
+                    },
                     quantity: 1,
                 },
             ],
             mode: 'payment',
-            success_url: `${req.headers.origin}?success=true`,
-            cancel_url: `${req.headers.origin}?canceled=true`,
+            return_url: `${req.headers.origin}?session_id={CHECKOUT_SESSION_ID}`,
         });
 
-        res.json({ url: session.url });
+        res.json({ clientSecret: session.client_secret });
     } catch (err) {
         console.error('Stripe Error:', err);
         res.status(500).json({ error: err.message });
