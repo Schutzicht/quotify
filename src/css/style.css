@@ -907,7 +907,13 @@ input::placeholder {
     .gen3-layout {
         flex-direction: column;
         height: auto;
+        min-height: 100vh;
+        /* Ensure full height */
         position: relative;
+        overflow-x: hidden;
+        /* Prevent horizontal scroll */
+        overflow-y: auto;
+        /* Allow vertical scroll */
     }
 
     /* Common Mobile States */
@@ -916,53 +922,40 @@ input::placeholder {
         width: 100%;
         height: auto;
         min-height: 100vh;
-        position: absolute;
-        /* Stack them */
-        top: 0;
-        left: 0;
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        /* Default hidden state */
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
         padding-bottom: 90px;
-        /* Space for nav */
     }
 
     /* --- SIDEBAR (CONFIG) STATE --- */
-    /* When Config Tab is active: Show Sidebar, Hide Stage */
     .gen3-layout.tab-config .sidebar {
-        opacity: 1;
-        transform: translateX(0);
-        z-index: 10;
-        pointer-events: auto;
         display: flex;
-        /* Ensure it is visible */
+        opacity: 1;
+        position: relative;
+        /* In flow, allows scroll */
+        z-index: 10;
+        transform: none;
+        /* Simplifies transitions */
     }
 
     .gen3-layout.tab-config .main-stage {
-        opacity: 0;
-        transform: translateX(50px);
-        z-index: 5;
-        pointer-events: none;
         display: none;
-        /* Hide fully to prevent scroll issues */
     }
 
     /* --- MAIN STAGE (PREVIEW) STATE --- */
-    /* When Preview Tab is active: Hide Sidebar, Show Stage */
     .gen3-layout.tab-preview .sidebar {
-        opacity: 0;
-        transform: translateX(-50px);
-        z-index: 5;
-        pointer-events: none;
         display: none;
     }
 
     .gen3-layout.tab-preview .main-stage {
-        opacity: 1;
-        transform: translateX(0);
-        z-index: 10;
-        pointer-events: auto;
         display: flex;
+        opacity: 1;
         position: relative;
-        /* Allow flow */
+        /* In flow */
+        z-index: 10;
+        transform: none;
         height: auto;
         overflow: visible;
     }
