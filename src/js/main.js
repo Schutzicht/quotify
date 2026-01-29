@@ -688,13 +688,15 @@ function renderFooter() {
         <div style="margin-top:0.5rem">Op al onze diensten zijn de algemene voorwaarden van toepassing.</div>
     `;
 
-    // Signature Section (Dynamic)
+    // Signature Section (Dynamic with State)
     const paperBody = document.querySelector('.paper-body');
     const existingSig = paperBody.querySelector('.signature-section');
     if (existingSig) existingSig.remove();
 
     const sigSection = document.createElement('div');
     sigSection.className = 'signature-section';
+
+    // Check if we have a signature image in state
     const senderSigHtml = state.signatureImage
         ? `<img src="${state.signatureImage}" style="display:block; max-height:60px; margin-bottom:-10px; position:relative; z-index:5;" alt="Handtekening">`
         : '';
@@ -707,14 +709,14 @@ function renderFooter() {
             <div class="sig-date">Datum: ${new Date().toLocaleDateString('nl-NL')}</div>
         </div>
         <div class="sig-block">
-            <div style="height:60px; display:block;"></div> <!-- Spacer matching sig height -->
+            <div style="height:60px; display:block;"></div> <!-- Spacer -->
             <div class="sig-line"></div>
             <div class="sig-label">Voor akkoord <br><strong>${state.client.company || 'Opdrachtgever'}</strong></div>
             <div class="sig-date">Datum: ...........................</div>
         </div>
     `;
 
-    // Insert before footer (which is separate in HTML structure, so append to body)
+    // Insert (if setting enabled)
     if (state.settings.showSignature !== false) {
         paperBody.appendChild(sigSection);
     }
