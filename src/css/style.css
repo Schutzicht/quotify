@@ -470,89 +470,92 @@ input::placeholder {
 }
 
 .paper-header {
-    background: #0f172a;
-    /* Dark sleek base */
+    background: #0b1120;
+    /* Ultra Dark (Cyber Slate) */
     position: relative;
     color: white;
-    padding: 2.5rem 3rem;
-    /* Tighter padding */
+    padding: 2rem 3rem;
+    /* Compact padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 4px solid var(--c-accent);
-    /* Electric accent line */
+    border-bottom: 2px solid #38bdf8;
+    /* Neon Cyan Tech Line */
+    box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
+    /* Glow */
     margin-bottom: 3rem;
-    height: 180px;
-    /* Much shorter */
+    height: 130px;
+    /* Ultra sleek */
     overflow: hidden;
 }
 
-/* Abstract "Cool" Geometric Shapes */
+/* Tech Grid Pattern Background */
 .paper-header::before {
     content: '';
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100%;
-    background: linear-gradient(135deg, transparent 40%, rgba(99, 102, 241, 0.1) 40%, rgba(99, 102, 241, 0.1) 60%, transparent 60%);
+    inset: 0;
+    background-image: radial-gradient(#334155 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.1;
     pointer-events: none;
 }
 
-.paper-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 20%;
-    width: 40%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-}
-
-/* Meta Area Container - Fixes Alignment */
-.meta-area {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    /* Strictly Right Align */
-    text-align: right;
-    gap: 0.25rem;
-}
-
-/* Document Title (OFFERTE) */
+/* Document Title (OFFERTE) -> Tech Style */
 .doc-type {
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    /* Wide tracking for "Cinematic" feel */
+    margin: 0 0 0.25rem 0;
     color: white;
     text-align: right;
+    text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 1rem;
     background: none;
     -webkit-text-fill-color: initial;
-    text-shadow: none;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-/* Optional deco line next to text */
-.doc-type::before {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 4px;
-    background: var(--c-accent);
-    border-radius: 2px;
+/* Optional deco: "Scanning" line */
+.doc-type::after {
+    display: none;
+    /* Clean look */
 }
 
-/* Project Meta Line (Betreft...) */
-.project-meta {
-    font-size: 0.95rem;
+/* Meta Data Grid in Header */
+.meta-grid {
+    display: flex;
+    gap: 2.5rem;
+    text-align: right;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.meta-item .label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #64748b;
+    /* Muted tech grey */
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.meta-item .val {
+    font-size: 0.9rem;
+    font-weight: 600;
     color: #e2e8f0;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    opacity: 0.9;
+    font-family: 'Courier New', Courier, monospace;
+    /* Tech mono font for numbers */
+    letter-spacing: -0.02em;
 }
 
 /* Meta Data Grid in Header */
