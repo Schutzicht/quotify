@@ -138,7 +138,7 @@ function initListeners() {
     }
 
     const dlBtn = $('download-trigger');
-    const dlBtn = $('download-trigger');
+    // const dlBtn = $('download-trigger'); // Removed duplicate
     // if (dlBtn) dlBtn.addEventListener('click', () => generatePDF(state)); // REMOVED: Managed by initModal now
 
     const notesInput = $('notes-input');
