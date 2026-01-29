@@ -138,7 +138,8 @@ function initListeners() {
     }
 
     const dlBtn = $('download-trigger');
-    if (dlBtn) dlBtn.addEventListener('click', () => generatePDF(state));
+    const dlBtn = $('download-trigger');
+    // if (dlBtn) dlBtn.addEventListener('click', () => generatePDF(state)); // REMOVED: Managed by initModal now
 
     const notesInput = $('notes-input');
     if (notesInput) notesInput.addEventListener('input', (e) => { state.notes = e.target.value; updatePreview(); });
