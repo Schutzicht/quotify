@@ -562,7 +562,7 @@ function renderItemsTable() {
     if (groups['monthly'].subtotal > 0) {
         summaryText += ` + € ${groups['monthly'].subtotal.toFixed(2)} p/m`;
     }
-    setText('summary-total', summaryText);
+    // setText('summary-total', summaryText); // REMOVED: This overwrites the Payment Modal Service Fee!
 }
 
 function renderFooter() {
