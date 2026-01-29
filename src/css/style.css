@@ -1008,19 +1008,24 @@ input::placeholder {
     /* Mobile Nav Bar - Premium Look */
     .mobile-nav {
         display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
+        position: fixed !important;
+        /* Force it */
+        bottom: 0 !important;
+        left: 0 !important;
         width: 100%;
-        background: rgba(255, 255, 255, 0.9);
-        /* Lighter, cleaner */
-        backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.95);
+        /* Slightly more opaque */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border-top: 1px solid rgba(0, 0, 0, 0.05);
-        z-index: 1000;
-        padding: 0.5rem 1rem 1.5rem 1rem;
-        /* Extra bottom padding for iOS home indicator */
+        z-index: 99999 !important;
+        /* Highest layer */
+        padding: 0.5rem 1rem max(1.5rem, env(safe-area-inset-bottom)) 1rem;
+        /* Safe area handling */
         gap: 1rem;
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+        transform: translate3d(0, 0, 0);
+        /* GPU Fix for staying fixed */
     }
 
     .mn-btn {
