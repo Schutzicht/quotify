@@ -470,76 +470,103 @@ input::placeholder {
 }
 
 .paper-header {
-    background: linear-gradient(135deg, #0f172a 0%, #312e81 100%);
-    /* Deep Indigo Gradient */
+    background: #0f172a;
+    /* Dark sleek base */
     position: relative;
     color: white;
-    padding: 3rem;
+    padding: 2.5rem 3rem;
+    /* Tighter padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    /* Sharper, more dynamic angle */
-    margin-bottom: 3.5rem;
-    height: 250px;
-    /* Taller for grandeur */
+    border-bottom: 4px solid var(--c-accent);
+    /* Electric accent line */
+    margin-bottom: 3rem;
+    height: 180px;
+    /* Much shorter */
     overflow: hidden;
-    /* For pseudo-elements */
 }
 
-/* Subtle Glow/Pattern Overlay */
+/* Abstract "Cool" Geometric Shapes */
 .paper-header::before {
     content: '';
     position: absolute;
-    top: -100px;
-    right: -50px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
-    border-radius: 50%;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(99, 102, 241, 0.1) 40%, rgba(99, 102, 241, 0.1) 60%, transparent 60%);
     pointer-events: none;
+}
+
+.paper-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 40%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
 }
 
 /* Document Title (OFFERTE) */
 .doc-type {
-    font-size: 3.5rem;
+    font-size: 3rem;
+    /* Slightly smaller but punchy */
     font-weight: 800;
-    letter-spacing: 0.15em;
+    letter-spacing: -0.02em;
+    /* Tighter, more modern */
     line-height: 1;
-    margin: 0 0 1rem 0;
-    background: linear-gradient(to bottom, #ffffff 0%, #cbd5e1 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin: 0 0 0.5rem 0;
+    color: white;
     text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: none;
+    -webkit-text-fill-color: initial;
+    text-shadow: none;
+}
+
+/* Optional deco line next to text */
+.doc-type::before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--c-accent);
+    border-radius: 2px;
 }
 
 /* Meta Data Grid in Header */
 .meta-grid {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 1rem 2rem;
+    display: flex;
+    /* Horizontal row for cooler look? or Grid */
+    gap: 2rem;
     text-align: right;
+    justify-content: flex-end;
 }
 
 .meta-item {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
 }
 
 .meta-item .label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     color: #94a3b8;
     font-weight: 600;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .meta-item .val {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: white;
+    font-variant-numeric: tabular-nums;
 }
 
 /* Limit Logo Size in Header */
