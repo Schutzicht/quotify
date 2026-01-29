@@ -1534,3 +1534,42 @@ input::placeholder {
         padding: 1.5rem;
     }
 }
+
+/* --- FINAL DESKTOP CLEANUP (NUCLEAR OPTION) --- */
+@media (min-width: 769px) {
+
+    /* Force hide mobile elements */
+    .mobile-nav,
+    .mobile-zoom-wrapper {
+        display: none !important;
+    }
+
+    /* Reset Sidebar if leaked */
+    .sidebar {
+        border-right: 1px solid #e2e8f0;
+        display: flex !important;
+    }
+
+    /* Reset Toolbar if leaked */
+    .toolbar {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    /* Reset Main Stage if leaked */
+    .gen3-layout.tab-preview .main-stage {
+        padding-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    /* Reset Modal Left */
+    .modal-left {
+        display: flex !important;
+    }
+}
