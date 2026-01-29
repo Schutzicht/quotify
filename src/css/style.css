@@ -1493,11 +1493,43 @@ input::placeholder {
         /* Seamless background */
     }
 
-    .main-stage {
-        padding-top: 60px;
-        /* Space for toolbar if fixed */
-        background: white;
-        /* Paper look for whole screen */
+    /* Mobile Preview Zoom - AGGRESSIVE FIT PAGE DO NOT REMOVE */
+    @media (max-width: 768px) {
+        .gen3-layout.tab-preview .main-stage {
+            padding-top: 1rem;
+            align-items: flex-start;
+            overflow-y: auto;
+            height: 100%;
+            display: block;
+            background: #f1f5f9;
+            /* Contrast bg */
+        }
+
+        .gen3-layout.tab-preview .paper-wrapper {
+            width: 100%;
+            overflow: visible;
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+            padding-bottom: 50px;
+            min-height: 100%;
+        }
+
+        .gen3-layout.tab-preview .paper-a4 {
+            /* Force Reset of any mobile overrides impacting width */
+            width: 210mm !important;
+            min-width: 210mm !important;
+            min-height: 297mm !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+
+            transform-origin: top center;
+            /* Logic: Scale down to fit width easily with margins */
+            transform: scale(calc((100vw - 40px) / 794));
+            margin-bottom: -50% !important;
+            /* Pull up empty space */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+        }
     }
 
     .toolbar {
