@@ -446,6 +446,138 @@ input::placeholder {
     border-color: #334155;
 }
 
+/* --- PREVIEW TABLES & TOTALS (Missing) --- */
+.group-section {
+    margin-bottom: 2rem;
+}
+
+.group-header {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.modern-table th {
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modern-table td {
+    padding: 1rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+    color: #334155;
+}
+
+.modern-table td.right,
+.modern-table th.right {
+    text-align: right;
+}
+
+.col-desc {
+    width: 50%;
+}
+
+.col-qty {
+    width: 10%;
+}
+
+.col-price {
+    width: 20%;
+}
+
+.col-total {
+    width: 20%;
+}
+
+.group-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    padding-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.totals-section {
+    margin-top: 3rem;
+    border-top: 2px solid #0f172a;
+    /* Dynamic color via JS usually, fallback here */
+    padding-top: 1rem;
+    margin-left: auto;
+    width: 50%;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.total-row.final {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.notes-preview {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.6;
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.footer-line {
+    height: 4px;
+    background: #0f172a;
+    /* Default, overridden by accent */
+    margin-bottom: 1.5rem;
+}
+
+.paper-footer {
+    padding: 3rem;
+    background: #f8fafc;
+    margin-top: auto;
+}
+
+.footer-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.footer-cols strong {
+    display: block;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
 /* Modals */
 .modal {
     position: fixed;
