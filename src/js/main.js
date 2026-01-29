@@ -820,20 +820,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slider && paper) {
         // Init value
         if (window.innerWidth <= 768) {
-            // Calculate initial best fit
-            const startScale = (window.innerWidth - 40) / 794;
+            // Calculate initial best fit (Fit Page)
+            const startScale = (window.innerWidth - 32) / 794;
             slider.value = startScale;
-            // We don't set style immediately to let CSS handle initial render, or force it:
-            // Let's force it to sync slider
-            paper.style.transform = `scale(${startScale})`;
+            applyZoom(startScale);
         }
 
         slider.addEventListener('input', (e) => {
-            const val = e.target.value;
-            paper.style.transform = `scale(${val})`;
-            // Also adjust margin-bottom dynamically? CSS usually handles nicely with -50% but dynamic is better
-            // paper.style.marginBottom = `-${(1 - val) * 100}%`; 
+            const val = parseFloat(e.target.value);
+            applyZoom(val);
         });
+
+        function applyZoom(scale) {
+            // 1. Transform Visual
+            paper.style.transform = `scale(${scale})`;
+
+            // 2. Resize Wrapper to match Visual Size for native scroll
+            // We need to query selector 'wrapper' here if not global, or use the one defined above.
+            // Actually, verify wrapper is defined.
+            const wrapper = document.querySelector('.paper-wrapper');
+            if (wrapper) {
+                const baseW = 794; // A4 Width px
+                const baseH = 1123; // A4 Height px
+                const scaledW = baseW * scale;
+                const scaledH = baseH * scale;
+
+                wrapper.style.width = `${scaledW}px`;
+                wrapper.style.height = `${scaledH}px`;
+            }
+        }
     }
 
     // Modal Close Logic
