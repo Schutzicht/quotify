@@ -8,7 +8,7 @@ import { dirname } from 'path';
 dotenv.config();
 
 const app = express();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
     apiVersion: '2023-10-16',
 });
 
@@ -26,8 +26,10 @@ app.use(cors());
 
 // --- ROUTES ---
 
-// 1. Create Checkout Session
-app.post('/api/create-checkout-session', async (req, res) => {
+// 1. Create Payment Intent/Session
+// Renamed from create-checkout-session to match frontend expectation or updated frontend to match this.
+// Plan said: Rename route `/api/create-checkout-session` to `/api/create-payment`
+app.post('/api/create-payment', async (req, res) => {
     try {
         const { amount } = req.body;
 
@@ -45,7 +47,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
             ],
             mode: 'payment',
             payment_method_types: ['card', 'ideal'],
-            return_url: `${req.headers.origin}?session_id={CHECKOUT_SESSION_ID}`,
+            return_url: `${req.headers.origin || 'http://localhost:5173'}?session_id={CHECKOUT_SESSION_ID}`,
         });
 
         res.json({ clientSecret: session.client_secret });
@@ -70,7 +72,11 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), (req
         } else {
             // Dev Mode bypass (User requested simple endpoint existence)
             // Warning: Unsafe for production
-            event = JSON.parse(req.body);
+            try {
+                event = JSON.parse(req.body.toString());
+            } catch (e) {
+                event = req.body;
+            }
         }
     } catch (err) {
         console.error(`Webhook Error: ${err.message}`);
