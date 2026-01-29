@@ -1357,8 +1357,22 @@ input::placeholder {
         border-right: none;
         box-shadow: none;
     }
+}
 
-    /* Mobile Nav Bar - Premium Look */
+/* END OF MOBILE MEDIA QUERY (Corrected) */
+
+/* FORCE HIDE MOBILE ELEMENTS ON DESKTOP */
+@media (min-width: 769px) {
+
+    .mobile-nav,
+    .mobile-zoom-wrapper,
+    .zoom-controls .t-btn {
+        display: none !important;
+    }
+}
+
+/* Mobile Nav Bar - Premium Look (Should be wrapped in mobile query, but now handled by above hide) */
+@media (max-width: 768px) {
     .mobile-nav {
         display: flex;
         position: fixed !important;
