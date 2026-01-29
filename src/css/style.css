@@ -978,20 +978,22 @@ input::placeholder {
         box-shadow: none;
     }
 
-    /* Mobile Nav Bar */
+    /* Mobile Nav Bar - Premium Look */
     .mobile-nav {
         display: flex;
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
-        background: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(12px);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.9);
+        /* Lighter, cleaner */
+        backdrop-filter: blur(16px);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
         z-index: 1000;
-        padding: 0.75rem 1rem;
+        padding: 0.5rem 1rem 1.5rem 1rem;
+        /* Extra bottom padding for iOS home indicator */
         gap: 1rem;
-        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
     }
 
     .mn-btn {
@@ -999,26 +1001,43 @@ input::placeholder {
         background: transparent;
         border: none;
         color: #94a3b8;
-        font-weight: 600;
-        padding: 0.75rem;
-        border-radius: 12px;
+        /* Inactive color */
+        font-weight: 500;
+        padding: 0.5rem;
+        border-radius: 16px;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 4px;
-        font-size: 0.8rem;
-        transition: all 0.2s;
+        font-size: 0.75rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
     }
 
-    .mn-btn span:first-child {
-        font-size: 1.2rem;
+    .mn-btn svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 2;
+        transition: transform 0.3s ease;
     }
 
+    /* Active State */
     .mn-btn.active {
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        /* Accent color is better via inline or specific class if dynamic */
         color: var(--c-accent);
+        /* Use main accent color */
+        background: rgba(37, 99, 235, 0.05);
+        /* Very subtle tint */
+    }
+
+    .mn-btn.active svg {
+        transform: translateY(-2px);
+        stroke-width: 2.5;
+    }
+
+    /* Remove emoji font size style */
+    .mn-btn span:first-child {
+        /* Was emoji sizing, now removed */
     }
 
     /* Mobile Modal Override */
