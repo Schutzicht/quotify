@@ -557,6 +557,8 @@ function closeModal() {
     setTimeout(() => modal.classList.add('hidden'), 300);
 }
 
+const stripePromise = Stripe('pk_test_51Suu3SBsNgRS4dt78EEy63mwHhi29Rc1lSdDmj2xGvwHkHonR6z2SAn25pNfCwgaVFYr7DagJZ8mc8nmBwA0bhEv00STzG4iuO');
+
 async function processPayment() {
     const btn = $('confirm-pay-btn');
     const originalText = btn.textContent;
@@ -564,18 +566,33 @@ async function processPayment() {
     btn.style.opacity = '0.7';
 
     try {
+        // Dynamic Amount from State
+        const amount = state.total;
+        if (amount <= 0) { alert('Totaalbedrag moet groter zijn dan 0.'); btn.textContent = originalText; btn.style.opacity = '1'; return; }
+
         const response = await fetch('/api/create-checkout-session', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items: state.items })
+            body: JSON.stringify({ items: state.items, amount: amount })
         });
 
-        const data = await response.json();
+        const { clientSecret } = await response.json();
 
-        if (data.url) {
-            window.location.href = data.url; // Redirect to Stripe
+        if (clientSecret) {
+            // Prepare Modal for Embedded
+            const modalRight = document.querySelector('.modal-right');
+            modalRight.innerHTML = '<div id="checkout-mount"></div>'; // Clear existing summary
+
+            const stripe = await stripePromise;
+            const checkout = await stripe.initEmbeddedCheckout({
+                clientSecret,
+            });
+
+            // Mount Checkout
+            checkout.mount('#checkout-mount');
+            btn.style.display = 'none'; // Hide native button once mounted
         } else {
-            console.error('No URL returned', data);
+            console.error('No clientSecret returned');
             alert('Fout bij starten betaling.');
             btn.textContent = originalText;
             btn.style.opacity = '1';
@@ -583,7 +600,7 @@ async function processPayment() {
 
     } catch (e) {
         console.error('Checkout error:', e);
-        alert('Server niet bereikbaar. Zorg dat server.js draait.');
+        alert('Server fout. Check connection.');
         btn.textContent = originalText;
         btn.style.opacity = '1';
     }
