@@ -304,18 +304,21 @@ input::placeholder {
 }
 
 /* --- ADVANCED DETAILS EXPANDER --- */
+/* --- ADVANCED DETAILS EXPANDER --- */
 .advanced-details {
     margin-top: 1.5rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--c-border);
+    background: white;
+    /* Visible card */
+    border: 1px solid #e2e8f0;
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .advanced-details[open] {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: #f8fafc;
+    border-color: #cbd5e1;
 }
 
 .advanced-details summary {
@@ -323,7 +326,8 @@ input::placeholder {
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--c-text-secondary);
+    color: #475569;
+    /* Slate-600 */
     text-transform: uppercase;
     letter-spacing: 0.05em;
     user-select: none;
@@ -339,19 +343,20 @@ input::placeholder {
     content: '+';
     font-size: 1.2rem;
     font-weight: 400;
-    color: var(--c-text-tertiary);
+    color: #94a3b8;
     transition: transform 0.2s;
 }
 
 .advanced-details[open] summary::after {
     transform: rotate(45deg);
     /* Becomes X */
-    color: white;
+    color: var(--c-accent);
 }
 
 .advanced-details summary:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.02);
+    color: var(--c-accent);
+    /* Blue hover */
+    background: #f1f5f9;
 }
 
 .details-content {
@@ -362,7 +367,7 @@ input::placeholder {
 }
 
 .advanced-details[open] .details-content {
-    border-top-color: var(--c-border);
+    border-top-color: #e2e8f0;
     padding-top: 1.5rem;
 }
 
