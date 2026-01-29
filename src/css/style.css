@@ -439,6 +439,97 @@ input::placeholder {
     color: var(--c-accent);
 }
 
+/* PAPER (Hardened) */
+.paper-wrapper {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.paper-a4 {
+    width: 210mm;
+    min-width: 210mm;
+    min-height: 297mm;
+    height: fit-content;
+    background: white;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4rem;
+    color: #0f172a;
+    /* Ink Color */
+    position: relative;
+    flex-shrink: 0;
+}
+
+.paper-header {
+    background: #0f172a;
+    color: white;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    /* Ensures logo and company name space out */
+    align-items: center;
+    /* Center vertically */
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+    /* Angle */
+    margin-bottom: 3rem;
+    height: 220px;
+    /* Fixed height to prevent massive layout shifts */
+}
+
+/* Limit Logo Size in Header */
+.paper-header img {
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* If the logo is inserted into a specific container like #preview-logo */
+#preview-logo {
+    display: flex;
+    align-items: center;
+}
+
+.paper-body {
+    padding: 0 3rem 3rem 3rem;
+    flex: 1;
+}
+
+/* ADDRESS GRID (HARDENED CSS GRID) */
+.address-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    /* Wide gap */
+    margin-bottom: 3rem;
+}
+
+.addr-col .label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.25rem;
+}
+
+.addr-lines {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.addr-lines strong {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
 /* Items Grid Cleaner */
 .item-row {
     background: white;
