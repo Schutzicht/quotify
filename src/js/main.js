@@ -44,11 +44,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check if we just paid
     checkPaymentSuccess();
 
+    initMobileTabs();
     updatePreview();
 
     console.log('OfferteGeneratory Gen 3 :: Initialized');
-    console.log('VERSION: 2.1.0 - VERCEL CONFIG FIX');
+    console.log('VERSION: 2.2.0 - MOBILE UX LIVE');
 });
+
+function initMobileTabs() {
+    const layout = document.querySelector('.gen3-layout');
+    const btns = document.querySelectorAll('.mn-btn');
+
+    // Default
+    if (window.innerWidth <= 768) {
+        layout.classList.add('tab-config');
+    }
+
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const tab = btn.dataset.tab;
+            if (tab === 'config') {
+                layout.classList.remove('tab-preview');
+                layout.classList.add('tab-config');
+            } else {
+                layout.classList.remove('tab-config');
+                layout.classList.add('tab-preview');
+            }
+        });
+    });
+}
 
 async function checkPaymentSuccess() {
     const urlParams = new URLSearchParams(window.location.search);

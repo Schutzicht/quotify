@@ -1046,4 +1046,63 @@ details.advanced-details[open] summary {
         flex: 1 1 auto !important;
         width: auto !important;
     }
+
+    /* MOBILE TABS */
+    .mobile-nav {
+        display: flex;
+        /* Shown on mobile */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #0F172A;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 100;
+        height: 60px;
+        box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .mn-btn {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: #94A3B8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        font-size: 0.75rem;
+        cursor: pointer;
+    }
+
+    .mn-btn.active {
+        color: white;
+        background: rgba(255, 255, 255, 0.05);
+        border-top: 2px solid white;
+    }
+
+    /* Tab Logic */
+    .gen3-layout.tab-config .main-stage {
+        display: none;
+    }
+
+    .gen3-layout.tab-config .sidebar {
+        display: flex;
+    }
+
+    .gen3-layout.tab-preview .sidebar {
+        display: none;
+    }
+
+    .gen3-layout.tab-preview .main-stage {
+        display: flex;
+    }
+}
+
+/* DESKTOP HIDES NAV */
+@media (min-width: 769px) {
+    .mobile-nav {
+        display: none;
+    }
 }
