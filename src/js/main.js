@@ -616,21 +616,7 @@ function renderItemsTable() {
     // setText('summary-total', summaryText); // REMOVED: This overwrites the Payment Modal Service Fee!
 }
 
-// Creative Watermark (Background)
-const previewContainer = $('pdf-preview');
-// Remove old one first
-const existingWatermark = previewContainer.querySelector('.watermark-creative');
-if (existingWatermark) existingWatermark.remove();
 
-if (state.branding.logo) {
-    const watermark = document.createElement('img');
-    watermark.src = state.branding.logo;
-    watermark.className = 'watermark-creative';
-    previewContainer.prepend(watermark); // Put at very back (z-index 0)
-}
-
-    // ... (rest of function)
-}
 
 function renderFooter() {
     const c1 = $('f-col-1');
