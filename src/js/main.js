@@ -659,6 +659,12 @@ async function mountCheckout() {
             body: JSON.stringify({ items: state.items, amount: amount })
         });
 
+        if (!response.ok) {
+            const errText = await response.text();
+            console.error('Payment API Error:', errText);
+            throw new Error(`API Refused: ${response.status} ${errText}`);
+        }
+
         const { clientSecret } = await response.json();
 
         if (clientSecret) {
@@ -669,10 +675,15 @@ async function mountCheckout() {
             });
             checkout.mount('#checkout-mount');
         } else {
-            mountPoint.innerHTML = '<div style="color:red">Fout bij laden betaling. Probeer opnieuw.</div>';
+            console.error('No Client Secret');
+            mountPoint.innerHTML = '<div style="color:red">Fout: Geen betaalsessie ontvangen.</div>';
         }
     } catch (e) {
-        console.error('Mount error', e);
-        mountPoint.innerHTML = '<div style="color:red">Server fout. Controleer verbinding.</div>';
+        console.error('Mount Critical Error', e);
+        mountPoint.innerHTML = `<div style="color:red; font-size: 0.8rem; padding: 1rem;">
+            Fout bij laden betaling.<br>
+            <small>${e.message || e}</small><br>
+            <button onclick="mountCheckout()" style="margin-top:10px; padding: 5px 10px;">Probeer opnieuw</button>
+        </div>`;
     }
 }
