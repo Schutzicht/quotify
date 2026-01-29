@@ -900,33 +900,40 @@ input::placeholder {
 
 /* --- MOBILE RESPONSIVE OVERRIDES --- */
 @media (max-width: 768px) {
+
+    html,
     body {
-        height: auto;
+        height: auto !important;
+        min-height: 100vh;
+        overflow-y: auto !important;
+        /* Force native scroll */
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
     }
 
     .gen3-layout {
         flex-direction: column;
-        height: auto;
+        height: auto !important;
         min-height: 100vh;
-        /* Ensure full height */
         position: relative;
-        overflow-x: hidden;
-        /* Prevent horizontal scroll */
-        overflow-y: auto;
-        /* Allow vertical scroll */
+        overflow: visible !important;
+        /* Allow children to scroll body */
+        display: flex;
     }
 
     /* Common Mobile States */
     .sidebar,
     .main-stage {
         width: 100%;
-        height: auto;
+        height: auto !important;
         min-height: 100vh;
         /* Default hidden state */
         display: none;
         opacity: 0;
         transition: opacity 0.3s ease;
-        padding-bottom: 90px;
+        padding-bottom: 120px;
+        /* Space for nav */
+        overflow: visible !important;
     }
 
     /* --- SIDEBAR (CONFIG) STATE --- */
