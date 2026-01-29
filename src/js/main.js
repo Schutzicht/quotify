@@ -358,8 +358,8 @@ function updatePreview() {
     // Creative Watermark (Background)
     const previewContainer = $('pdf-preview');
     // Remove old one first
-    const existingWatermark = previewContainer.querySelector('.watermark-creative');
-    if (existingWatermark) existingWatermark.remove();
+    const existingCreativeWatermark = previewContainer.querySelector('.watermark-creative');
+    if (existingCreativeWatermark) existingCreativeWatermark.remove();
 
     if (state.branding.logo) {
         const watermark = document.createElement('img');
