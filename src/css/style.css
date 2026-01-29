@@ -505,19 +505,19 @@ input::placeholder {
 /* Meta Grid - Scanned & Aligned */
 .meta-grid {
     display: flex;
-    /* Flex is easier for alignment control here */
     gap: 3rem;
-    /* Wide clear spacing */
     margin-top: 1rem;
     justify-content: flex-end;
-    /* Push to right */
+    /* Keep blocks on the right */
 }
 
 .meta-item {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    /* Text aligns Left inside the block for clean read */
+    align-items: flex-start !important;
+    /* Force Left align of children */
+    text-align: left !important;
+    /* Force Text Left */
     min-width: 80px;
 }
 
@@ -528,15 +528,18 @@ input::placeholder {
     color: #64748b !important;
     font-weight: 700;
     margin-bottom: 4px;
+    text-align: left !important;
+    /* Force */
 }
 
 .meta-item .val {
-    font-size: 12px;
-    /* Slightly larger match body */
+    font-size: 13px;
+    /* Bumped slightly for readability */
     font-weight: 700;
     color: #0f172a !important;
     font-variant-numeric: tabular-nums;
-    /* Align numbers nicely */
+    text-align: left !important;
+    /* Force */
 }
 
 /* Body Content */
