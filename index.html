@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotify - Jouw Professionele Offerte Generator</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+    <div class="gen3-layout">
+        <!-- SIDEBAR CONFIG -->
+        <aside class="sidebar">
+            <div class="brand-header">
+                <div class="brand-logo">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <path d="M11 11.5a2.5 2.5 0 0 0 0 5" />
+                        <path d="M9 12.5h4" />
+                        <path d="M9 15.5h4" />
+                    </svg>
+                </div>
+                <h1>Quotify</h1>
+            </div>
+
+            <div class="config-scroll">
+
+                <!-- BRANDING -->
+                <div class="config-section">
+                    <h2>Huisstijl</h2>
+                    <div class="logo-dropzone" id="logo-dropzone">
+                        <div class="icon">↑</div>
+                        <span>Upload Logo</span>
+                        <input type="file" id="logo-upload" accept="image/*" hidden>
+                    </div>
+
+                    <div class="color-selector">
+                        <label>Accent Kleur</label>
+                        <div class="color-options">
+                            <button class="c-opt active" data-color="#0F172A" style="background:#0F172A"></button>
+                            <button class="c-opt" data-color="#2563EB" style="background:#2563EB"></button>
+                            <button class="c-opt" data-color="#059669" style="background:#059669"></button>
+                            <button class="c-opt" data-color="#DC2626" style="background:#DC2626"></button>
+                            <div class="custom-color-wrapper" title="Kies eigen kleur">
+                                <input type="color" id="accent-color" value="#0F172A">
+                                <svg class="pipette-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M19 11 13 5M21.2 2.8c1.1 1.1 1.1 2.9 0 4l-9.3 9.3c-.6.6-1.5.9-2.3.9l-4 1 1-4c0-.8.3-1.7.9-2.3l9.3-9.3c1.1-1.1 2.9-1.1 4 0Z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SENDER -->
+                <div class="config-section">
+                    <h2>Jouw Bedrijf (Afzender)</h2>
+                    <form id="sender-form">
+                        <div class="input-group">
+                            <label>Bedrijfsnaam</label>
+                            <input type="text" name="company" placeholder="Jouw Bedrijf B.V." />
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Contactpersoon</label>
+                                <input type="text" name="contact" placeholder="J. Janssen" />
+                            </div>
+                            <div class="input-group">
+                                <label>Website (Optioneel)</label>
+                                <input type="text" name="website" placeholder="www.bedrijf.nl" />
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>E-mail</label>
+                                <input type="email" name="email" placeholder="info@bedrijf.nl" />
+                            </div>
+                            <div class="input-group">
+                                <label>Telefoon</label>
+                                <input type="tel" name="phone" placeholder="06.." />
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Adres</label>
+                            <input type="text" name="address" placeholder="Straat 12" />
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Postcode</label>
+                                <input type="text" name="zip" placeholder="1234 AB" />
+                            </div>
+                            <div class="input-group">
+                                <label>Plaats</label>
+                                <input type="text" name="city" placeholder="Amsterdam" />
+                            </div>
+                        </div>
+
+                        <details class="advanced-details">
+                            <summary>Meer details (KVK, BTW, IBAN)</summary>
+                            <div class="details-content">
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label>KVK</label>
+                                        <input type="text" name="kvk" placeholder="12345678" />
+                                    </div>
+                                    <div class="input-group">
+                                        <label>BTW Nr.</label>
+                                        <input type="text" name="vat" placeholder="NL..." />
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label>IBAN</label>
+                                    <input type="text" name="iban" placeholder="NL00 BANK..." />
+                                </div>
+                            </div>
+                        </details>
+                    </form>
+                </div>
+
+                <!-- CLIENT -->
+                <div class="config-section">
+                    <h2>De Klant (Ontvanger)</h2>
+                    <form id="client-form">
+                        <div class="input-group">
+                            <label>Bedrijfsnaam / Naam</label>
+                            <input type="text" name="company" placeholder="Klant B.V." />
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Contactpersoon</label>
+                                <input type="text" name="contact" placeholder="T.a.v..." />
+                            </div>
+                            <div class="input-group">
+                                <label>Referentie / PO</label>
+                                <input type="text" name="reference" placeholder="Inkoop nr." />
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Adres</label>
+                            <input type="text" name="address" placeholder="Straat 1" />
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Postcode</label>
+                                <input type="text" name="zip" placeholder="1234 AB" />
+                            </div>
+                            <div class="input-group">
+                                <label>Plaats</label>
+                                <input type="text" name="city" placeholder="Rotterdam" />
+                            </div>
+                        </div>
+                        <details class="advanced-details">
+                            <summary>Meer details</summary>
+                            <div class="details-content">
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label>E-mail</label>
+                                        <input type="email" name="email" />
+                                    </div>
+                                    <div class="input-group">
+                                        <label>KVK / BTW</label>
+                                        <input type="text" name="kvk" />
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </form>
+                </div>
+
+                <!-- META -->
+                <div class="config-section">
+                    <h2>Document Details</h2>
+                    <form id="meta-form">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Offertenummer</label>
+                                <input type="text" name="number" value="2026-001" />
+                            </div>
+                            <div class="input-group">
+                                <label>Datum</label>
+                                <input type="text" name="date" id="meta-date" placeholder="DD-MM-JJJJ" />
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Geldig tot</label>
+                                <input type="text" name="validUntil" placeholder="Datum..." />
+                            </div>
+                            <div class="input-group">
+                                <label>Titel</label>
+                                <input type="text" name="title" value="Offerte" />
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Projectnaam (Optioneel)</label>
+                            <input type="text" name="project" placeholder="Website Redesign..." />
+                        </div>
+                    </form>
+                </div>
+
+                <!-- NOTES -->
+                <div class="config-section">
+                    <h2>Overig</h2>
+                    <div class="input-group">
+                        <label>Notities / Voorwaarden</label>
+                        <textarea id="notes-input" rows="4" placeholder="Bijv. Geldig tot 30 dagen..."></textarea>
+                    </div>
+                </div>
+
+                <div class="spacer"></div>
+            </div>
+
+            <!-- Items Fixed Bottom or Scroll? Items usually mid-scroll. 
+                 Wait, in Gen 3 items were in sidebar. Let's add them back. -->
+            <div class="config-section items-section">
+                <h2>Regels</h2>
+                <div id="items-list"></div>
+                <button id="add-item-btn" class="btn-secondary full-width">+ Regel toevoegen</button>
+            </div>
+        </aside>
+
+        <!-- MAIN STAGE -->
+        <main class="main-stage">
+            <div class="toolbar">
+                <div class="zoom-controls">
+                    <button class="t-btn" id="zoom-out">-</button>
+                    <span class="zoom-lbl">100%</span>
+                    <button class="t-btn" id="zoom-in">+</button>
+                </div>
+                <button class="btn-primary" id="download-trigger">Download PDF</button>
+            </div>
+
+            <div class="paper-wrapper">
+                <div id="pdf-preview" class="paper-a4">
+                    <!-- Header -->
+                    <div class="paper-header">
+                        <div class="logo-area" id="preview-logo">
+                            <div class="logo-placeholder">LOGO</div>
+                        </div>
+                        <div class="meta-area">
+                            <h1 class="doc-type" id="prev-doc-title">OFFERTE</h1>
+                            <div class="project-meta" id="prev-project-line"></div>
+                            <div class="meta-grid">
+                                <div class="meta-item">
+                                    <span class="label">Nummer</span>
+                                    <span class="val" id="prev-ref">...</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="label">Datum</span>
+                                    <span class="val" id="prev-date">...</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="label">Geldig tot</span>
+                                    <span class="val" id="prev-valid">...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Grid -->
+                    <div class="paper-body">
+                        <div class="address-grid">
+                            <div class="addr-col from">
+                                <span class="label">Van</span>
+                                <div class="addr-lines" id="prev-sender-block"></div>
+                            </div>
+                            <div class="addr-col to">
+                                <span class="label">Voor</span>
+                                <div class="addr-lines" id="prev-client-block"></div>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Table Area handled by JS -->
+
+                        <div class="totals-section">
+                            <div class="total-row final">
+                                <span>Totaal</span>
+                                <span id="prev-total">€ 0,00</span>
+                            </div>
+                        </div>
+
+                        <div id="prev-notes" class="notes-preview"></div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="paper-footer">
+                        <div class="footer-line"></div>
+                        <div class="footer-cols">
+                            <div class="f-col" id="f-col-1"></div>
+                            <div class="f-col" id="f-col-2"></div>
+                            <div class="f-col" id="f-col-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- PAYMENT MODAL (Optional but kept for completeness) -->
+    <div class="modal hidden" id="payment-modal">
+        <div class="modal-bg" id="modal-close"></div>
+        <div class="modal-card">
+            <div class="modal-left">
+                <div class="modal-thumb" id="modal-thumb"></div>
+            </div>
+            <div class="modal-right">
+                <h2>Controleren & Voltooien</h2>
+                <div class="pay-summary">
+                    <div class="sum-row total">
+                        <span>Totaalbedrag</span>
+                        <span id="summary-total">€ 0,00</span>
+                    </div>
+                    <div class="badge-row">
+                        <span class="badge">Veilig met Stripe</span>
+                        <span class="badge">SSL Beveiligd</span>
+                    </div>
+                </div>
+                <button class="btn-primary full-width big" id="confirm-pay-btn">Downloadl PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="src/js/main.js"></script>
+</body>
+
+</html>
