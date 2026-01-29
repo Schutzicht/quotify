@@ -145,11 +145,6 @@ function initListeners() {
     const logoInput = $('logo-upload');
     const dropzone = $('logo-dropzone');
     if (logoInput && dropzone) {
-        // Prevent multiple click listeners? No, initListeners called once.
-        // We need a remove button if logo is set. 
-        // Let's modify the UI of dropzone or add a separate remove btn.
-        // Simple: If logo is set, dropzone shows "Remove".
-
         dropzone.addEventListener('click', (e) => {
             if (state.branding.logo && e.target.closest('.remove-logo-btn')) {
                 e.stopPropagation();
@@ -200,10 +195,6 @@ function initListeners() {
             if (text) text.textContent = 'Upload Logo';
         }
     }
-
-    const dlBtn = $('download-trigger');
-    // const dlBtn = $('download-trigger'); // Removed duplicate
-    // if (dlBtn) dlBtn.addEventListener('click', () => generatePDF(state)); // REMOVED: Managed by initModal now
 
     const notesInput = $('notes-input');
     if (notesInput) notesInput.addEventListener('input', (e) => { state.notes = e.target.value; updatePreview(); });
@@ -334,7 +325,6 @@ function getImageBrightness(src) {
 }
 
 
-/* --- PREVIEW LOGIC --- */
 /* --- PREVIEW LOGIC --- */
 function updatePreview() {
     // 1. Logo
@@ -656,10 +646,7 @@ function renderItemsTable() {
     if (groups['monthly'].subtotal > 0) {
         summaryText += ` + € ${groups['monthly'].subtotal.toFixed(2)} p/m`;
     }
-    // setText('summary-total', summaryText); // REMOVED: This overwrites the Payment Modal Service Fee!
 }
-
-
 
 function renderFooter() {
     const c1 = $('f-col-1');
@@ -739,7 +726,6 @@ function initPreviewZoom() {
 function initModal() {
     ['download-trigger'].forEach(t => { const btn = $(t); if (btn) btn.addEventListener('click', openModal); });
     $('modal-close').addEventListener('click', closeModal);
-    // Removed old confirm button listener
 }
 
 function openModal() {
@@ -766,8 +752,6 @@ function closeModal() {
     if (!modal) return;
     modal.classList.remove('active');
     setTimeout(() => modal.classList.add('hidden'), 300);
-    // Cleanup mount to preventing duplicates? 
-    // Embedded checkout usually handles destroy, but we can clear innerHTML next open.
 }
 
 const stripePromise = Stripe('pk_test_51Suu3SBsNgRS4dt78EEy63mwHhi29Rc1lSdDmj2xGvwHkHonR6z2SAn25pNfCwgaVFYr7DagJZ8mc8nmBwA0bhEv00STzG4iuO');
@@ -782,7 +766,6 @@ async function mountCheckout() {
 
     try {
         const amount = 0.50; // Fixed Service Fee
-        // Use NEW endpoint
         const response = await fetch('/api/create-payment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -799,7 +782,6 @@ async function mountCheckout() {
 
         if (clientSecret) {
             const stripe = await stripePromise;
-            // Init with explicit settings sometimes helps Apple Pay
             checkout = await stripe.initEmbeddedCheckout({
                 clientSecret,
             });
@@ -826,9 +808,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const paper = document.querySelector('.paper-a4');
 
     if (slider && paper) {
-        // Init value
         if (window.innerWidth <= 768) {
-            // Calculate initial best fit (Fit Page)
             const startScale = (window.innerWidth - 32) / 794;
             slider.value = startScale;
             applyZoom(startScale);
@@ -840,16 +820,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         function applyZoom(scale) {
-            // 1. Transform Visual
             paper.style.transform = `scale(${scale})`;
-
-            // 2. Resize Wrapper to match Visual Size for native scroll
-            // We need to query selector 'wrapper' here if not global, or use the one defined above.
-            // Actually, verify wrapper is defined.
             const wrapper = document.querySelector('.paper-wrapper');
             if (wrapper) {
-                const baseW = 794; // A4 Width px
-                const baseH = 1123; // A4 Height px
+                const baseW = 794;
+                const baseH = 1123;
                 const scaledW = baseW * scale;
                 const scaledH = baseH * scale;
 
@@ -865,28 +840,47 @@ document.addEventListener('DOMContentLoaded', () => {
         modalBg.addEventListener('click', closeModal);
     }
 
-    // Allow ESC key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
     });
 
-    // --- SIGNATURE PAD LOGIC ---
+    // --- SIGNATURE PAD LOGIC (ROBUST V2) ---
     const sigCanvas = document.getElementById('signature-pad');
+    const undoBtn = document.getElementById('sig-undo');
+    const redoBtn = document.getElementById('sig-redo');
     const clearBtn = document.getElementById('clear-sig');
-    const prevSigBlock = document.getElementById('signature-preview-block');
-    const prevSigImg = document.getElementById('prev-sig-img');
 
-    if (sigCanvas && clearBtn) {
+    if (sigCanvas) {
         const ctx = sigCanvas.getContext('2d');
+        if (!state.signatureImage) state.signatureImage = '';
+
         let isDrawing = false;
+        let history = [];
+        let historyStep = -1;
 
-        // Configuration
-        ctx.strokeStyle = '#0f172a'; // Dark blue/slate
-        ctx.lineWidth = 2;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
+        // 1. High DPI / Retina Fix
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            const rect = sigCanvas.parentElement.getBoundingClientRect();
+            sigCanvas.width = rect.width * ratio;
+            sigCanvas.height = rect.height * ratio;
+            ctx.scale(ratio, ratio);
 
-        // Helper to get coords
+            ctx.strokeStyle = '#0f172a';
+            ctx.lineWidth = 2.5;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            history = [];
+            historyStep = -1;
+            state.signatureImage = '';
+            renderFooter();
+            updateButtons();
+        }
+
+        setTimeout(resizeCanvas, 200);
+
+        // 2. Coords
         function getCoords(e) {
             const rect = sigCanvas.getBoundingClientRect();
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -897,19 +891,22 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
 
+        // 3. Drawing
         function startDraw(e) {
-            e.preventDefault(); // Prevent scroll on touch
+            e.preventDefault();
             isDrawing = true;
-            const { x, y } = getCoords(e);
+            const coords = getCoords(e);
             ctx.beginPath();
-            ctx.moveTo(x, y);
+            ctx.moveTo(coords.x, coords.y);
+            ctx.lineTo(coords.x, coords.y);
+            ctx.stroke();
         }
 
         function draw(e) {
             if (!isDrawing) return;
             e.preventDefault();
-            const { x, y } = getCoords(e);
-            ctx.lineTo(x, y);
+            const coords = getCoords(e);
+            ctx.lineTo(coords.x, coords.y);
             ctx.stroke();
         }
 
@@ -917,37 +914,83 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isDrawing) {
                 isDrawing = false;
                 ctx.closePath();
-                updateSignaturePreview();
+                saveState();
             }
         }
 
-        // Mouse Events
+        // 4. History & State Sync
+        function saveState() {
+            historyStep++;
+            if (historyStep < history.length) { history.length = historyStep; }
+            const data = sigCanvas.toDataURL();
+            history.push(data);
+
+            state.signatureImage = data;
+            renderFooter();
+            updateButtons();
+        }
+
+        function restoreState(dataUrl) {
+            const img = new Image();
+            img.src = dataUrl;
+            img.onload = () => {
+                ctx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+                ctx.save();
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.drawImage(img, 0, 0);
+                ctx.restore();
+
+                state.signatureImage = dataUrl;
+                renderFooter();
+            };
+        }
+
+        function undo() {
+            if (historyStep > 0) {
+                historyStep--;
+                restoreState(history[historyStep]);
+            } else {
+                historyStep = -1;
+                ctx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+                ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, sigCanvas.width, sigCanvas.height); ctx.restore();
+
+                state.signatureImage = '';
+                renderFooter();
+            }
+            updateButtons();
+        }
+
+        function redo() {
+            if (historyStep < history.length - 1) {
+                historyStep++;
+                restoreState(history[historyStep]);
+            }
+            updateButtons();
+        }
+
+        function updateButtons() {
+            if (undoBtn) undoBtn.style.opacity = historyStep >= 0 ? '1' : '0.5';
+            if (redoBtn) redoBtn.style.opacity = historyStep < history.length - 1 ? '1' : '0.5';
+        }
+
+        // Listeners
         sigCanvas.addEventListener('mousedown', startDraw);
         sigCanvas.addEventListener('mousemove', draw);
         sigCanvas.addEventListener('mouseup', stopDraw);
         sigCanvas.addEventListener('mouseout', stopDraw);
-
-        // Touch Events
         sigCanvas.addEventListener('touchstart', startDraw);
         sigCanvas.addEventListener('touchmove', draw);
         sigCanvas.addEventListener('touchend', stopDraw);
 
-        // Update Preview
-        function updateSignaturePreview() {
-            const dataUrl = sigCanvas.toDataURL('image/png');
-            if (prevSigImg && prevSigBlock) {
-                prevSigImg.src = dataUrl;
-                prevSigBlock.style.display = 'block';
-            }
-        }
-
-        // Clear
-        clearBtn.addEventListener('click', () => {
-            ctx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
-            if (prevSigImg && prevSigBlock) {
-                prevSigImg.src = '';
-                prevSigBlock.style.display = 'none';
-            }
+        if (undoBtn) undoBtn.addEventListener('click', undo);
+        if (redoBtn) redoBtn.addEventListener('click', redo);
+        if (clearBtn) clearBtn.addEventListener('click', () => {
+            historyStep = -1;
+            history = [];
+            ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, sigCanvas.width, sigCanvas.height); ctx.restore();
+            state.signatureImage = '';
+            renderFooter();
+            updateButtons();
         });
     }
 });
