@@ -26,6 +26,7 @@ export default async function handler(req, res) {
                 },
             ],
             mode: 'payment',
+            automatic_payment_methods: { enabled: true },
             return_url: `${req.headers.origin}?session_id={CHECKOUT_SESSION_ID}`,
         });
 

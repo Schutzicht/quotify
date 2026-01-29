@@ -610,7 +610,7 @@ function initPreviewZoom() {
 function initModal() {
     ['download-trigger'].forEach(t => { const btn = $(t); if (btn) btn.addEventListener('click', openModal); });
     $('modal-close').addEventListener('click', closeModal);
-    $('confirm-pay-btn').addEventListener('click', processPayment);
+    // Removed old confirm button listener
 }
 
 function openModal() {
@@ -619,14 +619,17 @@ function openModal() {
     const original = $('pdf-preview');
     if (!modal || !original) return;
 
-    // Set Summary to Fixed Fee
-    setText('summary-total', '€ 0,50');
-
+    // Preview
     const clone = original.cloneNode(true);
     thumbBox.innerHTML = '';
     thumbBox.appendChild(clone);
+
+    // Show Modal
     modal.classList.remove('hidden');
     setTimeout(() => modal.classList.add('active'), 10);
+
+    // AUTO MOUNT PAYMENT
+    mountCheckout();
 }
 
 function closeModal() {
@@ -634,21 +637,22 @@ function closeModal() {
     if (!modal) return;
     modal.classList.remove('active');
     setTimeout(() => modal.classList.add('hidden'), 300);
+    // Cleanup mount to preventing duplicates? 
+    // Embedded checkout usually handles destroy, but we can clear innerHTML next open.
 }
 
 const stripePromise = Stripe('pk_test_51Suu3SBsNgRS4dt78EEy63mwHhi29Rc1lSdDmj2xGvwHkHonR6z2SAn25pNfCwgaVFYr7DagJZ8mc8nmBwA0bhEv00STzG4iuO');
+let checkout = null;
 
-async function processPayment() {
-    const btn = $('confirm-pay-btn');
-    const originalText = btn.textContent;
-    btn.textContent = 'Laden...';
-    btn.style.opacity = '0.7';
+async function mountCheckout() {
+    const mountPoint = document.getElementById('checkout-mount');
+    if (!mountPoint) return;
+
+    // Reset/Loading
+    mountPoint.innerHTML = '<div style="padding:2rem;text-align:center;color:#64748B">Laden van betaalmodule...</div>';
 
     try {
-        // Service Fee (Fixed)
-        const amount = 0.50;
-        if (amount <= 0) { alert('Totaalbedrag moet groter zijn dan 0.'); btn.textContent = originalText; btn.style.opacity = '1'; return; }
-
+        const amount = 0.50; // Fixed Service Fee
         const response = await fetch('/api/create-checkout-session', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -658,29 +662,17 @@ async function processPayment() {
         const { clientSecret } = await response.json();
 
         if (clientSecret) {
-            // Prepare Modal for Embedded
-            const modalRight = document.querySelector('.modal-right');
-            modalRight.innerHTML = '<div id="checkout-mount"></div>'; // Clear existing summary
-
             const stripe = await stripePromise;
-            const checkout = await stripe.initEmbeddedCheckout({
+            // Init with explicit settings sometimes helps Apple Pay
+            checkout = await stripe.initEmbeddedCheckout({
                 clientSecret,
             });
-
-            // Mount Checkout
             checkout.mount('#checkout-mount');
-            btn.style.display = 'none'; // Hide native button once mounted
         } else {
-            console.error('No clientSecret returned');
-            alert('Fout bij starten betaling.');
-            btn.textContent = originalText;
-            btn.style.opacity = '1';
+            mountPoint.innerHTML = '<div style="color:red">Fout bij laden betaling. Probeer opnieuw.</div>';
         }
-
     } catch (e) {
-        console.error('Checkout error:', e);
-        alert('Server fout. Check connection.');
-        btn.textContent = originalText;
-        btn.style.opacity = '1';
+        console.error('Mount error', e);
+        mountPoint.innerHTML = '<div style="color:red">Server fout. Controleer verbinding.</div>';
     }
 }

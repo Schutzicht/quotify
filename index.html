@@ -317,7 +317,7 @@
         </nav>
     </div>
 
-    <!-- PAYMENT MODAL (Optional but kept for completeness) -->
+    <!-- PAYMENT MODAL -->
     <div class="modal hidden" id="payment-modal">
         <div class="modal-bg" id="modal-close"></div>
         <div class="modal-card">
@@ -325,18 +325,27 @@
                 <div class="modal-thumb" id="modal-thumb"></div>
             </div>
             <div class="modal-right">
-                <h2>Controleren & Voltooien</h2>
-                <div class="pay-summary">
-                    <div class="sum-row total">
-                        <span>Totaalbedrag</span>
-                        <span id="summary-total">€ 0,00</span>
-                    </div>
-                    <div class="badge-row">
-                        <span class="badge">Veilig met Stripe</span>
-                        <span class="badge">SSL Beveiligd</span>
+                <h2 style="margin-bottom: 0.5rem;">Uw document is klaar!</h2>
+                <p style="color: #64748B; font-size: 0.9rem; margin-bottom: 1.5rem;">
+                    Nog één stap om uw offerte te downloaden.
+                </p>
+
+                <div class="pay-summary"
+                    style="margin-bottom: 1.5rem; background: #F8FAFC; padding: 1rem; border-radius: 8px;">
+                    <div class="sum-row total"
+                        style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 500; color: #475569;">Te betalen bedrag</span>
+                        <span id="summary-total" style="font-weight: 700; font-size: 1.25rem; color: #0F172A;">€
+                            0,50</span>
                     </div>
                 </div>
-                <button class="btn-primary full-width big" id="confirm-pay-btn">Downloadl PDF</button>
+
+                <!-- Stripe Mount Point -->
+                <div id="checkout-mount" style="min-height: 300px;">
+                    <div class="spinner" style="padding: 2rem; text-align: center; color: #94A3B8;">
+                        Laden van betaalmodule...
+                    </div>
+                </div>
             </div>
         </div>
     </div>
