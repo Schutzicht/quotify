@@ -218,10 +218,73 @@ input::placeholder {
     background: rgba(0, 0, 0, 0.2);
 }
 
-.logo-dropzone:hover {
-    border-color: var(--c-accent);
+/* Color Picker Fixes */
+.color-options {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.c-opt {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.c-opt:hover {
+    transform: scale(1.1);
+}
+
+.c-opt.active {
+    border-color: white;
+    box-shadow: 0 0 0 2px var(--c-accent);
+}
+
+.custom-color-wrapper {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.custom-color-wrapper input[type="color"] {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.pipette-icon {
+    width: 16px;
+    height: 16px;
+    stroke: white;
+    pointer-events: none;
+}
+
+/* Dropzone Icon Fix */
+.logo-dropzone .icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--c-text-secondary);
+}
+
+.logo-dropzone:hover .icon {
     color: var(--c-accent);
-    background: rgba(99, 102, 241, 0.05);
 }
 
 /* PREVIEW STAGE */
@@ -309,7 +372,10 @@ input::placeholder {
 
 .paper-a4 {
     width: 210mm;
+    min-width: 210mm;
+    /* Prevent shrinking */
     min-height: 297mm;
+    height: fit-content;
     background: white;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -317,6 +383,8 @@ input::placeholder {
     margin-bottom: 4rem;
     color: #111;
     position: relative;
+    flex-shrink: 0;
+    /* CRITICALLY IMPORTANT */
 }
 
 .paper-header {
