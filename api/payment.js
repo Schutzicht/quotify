@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     try {
         const { amount } = req.body;
 
-        // Hard reset to manual methods to prevent "unknown parameter"
+        // Create Embedded Checkout Session
         const session = await stripe.checkout.sessions.create({
             ui_mode: 'embedded',
             line_items: [
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
                     price_data: {
                         currency: 'eur',
                         product_data: {
-                            name: 'Offerte Betaling',
+                            name: 'Offerte PDF Download',
                         },
                         unit_amount: Math.round(amount * 100),
                     },
@@ -29,8 +29,8 @@ export default async function handler(req, res) {
                 },
             ],
             mode: 'payment',
-            // Explicitly defining methods avoids auto-method errors
-            payment_method_types: ['card', 'ideal'],
+            // Using automatic methods is best for Apple Pay / Google Pay / iDEAL
+            automatic_payment_methods: { enabled: true },
             return_url: `${req.headers.origin}?session_id={CHECKOUT_SESSION_ID}`,
         });
 

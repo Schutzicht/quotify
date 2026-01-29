@@ -653,8 +653,8 @@ async function mountCheckout() {
 
     try {
         const amount = 0.50; // Fixed Service Fee
-        // Changed endpoint to /api/checkout to bypass Vercel cache
-        const response = await fetch('/api/checkout', {
+        // Use new endpoint to bypass all caches
+        const response = await fetch('/api/payment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ items: state.items, amount: amount })
