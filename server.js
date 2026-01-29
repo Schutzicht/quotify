@@ -8,7 +8,9 @@ import { dirname } from 'path';
 dotenv.config();
 
 const app = express();
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: '2024-12-18.acacia',
+});
 
 // Middleware
 // We need raw body for webhooks, JSON for others
