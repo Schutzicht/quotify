@@ -12,7 +12,7 @@ const state = {
     },
     meta: {
         number: '2026-001', date: new Date().toLocaleDateString('nl-NL'),
-        validUntil: '', title: 'Quotify', project: '',
+        validUntil: '', title: 'OFFERTE', project: '',
         currency: 'EUR', status: 'concept'
     },
     branding: { logo: null, primaryColor: '#0F172A' },
@@ -351,23 +351,9 @@ function updatePreview() {
         }
     }
 
-    // Watermark Logo Handling
+    // REMOVED: Watermark Logo Logic (caused duplicate/extra header issues)
     const existingWatermark = document.querySelector('.watermark-logo');
-    if (state.branding.logo) {
-        if (!existingWatermark) {
-            const watermark = document.createElement('div');
-            watermark.className = 'watermark-logo';
-            // Watermark can stay large/absolute
-            watermark.innerHTML = `<img src="${state.branding.logo}">`;
-            $('pdf-preview').prepend(watermark);
-        } else {
-            // Update src if changed
-            const img = existingWatermark.querySelector('img');
-            if (img && img.src !== state.branding.logo) img.src = state.branding.logo;
-        }
-    } else {
-        if (existingWatermark) existingWatermark.remove();
-    }
+    if (existingWatermark) existingWatermark.remove();
 
     // SMART CONTRAST CHECK
     const header = document.querySelector('.paper-header');
