@@ -1,16 +1,8 @@
 :root {
-    /* Design Tokens: "Electric Indigo" */
+    /* Design Tokens: "Electric Indigo" v2.1 */
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
     /* Palette */
-    --c-bg: #030712;
-    /* Deepest Void */
-    --c-sidebar: #111827;
-    /* Dark Gray/Blue */
-    --c-surface: #1F2937;
-    /* Lighter Gray/Blue */
-
-    --c-accent: #6366F1;
     /* Electric Indigo */
     --c-accent-hover: #4F46E5;
     --c-accent-glow: rgba(99, 102, 241, 0.5);
