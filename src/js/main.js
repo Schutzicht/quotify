@@ -355,6 +355,20 @@ function updatePreview() {
     const existingWatermark = document.querySelector('.watermark-logo');
     if (existingWatermark) existingWatermark.remove();
 
+    // Creative Watermark (Background)
+    const previewContainer = $('pdf-preview');
+    // Remove old one first
+    const existingWatermark = previewContainer.querySelector('.watermark-creative');
+    if (existingWatermark) existingWatermark.remove();
+
+    if (state.branding.logo) {
+        const watermark = document.createElement('img');
+        watermark.src = state.branding.logo;
+        watermark.className = 'watermark-creative';
+        // Note: CSS class handles positioning and opacity
+        if (previewContainer) previewContainer.prepend(watermark);
+    }
+
     // SMART CONTRAST CHECK
     const header = document.querySelector('.paper-header');
     if (state.branding.logo && typeof state.branding.logoBri === 'number') {
@@ -602,6 +616,22 @@ function renderItemsTable() {
     // setText('summary-total', summaryText); // REMOVED: This overwrites the Payment Modal Service Fee!
 }
 
+// Creative Watermark (Background)
+const previewContainer = $('pdf-preview');
+// Remove old one first
+const existingWatermark = previewContainer.querySelector('.watermark-creative');
+if (existingWatermark) existingWatermark.remove();
+
+if (state.branding.logo) {
+    const watermark = document.createElement('img');
+    watermark.src = state.branding.logo;
+    watermark.className = 'watermark-creative';
+    previewContainer.prepend(watermark); // Put at very back (z-index 0)
+}
+
+    // ... (rest of function)
+}
+
 function renderFooter() {
     const c1 = $('f-col-1');
     const c2 = $('f-col-2');
@@ -628,6 +658,31 @@ function renderFooter() {
         <div>Offerte geldig tot:<br>${state.meta.validUntil || '30 dagen na dagtekening'}</div>
         <div style="margin-top:0.5rem">Op al onze diensten zijn de algemene voorwaarden van toepassing.</div>
     `;
+
+    // Signature Section (New)
+    const paperBody = document.querySelector('.paper-body');
+    const existingSig = paperBody.querySelector('.signature-section');
+    if (existingSig) existingSig.remove();
+
+    const sigSection = document.createElement('div');
+    sigSection.className = 'signature-section';
+    sigSection.innerHTML = `
+        <div class="sig-block">
+            <div class="sig-line"></div>
+            <div class="sig-label">Voor akkoord <br><strong>${state.sender.company || 'Opdrachtnemer'}</strong></div>
+            <div class="sig-date">Datum: ...........................</div>
+        </div>
+        <div class="sig-block">
+            <div class="sig-line"></div>
+            <div class="sig-label">Voor akkoord <br><strong>${state.client.company || 'Opdrachtgever'}</strong></div>
+            <div class="sig-date">Datum: ...........................</div>
+        </div>
+    `;
+
+    // Insert before footer (which is separate in HTML structure, so append to body)
+    if (state.settings.showSignature !== false) {
+        paperBody.appendChild(sigSection);
+    }
 }
 
 function setText(id, val) {

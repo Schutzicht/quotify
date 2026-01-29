@@ -51,53 +51,69 @@ body {
 .gen3-layout {
     display: flex;
     min-height: 100vh;
-    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #f8fafc;
+    /* Global light bg */
 }
 
-/* --- SIDEBAR CONFIGURATOR --- */
+/* --- SIDEBAR (CONFIG) --- */
 .sidebar {
-    width: 420px;
-    border-right: 1px solid var(--c-border);
+    width: 400px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle border */
     display: flex;
     flex-direction: column;
     z-index: 20;
-    flex-shrink: 0;
-    /* Midnight Indigo Gradient */
-    background: linear-gradient(160deg, #020617 0%, #1e1b4b 100%);
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    color: #1e293b;
+    /* Dark text for light bg */
 }
 
 .brand-header {
     padding: 1.5rem 2rem;
-    border-bottom: 1px solid var(--c-border);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
-    gap: 1rem;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(10px);
+    gap: 0.75rem;
 }
 
 .brand-logo {
     width: 36px;
     height: 36px;
-    background: linear-gradient(135deg, var(--c-accent), #a5b4fc);
-    color: white;
+    background: linear-gradient(135deg, var(--c-accent) 0%, #4338CA 100%);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    box-shadow: 0 0 20px var(--c-accent-glow);
+    color: white;
+    box-shadow: 0 4px 12px -3px var(--c-accent-glow);
 }
 
 .brand-header h1 {
     font-size: 1.25rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.02em;
-    background: linear-gradient(to right, #FFF, #c7d2fe);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #0f172a;
+}
+
+/* WATERMARK STYLES */
+.watermark-creative {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg) scale(1.5);
+    width: 80%;
+    height: auto;
+    opacity: 0.03;
+    /* Very subtle */
+    pointer-events: none;
+    z-index: 0;
+    filter: grayscale(100%);
+    mix-blend-mode: multiply;
 }
 
 .config-scroll {
@@ -159,27 +175,26 @@ body {
 
 .input-group label {
     display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--c-text-secondary);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #475569;
+    /* Dark gray */
 }
 
 input,
 select,
 textarea {
     width: 100%;
-    padding: 0.75rem 1rem;
-    background: var(--c-input-bg);
-    border: 1px solid var(--c-border);
+    background: white;
+    /* White inputs */
+    border: 1px solid #e2e8f0;
+    padding: 0.75rem;
     border-radius: 8px;
-    font-size: 0.9rem;
-    font-family: var(--font-sans);
-    color: white;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(4px);
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.2s;
 }
 
 input:focus,
@@ -188,7 +203,7 @@ textarea:focus {
     outline: none;
     background: rgba(99, 102, 241, 0.1);
     border-color: var(--c-accent);
-    box-shadow: 0 0 0 1px var(--c-accent), 0 0 15px var(--c-accent-glow);
+    box-shadow: 0 0 0 3px var(--c-accent-glow);
     /* Neon Glow */
     transform: translateY(-1px);
 }
@@ -630,6 +645,38 @@ input::placeholder {
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid #e2e8f0;
+}
+
+/* SIGNATURE SECTION */
+.signature-section {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    page-break-inside: avoid;
+}
+
+.sig-block {
+    flex: 1;
+}
+
+.sig-line {
+    border-bottom: 2px solid #e2e8f0;
+    height: 4rem;
+    /* Space for signature */
+    margin-bottom: 0.5rem;
+}
+
+.sig-label {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.4;
+}
+
+.sig-date {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #94a3b8;
 }
 
 .notes-preview {
