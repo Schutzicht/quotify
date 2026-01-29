@@ -674,6 +674,7 @@ async function mountCheckout() {
             checkout = await stripe.initEmbeddedCheckout({
                 clientSecret,
             });
+            mountPoint.innerHTML = ''; // Clear loading text
             checkout.mount('#checkout-mount');
         } else {
             console.error('No Client Secret');
