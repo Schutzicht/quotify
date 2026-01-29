@@ -861,4 +861,85 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
     });
+
+    // --- SIGNATURE PAD LOGIC ---
+    const sigCanvas = document.getElementById('signature-pad');
+    const clearBtn = document.getElementById('clear-sig');
+    const prevSigBlock = document.getElementById('signature-preview-block');
+    const prevSigImg = document.getElementById('prev-sig-img');
+
+    if (sigCanvas && clearBtn) {
+        const ctx = sigCanvas.getContext('2d');
+        let isDrawing = false;
+
+        // Configuration
+        ctx.strokeStyle = '#0f172a'; // Dark blue/slate
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        // Helper to get coords
+        function getCoords(e) {
+            const rect = sigCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function startDraw(e) {
+            e.preventDefault(); // Prevent scroll on touch
+            isDrawing = true;
+            const { x, y } = getCoords(e);
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            const { x, y } = getCoords(e);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+        }
+
+        function stopDraw() {
+            if (isDrawing) {
+                isDrawing = false;
+                ctx.closePath();
+                updateSignaturePreview();
+            }
+        }
+
+        // Mouse Events
+        sigCanvas.addEventListener('mousedown', startDraw);
+        sigCanvas.addEventListener('mousemove', draw);
+        sigCanvas.addEventListener('mouseup', stopDraw);
+        sigCanvas.addEventListener('mouseout', stopDraw);
+
+        // Touch Events
+        sigCanvas.addEventListener('touchstart', startDraw);
+        sigCanvas.addEventListener('touchmove', draw);
+        sigCanvas.addEventListener('touchend', stopDraw);
+
+        // Update Preview
+        function updateSignaturePreview() {
+            const dataUrl = sigCanvas.toDataURL('image/png');
+            if (prevSigImg && prevSigBlock) {
+                prevSigImg.src = dataUrl;
+                prevSigBlock.style.display = 'block';
+            }
+        }
+
+        // Clear
+        clearBtn.addEventListener('click', () => {
+            ctx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+            if (prevSigImg && prevSigBlock) {
+                prevSigImg.src = '';
+                prevSigBlock.style.display = 'none';
+            }
+        });
+    }
 });

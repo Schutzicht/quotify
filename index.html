@@ -223,11 +223,22 @@
                     </div>
                 </div>
 
+                <!-- SIGNATURE PAD -->
+                <div class="config-section">
+                    <h2>Ondertekening</h2>
+                    <div class="input-group">
+                        <label>Handtekening Verzender</label>
+                        <div class="sig-pad-wrapper">
+                            <canvas id="signature-pad" width="300" height="150"></canvas>
+                            <button id="clear-sig" class="btn-xs">Wissen</button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="spacer"></div>
             </div>
 
-            <!-- Items Fixed Bottom or Scroll? Items usually mid-scroll. 
-                 Wait, in Gen 3 items were in sidebar. Let's add them back. -->
+            <!-- Items Fixed Bottom -->
             <div class="config-section items-section">
                 <h2>Regels</h2>
                 <div id="items-list"></div>
@@ -301,6 +312,15 @@
                         </div>
 
                         <div id="prev-notes" class="notes-preview"></div>
+
+                        <!-- SIGNATURE PREVIEW -->
+                        <div class="signature-section" id="signature-preview-block"
+                            style="display:none; margin-top: 2rem;">
+                            <span class="label"
+                                style="display:block; font-size: 0.75rem; color:#64748b; margin-bottom: 0.5rem;">Ondertekend
+                                door:</span>
+                            <img id="prev-sig-img" src="" alt="Handtekening" style="max-height: 60px; display: block;">
+                        </div>
                     </div>
 
                     <!-- Footer -->
