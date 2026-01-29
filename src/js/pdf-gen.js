@@ -183,5 +183,6 @@ export function generatePDF(state) {
 
     doc.text("Geldig tot: " + (state.meta.validUntil || "-"), pageWidth - margin, footerY + 8, { align: "right" });
 
-    doc.save(`${state.meta.title}_${state.meta.number}.pdf`);
+    const filename = `Offerte - ${state.client.company || 'Klant'}.pdf`;
+    doc.save(filename);
 }
