@@ -3,26 +3,33 @@
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
     /* Palette */
+    --c-bg: #020617;
+    /* Deepest Void */
+    --c-sidebar: #0f172a;
+    /* Dark Gray/Blue */
+    --c-surface: #1e293b;
+    /* Lighter Gray/Blue */
+
+    --c-accent: #6366F1;
     /* Electric Indigo */
     --c-accent-hover: #4F46E5;
-    --c-accent-glow: rgba(99, 102, 241, 0.5);
+    --c-accent-glow: rgba(99, 102, 241, 0.6);
 
-    --c-text-primary: #F9FAFB;
-    --c-text-secondary: #9CA3AF;
-    --c-text-tertiary: #6B7280;
+    --c-text-primary: #f8fafc;
+    --c-text-secondary: #94a3b8;
+    --c-text-tertiary: #64748b;
 
     --c-border: rgba(255, 255, 255, 0.08);
     --c-input-bg: rgba(255, 255, 255, 0.03);
 
     /* Paper Stage */
-    --stage-bg: #E2E8F0;
-    /* Clean Slate */
+    --stage-bg: #cbd5e1;
+    /* Lighter Slate for contrast */
 
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-glow: 0 0 20px var(--c-accent-glow);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 * {
@@ -38,9 +45,7 @@ body {
     background: var(--c-bg);
     min-height: 100vh;
     overflow-x: hidden;
-    /* Prevent horizontal scroll */
     overflow-y: auto;
-    /* Always allow vertical scroll if needed */
 }
 
 @media (max-width: 768px) {
@@ -58,16 +63,14 @@ body {
 /* --- SIDEBAR CONFIGURATOR --- */
 .sidebar {
     width: 420px;
-    background: var(--c-sidebar);
     border-right: 1px solid var(--c-border);
     display: flex;
     flex-direction: column;
     z-index: 20;
     flex-shrink: 0;
-    /* Prevent squishing */
-    /* Subtle Glossy Gradient */
-    background: linear-gradient(145deg, #0F172A 0%, #172033 100%);
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+    /* Midnight Indigo Gradient */
+    background: linear-gradient(160deg, #020617 0%, #1e1b4b 100%);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
 }
 
 .brand-header {
@@ -76,27 +79,28 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: rgba(255, 255, 255, 0.01);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
 }
 
 .brand-logo {
     width: 36px;
     height: 36px;
-    background: linear-gradient(135deg, var(--c-accent), #818CF8);
+    background: linear-gradient(135deg, var(--c-accent), #a5b4fc);
     color: white;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    box-shadow: 0 0 15px var(--c-accent-glow);
+    box-shadow: 0 0 20px var(--c-accent-glow);
 }
 
 .brand-header h1 {
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.02em;
-    background: linear-gradient(to right, #FFF, #A5B4FC);
+    background: linear-gradient(to right, #FFF, #c7d2fe);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -132,13 +136,13 @@ body {
 }
 
 .config-section h2 {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-weight: 800;
+    letter-spacing: 0.1em;
     margin-bottom: 1.25rem;
-    color: var(--c-accent);
-    /* Pop color */
+    color: #818cf8;
+    /* Softer accent */
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -161,10 +165,12 @@ body {
 
 .input-group label {
     display: block;
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-size: 0.75rem;
+    font-weight: 600;
     color: var(--c-text-secondary);
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 input,
@@ -179,20 +185,22 @@ textarea {
     font-family: var(--font-sans);
     color: white;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(4px);
 }
 
 input:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(99, 102, 241, 0.1);
     border-color: var(--c-accent);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 1px var(--c-accent), 0 0 15px var(--c-accent-glow);
+    /* Neon Glow */
     transform: translateY(-1px);
 }
 
 input::placeholder {
-    color: #4B5563;
+    color: #475569;
 }
 
 /* Branding Component */
@@ -208,6 +216,22 @@ input::placeholder {
     transition: all 0.2s;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.2);
+}
+
+.logo-dropzone .icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--c-text-secondary);
+}
+
+.logo-dropzone:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.logo-dropzone:hover .icon {
+    color: var(--c-accent);
 }
 
 /* Color Picker Fixes */
@@ -268,17 +292,6 @@ input::placeholder {
     pointer-events: none;
 }
 
-/* Dropzone Icon Fix */
-.logo-dropzone .icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--c-text-secondary);
-}
-
-.logo-dropzone:hover .icon {
-    color: var(--c-accent);
-}
-
 /* PREVIEW STAGE */
 .main-stage {
     flex: 1;
@@ -286,8 +299,8 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     position: relative;
-    /* Fancy Grid Pattern for Stage */
-    background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+    /* Dot Pattern */
+    background-image: radial-gradient(#94a3b8 1px, transparent 1px);
     background-size: 24px 24px;
 }
 
@@ -309,31 +322,15 @@ input::placeholder {
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(67, 56, 202, 0.4);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px -5px var(--c-accent-glow);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
 }
 
-.btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
-}
-
 .btn-primary:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 15px 30px -5px rgba(67, 56, 202, 0.5);
-}
-
-.btn-primary:hover::after {
-    opacity: 1;
+    box-shadow: 0 10px 30px -5px var(--c-accent-glow);
 }
 
 .btn-secondary {
@@ -353,7 +350,7 @@ input::placeholder {
     border-color: white;
 }
 
-/* PAPER */
+/* PAPER (Hardened) */
 .paper-wrapper {
     flex: 1;
     overflow: auto;
@@ -365,7 +362,6 @@ input::placeholder {
 .paper-a4 {
     width: 210mm;
     min-width: 210mm;
-    /* Prevent shrinking */
     min-height: 297mm;
     height: fit-content;
     background: white;
@@ -373,32 +369,63 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     margin-bottom: 4rem;
-    color: #111;
+    color: #0f172a;
+    /* Ink Color */
     position: relative;
     flex-shrink: 0;
-    /* CRITICALLY IMPORTANT */
 }
 
 .paper-header {
-    background: #1E293B;
-    /* Default Dark Slate */
+    background: #0f172a;
     color: white;
     padding: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    margin-bottom: 2rem;
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+    margin-bottom: 3rem;
 }
 
 .paper-body {
-    padding: 3rem;
+    padding: 0 3rem 3rem 3rem;
     flex: 1;
+}
+
+/* ADDRESS GRID (HARDENED CSS GRID) */
+.address-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    /* Wide gap */
+    margin-bottom: 3rem;
+}
+
+.addr-col .label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.25rem;
+}
+
+.addr-lines {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.addr-lines strong {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
 }
 
 /* Items Grid Cleaner */
 .item-row {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--c-border);
     padding: 1rem;
     border-radius: 8px;
@@ -421,10 +448,11 @@ input::placeholder {
 
 .input-group-mini input {
     height: 38px;
-    background: #111827;
-    /* Dark background for inputs in rows */
-    border-color: #374151;
+    background: #020617;
+    border-color: #334155;
 }
+
+/* Modals & Mobile remain similar but inherit new vars... */
 
 /* --- MODAL FIX & REDESIGN --- */
 .modal {
@@ -446,24 +474,21 @@ input::placeholder {
 .modal-bg {
     position: absolute;
     inset: 0;
-    background: rgba(3, 7, 18, 0.7);
-    /* Darker overlay */
+    background: rgba(2, 6, 23, 0.8);
     backdrop-filter: blur(8px);
 }
 
 .modal-card {
     position: relative;
     width: 900px;
-    /* FIX: Flexible height */
     min-height: 500px;
     height: auto;
     max-height: 85vh;
-    /* Never exceed 85% of screen */
     background: white;
-    border-radius: 20px;
+    border-radius: 24px;
     display: flex;
     overflow: hidden;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1);
     animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -481,7 +506,7 @@ input::placeholder {
 
 .modal-left {
     width: 40%;
-    background: #f8fafc;
+    background: #f1f5f9;
     border-right: 1px solid #e2e8f0;
     display: flex;
     flex-direction: column;
@@ -496,7 +521,7 @@ input::placeholder {
     width: 210px;
     height: 297px;
     background: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     transform: scale(0.6);
     border: 1px solid #e2e8f0;
     overflow: hidden;
@@ -514,36 +539,31 @@ input::placeholder {
     padding: 3rem;
     display: flex;
     flex-direction: column;
-    /* FIX: Scrollable Right Side */
     overflow-y: auto;
 }
 
 .modal-right h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 800;
-    color: #0F172A;
+    color: #0f172a;
     margin-bottom: 0.5rem;
-}
-
-.modal-right p {
-    color: #64748B;
-    margin-bottom: 2rem;
+    letter-spacing: -0.03em;
 }
 
 .payment-sum {
-    background: #F8FAFC;
-    padding: 1rem;
-    border-radius: 8px;
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     font-size: 1.1rem;
     font-weight: 700;
-    color: #0F172A;
+    color: #0f172a;
     margin-bottom: 2rem;
-    border: 1px solid #E2E8F0;
+    border: 1px solid #e2e8f0;
 }
 
-/* MOBILE RESPONSIVE */
+/* MOBILE RESPONSIVE (Keep existing) */
 .mobile-nav {
     display: none;
 }
@@ -567,7 +587,6 @@ input::placeholder {
 
     .main-stage {
         display: none;
-        /* Hidden by default tabs */
         height: 100vh;
         z-index: 50;
         position: fixed;
@@ -599,7 +618,7 @@ input::placeholder {
         flex: 1;
         background: transparent;
         border: none;
-        color: #94A3B8;
+        color: #94a3b8;
         font-weight: 600;
         padding: 0.75rem;
         border-radius: 8px;
@@ -611,7 +630,6 @@ input::placeholder {
         box-shadow: 0 0 15px var(--c-accent-glow);
     }
 
-    /* Mobile Modal */
     .modal-card {
         width: 100%;
         height: 100%;
@@ -623,7 +641,7 @@ input::placeholder {
     .modal-left {
         height: 140px;
         flex: none;
-        background: #F1F5F9;
+        background: #f1f5f9;
         padding: 1rem;
         flex-direction: row;
         justify-content: flex-start;
@@ -634,14 +652,12 @@ input::placeholder {
         transform: scale(0.35);
         transform-origin: top left;
         margin: 0;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
     .modal-right {
         padding: 1.5rem;
         width: 100%;
         overflow-y: auto;
-        /* CRITICAL FIX */
     }
 
     .paper-a4 {
@@ -652,7 +668,6 @@ input::placeholder {
     }
 }
 
-/* Utility to ensure elements are visible */
 .hidden {
     display: none !important;
 }
