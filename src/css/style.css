@@ -1,14 +1,4 @@
 :root {
-    /* Design Tokens */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-    /* Configurator Colors (Vibrant Dark Mode Sidebar) */
-    --ui-bg: #0F172A;
-    /* Main Sidebar Dark */
-    --ui-border: rgba(255, 255, 255, 0.08);
-    --ui-surface: rgba(255, 255, 255, 0.03);
-
-    /* Text Colors */
     --txt-primary: #FFFFFF;
     /* Sidebar text mainly white */
     --txt-secondary: #94A3B8;
