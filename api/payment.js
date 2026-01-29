@@ -34,8 +34,7 @@ export default async function handler(req, res) {
                 },
             ],
             mode: 'payment',
-            // Using automatic methods is best for Apple Pay / Google Pay / iDEAL
-            automatic_payment_methods: { enabled: true },
+            payment_method_types: ['card', 'ideal'],
             return_url: `${req.headers.origin}?session_id={CHECKOUT_SESSION_ID}`,
         });
 
