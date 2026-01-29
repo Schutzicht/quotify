@@ -13,6 +13,11 @@ export default async function handler(req, res) {
     try {
         const { amount } = req.body;
 
+        console.log('--- START PAYMENT DEBUG ---');
+        console.log('Stripe Lib Version:', Stripe.PACKAGE_VERSION || 'Unknown');
+        console.log('API Version Config:', stripe.getApiField('version')); // Internal getter often works, or just trust the init
+        console.log('Request Amount:', amount);
+
         // Create Embedded Checkout Session
         const session = await stripe.checkout.sessions.create({
             ui_mode: 'embedded',
