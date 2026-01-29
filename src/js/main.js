@@ -442,11 +442,52 @@ function loadState() {
         try {
             const parsed = JSON.parse(saved);
             Object.assign(state, parsed);
-            // Inputs are managed via state updates triggering renders, except initial population is missing here
-            // But updating 'state' is the source of truth for the preview.
-            // For a full app, we should map back to inputs.
+            // Inputs are managed via state updates triggering renders
+            restoreInputs(); // FIX: Sync DOM inputs with loaded state
         } catch (e) { console.error('State load error', e); }
     }
+}
+
+function restoreInputs() {
+    // 1. Sender
+    Object.keys(state.sender).forEach(key => {
+        const input = document.querySelector(`#sender-form [name="${key}"]`);
+        if (input) input.value = state.sender[key] || '';
+    });
+
+    // 2. Client
+    Object.keys(state.client).forEach(key => {
+        const input = document.querySelector(`#client-form [name="${key}"]`);
+        if (input) input.value = state.client[key] || '';
+    });
+
+    // 3. Meta
+    Object.keys(state.meta).forEach(key => {
+        const input = document.querySelector(`#meta-form [name="${key}"]`);
+        if (input) input.value = state.meta[key] || '';
+    });
+
+    // 4. Branding Color
+    const colorInput = $('accent-color');
+    if (colorInput && state.branding.primaryColor) {
+        colorInput.value = state.branding.primaryColor;
+        document.documentElement.style.setProperty('--accent', state.branding.primaryColor);
+        // Highlight active preset if matches
+        $$('.c-opt').forEach(btn => {
+            if (btn.dataset.color === state.branding.primaryColor) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+    }
+
+    // 5. Logo UI
+    const dropzone = $('logo-dropzone');
+    if (state.branding.logo && dropzone) {
+        updateLogoUI(dropzone, state.branding.logo);
+    }
+
+    // 6. Notes
+    const notesInput = $('notes-input');
+    if (notesInput) notesInput.value = state.notes || '';
 }
 
 
