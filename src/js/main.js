@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePreview();
 
     console.log('OfferteGeneratory Gen 3 :: Initialized');
+    console.log('VERSION: 2.0.0 - EMBEDDED CHECKOUT LIVE');
 });
 
 async function checkPaymentSuccess() {
