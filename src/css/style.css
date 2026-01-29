@@ -1002,11 +1002,35 @@ input::placeholder {
         display: flex;
         opacity: 1;
         position: relative;
-        /* In flow */
         z-index: 10;
         transform: none;
         height: auto;
         overflow: visible;
+        align-items: center;
+        /* Center horizontally */
+        padding-top: 2rem;
+    }
+
+    /* Scaling the A4 Preview to fit Mobile */
+    .gen3-layout.tab-preview .paper-wrapper {
+        width: 100%;
+        overflow: hidden;
+        /* Hide overflow from scaling */
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .gen3-layout.tab-preview .paper-a4 {
+        transform-origin: top center;
+        transform: scale(calc((100vw - 32px) / 794));
+        /* 794px is approx 210mm @ 96dpi */
+        /* Fallback or calc using viewport units. 
+           210mm is roughly 794px. 
+           (100vw - 32px padding) / 794px = scale factor 
+        */
+        margin-bottom: -50%;
+        /* Compensate for empty space below scaled element */
     }
 
     /* Polish Config Scroll */
