@@ -419,120 +419,35 @@ input::placeholder {
     box-shadow: 0 10px 30px -5px var(--c-accent-glow);
 }
 
+/* Secondary Button (Fixed for Light Sidebar) */
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
+    background: white;
+    border: 1px solid #cbd5e1;
+    color: #475569;
     padding: 0.8rem;
     border-radius: 8px;
     width: 100%;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: white;
-}
-
-/* PAPER (Hardened) */
-.paper-wrapper {
-    flex: 1;
-    overflow: auto;
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.paper-a4 {
-    width: 210mm;
-    min-width: 210mm;
-    min-height: 297mm;
-    height: fit-content;
-    background: white;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 4rem;
-    color: #0f172a;
-    /* Ink Color */
-    position: relative;
-    flex-shrink: 0;
-}
-
-.paper-header {
-    background: #0f172a;
-    color: white;
-    padding: 3rem;
-    display: flex;
-    justify-content: space-between;
-    /* Ensures logo and company name space out */
-    align-items: center;
-    /* Center vertically */
-    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
-    margin-bottom: 3rem;
-    height: 220px;
-    /* Fixed height to prevent massive layout shifts */
-}
-
-/* Limit Logo Size in Header */
-.paper-header img {
-    max-height: 80px;
-    width: auto;
-    object-fit: contain;
-}
-
-/* If the logo is inserted into a specific container like #preview-logo */
-#preview-logo {
-    display: flex;
-    align-items: center;
-}
-
-.paper-body {
-    padding: 0 3rem 3rem 3rem;
-    flex: 1;
-}
-
-/* ADDRESS GRID (HARDENED CSS GRID) */
-.address-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    /* Wide gap */
-    margin-bottom: 3rem;
-}
-
-.addr-col .label {
-    display: block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: #64748b;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 0.25rem;
-}
-
-.addr-lines {
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.addr-lines strong {
-    display: block;
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
+    background: #f8fafc;
+    border-color: var(--c-accent);
+    color: var(--c-accent);
 }
 
 /* Items Grid Cleaner */
 .item-row {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--c-border);
+    background: white;
+    border: 1px solid #e2e8f0;
     padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 0.75rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    /* Card look */
 }
 
 .row-top {
@@ -543,16 +458,37 @@ input::placeholder {
 }
 
 .row-bot {
-    display: grid;
-    grid-template-columns: 60px 70px 1fr 60px 60px 110px;
+    display: flex;
+    /* Use flex for better wrapping/sizing */
     gap: 0.5rem;
     align-items: center;
+    flex-wrap: wrap;
+    /* Allow wrap on very small screens */
 }
 
-.input-group-mini input {
+/* Ensure inputs in row-bot share space well */
+.input-group-mini {
+    position: relative;
+    /* Flex grow handled in HTML inline styles usually, but let's override */
+}
+
+.input-group-mini input,
+.select-wrapper select {
     height: 38px;
-    background: #020617;
-    border-color: #334155;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #0f172a;
+    /* Dark text */
+    border-radius: 6px;
+    padding: 0 0.5rem;
+    font-size: 0.85rem;
+    width: 100%;
+}
+
+.row-bot .select-wrapper {
+    flex: 1;
+    /* Give dropdown remaining space */
+    min-width: 100px;
 }
 
 /* --- PREVIEW TABLES & TOTALS (Missing) --- */
