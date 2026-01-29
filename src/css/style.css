@@ -685,32 +685,7 @@ input::placeholder {
     font-weight: 500;
 }
 
-/* Mobile Preview Zoom - AGGRESSIVE */
-@media (max-width: 768px) {
-    .gen3-layout.tab-preview .main-stage {
-        padding-top: 2rem;
-        align-items: flex-start;
-        /* Top align */
-        overflow-x: hidden;
-    }
 
-    .gen3-layout.tab-preview .paper-wrapper {
-        width: 100%;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        padding-top: 20px;
-    }
-
-    .gen3-layout.tab-preview .paper-a4 {
-        transform-origin: top center;
-        /* Force Small Scale: (100vw - 120px) creates significant margin */
-        transform: scale(calc((100vw - 100px) / 794));
-        margin-bottom: -60%;
-        /* Pull layout up */
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    }
-}
 
 .paper-header {
     background: #f8fafc;
@@ -725,8 +700,11 @@ input::placeholder {
     border-bottom: 3px solid var(--c-accent);
     /* Clean structural line */
     margin-bottom: 3rem;
-    height: 130px;
-    overflow: hidden;
+    min-height: 130px;
+    /* changed from fixed height */
+    height: auto;
+    overflow: visible;
+    /* CRITICAL FIX: Don't clip content */
 }
 
 /* Subtle texture or clean slate? Let's go clean. */
