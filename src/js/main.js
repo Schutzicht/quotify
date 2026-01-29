@@ -810,3 +810,40 @@ async function mountCheckout() {
         </div>`;
     }
 }
+
+// --- INIT MOBILE ZOOM & MODAL LISTENERS ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Zoom
+    const slider = document.getElementById('mobile-zoom-slider');
+    const paper = document.querySelector('.paper-a4');
+
+    if (slider && paper) {
+        // Init value
+        if (window.innerWidth <= 768) {
+            // Calculate initial best fit
+            const startScale = (window.innerWidth - 40) / 794;
+            slider.value = startScale;
+            // We don't set style immediately to let CSS handle initial render, or force it:
+            // Let's force it to sync slider
+            paper.style.transform = `scale(${startScale})`;
+        }
+
+        slider.addEventListener('input', (e) => {
+            const val = e.target.value;
+            paper.style.transform = `scale(${val})`;
+            // Also adjust margin-bottom dynamically? CSS usually handles nicely with -50% but dynamic is better
+            // paper.style.marginBottom = `-${(1 - val) * 100}%`; 
+        });
+    }
+
+    // Modal Close Logic
+    const modalBg = document.querySelector('.modal-bg');
+    if (modalBg) {
+        modalBg.addEventListener('click', closeModal);
+    }
+
+    // Allow ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+});

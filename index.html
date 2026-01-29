@@ -238,77 +238,83 @@
         <!-- MAIN STAGE -->
         <main class="main-stage">
             <div class="toolbar">
-                <div class="zoom-controls">
-                    <button class="t-btn" id="zoom-out">-</button>
-                    <span class="zoom-lbl">100%</span>
-                    <button class="t-btn" id="zoom-in">+</button>
+                <div class="toolbar">
+                    <div class="zoom-controls">
+                        <button class="t-btn" id="zoom-out">-</button>
+                        <span class="zoom-lbl">100%</span>
+                        <button class="t-btn" id="zoom-in">+</button>
+                    </div>
+                    <!-- MOBILE ZOOM SLIDER (Visible only on mobile via CSS) -->
+                    <div class="mobile-zoom-wrapper" style="display:none;">
+                        <span style="font-size:12px; color:#64748b; margin-right:8px;">Zoom:</span>
+                        <input type="range" id="mobile-zoom-slider" min="0.3" max="1.0" step="0.05" value="0.45">
+                    </div>
+                    <button class="btn-primary" id="download-trigger">Download PDF</button>
                 </div>
-                <button class="btn-primary" id="download-trigger">Download PDF</button>
-            </div>
 
-            <div class="paper-wrapper">
-                <div id="pdf-preview" class="paper-a4">
-                    <!-- Header -->
-                    <div class="paper-header">
-                        <div class="logo-area" id="preview-logo">
-                            <div class="logo-placeholder">LOGO</div>
-                        </div>
-                        <div class="meta-area">
-                            <h1 class="doc-type" id="prev-doc-title">OFFERTE</h1>
-                            <div class="project-meta" id="prev-project-line"></div>
-                            <div class="meta-grid">
-                                <div class="meta-item">
-                                    <span class="label">Nummer</span>
-                                    <span class="val" id="prev-ref">...</span>
+                <div class="paper-wrapper">
+                    <div id="pdf-preview" class="paper-a4">
+                        <!-- Header -->
+                        <div class="paper-header">
+                            <div class="logo-area" id="preview-logo">
+                                <div class="logo-placeholder">LOGO</div>
+                            </div>
+                            <div class="meta-area">
+                                <h1 class="doc-type" id="prev-doc-title">OFFERTE</h1>
+                                <div class="project-meta" id="prev-project-line"></div>
+                                <div class="meta-grid">
+                                    <div class="meta-item">
+                                        <span class="label">Nummer</span>
+                                        <span class="val" id="prev-ref">...</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="label">Datum</span>
+                                        <span class="val" id="prev-date">...</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="label">Geldig tot</span>
+                                        <span class="val" id="prev-valid">...</span>
+                                    </div>
                                 </div>
-                                <div class="meta-item">
-                                    <span class="label">Datum</span>
-                                    <span class="val" id="prev-date">...</span>
+                            </div>
+                        </div>
+
+                        <!-- Content Grid -->
+                        <div class="paper-body">
+                            <div class="address-grid">
+                                <div class="addr-col from">
+                                    <span class="label">Van</span>
+                                    <div class="addr-lines" id="prev-sender-block"></div>
                                 </div>
-                                <div class="meta-item">
-                                    <span class="label">Geldig tot</span>
-                                    <span class="val" id="prev-valid">...</span>
+                                <div class="addr-col to">
+                                    <span class="label">Voor</span>
+                                    <div class="addr-lines" id="prev-client-block"></div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Content Grid -->
-                    <div class="paper-body">
-                        <div class="address-grid">
-                            <div class="addr-col from">
-                                <span class="label">Van</span>
-                                <div class="addr-lines" id="prev-sender-block"></div>
+                            <!-- Dynamic Table Area handled by JS -->
+
+                            <div class="totals-section">
+                                <div class="total-row final">
+                                    <span>Totaal</span>
+                                    <span id="prev-total">€ 0,00</span>
+                                </div>
                             </div>
-                            <div class="addr-col to">
-                                <span class="label">Voor</span>
-                                <div class="addr-lines" id="prev-client-block"></div>
-                            </div>
+
+                            <div id="prev-notes" class="notes-preview"></div>
                         </div>
 
-                        <!-- Dynamic Table Area handled by JS -->
-
-                        <div class="totals-section">
-                            <div class="total-row final">
-                                <span>Totaal</span>
-                                <span id="prev-total">€ 0,00</span>
+                        <!-- Footer -->
+                        <div class="paper-footer">
+                            <div class="footer-line"></div>
+                            <div class="footer-cols">
+                                <div class="f-col" id="f-col-1"></div>
+                                <div class="f-col" id="f-col-2"></div>
+                                <div class="f-col" id="f-col-3"></div>
                             </div>
-                        </div>
-
-                        <div id="prev-notes" class="notes-preview"></div>
-                    </div>
-
-                    <!-- Footer -->
-                    <div class="paper-footer">
-                        <div class="footer-line"></div>
-                        <div class="footer-cols">
-                            <div class="f-col" id="f-col-1"></div>
-                            <div class="f-col" id="f-col-2"></div>
-                            <div class="f-col" id="f-col-3"></div>
                         </div>
                     </div>
                 </div>
-            </div>
         </main>
     </div>
 
