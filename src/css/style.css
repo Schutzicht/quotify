@@ -1493,62 +1493,123 @@ input::placeholder {
         /* Seamless background */
     }
 
-    /* Mobile Preview Zoom - AGGRESSIVE FIT PAGE DO NOT REMOVE */
+    /* --- FINAL CLEAN MOBILE CSS (FIT PAGE & OVERFLOW FIX) --- */
     @media (max-width: 768px) {
+
+        /* 1. Lock Root */
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* 2. Container Structure */
+        .gen3-layout {
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 3. Main Stage - The Scrolling Viewport */
         .gen3-layout.tab-preview .main-stage {
-            padding-top: 1rem;
-            align-items: flex-start;
-            overflow-y: auto;
+            padding-top: 60px;
+            /* Toolbar height */
+            background: #e2e8f0;
+            /* Darker bg for contrast */
             height: 100%;
             display: block;
-            background: #f1f5f9;
-            /* Contrast bg */
+            overflow-y: auto;
+            overflow-x: hidden;
+            /* CRITICAL: Hide the layout width of scaled element */
+            -webkit-overflow-scrolling: touch;
         }
 
+        /* 4. Paper Wrapper - Flex Centering */
         .gen3-layout.tab-preview .paper-wrapper {
             width: 100%;
-            overflow: visible;
+            min-height: 100%;
             display: flex;
             justify-content: center;
-            padding-top: 20px;
-            padding-bottom: 50px;
-            min-height: 100%;
+            align-items: flex-start;
+            padding-top: 2rem;
+            padding-bottom: 10rem;
+            /* Deep scroll space */
+            overflow: visible;
         }
 
+        /* 5. A4 Paper - The Scaled Object */
         .gen3-layout.tab-preview .paper-a4 {
-            /* Force Reset of any mobile overrides impacting width */
+            /* Define Exact A4 Dimensions */
             width: 210mm !important;
             min-width: 210mm !important;
+            height: 297mm !important;
             min-height: 297mm !important;
+
+            /* Reset Styles */
             margin: 0 !important;
             border-radius: 0 !important;
 
+            /* TRANSFORM: Scale with Top Center Origin */
             transform-origin: top center;
-            /* Logic: Scale down to fit width easily with margins */
-            transform: scale(calc((100vw - 40px) / 794));
+            /* Scale to Fit Screen Width minus margins */
+            transform: scale(calc((100vw - 32px) / 794));
+
+            /* Pull layout up to avoid huge whitespace below */
             margin-bottom: -50% !important;
-            /* Pull up empty space */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+
+            /* Shadow for pop */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        /* 6. Tools & Nav */
+        .toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #cbd5e1;
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .zoom-controls {
+            display: none !important;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            z-index: 100;
+            padding-bottom: env(safe-area-inset-bottom);
+            display: flex;
+            justify-content: space-around;
+            padding-top: 0.5rem;
+        }
+
+        /* 7. Modal Fixes */
+        .modal-card {
+            width: 100%;
+            height: 100%;
+            max-height: 100%;
+            border-radius: 0;
+        }
+
+        .modal-left {
+            display: none;
+        }
+
+        .modal-right {
+            padding: 1.5rem;
+            width: 100%;
         }
     }
-
-    .toolbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 50;
-        background: rgba(15, 23, 42, 0.9);
-        padding: 0.5rem 1rem;
-        justify-content: space-between;
-    }
-
-    /* --- ZOOM CONTROLS (Mobile Override) --- */
-    .zoom-controls {
-        display: none !important;
-    }
-}
-
-.hidden {
-    display: none !important;
-}
