@@ -25,7 +25,7 @@ app.use(cors());
 // --- ROUTES ---
 
 // 1. Create Checkout Session
-app.post('/create-checkout-session', async (req, res) => {
+app.post('/api/create-checkout-session', async (req, res) => {
     try {
         const session = await stripe.checkout.sessions.create({
             line_items: [

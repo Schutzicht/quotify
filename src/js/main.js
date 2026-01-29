@@ -564,10 +564,10 @@ async function processPayment() {
     btn.style.opacity = '0.7';
 
     try {
-        const response = await fetch('http://localhost:3000/create-checkout-session', {
+        const response = await fetch('/api/create-checkout-session', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items: state.items }) // Sending items valid for future expansion
+            body: JSON.stringify({ items: state.items })
         });
 
         const data = await response.json();
