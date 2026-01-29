@@ -740,7 +740,8 @@ input::placeholder {
     /* Paper bg */
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     /* Soft shadow */
-    transform: scale(0.6);
+    transform: none;
+    /* Reset container scale */
     transform-origin: center;
     border: none;
     overflow: hidden;
@@ -750,6 +751,18 @@ input::placeholder {
     border-radius: 4px;
     /* Slight rounding like real paper stack */
     position: relative;
+}
+
+/* Fix for A4 content inside the thumbnail */
+.modal-thumb .paper-a4 {
+    transform-origin: top left;
+    transform: scale(0.265);
+    /* 210px / 793px (210mm) */
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    box-shadow: none;
+    min-height: auto;
 }
 
 /* Add nice shimmer or overlay if needed, or just keep clean */
