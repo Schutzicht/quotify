@@ -375,9 +375,26 @@ input::placeholder {
     padding: 3rem;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    /* Ensures logo and company name space out */
+    align-items: center;
+    /* Center vertically */
     clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
     margin-bottom: 3rem;
+    height: 220px;
+    /* Fixed height to prevent massive layout shifts */
+}
+
+/* Limit Logo Size in Header */
+.paper-header img {
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* If the logo is inserted into a specific container like #preview-logo */
+#preview-logo {
+    display: flex;
+    align-items: center;
 }
 
 .paper-body {

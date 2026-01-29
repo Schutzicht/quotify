@@ -145,7 +145,25 @@ function initListeners() {
     const logoInput = $('logo-upload');
     const dropzone = $('logo-dropzone');
     if (logoInput && dropzone) {
-        dropzone.addEventListener('click', () => logoInput.click());
+        // Prevent multiple click listeners? No, initListeners called once.
+        // We need a remove button if logo is set. 
+        // Let's modify the UI of dropzone or add a separate remove btn.
+        // Simple: If logo is set, dropzone shows "Remove".
+
+        dropzone.addEventListener('click', (e) => {
+            if (state.branding.logo && e.target.closest('.remove-logo-btn')) {
+                e.stopPropagation();
+                // Remove Logic
+                state.branding.logo = null;
+                state.branding.logoBri = null;
+                logoInput.value = ''; // clear input
+                updateLogoUI(dropzone, null);
+                updatePreview();
+            } else {
+                logoInput.click();
+            }
+        });
+
         logoInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (file) {
@@ -156,17 +174,31 @@ function initListeners() {
                     // Calc Brightness
                     state.branding.logoBri = await getImageBrightness(state.branding.logo);
 
-                    const icon = dropzone.querySelector('.icon');
-                    const text = dropzone.querySelector('span');
-                    if (icon) icon.textContent = '✓';
-                    if (text) text.textContent = 'Logo ingesteld';
-                    dropzone.style.borderColor = state.branding.primaryColor;
-                    dropzone.style.background = '#F0FDF4';
+                    updateLogoUI(dropzone, state.branding.logo);
                     updatePreview();
                 };
                 reader.readAsDataURL(file);
             }
         });
+    }
+
+    function updateLogoUI(dropzone, logo) {
+        const icon = dropzone.querySelector('.icon');
+        const text = dropzone.querySelector('span');
+
+        if (logo) {
+            // Show active state with remove option
+            dropzone.style.borderColor = state.branding.primaryColor;
+            dropzone.style.background = '#F0FDF4'; // Success green-ish
+            if (icon) icon.innerHTML = '✓';
+            if (text) text.innerHTML = `Logo ingesteld <br><span class="remove-logo-btn" style="color:#ef4444; font-size:0.8em; text-decoration:underline; cursor:pointer;">Verwijderen</span>`;
+        } else {
+            // Reset
+            dropzone.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            dropzone.style.background = 'rgba(0, 0, 0, 0.2)';
+            if (icon) icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>'; // Restore upload icon or text
+            if (text) text.textContent = 'Upload Logo';
+        }
     }
 
     const dlBtn = $('download-trigger');
@@ -303,18 +335,38 @@ function getImageBrightness(src) {
 
 
 /* --- PREVIEW LOGIC --- */
+/* --- PREVIEW LOGIC --- */
 function updatePreview() {
     // 1. Logo
     const logoArea = $('preview-logo');
+
+    // Header Logo Handling (Top of page)
+    if (logoArea) {
+        if (state.branding.logo) {
+            logoArea.innerHTML = `<img src="${state.branding.logo}" style="max-height: 80px; width: auto; display: block;">`;
+            logoArea.classList.add('has-logo');
+        } else {
+            logoArea.innerHTML = '';
+            logoArea.classList.remove('has-logo');
+        }
+    }
+
+    // Watermark Logo Handling
+    const existingWatermark = document.querySelector('.watermark-logo');
     if (state.branding.logo) {
-        logoArea.innerHTML = `<img src="${state.branding.logo}">`;
-        logoArea.classList.add('has-logo');
-        const existingWatermark = document.querySelector('.watermark-logo');
+        if (!existingWatermark) {
+            const watermark = document.createElement('div');
+            watermark.className = 'watermark-logo';
+            // Watermark can stay large/absolute
+            watermark.innerHTML = `<img src="${state.branding.logo}">`;
+            $('pdf-preview').prepend(watermark);
+        } else {
+            // Update src if changed
+            const img = existingWatermark.querySelector('img');
+            if (img && img.src !== state.branding.logo) img.src = state.branding.logo;
+        }
+    } else {
         if (existingWatermark) existingWatermark.remove();
-        const watermark = document.createElement('div');
-        watermark.className = 'watermark-logo';
-        watermark.innerHTML = `<img src="${state.branding.logo}">`;
-        $('pdf-preview').prepend(watermark);
     }
 
     // SMART CONTRAST CHECK
