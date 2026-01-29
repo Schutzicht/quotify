@@ -470,44 +470,36 @@ input::placeholder {
 }
 
 .paper-header {
-    background: #0b1120;
-    /* Ultra Dark (Cyber Slate) */
+    background: #f8fafc;
+    /* Light Business Background */
     position: relative;
-    color: white;
+    color: #0f172a;
+    /* Dark Text */
     padding: 2rem 3rem;
-    /* Compact padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #38bdf8;
-    /* Neon Cyan Tech Line */
-    box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
-    /* Glow */
+    border-bottom: 3px solid var(--c-accent);
+    /* Clean structural line */
     margin-bottom: 3rem;
     height: 130px;
-    /* Ultra sleek */
     overflow: hidden;
 }
 
-/* Tech Grid Pattern Background */
+/* Subtle texture or clean slate? Let's go clean. */
 .paper-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(#334155 1px, transparent 1px);
-    background-size: 20px 20px;
-    opacity: 0.1;
-    pointer-events: none;
+    display: none;
+    /* No tech grid */
 }
 
-/* Document Title (OFFERTE) -> Tech Style */
+/* Document Title (OFFERTE) -> Business Style */
 .doc-type {
     font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    /* Wide tracking for "Cinematic" feel */
+    font-weight: 800;
+    letter-spacing: 0.2em;
     margin: 0 0 0.25rem 0;
-    color: white;
+    color: #0f172a;
+    /* Dark Slate */
     text-align: right;
     text-transform: uppercase;
     display: flex;
@@ -515,13 +507,12 @@ input::placeholder {
     gap: 1rem;
     background: none;
     -webkit-text-fill-color: initial;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    text-shadow: none;
 }
 
-/* Optional deco: "Scanning" line */
+/* Optional deco: "Clean" line */
 .doc-type::after {
     display: none;
-    /* Clean look */
 }
 
 /* Meta Data Grid in Header */
@@ -542,20 +533,21 @@ input::placeholder {
 .meta-item .label {
     font-size: 0.6rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     color: #64748b;
-    /* Muted tech grey */
-    font-weight: 600;
+    /* Slate 500 */
+    font-weight: 700;
     margin-bottom: 2px;
 }
 
 .meta-item .val {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #e2e8f0;
-    font-family: 'Courier New', Courier, monospace;
-    /* Tech mono font for numbers */
-    letter-spacing: -0.02em;
+    color: #0f172a;
+    /* Slate 900 */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    /* Back to corporate font */
+    letter-spacing: 0;
 }
 
 /* Meta Data Grid in Header */
@@ -1127,14 +1119,11 @@ input::placeholder {
 
     .gen3-layout.tab-preview .paper-a4 {
         transform-origin: top center;
-        transform: scale(calc((100vw - 32px) / 794));
-        /* 794px is approx 210mm @ 96dpi */
-        /* Fallback or calc using viewport units. 
-           210mm is roughly 794px. 
-           (100vw - 32px padding) / 794px = scale factor 
-        */
+        /* More zoomed out: (100vw - 80px) gives ~0.35x scale instead of 0.45x */
+        transform: scale(calc((100vw - 80px) / 794));
         margin-bottom: -50%;
-        /* Compensate for empty space below scaled element */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        /* Slightly clearer shadow */
     }
 
     /* Polish Config Scroll */
