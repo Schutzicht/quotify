@@ -861,6 +861,7 @@ details.advanced-details[open] summary {
 .custom-color-wrapper:hover .pipette-icon {
     color: white;
 }
+
 /* --- SMART CONTRAST HEADER --- */
 /* Forced White Header (Dark Logo on Dark Theme) */
 .paper-header.force-light {
@@ -868,15 +869,181 @@ details.advanced-details[open] summary {
     color: var(--accent) !important;
     border-bottom: 2px solid var(--accent);
 }
-.paper-header.force-light .doc-type { color: var(--accent) !important; }
-.paper-header.force-light .label { color: #64748B !important; } 
-.paper-header.force-light .val { color: #1E293B !important; }
+
+.paper-header.force-light .doc-type {
+    color: var(--accent) !important;
+}
+
+.paper-header.force-light .label {
+    color: #64748B !important;
+}
+
+.paper-header.force-light .val {
+    color: #1E293B !important;
+}
 
 /* Forced Dark Header (Light Logo on Light Theme) */
 .paper-header.force-dark {
     background: #1e293b !important;
     color: white !important;
 }
-.paper-header.force-dark .doc-type { color: white !important; }
-.paper-header.force-dark .label { color: rgba(255,255,255,0.7) !important; }
-.paper-header.force-dark .val { color: white !important; }
+
+.paper-header.force-dark .doc-type {
+    color: white !important;
+}
+
+.paper-header.force-dark .label {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.paper-header.force-dark .val {
+    color: white !important;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .gen3-layout {
+        flex-direction: column;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--ui-border);
+        flex: none;
+    }
+
+    .config-scroll {
+        overflow: visible;
+    }
+
+    .main-stage {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 80px;
+        /* Space for FAB */
+    }
+
+    .paper-wrapper {
+        padding: 1rem;
+        background: #F1F5F9;
+    }
+
+    .paper-a4 {
+        width: 100%;
+        min-height: auto;
+        margin-bottom: 2rem;
+        font-size: 0.8rem;
+        /* Scale down slightly */
+    }
+
+    .paper-header {
+        padding: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .meta-area {
+        text-align: left;
+        width: 100%;
+    }
+
+    .meta-grid {
+        justify-content: flex-start;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .address-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .paper-body {
+        padding: 1.5rem;
+    }
+
+    /* Table Responsive */
+    .modern-table th,
+    .modern-table td {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.25rem;
+    }
+
+    .group-total {
+        font-size: 0.8rem;
+    }
+
+    .totals-section {
+        align-items: stretch;
+    }
+
+    .total-row {
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .paper-footer {
+        padding: 0 1.5rem 1.5rem;
+    }
+
+    .footer-cols {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .footer-cols div {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Modal Mobile */
+    .modal-card {
+        width: 95%;
+        height: 90vh;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .modal-left {
+        width: 100%;
+        height: 200px;
+        border-right: none;
+        border-bottom: 1px solid #E2E8F0;
+        flex: none;
+    }
+
+    .modal-right {
+        padding: 1.5rem;
+    }
+
+    /* Toolbar Mobile */
+    .toolbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        background: var(--stage-bg);
+        z-index: 10;
+        border-bottom: 1px solid #CBD5E1;
+    }
+
+    /* Mobile Inputs */
+    .row-bot {
+        grid-template-columns: 1fr 1fr;
+        /* Stack inputs grid */
+    }
+
+    .input-group-mini,
+    .select-wrapper {
+        flex: 1 1 auto !important;
+        width: auto !important;
+    }
+}
