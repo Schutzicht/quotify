@@ -1475,6 +1475,30 @@ color: var(--c-accent);
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
     }
 
+    /* VISIBILITY TOGGLES (CRITICAL FIX) */
+    .gen3-layout.tab-config .main-stage {
+        display: none !important;
+    }
+
+    .gen3-layout.tab-config .sidebar {
+        display: block !important;
+        height: 100%;
+        overflow-y: auto;
+        padding-bottom: 100px;
+        width: 100%;
+        background: #f8fafc;
+    }
+
+    .gen3-layout.tab-preview .sidebar {
+        display: none !important;
+    }
+
+    .gen3-layout.tab-preview .main-stage {
+        display: block !important;
+        height: 100%;
+        width: 100%;
+    }
+
     .mn-btn {
         flex: 1;
         background: transparent;
