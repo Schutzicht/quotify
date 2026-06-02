@@ -47,7 +47,7 @@ app.post('/api/create-payment', async (req, res) => {
             ],
             mode: 'payment',
             payment_method_types: ['card', 'ideal'],
-            return_url: `${req.headers.origin || 'http://localhost:5173'}?session_id={CHECKOUT_SESSION_ID}`,
+            return_url: `${req.headers.origin || 'http://localhost:5173'}/app?session_id={CHECKOUT_SESSION_ID}`,
         });
 
         res.json({ clientSecret: session.client_secret });

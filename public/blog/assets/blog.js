@@ -1,0 +1,1 @@
+document.querySelectorAll('.faq-item').forEach(function(item){var q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');if(!q||!a)return;q.addEventListener('click',function(){var open=item.classList.contains('open');item.classList.toggle('open',!open);a.style.maxHeight=open?null:a.scrollHeight+'px';});});

@@ -3,420 +3,619 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Quotify - Jouw Professionele Offerte Generator</title>
-    <!-- NEXT LEVEL FONTS: Plus Jakarta Sans -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offerte maken in 2 minuten | Quotify - online offerte generator</title>
+    <meta name="description"
+        content="Met Quotify maak je gratis een professionele offerte als PDF. Vul je gegevens in, voeg regels toe en download direct. Eigen logo en kleuren, BTW automatisch berekend, geen account nodig.">
+    <link rel="canonical" href="https://quotify.vercel.app/">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#6366f1">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Quotify">
+    <meta property="og:title" content="Offerte maken in 2 minuten | Quotify">
+    <meta property="og:description"
+        content="Maak gratis een professionele offerte als PDF. Eigen huisstijl, BTW automatisch, direct downloaden.">
+    <meta property="og:url" content="https://quotify.vercel.app/">
+    <meta property="og:image" content="https://quotify.vercel.app/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Offerte maken in 2 minuten | Quotify">
+    <meta name="twitter:description" content="Maak gratis een professionele offerte als PDF. Direct downloaden.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="/public/logo.svg">
-    <link rel="stylesheet" href="/src/css/style.css?v=1.0.7">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+    <link rel="stylesheet" href="/src/css/site.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://quotify.vercel.app/#org",
+          "name": "Quotify",
+          "url": "https://quotify.vercel.app/",
+          "logo": "https://quotify.vercel.app/logo.svg"
+        },
+        {
+          "@type": "WebApplication",
+          "name": "Quotify - Offerte Generator",
+          "url": "https://quotify.vercel.app/app",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "description": "Online offerte generator waarmee je in 2 minuten een professionele offerte als PDF maakt, met eigen logo, kleuren en automatische BTW-berekening.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0.50",
+            "priceCurrency": "EUR",
+            "description": "Per gedownloade offerte. Geen abonnement."
+          },
+          "publisher": { "@id": "https://quotify.vercel.app/#org" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is Quotify gratis?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Het opstellen en bekijken van je offerte is volledig gratis. Je betaalt alleen 0,50 euro per offerte die je als PDF downloadt. Er is geen abonnement en geen account nodig." }
+            },
+            {
+              "@type": "Question",
+              "name": "Heb ik een account nodig?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Nee. Je opent de tool en begint direct. Je gegevens blijven lokaal in je browser bewaard, zodat je later verder kunt." }
+            },
+            {
+              "@type": "Question",
+              "name": "Kan ik mijn eigen logo en kleuren gebruiken?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ja. Upload je logo en kies een accentkleur. De offerte krijgt automatisch jouw huisstijl, inclusief kleur in de koptekst en totaalregel." }
+            },
+            {
+              "@type": "Question",
+              "name": "Wordt de BTW automatisch berekend?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ja. Per regel kies je het BTW-tarief (0, 9 of 21 procent). Quotify berekent het subtotaal, de BTW en het totaalbedrag automatisch." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
 
-    <div class="gen3-layout">
-        <!-- SIDEBAR CONFIG -->
-        <aside class="sidebar">
-            <div class="brand-header">
-                <div class="brand-logo">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
+    <!-- HEADER -->
+    <header class="site-header" id="header">
+        <div class="wrap nav">
+            <a class="brand" href="/">
+                <span class="brand-mark">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                         <polyline points="14 2 14 8 20 8" />
-                        <path d="M11 11.5a2.5 2.5 0 0 0 0 5" />
-                        <path d="M9 12.5h4" />
-                        <path d="M9 15.5h4" />
+                        <path d="M9 13h6M9 17h4" />
                     </svg>
-                </div>
-                <h1>Offerte Tool</h1>
+                </span>
+                Quotify
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#hoe">Hoe het werkt</a>
+                <a href="#functies">Functies</a>
+                <a href="#branches">Voor wie</a>
+                <a href="#prijs">Prijs</a>
+                <a href="/blog/">Blog</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="/blog/" class="btn btn-ghost">Lees de gids</a>
+                <a href="/app" class="btn btn-primary">Offerte maken</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <path d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
+        </div>
+    </header>
 
-            <div class="config-scroll">
-
-                <!-- BRANDING -->
-                <div class="config-section">
-                    <h2>Huisstijl</h2>
-                    <div class="logo-dropzone" id="logo-dropzone">
-                        <div class="icon">↑</div>
-                        <span>Upload Logo</span>
-                        <input type="file" id="logo-upload" accept="image/*" hidden>
-                    </div>
-
-                    <div class="color-selector">
-                        <label>Accent Kleur</label>
-                        <div class="color-options">
-                            <button class="c-opt active" data-color="#0F172A" style="background:#0F172A"></button>
-                            <button class="c-opt" data-color="#2563EB" style="background:#2563EB"></button>
-                            <button class="c-opt" data-color="#059669" style="background:#059669"></button>
-                            <button class="c-opt" data-color="#DC2626" style="background:#DC2626"></button>
-                            <div class="custom-color-wrapper" title="Kies eigen kleur">
-                                <input type="color" id="accent-color" value="#0F172A">
-                                <svg class="pipette-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path
-                                        d="M19 11 13 5M21.2 2.8c1.1 1.1 1.1 2.9 0 4l-9.3 9.3c-.6.6-1.5.9-2.3.9l-4 1 1-4c0-.8.3-1.7.9-2.3l9.3-9.3c1.1-1.1 2.9-1.1 4 0Z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SENDER -->
-                <div class="config-section">
-                    <h2>Jouw Bedrijf (Afzender)</h2>
-                    <form id="sender-form">
-                        <div class="input-group">
-                            <label>Bedrijfsnaam</label>
-                            <input type="text" name="company" placeholder="Jouw Bedrijf B.V." />
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label>Contactpersoon</label>
-                                <input type="text" name="contact" placeholder="J. Janssen" />
-                            </div>
-                            <div class="input-group">
-                                <label>Website (Optioneel)</label>
-                                <input type="text" name="website" placeholder="www.bedrijf.nl" />
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label>E-mail</label>
-                                <input type="email" name="email" placeholder="info@bedrijf.nl" />
-                            </div>
-                            <div class="input-group">
-                                <label>Telefoon</label>
-                                <input type="tel" name="phone" placeholder="06.." />
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <label>Adres</label>
-                            <input type="text" name="address" placeholder="Straat 12" />
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label>Postcode</label>
-                                <input type="text" name="zip" placeholder="1234 AB" />
-                            </div>
-                            <div class="input-group">
-                                <label>Plaats</label>
-                                <input type="text" name="city" placeholder="Amsterdam" />
-                            </div>
-                        </div>
-
-                        <details class="advanced-details">
-                            <summary>Meer details (KVK, BTW, IBAN)</summary>
-                            <div class="details-content">
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label>KVK</label>
-                                        <input type="text" name="kvk" placeholder="12345678" />
-                                    </div>
-                                    <div class="input-group">
-                                        <label>BTW Nr.</label>
-                                        <input type="text" name="vat" placeholder="NL..." />
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label>IBAN</label>
-                                    <input type="text" name="iban" placeholder="NL00 BANK..." />
-                                </div>
-                            </div>
-                        </details>
-                    </form>
-                </div>
-
-                <!-- CLIENT -->
-                <div class="config-section">
-                    <h2>De Klant (Ontvanger)</h2>
-                    <form id="client-form">
-                        <div class="input-group">
-                            <label>Bedrijfsnaam / Naam</label>
-                            <input type="text" name="company" placeholder="Klant B.V." />
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label>Contactpersoon</label>
-                                <input type="text" name="contact" placeholder="T.a.v..." />
-                            </div>
-                            <div class="input-group">
-                                <label>Referentie / PO</label>
-                                <input type="text" name="reference" placeholder="Inkoop nr." />
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label>Adres</label>
-                            <input type="text" name="address" placeholder="Straat 1" />
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label>Postcode</label>
-                                <input type="text" name="zip" placeholder="1234 AB" />
-                            </div>
-                            <div class="input-group">
-                                <label>Plaats</label>
-                                <input type="text" name="city" placeholder="Rotterdam" />
-                            </div>
-                        </div>
-                        <details class="advanced-details">
-                            <summary>Meer details</summary>
-                            <div class="details-content">
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label>E-mail</label>
-                                        <input type="email" name="email" />
-                                    </div>
-                                    <div class="input-group">
-                                        <label>KVK / BTW</label>
-                                        <input type="text" name="kvk" />
-                                    </div>
-                                </div>
-                            </div>
-                        </details>
-                    </form>
-                </div>
-
-                <!-- META -->
-                <div class="config-section">
-                    <h2>Document Details</h2>
-                    <form id="meta-form">
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label>Offertenummer</label>
-                                <input type="text" name="number" value="2026-001" />
-                            </div>
-                            <div class="input-group">
-                                <label>Datum</label>
-                                <input type="text" name="date" id="meta-date" placeholder="DD-MM-JJJJ" />
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label>Geldig tot</label>
-                                <input type="text" name="validUntil" placeholder="Datum..." />
-                            </div>
-                            <div class="input-group">
-                                <label>Titel</label>
-                                <input type="text" name="title" value="OFFERTE" />
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label>Projectnaam (Optioneel)</label>
-                            <input type="text" name="project" placeholder="Website Redesign..." />
-                        </div>
-                    </form>
-                </div>
-
-                <!-- NOTES -->
-                <div class="config-section">
-                    <h2>Overig</h2>
-                    <div class="input-group">
-                        <label>Notities / Voorwaarden</label>
-                        <textarea id="notes-input" rows="4" placeholder="Bijv. Geldig tot 30 dagen..."></textarea>
-                    </div>
-                </div>
-
-                <!-- SIGNATURE PAD -->
-                <div class="config-section">
-                    <h2>Ondertekening</h2>
-                    <div class="input-group">
-                        <label>Handtekening Verzender</label>
-                        <div class="sig-pad-container">
-                            <div class="sig-pad-wrapper">
-                                <canvas id="signature-pad"></canvas>
-                                <div class="sig-guide-line"></div>
-                            </div>
-                            <div class="sig-tools">
-                                <button id="sig-undo" class="tool-btn" title="Ongedaan maken">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M3 7v6h6" />
-                                        <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" />
-                                    </svg>
-                                </button>
-                                <button id="sig-redo" class="tool-btn" title="Opnieuw">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M21 7v6h-6" />
-                                        <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13" />
-                                    </svg>
-                                </button>
-                                <button id="clear-sig" class="tool-btn" title="Wissen">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="3 6 5 6 21 6"></polyline>
-                                        <path
-                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="spacer"></div>
-            </div>
-
-            <!-- Items Fixed Bottom -->
-            <div class="config-section items-section">
-                <h2>Regels</h2>
-                <div id="items-list"></div>
-                <button id="add-item-btn" class="btn-secondary full-width">+ Regel toevoegen</button>
-            </div>
-        </aside>
-
-        <!-- MAIN STAGE -->
-        <main class="main-stage">
-            <div class="toolbar">
-                <div class="zoom-controls">
-                    <button class="t-btn" id="zoom-out">-</button>
-                    <span class="zoom-lbl">100%</span>
-                    <button class="t-btn" id="zoom-in">+</button>
-                </div>
-                <!-- MOBILE ZOOM SLIDER (Visible only on mobile via CSS) -->
-                <div class="mobile-zoom-wrapper" style="display:none;">
-                    <span style="font-size:12px; color:#64748b; margin-right:8px;">Zoom:</span>
-                    <input type="range" id="mobile-zoom-slider" min="0.3" max="1.0" step="0.05" value="0.45">
-                </div>
-                <button class="btn-primary" id="download-trigger">Download PDF</button>
-            </div>
-
-            <div class="paper-wrapper">
-                <div id="pdf-preview" class="paper-a4">
-                    <!-- Header -->
-                    <div class="paper-header">
-                        <div class="logo-area" id="preview-logo">
-                            <div class="logo-placeholder">LOGO</div>
-                        </div>
-                        <div class="meta-area">
-                            <h1 class="doc-type" id="prev-doc-title">OFFERTE</h1>
-                            <div class="project-meta" id="prev-project-line"></div>
-                            <div class="meta-grid">
-                                <div class="meta-item">
-                                    <span class="label">Nummer</span>
-                                    <span class="val" id="prev-ref">...</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="label">Datum</span>
-                                    <span class="val" id="prev-date">...</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="label">Geldig tot</span>
-                                    <span class="val" id="prev-valid">...</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Grid -->
-                    <div class="paper-body">
-                        <div class="address-grid">
-                            <div class="addr-col from">
-                                <span class="label">Van</span>
-                                <div class="addr-lines" id="prev-sender-block"></div>
-                            </div>
-                            <div class="addr-col to">
-                                <span class="label">Voor</span>
-                                <div class="addr-lines" id="prev-client-block"></div>
-                            </div>
-                        </div>
-
-                        <!-- Dynamic Table Area handled by JS -->
-
-                        <div class="totals-section">
-                            <div class="total-row final">
-                                <span>Totaal</span>
-                                <span id="prev-total">€ 0,00</span>
-                            </div>
-                        </div>
-
-                        <div id="prev-notes" class="notes-preview"></div>
-
-                        <!-- SIGNATURE PREVIEW -->
-                        <div class="signature-section" id="signature-preview-block"
-                            style="display:none; margin-top: 2rem;">
-                            <span class="label"
-                                style="display:block; font-size: 0.75rem; color:#64748b; margin-bottom: 0.5rem;">Ondertekend
-                                door:</span>
-                            <img id="prev-sig-img" src="" alt="Handtekening" style="max-height: 60px; display: block;">
-                        </div>
-                    </div>
-
-                    <!-- Footer -->
-                    <div class="paper-footer">
-                        <div class="footer-line"></div>
-                        <div class="footer-cols">
-                            <div class="f-col" id="f-col-1"></div>
-                            <div class="f-col" id="f-col-2"></div>
-                            <div class="f-col" id="f-col-3"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- MOBILE NAV (Moved outside layout for sticky fix) -->
-    <nav class="mobile-nav">
-        <button class="mn-btn active" data-tab="config">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-            </svg>
-            <span>Bewerken</span>
-        </button>
-        <button class="mn-btn" data-tab="preview">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-            <span>Voorbeeld</span>
-        </button>
-    </nav>
-
-    <!-- PAYMENT MODAL -->
-    <div class="modal hidden" id="payment-modal">
-        <div class="modal-bg" id="modal-close"></div>
-        <div class="modal-card">
-            <div class="modal-left">
-                <div class="modal-thumb" id="modal-thumb"></div>
-            </div>
-            <div class="modal-right">
-                <h2 style="margin-bottom: 0.5rem;">Uw document is klaar!</h2>
-                <p style="color: #64748B; font-size: 0.9rem; margin-bottom: 1.5rem;">
-                    Nog één stap om uw offerte te downloaden.
+    <!-- HERO -->
+    <section class="hero">
+        <div class="wrap hero-grid">
+            <div class="hero-copy">
+                <span class="eyebrow">Online offerte generator</span>
+                <h1>Maak een <span class="grad">professionele offerte</span> in 2 minuten</h1>
+                <p class="hero-sub">
+                    Vul je gegevens in, voeg je regels toe en download direct een strakke PDF in jouw huisstijl.
+                    Geen ingewikkelde Word-sjablonen, geen account. Gewoon een offerte die scoort.
                 </p>
-
-                <div class="pay-summary"
-                    style="margin-bottom: 1.5rem; background: #F8FAFC; padding: 1rem; border-radius: 8px;">
-                    <div class="sum-row total"
-                        style="display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-weight: 500; color: #475569;">Te betalen bedrag</span>
-                        <span id="summary-total" style="font-weight: 700; font-size: 1.25rem; color: #0F172A;">€
-                            0,50</span>
-                    </div>
+                <div class="hero-actions">
+                    <a href="/app" class="btn btn-primary btn-lg">
+                        Start gratis
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="#hoe" class="btn btn-ghost btn-lg">Bekijk hoe het werkt</a>
                 </div>
+                <div class="hero-trust">
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>Geen account nodig</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>Direct als PDF</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>iDEAL en creditcard</span>
+                </div>
+            </div>
 
-                <!-- Stripe Mount Point -->
-                <div id="checkout-mount" style="min-height: 300px;">
-                    <div class="spinner" style="padding: 2rem; text-align: center; color: #94A3B8;">
-                        Laden van betaalmodule...
+            <div class="mockup reveal">
+                <div class="mockup-badge b1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                    Eigen huisstijl
+                </div>
+                <div class="mockup-badge b2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg>
+                    BTW automatisch
+                </div>
+                <div class="mockup-paper">
+                    <div class="mockup-head">
+                        <div class="mockup-logo"></div>
+                        <div class="mockup-title">
+                            <b>OFFERTE</b>
+                            <small>OFF-2026-001</small>
+                        </div>
+                    </div>
+                    <div class="mockup-rows">
+                        <div class="mockup-row"><span class="bar dark" style="width:46%"></span><span class="bar"
+                                style="width:18%"></span></div>
+                        <div class="mockup-row"><span class="bar dark" style="width:38%"></span><span class="bar"
+                                style="width:18%"></span></div>
+                        <div class="mockup-row"><span class="bar dark" style="width:52%"></span><span class="bar"
+                                style="width:18%"></span></div>
+                        <div class="mockup-row"><span class="bar dark" style="width:30%"></span><span class="bar"
+                                style="width:18%"></span></div>
+                    </div>
+                    <div class="mockup-total">
+                        <b>Totaal incl. BTW</b>
+                        <span class="pill">&euro; 3.025,00</span>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- LOGOS / TRUST STRIP -->
+    <div class="logos">
+        <div class="wrap logos-inner">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="3" /><path d="M3 9h18" /></svg>ZZP en freelancers</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" /></svg>Bouw en techniek</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z" /></svg>Creatieve bureaus</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" /></svg>Dienstverleners</span>
+        </div>
     </div>
 
-    <script type="module" src="src/js/main.js"></script>
+    <!-- HOE HET WERKT -->
+    <section class="section" id="hoe">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">In 3 stappen</span>
+                <h2>Van leeg scherm naar verstuurde offerte</h2>
+                <p>Geen handleiding nodig. Je ziet je offerte live meegroeien terwijl je typt.</p>
+            </div>
+            <div class="steps">
+                <div class="step reveal">
+                    <div class="step-num">1</div>
+                    <h3>Vul je gegevens in</h3>
+                    <p>Bedrijfsnaam, klant en je logo. Kies je accentkleur en de offerte krijgt meteen jouw huisstijl.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-num">2</div>
+                    <h3>Voeg je regels toe</h3>
+                    <p>Omschrijving, aantal, prijs en BTW per regel. Subtotaal, BTW en totaal worden automatisch berekend.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-num">3</div>
+                    <h3>Download de PDF</h3>
+                    <p>Zet je handtekening, controleer de preview en download een nette PDF die je direct kunt versturen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCTIES -->
+    <section class="section" id="functies" style="background:var(--bg-soft);">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Functies</span>
+                <h2>Alles wat een goede offerte nodig heeft</h2>
+                <p>Quotify dekt de details af waar professionele offertes op vallen of staan.</p>
+            </div>
+            <div class="features">
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r="2.5" /><circle cx="19" cy="13" r="2.5" /><circle cx="6" cy="12"
+                                r="2.5" /><circle cx="10" cy="20" r="2.5" /></svg></div>
+                    <h3>Eigen huisstijl</h3>
+                    <p>Upload je logo en kies je merkkleur. De offerte oogt direct als die van een gevestigd bedrijf.</p>
+                </div>
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg></div>
+                    <h3>BTW per regel</h3>
+                    <p>Combineer 0, 9 en 21 procent op een offerte. Quotify splitst de BTW netjes uit in het totaal.</p>
+                </div>
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 17.5V21h3.5L17 10.5 13.5 7zM14.5 6l3.5 3.5" /></svg></div>
+                    <h3>Digitale handtekening</h3>
+                    <p>Onderteken direct met de muis of je vinger. De handtekening komt netjes onder de offerte te staan.</p>
+                </div>
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg></div>
+                    <h3>Live preview</h3>
+                    <p>Je ziet exact wat je klant straks ontvangt. Wat je in de preview ziet, is wat je downloadt.</p>
+                </div>
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></div>
+                    <h3>Werkt op mobiel</h3>
+                    <p>Onderweg een offerte maken vanaf je telefoon? Quotify werkt vloeiend op elk schermformaat.</p>
+                </div>
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 11H5m14 0a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2m14 0V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v4" /></svg></div>
+                    <h3>Automatisch bewaard</h3>
+                    <p>Je werk wordt lokaal in je browser opgeslagen. Sluit het tabblad en ga later gewoon verder.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOWCASE SPLIT -->
+    <section class="section">
+        <div class="wrap split">
+            <div class="reveal">
+                <span class="eyebrow">Waarom Quotify</span>
+                <h2>Sneller dan Word, netter dan een sjabloon</h2>
+                <p>
+                    De meeste ondernemers knutselen hun offertes in een Word- of Excel-bestand dat na drie keer
+                    aanpassen scheef loopt. Quotify rekent, lijnt en stijlt alles automatisch uit, zodat jij je
+                    kunt richten op de inhoud en de prijs.
+                </p>
+                <ul class="check-list">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>Geen verschoven kolommen of rekenfouten meer</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>Altijd een consistente, herkenbare uitstraling</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>In minuten klaar in plaats van een half uur</li>
+                </ul>
+            </div>
+            <div class="showcase-card reveal">
+                <div class="mockup-paper" style="transform:none;">
+                    <div class="mockup-head">
+                        <div class="mockup-logo" style="background:linear-gradient(135deg,#059669,#047857)"></div>
+                        <div class="mockup-title"><b>OFFERTE</b><small>OFF-2026-014</small></div>
+                    </div>
+                    <div class="mockup-rows">
+                        <div class="mockup-row"><span class="bar dark" style="width:50%"></span><span class="bar"
+                                style="width:16%"></span></div>
+                        <div class="mockup-row"><span class="bar dark" style="width:42%"></span><span class="bar"
+                                style="width:16%"></span></div>
+                        <div class="mockup-row"><span class="bar dark" style="width:34%"></span><span class="bar"
+                                style="width:16%"></span></div>
+                    </div>
+                    <div class="mockup-total"><b>Totaal incl. BTW</b><span class="pill"
+                            style="background:#dcfce7;color:#059669">&euro; 1.815,00</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANCHES -->
+    <section class="section" id="branches" style="background:var(--bg-soft);">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Voor wie</span>
+                <h2>Gemaakt voor elke vakman en ondernemer</h2>
+                <p>Bekijk een uitgewerkt voorbeeld en checklist voor jouw branche.</p>
+            </div>
+            <div class="branches">
+                <a class="branche reveal" href="/blog/offerte-voorbeeld-bouw/">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" /></svg>Bouw en aannemers
+                </a>
+                <a class="branche reveal" href="/blog/offerte-schilder/">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"><path d="M19 3H5a2 2 0 0 0-2 2v6h18V5a2 2 0 0 0-2-2zM21 11v3a2 2 0 0 1-2 2h-7v3" /><rect x="9" y="19" width="4" height="3" rx="1"/></svg>Schilders
+                </a>
+                <a class="branche reveal" href="/blog/offerte-hovenier/">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"><path d="M12 22V12M12 12C12 7 8 4 4 4c0 5 3 8 8 8M12 12c0-4 3-7 8-7 0 4-3 7-8 7" /></svg>Hoveniers
+                </a>
+                <a class="branche reveal" href="/blog/offerte-fotograaf/">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" /><circle cx="12" cy="13" r="4" /></svg>Fotografen
+                </a>
+                <a class="branche reveal" href="/blog/offerte-webdesign-freelance/">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6" /></svg>Webdesigners
+                </a>
+                <a class="branche reveal" href="/blog/offerte-schoonmaakbedrijf/">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"><path d="M3 21h18M6 21V11l4-7 4 7v10" /></svg>Schoonmaak
+                </a>
+                <a class="branche reveal" href="/blog/offerte-maken-als-zzper/">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" /></svg>ZZP en freelance
+                </a>
+                <a class="branche reveal" href="/blog/">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>Alle gidsen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIJS -->
+    <section class="section" id="prijs">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Prijs</span>
+                <h2>Eerlijk geprijsd, geen abonnement</h2>
+                <p>Opstellen en bekijken is gratis. Je betaalt alleen wanneer je downloadt.</p>
+            </div>
+            <div class="price-card reveal">
+                <span class="eyebrow">Per offerte</span>
+                <div class="price-amount">&euro; 0,50 <small>/ download</small></div>
+                <p class="price-sub">Geen maandkosten, geen verborgen kosten. Betaal per offerte die je echt gebruikt.</p>
+                <ul class="check-list">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" /></svg>Onbeperkt offertes opstellen en aanpassen</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" /></svg>Hoge kwaliteit PDF in jouw huisstijl</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" /></svg>Betaal veilig met iDEAL of creditcard</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" /></svg>Geen account en geen verplichtingen</li>
+                </ul>
+                <a href="/app" class="btn btn-primary btn-lg" style="width:100%;">Maak je eerste offerte</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO PROSE BLOCK -->
+    <section class="section" style="background:var(--bg-soft);">
+        <div class="wrap prose-block reveal">
+            <h2>Een professionele offerte maken: zo doe je dat</h2>
+            <p>
+                Een goede offerte is vaak het verschil tussen een klant die ja zegt en een klant die afhaakt. Het is
+                je eerste echte visitekaartje na het kennismakingsgesprek. Een offerte die rommelig oogt, rekenfouten
+                bevat of belangrijke informatie mist, geeft de indruk dat je ook slordig werkt. Een strakke,
+                complete offerte doet juist het tegenovergestelde: die wekt vertrouwen en maakt het de klant
+                makkelijk om akkoord te geven.
+            </p>
+            <h3>Wat hoort er in een offerte?</h3>
+            <p>
+                Een complete offerte bevat je eigen bedrijfsgegevens, de gegevens van de klant, een uniek
+                offertenummer, de datum en geldigheidsduur, een duidelijke omschrijving van het werk, de prijs per
+                onderdeel, de BTW en het eindbedrag. Lees in onze gids precies
+                <a href="/blog/wat-moet-er-op-een-offerte-staan/">wat er allemaal op een offerte moet staan</a> en
+                bekijk een
+                <a href="/blog/offerte-voorbeeld/">uitgewerkt offerte voorbeeld</a> dat je direct kunt overnemen.
+            </p>
+            <h3>Offerte of factuur?</h3>
+            <p>
+                Een offerte is een voorstel vooraf, een factuur is de rekening achteraf. Het zijn twee verschillende
+                documenten met een eigen doel en eigen verplichte gegevens. We leggen het verschil uit in
+                <a href="/blog/verschil-offerte-en-factuur/">offerte versus factuur</a>, zodat je nooit de verkeerde
+                gegevens op het verkeerde document zet.
+            </p>
+            <h3>Meer kansen sluiten</h3>
+            <p>
+                Een offerte versturen is pas het halve werk. De beste ondernemers volgen hun offertes actief op. In
+                <a href="/blog/offerte-opvolgen/">een offerte opvolgen</a> lees je hoe je dat doet zonder opdringerig
+                te zijn, en hoeveel deals je daarmee extra binnenhaalt. Klaar om te beginnen?
+                <a href="/app">Maak nu je offerte met Quotify</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- BLOG TEASER -->
+    <section class="section">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Kennisbank</span>
+                <h2>Leer alles over offertes maken</h2>
+                <p>Praktische gidsen, voorbeelden en tips om meer opdrachten binnen te halen.</p>
+            </div>
+            <div class="post-grid">
+                <a class="post-card reveal" href="/blog/offerte-maken/">
+                    <div class="post-cover"></div>
+                    <div class="post-body">
+                        <span class="post-tag">Basis</span>
+                        <h3>Offerte maken: de complete gids</h3>
+                        <p>Van eerste regel tot verstuurde PDF. Alles wat je moet weten om een offerte te maken die scoort.</p>
+                        <span class="post-more">Lees de gids
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                <path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
+                    </div>
+                </a>
+                <a class="post-card reveal" href="/blog/offerte-voorbeeld/">
+                    <div class="post-cover"></div>
+                    <div class="post-body">
+                        <span class="post-tag">Voorbeeld</span>
+                        <h3>Offerte voorbeeld en template</h3>
+                        <p>Een compleet voorbeeld met uitleg per onderdeel, plus een gratis template om mee te starten.</p>
+                        <span class="post-more">Bekijk voorbeeld
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                <path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
+                    </div>
+                </a>
+                <a class="post-card reveal" href="/blog/offerte-maken-als-zzper/">
+                    <div class="post-cover"></div>
+                    <div class="post-body">
+                        <span class="post-tag">ZZP</span>
+                        <h3>Offerte maken als zzp'er</h3>
+                        <p>Welke gegevens je nodig hebt, hoe je je uurtarief verwerkt en de fouten die je moet vermijden.</p>
+                        <span class="post-more">Lees verder
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                <path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
+                    </div>
+                </a>
+            </div>
+            <div style="text-align:center; margin-top:40px;">
+                <a href="/blog/" class="btn btn-ghost btn-lg">Alle artikelen bekijken</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" style="background:var(--bg-soft);">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Veelgestelde vragen</span>
+                <h2>Goed om te weten</h2>
+            </div>
+            <div class="faq reveal">
+                <div class="faq-item">
+                    <button class="faq-q">Is Quotify gratis?</button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">Het opstellen en bekijken van je offerte is volledig gratis. Je betaalt
+                            alleen 0,50 euro per offerte die je als PDF downloadt. Er is geen abonnement en geen account
+                            nodig.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Heb ik een account nodig?</button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">Nee. Je opent de tool en begint direct. Je gegevens blijven lokaal in
+                            je browser bewaard, zodat je later verder kunt waar je gebleven was.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Kan ik mijn eigen logo en kleuren gebruiken?</button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">Ja. Upload je logo en kies een accentkleur. De offerte krijgt
+                            automatisch jouw huisstijl, inclusief de kleur in de koptekst en de totaalregel.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Wordt de BTW automatisch berekend?</button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">Ja. Per regel kies je het BTW-tarief van 0, 9 of 21 procent. Quotify
+                            berekent het subtotaal, de BTW per tarief en het totaalbedrag automatisch voor je.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Op welk apparaat werkt Quotify?</button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">Op elk apparaat met een browser. Quotify werkt op desktop, tablet en
+                            telefoon, zodat je ook onderweg snel een offerte kunt maken en versturen.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="section">
+        <div class="wrap">
+            <div class="cta-band reveal">
+                <h2>Klaar om je volgende klant binnen te halen?</h2>
+                <p>Maak nu je offerte. Gratis opstellen, en pas 0,50 euro als je downloadt.</p>
+                <a href="/app" class="btn btn-primary btn-lg">Offerte maken met Quotify</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="brand" href="/">
+                        <span class="brand-mark">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <path d="M9 13h6M9 17h4" />
+                            </svg>
+                        </span>
+                        Quotify
+                    </a>
+                    <p>De snelste manier om een professionele offerte te maken. Online, in jouw huisstijl, direct als PDF.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="/app">Offerte maken</a>
+                    <a href="/#functies">Functies</a>
+                    <a href="/#prijs">Prijs</a>
+                    <a href="/#hoe">Hoe het werkt</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Gidsen</h4>
+                    <a href="/blog/offerte-maken/">Offerte maken</a>
+                    <a href="/blog/offerte-voorbeeld/">Offerte voorbeeld</a>
+                    <a href="/blog/wat-moet-er-op-een-offerte-staan/">Wat op een offerte hoort</a>
+                    <a href="/blog/verschil-offerte-en-factuur/">Offerte of factuur</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Branches</h4>
+                    <a href="/blog/offerte-voorbeeld-bouw/">Bouw</a>
+                    <a href="/blog/offerte-schilder/">Schilder</a>
+                    <a href="/blog/offerte-hovenier/">Hovenier</a>
+                    <a href="/blog/">Alle artikelen</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Quotify. Alle rechten voorbehouden.</span>
+                <span>Gemaakt voor ondernemers in Nederland.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/js/site.js"></script>
 </body>
 
 </html>
