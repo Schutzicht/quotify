@@ -44,6 +44,29 @@ export async function blogSlugsOnGithub(token, owner, repo) {
 }
 
 /**
+ * Commit the new post file straight to the branch (default main).
+ * No PR, no review step: the commit triggers a Vercel build and the
+ * article goes live automatically. params: { token, owner, repo,
+ * branch='main', slug, fileContent }. Returns the commit html_url.
+ */
+export async function commitPostDirect({ token, owner, repo, branch = 'main', slug, fileContent }) {
+    const path = `content/blog/${slug}.mjs`;
+    let existingSha;
+    try {
+        const cur = await gh(token, 'GET', `/repos/${owner}/${repo}/contents/${path}?ref=${branch}`);
+        existingSha = cur.sha;
+    } catch { /* new file */ }
+
+    const out = await gh(token, 'PUT', `/repos/${owner}/${repo}/contents/${path}`, {
+        message: `content: auto-blog ${slug}`,
+        content: Buffer.from(fileContent, 'utf8').toString('base64'),
+        branch,
+        ...(existingSha ? { sha: existingSha } : {}),
+    });
+    return out.commit?.html_url || `commit ${slug}`;
+}
+
+/**
  * Create a branch with the new post file and open a PR.
  * params: { token, owner, repo, base='main', slug, fileContent, title }
  * returns the PR html_url.

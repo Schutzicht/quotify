@@ -4,24 +4,20 @@ import { computeQuote, fmtEUR } from './calc.js';
 /* --- STATE MANAGEMENT --- */
 const state = {
     sender: {
-        company: '', contact: '', address: '', zip: '', city: '', country: '',
+        company: '', contact: '', address: '', zip: '', city: '',
         email: '', phone: '', website: '', kvk: '', vat: '', iban: ''
     },
     client: {
-        company: '', contact: '', address: '', zip: '', city: '', country: '',
+        company: '', contact: '', address: '', zip: '', city: '',
         email: '', phone: '', kvk: '', vat: '', reference: ''
     },
     meta: {
-        number: '2026-001', date: new Date().toLocaleDateString('nl-NL'),
-        validUntil: '', title: 'OFFERTE', project: '',
-        currency: 'EUR', status: 'concept'
+        number: '2026-001', date: '', validUntil: '', title: 'OFFERTE', project: ''
     },
     branding: { logo: null, primaryColor: '#0F172A' },
     items: [],
-    settings: {
-        paymentTerm: 14,
-        showSignature: true
-    },
+    settings: { showSignature: true },
+    signatureImage: '',
     total: 0,
     notes: ''
 };
@@ -54,9 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.style.setProperty('--accent', state.branding.primaryColor || '#6366F1');
 
     updatePreview();
-
-    console.log('OfferteGeneratory Gen 3 :: Initialized');
-    console.log('VERSION: 2.3.0 - REFACTORED');
 });
 
 function initMobileTabs() {
@@ -95,15 +88,11 @@ async function checkPaymentSuccess() {
     const sessionId = urlParams.get('session_id');
 
     if (sessionId) {
-        console.log('Payment success detected:', sessionId);
-
-        // Wait for UI to stabilize
-        setTimeout(() => {
-            alert('Betaling geslaagd! Uw PDF wordt gegenereerd.');
-            generatePDF(state);
-            // Clean URL
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }, 800);
+        // Clean the URL so a refresh does not re-trigger the success state.
+        window.history.replaceState({}, document.title, window.location.pathname);
+        // Show a success panel with a download button (a click guarantees the
+        // browser allows the download, unlike an automatic save).
+        setTimeout(showPaymentSuccess, 400);
     }
 }
 
@@ -159,7 +148,6 @@ function initListeners() {
                 e.stopPropagation();
                 // Remove Logic
                 state.branding.logo = null;
-                state.branding.logoBri = null;
                 logoInput.value = ''; // clear input
                 updateLogoUI(dropzone, null);
                 updatePreview();
@@ -179,10 +167,6 @@ function initListeners() {
                         dataUrl = await rasterizeSvg(dataUrl);
                     }
                     state.branding.logo = dataUrl;
-
-                    // Calc Brightness
-                    state.branding.logoBri = await getImageBrightness(state.branding.logo);
-
                     updateLogoUI(dropzone, state.branding.logo);
                     updatePreview();
                 };
@@ -215,7 +199,8 @@ function initListeners() {
 }
 
 function setCurrentDate() {
-    state.meta.date = formatNlDate(new Date());
+    // Only default to today for a fresh quote; keep a restored/edited date.
+    if (!state.meta.date) state.meta.date = formatNlDate(new Date());
     if ($('meta-date')) $('meta-date').value = state.meta.date;
     autoValidUntil();
 }
@@ -327,13 +312,17 @@ function renderItemsUI() {
                 <div class="input-group-mini" style="flex:1">
                     <input type="text" inputmode="decimal" class="i-price" value="${item.price}" placeholder="Prijs">
                 </div>
-                <div class="input-group-mini" style="flex:0 0 50px" title="Korting %">
-                    <input type="number" class="i-disc" value="${item.discount}" placeholder="-%">
+                <div class="input-group-mini" style="flex:0 0 48px" title="Korting %">
+                    <input type="number" class="i-disc" value="${item.discount}" placeholder="-%" min="0" max="100">
                 </div>
-                <div class="input-group-mini" style="flex:0 0 50px" title="BTW %">
-                    <input type="number" class="i-vat" value="${item.vat}" placeholder="BTW">
+                <div class="select-wrapper" style="flex:0 0 66px" title="BTW-tarief">
+                    <select class="i-vat">
+                        <option value="21" ${Number(item.vat) === 21 ? 'selected' : ''}>21%</option>
+                        <option value="9" ${Number(item.vat) === 9 ? 'selected' : ''}>9%</option>
+                        <option value="0" ${Number(item.vat) === 0 ? 'selected' : ''}>0%</option>
+                    </select>
                 </div>
-                <div class="select-wrapper" style="width:105px">
+                <div class="select-wrapper" style="flex:0 0 105px">
                     <select class="i-period">
                         <option value="one-off" ${item.period === 'one-off' ? 'selected' : ''}>Eenmalig</option>
                         <option value="weekly" ${item.period === 'weekly' ? 'selected' : ''}>Wekelijks</option>
@@ -357,8 +346,8 @@ function renderItemsUI() {
         bind('.i-unit', 'unit');
         bind('.i-price', 'price', true);
         bind('.i-disc', 'discount', true);
-        bind('.i-vat', 'vat', true);
 
+        row.querySelector('.i-vat').addEventListener('change', (e) => { item.vat = Number(e.target.value); updatePreview(); });
         row.querySelector('.i-period').addEventListener('change', (e) => { item.period = e.target.value; updatePreview(); });
         row.querySelector('.btn-remove').addEventListener('click', () => {
             state.items = state.items.filter(i => i.id !== item.id);
@@ -369,90 +358,14 @@ function renderItemsUI() {
     });
 }
 
-/* --- HELPERS --- */
-function getHexBrightness(hex) {
-    hex = hex.replace('#', '');
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-    return (r * 299 + g * 587 + b * 114) / 1000;
-}
-
-function getImageBrightness(src) {
-    return new Promise((resolve) => {
-        const img = new Image();
-        img.src = src;
-        img.onload = () => {
-            const canvas = document.createElement('canvas');
-            canvas.width = 50; // Scale down for speed
-            canvas.height = 50;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, 50, 50);
-            const data = ctx.getImageData(0, 0, 50, 50).data;
-            let total = 0, count = 0;
-            for (let i = 0; i < data.length; i += 4) {
-                if (data[i + 3] > 20) { // Ignore transparent pixels
-                    const bri = (data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114) / 1000;
-                    total += bri;
-                    count++;
-                }
-            }
-            resolve(count === 0 ? 255 : total / count); // Default white if empty
-        };
-        img.onerror = () => resolve(128);
-    });
-}
-
-
 /* --- PREVIEW LOGIC --- */
 function updatePreview() {
-    // 1. Logo
+    // 1. Logo in the document header
     const logoArea = $('preview-logo');
-
-    // Header Logo Handling (Top of page)
     if (logoArea) {
-        if (state.branding.logo) {
-            logoArea.innerHTML = `<img src="${state.branding.logo}" style="max-height: 80px; width: auto; display: block;">`;
-            logoArea.classList.add('has-logo');
-        } else {
-            logoArea.innerHTML = '';
-            logoArea.classList.remove('has-logo');
-        }
-    }
-
-    // REMOVED: Watermark Logo Logic (caused duplicate/extra header issues)
-    const existingWatermark = document.querySelector('.watermark-logo');
-    if (existingWatermark) existingWatermark.remove();
-
-    // Background watermark removed for a clean look that matches the PDF.
-    const previewContainer = $('pdf-preview');
-    const existingCreativeWatermark = previewContainer.querySelector('.watermark-creative');
-    if (existingCreativeWatermark) existingCreativeWatermark.remove();
-
-    // SMART CONTRAST CHECK
-    const header = document.querySelector('.paper-header');
-    if (state.branding.logo && typeof state.branding.logoBri === 'number') {
-        const bgBri = getHexBrightness(state.branding.primaryColor);
-        const logoBri = state.branding.logoBri;
-
-        // Threshold: < 128 is Dark, > 128 is Light
-        const isBgDark = bgBri < 140;
-        const isLogoDark = logoBri < 140;
-
-        // COLLISION DETECTED: Dark Logo on Dark BG
-        if (isBgDark && isLogoDark) {
-            header.classList.add('force-light');
-            header.classList.remove('force-dark');
-        }
-        // COLLISION: Light Logo on Light BG
-        else if (!isBgDark && !isLogoDark) {
-            header.classList.add('force-dark'); // Force dark accent or black?
-            header.classList.remove('force-light');
-        } else {
-            header.classList.remove('force-light', 'force-dark');
-        }
-    } else {
-        header.classList.remove('force-light', 'force-dark');
+        logoArea.innerHTML = state.branding.logo
+            ? `<img src="${state.branding.logo}" alt="Logo" style="max-height: 80px; width: auto; display: block;">`
+            : '';
     }
 
     // 2. Meta
@@ -557,7 +470,6 @@ function buildAddressBlock(data) {
     let html = '';
     if (data.address) html += `<span>${data.address}</span>`;
     if (data.zip || data.city) html += `<span>${data.zip || ''} ${data.city || ''}</span>`;
-    if (data.country) html += `<span>${data.country}</span>`;
     return html;
 }
 
@@ -719,7 +631,7 @@ function renderFooter() {
             ${senderSigHtml}
             <div class="sig-line"></div>
             <div class="sig-label">Voor akkoord <br><strong>${state.sender.company || 'Opdrachtnemer'}</strong></div>
-            <div class="sig-date">Datum: ${new Date().toLocaleDateString('nl-NL')}</div>
+            <div class="sig-date">Datum: ${state.meta.date || formatNlDate(new Date())}</div>
         </div>
         <div class="sig-block">
             <div style="height:60px; display:block;"></div> <!-- Spacer -->

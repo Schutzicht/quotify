@@ -32,9 +32,11 @@ node scripts/generate-post.mjs --dry
 
 Daarna controleer je de nieuwe `content/blog/<slug>.mjs`, en `git add . && git commit && git push` (Vercel bouwt en publiceert).
 
-## Automatisch (Vercel cron -> pull request)
+## Automatisch (Vercel cron -> direct live)
 
-Ingesteld in [`vercel.json`](vercel.json): elke maandag 09:00 UTC roept Vercel `/api/cron/generate-blog` aan. Die genereert het volgende onderwerp en zet het als **pull request** klaar in GitHub. Jij controleert de tekst en **merget om te publiceren** (bij merge bouwt Vercel opnieuw en gaat het artikel live). De review-stap voorkomt dat ongecontroleerde AI-content direct online komt, wat Google kan afstraffen.
+Ingesteld in [`vercel.json`](vercel.json): elke dag om 09:00 UTC roept Vercel `/api/cron/generate-blog` aan. Die genereert het volgende onderwerp uit de wachtrij en **commit het direct naar `main`**. Vercel bouwt daarop automatisch opnieuw en het artikel staat live, zonder dat je iets hoeft te doen.
+
+Wil je toch een review-stap (een pull request i.p.v. direct publiceren)? Gebruik dan in `api/index.js` de functie `createPostPR` in plaats van `commitPostDirect`.
 
 ### Benodigde environment variables (Vercel project settings)
 

@@ -9,7 +9,7 @@ import { dirname } from 'path';
 import autoTopics from '../content/blog/_topics.mjs';
 import { generatePostObject } from '../scripts/lib/ai-writer.mjs';
 import { serializePost } from '../scripts/lib/post-file.mjs';
-import { blogSlugsOnGithub, createPostPR } from '../scripts/lib/github.mjs';
+import { blogSlugsOnGithub, commitPostDirect } from '../scripts/lib/github.mjs';
 
 dotenv.config();
 
@@ -130,14 +130,13 @@ app.get('/api/cron/generate-blog', async (req, res) => {
         post.date = new Date().toISOString().slice(0, 10);
         post.updated = post.date;
 
-        const url = await createPostPR({
-            token, owner, repo, base,
+        const url = await commitPostDirect({
+            token, owner, repo, branch: base,
             slug: post.slug,
             fileContent: serializePost(post),
-            title: `Nieuw blogartikel: ${post.title}`,
         });
 
-        return res.json({ status: 'ok', slug: post.slug, pr: url });
+        return res.json({ status: 'ok', slug: post.slug, commit: url });
     } catch (e) {
         console.error('Auto-blog cron error:', e);
         return res.status(500).json({ error: e.message });
