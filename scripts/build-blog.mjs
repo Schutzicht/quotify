@@ -141,6 +141,7 @@ const headTags = ({ title, description, canonical, image, jsonld, ogType = 'arti
   <link rel="icon" type="image/svg+xml" href="/logo.svg">
   <link rel="apple-touch-icon" href="/icon-180.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Offertje kennisbank" href="/blog/feed.xml">
   <link rel="stylesheet" href="/blog/assets/blog.css">
   <script defer src="/analytics.js"></script>
   ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n  ')}`;
@@ -689,6 +690,30 @@ const buildLlms = (posts, cats) => {
     return out;
 };
 
+/* RSS 2.0 feed (helps discovery via feed readers + WebSub). */
+const buildRss = (posts) => {
+    const items = posts.slice(0, 40).map((p) => `    <item>
+      <title>${esc(p.title)}</title>
+      <link>${SITE.url}/blog/${p.slug}/</link>
+      <guid isPermaLink="true">${SITE.url}/blog/${p.slug}/</guid>
+      <pubDate>${new Date((p.updated || p.date) + 'T09:00:00Z').toUTCString()}</pubDate>
+      <category>${esc(p.category)}</category>
+      <description>${esc(p.excerpt)}</description>
+    </item>`).join('\n');
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Offertje kennisbank</title>
+    <link>${SITE.url}/blog/</link>
+    <atom:link href="${SITE.url}/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Gidsen, voorbeelden en kostenindicaties over offertes maken.</description>
+    <language>nl-nl</language>
+${items}
+  </channel>
+</rss>
+`;
+};
+
 /* ---------------- run ---------------- */
 
 const run = async () => {
@@ -746,6 +771,7 @@ const run = async () => {
     writeFileSync(join(ROOT, 'public', 'sitemap.xml'), buildSitemap(posts));
     writeFileSync(join(ROOT, 'public', 'robots.txt'), ROBOTS);
     writeFileSync(join(ROOT, 'public', 'llms.txt'), buildLlms(posts, cats));
+    writeFileSync(join(OUT_DIR, 'feed.xml'), buildRss(posts));
 
     console.log(`Generated ${posts.length} posts + ${cats.length} category pages + hub + sitemap + llms.txt.`);
     posts.forEach((p) => console.log(`  /blog/${p.slug}/  (${p.category})`));

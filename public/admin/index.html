@@ -189,6 +189,21 @@
                 <div class="toast" id="runToast"></div>
             </div>
 
+            <div class="card">
+                <h3>Versnel indexering</h3>
+                <div class="run-row">
+                    <button class="btn btn-ghost" id="pingBtn">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16" /><circle cx="5" cy="19" r="1" />
+                        </svg>
+                        Meld alle pagina's aan bij zoekmachines
+                    </button>
+                    <span class="note">Stuurt al je URL's naar IndexNow (Bing/Yandex) en Google. Doe dit na een grote update.</span>
+                </div>
+                <div class="toast" id="pingToast"></div>
+            </div>
+
             <div class="section-title">Recente automatische artikelen</div>
             <div class="card">
                 <ul class="recent-list" id="recentList">
@@ -336,6 +351,27 @@
             btn.disabled = false;
             btn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg> Genereer nu';
             setTimeout(loadStatus, 2500);
+        });
+
+        $('pingBtn').addEventListener('click', async () => {
+            const btn = $('pingBtn'), toast = $('pingToast');
+            btn.disabled = true; const orig = btn.innerHTML; btn.innerHTML = 'Bezig met aanmelden...';
+            toast.className = 'toast'; toast.textContent = '';
+            try {
+                const res = await api('/api/admin/ping-all', { method: 'POST', body: '{}' });
+                const data = await res.json();
+                if (res.ok && data.ok) {
+                    toast.className = 'toast ok';
+                    toast.innerHTML = `${data.count} URL's aangemeld bij IndexNow (Bing/Yandex)` + (data.google ? ` en Google (${data.google.submitted || 0} ok)` : '') + '. Indexering volgt meestal binnen enkele uren.';
+                } else {
+                    toast.className = 'toast bad';
+                    toast.textContent = 'Fout: ' + (data.error || 'onbekend');
+                }
+            } catch (err) {
+                toast.className = 'toast bad';
+                toast.textContent = 'Fout bij aanmelden. Probeer opnieuw.';
+            }
+            btn.disabled = false; btn.innerHTML = orig;
         });
 
         async function boot() {

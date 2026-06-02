@@ -7,6 +7,7 @@
         "dev": "vite",
         "blog": "node scripts/build-blog.mjs",
         "blog:new": "node scripts/generate-post.mjs",
+        "ping": "node scripts/ping-search.mjs",
         "build": "node scripts/build-blog.mjs && vite build",
         "preview": "vite preview"
     },

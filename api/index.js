@@ -10,8 +10,22 @@ import autoTopics from '../content/blog/_topics.mjs';
 import { generatePostObject } from '../scripts/lib/ai-writer.mjs';
 import { serializePost } from '../scripts/lib/post-file.mjs';
 import { blogSlugsOnGithub, commitPostDirect, recentBlogCommits } from '../scripts/lib/github.mjs';
+import { indexNowSubmit } from '../scripts/lib/indexnow.mjs';
 
 dotenv.config();
+
+const SITE_URL = 'https://offertje.nl';
+
+// Notify search engines about new/updated URLs (fire and forget).
+async function pingSearchEngines(urls) {
+    try { await indexNowSubmit(urls); } catch { /* ignore */ }
+    if (process.env.GOOGLE_SA_KEY) {
+        try {
+            const { googleIndexSubmit } = await import('../scripts/lib/google-index.mjs');
+            await googleIndexSubmit(urls);
+        } catch { /* ignore */ }
+    }
+}
 
 const app = express();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
@@ -125,6 +139,8 @@ async function generateAndPublishNext() {
     const commit = await commitPostDirect({
         token, owner, repo, branch: base, slug: post.slug, fileContent: serializePost(post),
     });
+    // Tell search engines about the new article right away.
+    await pingSearchEngines([`${SITE_URL}/blog/${post.slug}/`, `${SITE_URL}/sitemap.xml`, `${SITE_URL}/blog/`]);
     return { status: 'ok', slug: post.slug, title: post.title, commit };
 }
 
@@ -200,6 +216,24 @@ app.post('/api/admin/run', async (req, res) => {
     if (!adminOk(req)) return res.status(401).json({ error: 'unauthorized' });
     try {
         return res.json(await generateAndPublishNext());
+    } catch (e) {
+        return res.status(500).json({ error: e.message });
+    }
+});
+
+// Submit every URL (from the live sitemap) to IndexNow + Google Indexing API.
+app.post('/api/admin/ping-all', async (req, res) => {
+    if (!adminOk(req)) return res.status(401).json({ error: 'unauthorized' });
+    try {
+        const xml = await (await fetch(`${SITE_URL}/sitemap.xml`)).text();
+        const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+        const inx = await indexNowSubmit(urls);
+        let google = null;
+        if (process.env.GOOGLE_SA_KEY) {
+            const { googleIndexSubmit } = await import('../scripts/lib/google-index.mjs');
+            google = await googleIndexSubmit(urls);
+        }
+        return res.json({ ok: true, count: urls.length, indexnow: inx, google });
     } catch (e) {
         return res.status(500).json({ error: e.message });
     }
