@@ -5,6 +5,12 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+// Auto-blog engine (static imports so Vercel bundles them with the function)
+import autoTopics from '../content/blog/_topics.mjs';
+import { generatePostObject } from '../scripts/lib/ai-writer.mjs';
+import { serializePost } from '../scripts/lib/post-file.mjs';
+import { blogSlugsOnGithub, createPostPR } from '../scripts/lib/github.mjs';
+
 dotenv.config();
 
 const app = express();
@@ -92,6 +98,50 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), (req
     }
 
     res.send();
+});
+
+// 3. Auto-blog cron: generate the next queued post and open a pull request.
+//    Scheduled in vercel.json. Needs env: GROQ_API_KEY, GITHUB_TOKEN
+//    (optional: GITHUB_OWNER, GITHUB_REPO, GITHUB_BASE, CRON_SECRET).
+app.get('/api/cron/generate-blog', async (req, res) => {
+    // Optional shared secret. Vercel Cron sends "Authorization: Bearer <CRON_SECRET>".
+    if (process.env.CRON_SECRET) {
+        if ((req.headers.authorization || '') !== `Bearer ${process.env.CRON_SECRET}`) {
+            return res.status(401).json({ error: 'unauthorized' });
+        }
+    }
+
+    const token = process.env.GITHUB_TOKEN;
+    const groqKey = process.env.GROQ_API_KEY;
+    const owner = process.env.GITHUB_OWNER || 'Schutzicht';
+    const repo = process.env.GITHUB_REPO || 'quotify';
+    const base = process.env.GITHUB_BASE || 'main';
+
+    if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN ontbreekt' });
+    if (!groqKey) return res.status(500).json({ error: 'GROQ_API_KEY ontbreekt' });
+
+    try {
+        // Source of truth for "what already exists" is the repo itself.
+        const taken = await blogSlugsOnGithub(token, owner, repo);
+        const topic = autoTopics.find((t) => t && t.slug && !taken.has(t.slug));
+        if (!topic) return res.json({ status: 'leeg', message: 'Geen onderwerpen meer in de wachtrij.' });
+
+        const post = await generatePostObject(topic, { apiKey: groqKey, slugList: [...taken] });
+        post.date = new Date().toISOString().slice(0, 10);
+        post.updated = post.date;
+
+        const url = await createPostPR({
+            token, owner, repo, base,
+            slug: post.slug,
+            fileContent: serializePost(post),
+            title: `Nieuw blogartikel: ${post.title}`,
+        });
+
+        return res.json({ status: 'ok', slug: post.slug, pr: url });
+    } catch (e) {
+        console.error('Auto-blog cron error:', e);
+        return res.status(500).json({ error: e.message });
+    }
 });
 
 // Export the app for Vercel Serverless

@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "vite",
         "blog": "node scripts/build-blog.mjs",
+        "blog:new": "node scripts/generate-post.mjs",
         "build": "node scripts/build-blog.mjs && vite build",
         "preview": "vite preview"
     },
