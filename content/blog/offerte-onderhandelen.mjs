@@ -1,0 +1,127 @@
+export default {
+    slug: 'offerte-onderhandelen',
+    title: 'Onderhandelen over je offerte: zo houd je je marge',
+    metaTitle: 'Onderhandelen over offerte: marge houden | Offertje',
+    metaDescription:
+        'Onderhandelen over je offerte zonder je marge weg te geven? Lees hoe je kortingsverzoeken ombuigt en met scope schuift in plaats van met je prijs.',
+    category: 'Verkoop & opvolging',
+    keyword: 'onderhandelen over offerte',
+    date: '2026-03-18',
+    updated: '2026-06-02',
+    readingTime: 10,
+    excerpt:
+        'Een klant vraagt om korting op je offerte. Zo onderhandel je zonder je marge weg te geven: schuif met scope in plaats van prijs, onderbouw je nee en weet wanneer je beter wegloopt.',
+    bodyHtml: `
+<p>Onderhandelen over een offerte doe je het beste door niet op de prijs te zakken, maar te schuiven met de inhoud. Vraagt een klant om korting, geef dan een tegenvoorstel waarbij een lagere prijs gepaard gaat met minder werk of soberder materiaal, zodat je uurtarief en je marge intact blijven. Een directe korting zonder iets terug te vragen verlaagt namelijk niet alleen deze opdracht, maar ook de prijs die de klant de volgende keer verwacht.</p>
+
+<p>Vroeg of laat krijgt elke ondernemer het: een klant die jouw offerte heeft gelezen, knikt en dan zegt dat het net iets te duur is. Of die meteen vraagt of er nog wat van de prijs af kan. Dat is geen afwijzing, het is een uitnodiging om in gesprek te gaan. In dit artikel lees je hoe je dat gesprek voert zonder je marge weg te geven, hoe je een kortingsverzoek ombuigt en wanneer je beter beleefd nee zegt.</p>
+
+<div class="key-takeaways">
+  <strong>In het kort</strong>
+  <ul>
+    <li>Zak nooit zomaar op je prijs. Schuif met scope, materiaal of planning in ruil voor een lager bedrag.</li>
+    <li>Een korting weggeven verlaagt je marge en je toekomstige onderhandelingspositie tegelijk.</li>
+    <li>Een goed onderbouwde offerte met heldere regels geeft je veel minder aanleiding tot onderhandelen.</li>
+    <li>Bereken vooraf je bodemprijs, zodat je in het gesprek precies weet waar je stopt.</li>
+    <li>Soms is weglopen de beste deal. Niet elke klant past bij jouw tarief.</li>
+  </ul>
+</div>
+
+<h2 id="waarom-onderhandelen-klanten">Waarom onderhandelen klanten over een offerte?</h2>
+<p>Onderhandelen hoort bij zakendoen, en bij sommige klanten ook gewoon bij de cultuur. Het betekent zelden dat ze je werk niet waarderen. Vaak willen ze het gevoel hebben een goede deal te sluiten, of ze hebben een budget dat krapper zit dan jouw offerte. Soms toetsen ze simpelweg of je prijs vaststaat of dat er ruimte in zit. Hoe je daarop reageert, bepaalt of je de opdracht binnenhaalt tegen een gezonde prijs of dat je jezelf tekortdoet.</p>
+<p>Het helpt om te beseffen dat een vraag om korting bijna nooit een hard nee is. De klant wil je inhuren, anders nam hij niet de moeite om te onderhandelen. Dat geeft je een sterkere positie dan je denkt. De kunst is om die ruimte te benutten zonder je tarief uit te hollen. Begint het al bij een vage of onduidelijke offerte, dan nodig je onbewust uit tot pingelen. Een scherpe, navolgbare offerte voorkomt dat de helft van de gesprekken over de prijs gaat. In onze <a href="/blog/professionele-offerte-tips/">tips voor een professionele offerte</a> lees je hoe je dat document strak krijgt.</p>
+
+<h2 id="schuif-met-scope-niet-met-prijs">Schuif met scope, niet met prijs</h2>
+<p>De belangrijkste regel bij onderhandelen: koppel elke prijsverlaging aan iets dat de klant inlevert. Verlaag je het bedrag zonder tegenprestatie, dan zeg je eigenlijk dat je eerste prijs te hoog was. Dat ondermijnt je geloofwaardigheid en je marge. Geef je in ruil voor de lagere prijs ook minder werk, dan blijft je uurtarief overeind en houdt de klant het gevoel dat hij iets heeft bereikt.</p>
+<p>Praktische manieren om met scope te schuiven in plaats van met je tarief:</p>
+<ul>
+  <li>Haal een onderdeel uit de opdracht en laat de klant dat zelf regelen of later bijbestellen.</li>
+  <li>Bied een soberder materiaal of een instapvariant aan tegen een lagere prijs.</li>
+  <li>Verleng de doorlooptijd, zodat je het werk tussen drukkere klussen door kunt plannen.</li>
+  <li>Vraag een snellere of volledige betaling vooraf in ruil voor een kleine korting.</li>
+  <li>Bied een meerjarige of vervolgafspraak aan, zodat de lagere prijs over meer werk wordt verdeeld.</li>
+</ul>
+<p>Zo blijft het een onderhandeling waarin beide partijen iets geven, in plaats van een eenzijdige korting. Werk je met losse posten en stelposten, dan zie je samen met de klant precies welke regel eruit kan. Hoe je een offerte zo opbouwt dat zulke posten makkelijk te verschuiven zijn, lees je in onze gids over <a href="/blog/offerte-maken/">een offerte maken</a>.</p>
+
+<div class="callout">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <p>Elke euro korting die je weggeeft zonder iets terug te vragen, komt rechtstreeks uit je winst. Bij een marge van 20 procent moet je vijf keer zoveel omzet draaien om diezelfde euro terug te verdienen.</p>
+</div>
+
+<h2 id="hoe-reageer-je-op-een-kortingsverzoek">Hoe reageer je op een kortingsverzoek?</h2>
+<p>Het ergste wat je kunt doen, is meteen in de verdediging schieten of juist direct toegeven. Reageer rustig en nieuwsgierig. Vraag eerst waar de vraag vandaan komt. Zit het budget krap, vergelijkt de klant met een goedkopere aanbieder, of valt de prijs gewoon tegen? Het antwoord bepaalt je volgende zet. Een paar zinnen die werken in het gesprek:</p>
+<ul>
+  <li>Ik begrijp dat u kritisch naar het budget kijkt. Mag ik vragen welk bedrag u in gedachten had?</li>
+  <li>De prijs hangt samen met wat ik lever. Als we ergens op willen besparen, laat ik u graag zien welke onderdelen we soberder kunnen uitvoeren.</li>
+  <li>Mijn tarief ligt vast, maar in de omvang van de opdracht kunnen we wel schuiven. Zal ik een lichtere variant voor u uitwerken?</li>
+</ul>
+<p>Door de bal terug te leggen, kom je erachter wat de klant echt nodig heeft. Misschien wil hij helemaal geen lagere prijs, maar gewoon zekerheid dat hij niet te veel betaalt. Die zekerheid geef je met een heldere onderbouwing, niet met een korting. Vergelijkt de klant met een concurrent, leg dan uit wat jij extra biedt: garantie, ervaring, service na oplevering. Wie de waarde benadrukt in plaats van het getal, houdt de regie. Veel van wat hier helpt, voorkomt ook gewoon dat een offerte sneuvelt; daarover lees je meer in <a href="/blog/offerte-afwijzing-voorkomen/">offerte afwijzing voorkomen</a>.</p>
+
+{{CTA:Een offerte die minder vragen oproept|Met Offertje zet je in minuten een heldere offerte op papier met losse posten en kloppende totalen. Hoe duidelijker je aanbod, hoe minder er valt af te dingen.}}
+
+<h2 id="wat-kost-een-korting-jou-echt">Wat kost een korting jou echt?</h2>
+<p>Een korting van tien procent klinkt onschuldig, maar op je winst hakt hij er flink in. Omdat je kosten gelijk blijven, gaat de hele korting van je marge af. Onderstaande tabel laat zien hoeveel marge je overhoudt bij een opdracht van &euro; 5.000,00 met verschillende kortingen, bij een inkoop- of kostprijs van &euro; 3.500,00.</p>
+<table>
+  <thead>
+    <tr><th>Korting</th><th>Verkoopprijs</th><th>Kostprijs</th><th>Winst</th><th>Winst t.o.v. geen korting</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0%</td><td>&euro; 5.000,00</td><td>&euro; 3.500,00</td><td>&euro; 1.500,00</td><td>100%</td></tr>
+    <tr><td>5%</td><td>&euro; 4.750,00</td><td>&euro; 3.500,00</td><td>&euro; 1.250,00</td><td>83%</td></tr>
+    <tr><td>10%</td><td>&euro; 4.500,00</td><td>&euro; 3.500,00</td><td>&euro; 1.000,00</td><td>67%</td></tr>
+    <tr><td>15%</td><td>&euro; 4.250,00</td><td>&euro; 3.500,00</td><td>&euro; 750,00</td><td>50%</td></tr>
+  </tbody>
+</table>
+<p>De cijfers zijn illustratief, maar het patroon klopt altijd: een korting van 15 procent op de prijs kan je halve winst kosten. Daarom is het zo belangrijk om bij elke prijsverlaging ook je kosten te verlagen, door minder te leveren. Wie zijn <a href="/blog/uurtarief-berekenen-zzp/">uurtarief goed berekent</a>, weet precies hoeveel ruimte er werkelijk in een opdracht zit en geeft niet per ongeluk zijn hele winst weg.</p>
+
+<h2 id="bepaal-vooraf-je-bodemprijs">Bepaal vooraf je bodemprijs</h2>
+<p>Ga nooit een onderhandeling in zonder te weten waar je stopt. Bepaal vooraf je bodemprijs: het laagste bedrag waarvoor je de opdracht nog met een gezond gevoel aanneemt. Onder die grens lever je verlies of werk je voor een tarief dat je op termijn de das omdoet. Weet je je bodem, dan onderhandel je vanuit rust in plaats van vanuit angst om de klant kwijt te raken.</p>
+<p>Reken voor jezelf drie bedragen uit voordat je het gesprek ingaat:</p>
+<table>
+  <thead>
+    <tr><th>Bedrag</th><th>Wat het is</th><th>Hoe je het gebruikt</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Vraagprijs</td><td>De prijs in je offerte, met een nette marge</td><td>Je startpunt en je voorkeur</td></tr>
+    <tr><td>Streefprijs</td><td>Het bedrag waar je tevreden mee landt</td><td>Je realistische doel in de onderhandeling</td></tr>
+    <tr><td>Bodemprijs</td><td>Het laagste bedrag dat nog rendeert</td><td>Je grens. Hieronder loop je weg of schrap je werk</td></tr>
+  </tbody>
+</table>
+<p>Door je vraagprijs net boven je streefprijs te zetten, geef je jezelf onderhandelingsruimte zonder dat je verliest. Geef je iets weg, dan land je nog steeds op een prijs waar je blij mee bent. Belangrijk: laat in je eerste offerte altijd een nette, eerlijke prijs zien en geen kunstmatig opgeblazen bedrag. Een te hoge startprijs die je vervolgens flink laat zakken, voelt voor de klant als ondervragen en schaadt je vertrouwen. Hoe je tot een prijs komt die je goed kunt onderbouwen, lees je in onze gids over <a href="/blog/offerte-maken/">de offerte maken</a>.</p>
+
+<h2 id="wanneer-zeg-je-nee">Wanneer zeg je nee tegen onderhandelen?</h2>
+<p>Niet elke onderhandeling is het waard. Soms is de beste deal de deal die je niet sluit. Loopt een klant je bodemprijs voorbij, blijft hij afdingen nadat je al hebt meebewogen, of voel je dat hij ook tijdens de opdracht over elke factuur gaat steggelen, dan is beleefd weglopen vaak verstandiger dan een opdracht binnenhalen die je geld of plezier kost.</p>
+<p>Zeg in die gevallen nee zonder de deur dicht te gooien. Iets als: ik begrijp dat dit budget voor u belangrijk is, maar voor deze prijs kan ik de kwaliteit die ik garandeer niet waarmaken. Mocht uw budget later ruimer zijn, dan help ik u graag. Daarmee blijf je professioneel en houd je de relatie warm voor een volgende kans. Een nette nee is geen verloren klant, het is een bewuste keuze voor je eigen rendement.</p>
+<p>Let ook op signalen dat een klant structureel te veel vraagt. Wie nog voor de start van het werk al op alle slakken zout legt, doet dat tijdens het project vaak ook. Dan is een goede <a href="/blog/algemene-voorwaarden-offerte/">set algemene voorwaarden bij je offerte</a> en een duidelijke afspraak over <a href="/blog/meerwerk-en-offerte/">meerwerk</a> minstens zo belangrijk als de prijs zelf.</p>
+
+<h2 id="leg-de-nieuwe-afspraak-vast">Leg de nieuwe afspraak altijd vast</h2>
+<p>Heb je samen een prijs of een aangepaste scope afgesproken, leg dat dan meteen schriftelijk vast in een herziene offerte. Een mondelinge korting of een belofte in een appje leidt later tot ruis: welke onderdelen vielen er ook alweer af, en wat was de afgesproken prijs? Stuur een nieuwe versie met de aangepaste regels en het nieuwe totaal, zodat beide partijen precies weten waar ze aan toe zijn.</p>
+<p>Dat hoeft geen gedoe te zijn. Pas de posten aan, herbereken het totaal met de juiste BTW en stuur een verse PDF. Met een tool die de regels en totalen automatisch bijwerkt, heb je de herziene offerte in een paar minuten klaar, zonder rekenfouten. <a href="/app">Maak je aangepaste offerte met Offertje</a> en zet een nette nieuwe versie op tafel die de afspraak zwart op wit bevestigt.</p>
+
+<h2 id="samenvatting">Samengevat</h2>
+<p>Onderhandelen over je offerte hoeft je geen geld te kosten. Schuif met scope, materiaal of planning in plaats van met je prijs, onderbouw je waarde, ken je bodemprijs en durf nee te zeggen tegen klanten die er structureel onderdoor willen. Begin bij een heldere, professionele offerte, dan voer je het gesprek vanuit kracht en houd je je marge waar die hoort.</p>
+`,
+    faq: [
+        {
+            q: 'Hoe onderhandel je over een offerte zonder je marge weg te geven?',
+            a: 'Door niet op je prijs te zakken maar met de inhoud te schuiven. Bied een lagere prijs aan in ruil voor minder werk, soberder materiaal of een langere planning. Zo blijft je uurtarief overeind en heeft de klant toch het gevoel dat hij iets heeft bereikt. Zie ook onze <a href="/blog/professionele-offerte-tips/">tips voor een professionele offerte</a>.',
+        },
+        {
+            q: 'Moet ik korting geven als een klant erom vraagt?',
+            a: 'Niet zomaar. Een korting zonder tegenprestatie verlaagt je winst en de prijs die de klant de volgende keer verwacht. Vraag waar het verzoek vandaan komt en koppel elke prijsverlaging aan iets dat de klant inlevert, bijvoorbeeld een onderdeel dat uit de opdracht gaat of betaling vooraf.',
+        },
+        {
+            q: 'Wat is een bodemprijs en waarom heb ik die nodig?',
+            a: 'Je bodemprijs is het laagste bedrag waarvoor je een opdracht nog met een gezond rendement aanneemt. Reken die vooraf uit, samen met een vraagprijs en een streefprijs. Zo weet je in het gesprek precies waar je stopt en onderhandel je vanuit rust in plaats van vanuit angst om de klant te verliezen.',
+        },
+        {
+            q: 'Wanneer kan ik beter nee zeggen tegen een kortingsverzoek?',
+            a: 'Als de klant onder je bodemprijs duikt, blijft afdingen nadat je al hebt meebewogen, of laat merken dat hij over elke factuur zal steggelen. Zeg dan beleefd nee zonder de deur te sluiten, zodat je de relatie warmhoudt voor een opdracht waar het budget wel klopt.',
+        },
+        {
+            q: 'Hoe leg ik een afgesproken korting goed vast?',
+            a: 'Stuur altijd een herziene offerte met de aangepaste posten, het nieuwe totaal en de juiste BTW, in plaats van een mondelinge afspraak of een belofte per app. Met een offerte-tool werk je de regels en totalen automatisch bij en heb je in een paar minuten een nette nieuwe PDF klaar. Begin eventueel bij onze gids over <a href="/blog/offerte-maken/">een offerte maken</a>.',
+        },
+    ],
+    related: ['offerte-afwijzing-voorkomen', 'professionele-offerte-tips', 'offerte-maken'],
+};

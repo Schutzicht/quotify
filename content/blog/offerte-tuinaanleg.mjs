@@ -1,0 +1,132 @@
+export default {
+    slug: 'offerte-tuinaanleg',
+    title: 'Offerte tuinaanleg: zo specificeer je een complete tuin',
+    metaTitle: 'Offerte tuinaanleg maken | Offertje',
+    metaDescription:
+        'Offerte tuinaanleg opstellen of beoordelen? Leer hoe je ontwerp, grondwerk, bestrating, beplanting en verlichting specificeert, met een volledig voorbeeld.',
+    category: 'Branche',
+    keyword: 'offerte tuinaanleg',
+    date: '2026-03-21',
+    updated: '2026-06-02',
+    readingTime: 10,
+    excerpt:
+        'Hoe stel je een duidelijke offerte voor complete tuinaanleg op, of hoe lees je er een? Van ontwerp en grondwerk tot bestrating, beplanting, verlichting en drainage, met een volledig uitgewerkt voorbeeld en BTW.',
+    bodyHtml: `
+<p>Een offerte voor tuinaanleg hoort elk onderdeel apart te tonen: ontwerp, grondwerk, bestrating, beplanting en eventueel verlichting of drainage, telkens met aantal, eenheid, prijs per eenheid en BTW. Onderaan staan subtotaal, BTW (meestal 21%) en het totaalbedrag inclusief, plus de geldigheidsduur en wat wel en niet is inbegrepen. Zo zie je als klant precies waar het geld heen gaat en kun je als hovenier de offerte makkelijker akkoord krijgen.</p>
+
+<div class="key-takeaways">
+  <strong>In het kort</strong>
+  <ul>
+    <li>Splits een tuinaanleg-offerte per onderdeel: ontwerp, grondwerk, bestrating, beplanting, verlichting en water of drainage.</li>
+    <li>Gebruik passende eenheden: m2 voor bestrating en grondwerk, m1 voor haag en schutting, stuks voor planten en armaturen, m3 voor afvoer, uur voor arbeid.</li>
+    <li>Benoem afvoer van grond en puin altijd expliciet, want dat is de meest voorkomende verrassing op de eindfactuur.</li>
+    <li>Werk met stelposten voor onderdelen die nog niet vaststaan, en spreek af hoe je met meerwerk omgaat.</li>
+    <li>Geef de offerte een duidelijke geldigheidsduur en sluit af met subtotaal, BTW en totaal inclusief.</li>
+  </ul>
+</div>
+
+<h2 id="waarom-specificeren">Waarom een tuinaanleg-offerte per onderdeel hoort</h2>
+<p>Een complete tuin aanleggen combineert grof grondwerk, fijn handwerk, levende beplanting en soms techniek zoals verlichting of beregening. Elk van die onderdelen heeft een eigen eenheid en prijs, en samen vormen ze vaak een investering van enkele duizenden euro&apos;s. Geef je de klant alleen een totaalbedrag, dan kan die niet beoordelen of de bestrating, de planten of het grondwerk de grote kostenpost is. Specificeer je per onderdeel, dan kan de klant gericht kiezen: een goedkopere tegel, minder planten, of de verlichting een seizoen later. Dat geeft de klant regie en jou een voorstel dat sneller wordt getekend. Wil je eerst de algemene opbouw doornemen, lees dan <a href="/blog/offerte-maken/">hoe je een offerte maakt</a>.</p>
+
+<h2 id="onderdelen">Welke onderdelen horen in een offerte voor tuinaanleg?</h2>
+<p>Een goede tuinaanleg-offerte loopt logisch van voorbereiding naar afwerking. Hieronder de onderdelen die je doorgaans tegenkomt, met de eenheid die er het beste bij past.</p>
+<h3>Tuinontwerp en uittekening</h3>
+<p>Begint het project met een ontwerp of beplantingsplan, neem dat dan als aparte post op. Het is werk met waarde en het is eerlijk om dat zichtbaar te beprijzen, als vast bedrag of in uren. Sommige hoveniers verrekenen de ontwerpkosten als de klant ook de aanleg afneemt; spreek dat dan duidelijk af in de offerte.</p>
+<h3>Grondwerk en afvoer</h3>
+<p>Voor er iets moois komt, moet er vaak iets weg. Uitgraven, oude bestrating verwijderen, grond afvoeren, egaliseren en een fundering van zand of menggranulaat aanbrengen. Reken dit per m2 of in uren, en de afvoer van grond en puin per m3 of per container. Stortkosten en machinehuur zijn posten die je beter expliciet benoemt dan dat de klant ze achteraf ontdekt.</p>
+<h3>Bestrating en verharding</h3>
+<p>Een terras, pad of oprit reken je per m2, inclusief leggen, of met arbeid en materiaal apart. Vermeld het type, want keramiek, beton, gebakken klinkers en natuursteen verschillen sterk in prijs. Geef ook aan of opsluitbanden, een straatlaag en het invegen erbij zitten.</p>
+<h3>Beplanting en gazon</h3>
+<p>Planten, hagen, bomen en gras reken je per stuk of per m2, plus de arbeid en grondverbetering. Een haag reken je per strekkende meter, gazon per m2 of als kant-en-klare graszode. Beplanting leeft, dus spreek iets af over aanslag en een beperkte garantie op aangroei.</p>
+<h3>Verlichting, water en drainage</h3>
+<p>Tuinverlichting reken je per armatuur plus de aanleg van kabels en een trafo. Beregening, een vijver of drainage hebben elk hun eigen posten. Deze techniek vergeet men nog weleens in een eerste offerte, terwijl het juist het verschil maakt tussen een nette en een afgewerkte tuin. Zet het apart zodat de klant kan kiezen.</p>
+<h3>Constructies: schutting, vlonder, pergola</h3>
+<p>Een schutting reken je per strekkende meter of per paneel plus palen per stuk. Een vlonder reken je per m2 inclusief onderconstructie. Vermeld de houtsoort en of het geimpregneerd of hardhout is, want dat bepaalt levensduur en prijs. Voor enkel het bestratingsdeel kun je ook losser kijken naar een <a href="/blog/offerte-stratenmaker/">offerte van een stratenmaker</a>; voor het groene werk en onderhoud sluit een <a href="/blog/offerte-hovenier/">offerte van een hovenier</a> beter aan.</p>
+
+<div class="callout">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <p>Zet bij grondwerk altijd of het afvoeren van grond en puin in de prijs zit, en in welke hoeveelheid. Onverwachte afvoerkosten zijn de meest voorkomende bron van onenigheid bij tuinprojecten.</p>
+</div>
+
+<h2 id="voorbeeldtabel">Offerte voorbeeld tuinaanleg: achtertuin van 80 m2</h2>
+<p>Hieronder een volledig uitgewerkt offerte voorbeeld voor de complete aanleg van een achtertuin. De bedragen zijn illustratief en dienen als model voor de opbouw, niet als prijslijst; werkelijke prijzen verschillen per regio, materiaalkeuze en bereikbaarheid van de tuin. Let op de mix van eenheden: m2, m1, m3, stuks, uur en een vaste post voor het ontwerp.</p>
+<table>
+  <thead>
+    <tr><th>Omschrijving</th><th>Aantal</th><th>Eenheid</th><th>Prijs p/e</th><th>Totaal</th><th>BTW</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Tuinontwerp en beplantingsplan</td><td>1</td><td>post</td><td>&euro; 550,00</td><td>&euro; 550,00</td><td>21%</td></tr>
+    <tr><td>Grondwerk: uitgraven en egaliseren</td><td>80</td><td>m2</td><td>&euro; 16,00</td><td>&euro; 1.280,00</td><td>21%</td></tr>
+    <tr><td>Afvoer grond en puin inclusief container</td><td>12</td><td>m3</td><td>&euro; 45,00</td><td>&euro; 540,00</td><td>21%</td></tr>
+    <tr><td>Keramische terrastegels inclusief leggen</td><td>30</td><td>m2</td><td>&euro; 115,00</td><td>&euro; 3.450,00</td><td>21%</td></tr>
+    <tr><td>Gebakken klinkers pad inclusief straatlaag</td><td>14</td><td>m2</td><td>&euro; 72,00</td><td>&euro; 1.008,00</td><td>21%</td></tr>
+    <tr><td>Beukenhaag inclusief planten en grondverbetering</td><td>16</td><td>m1</td><td>&euro; 38,00</td><td>&euro; 608,00</td><td>21%</td></tr>
+    <tr><td>Vaste planten, heesters en siergrassen</td><td>55</td><td>stuks</td><td>&euro; 9,50</td><td>&euro; 522,50</td><td>21%</td></tr>
+    <tr><td>Graszoden inclusief aanbrengen</td><td>25</td><td>m2</td><td>&euro; 14,00</td><td>&euro; 350,00</td><td>21%</td></tr>
+    <tr><td>Tuinverlichting LED inclusief bekabeling en trafo</td><td>8</td><td>stuks</td><td>&euro; 95,00</td><td>&euro; 760,00</td><td>21%</td></tr>
+    <tr><td>Schutting geimpregneerd hout inclusief palen</td><td>14</td><td>m1</td><td>&euro; 78,00</td><td>&euro; 1.092,00</td><td>21%</td></tr>
+    <tr><td>Arbeid aanleg, montage en afwerking</td><td>20</td><td>uur</td><td>&euro; 48,00</td><td>&euro; 960,00</td><td>21%</td></tr>
+  </tbody>
+</table>
+<p>De afsluiting van de offerte bouw je op met een duidelijk subtotaal, de BTW apart en het totaal inclusief:</p>
+<table>
+  <thead>
+    <tr><th>Omschrijving</th><th>Bedrag</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Subtotaal (excl. BTW)</td><td>&euro; 11.120,50</td></tr>
+    <tr><td>BTW 21%</td><td>&euro; 2.335,31</td></tr>
+    <tr><td><strong>Totaal (incl. BTW)</strong></td><td><strong>&euro; 13.455,81</strong></td></tr>
+  </tbody>
+</table>
+
+{{CTA:Een tuinaanleg-offerte die elk onderdeel laat zien|Met Offertje zet je ontwerp, grondwerk, bestrating, beplanting, verlichting en constructies als losse regels neer met de juiste eenheid, en de tool rekent subtotaal, BTW en totaal automatisch uit als nette PDF.}}
+
+<h2 id="stelposten">Wanneer gebruik je een stelpost of richtprijs?</h2>
+<p>Bij tuinaanleg staat niet alles vooraf vast. De klant twijfelt nog over de tegel, het exacte aantal planten of de afmeting van het terras. In plaats van te gokken neem je dan een stelpost op: een vooraf afgesproken richtbedrag dat je later op basis van de werkelijke keuze of hoeveelheid verrekent. Vermeld duidelijk dat het een stelpost is en hoe je afrekent, bijvoorbeeld op basis van werkelijk geleverde m2 bestrating. Zo houdt de offerte een realistisch totaal en weet de klant dat dit deel nog kan bewegen. Werk je met een vaste aanneemsom voor de rest, leg dan helder vast welke onderdelen wel vast zijn en welke een stelpost of richtprijs hebben.</p>
+<p>Geef de offerte ook altijd een geldigheidsduur, bijvoorbeeld 30 dagen. Plantmateriaal, hout en bestrating schommelen in prijs, en met een geldigheidstermijn voorkom je dat een klant na een half jaar nog op een oud bedrag terugkomt.</p>
+
+<h2 id="meerwerk">Hoe ga je om met onverwacht grondwerk en meerwerk?</h2>
+<p>Bij grondwerk kom je geregeld iets tegen dat vooraf niet zichtbaar was: een oude fundering onder de grond, kabels of leidingen, een drassige bodem die extra drainage vraagt, of meer puin dan ingeschat. Dat is meerwerk. Spreek in de offerte af hoe je daarmee omgaat: dat je het meldt voor je het uitvoert, tegen welk uurtarief, en pas na akkoord van de klant. Zo voorkom je een onverwacht hoger eindbedrag en discussie achteraf. De afspraken hierover lees je uitgebreider bij <a href="/blog/meerwerk-en-offerte/">meerwerk en de offerte</a>. Voor de klant is dit ook geruststellend: het laat zien dat je niet ongevraagd kosten maakt.</p>
+
+<h2 id="particulier-of-zakelijk">Particulier of zakelijk: prijzen incl of excl BTW?</h2>
+<p>De meeste tuinaanleg-opdrachten zijn voor particulieren. Voor een particulier toon je bedragen het liefst inclusief BTW, want dat is het bedrag dat de klant daadwerkelijk betaalt. Voor een zakelijke klant, bijvoorbeeld een bedrijfstuin of een vereniging van eigenaren die de BTW kan verrekenen, zijn bedragen exclusief BTW gebruikelijker. Het BTW-tarief op tuinaanleg is in de regel 21%, zowel op materiaal als op arbeid. Het verlaagde tarief voor arbeid bij woningrenovatie geldt doorgaans niet voor de aanleg van een tuin; laat dit in twijfelgevallen door je boekhouder of de Belastingdienst bevestigen. Achtergrond over BTW op de offerte lees je in het artikel over <a href="/blog/btw-op-de-offerte/">BTW op de offerte</a>.</p>
+
+<h2 id="offertes-vergelijken">Waar moet je op letten bij het vergelijken van tuinaanleg-offertes?</h2>
+<p>Vraag je als klant meerdere offertes aan, dan is de laagste prijs zelden de hele vergelijking. Let vooral op deze punten:</p>
+<ul>
+  <li><strong>Is grondwerk en afvoer inbegrepen?</strong> Een lage prijs zonder afvoer kan duurder uitpakken dan een hogere prijs waar alles in zit.</li>
+  <li><strong>Welke materialen zijn gerekend?</strong> Keramiek of beton, hardhout of geimpregneerd: gelijke posten, ongelijke kwaliteit.</li>
+  <li><strong>Staan er stelposten in?</strong> Een offerte vol stelposten kan na afloop flink hoger uitvallen dan de eerste indruk.</li>
+  <li><strong>Zit verlichting, drainage of beregening erin?</strong> Vaak niet, terwijl je het later toch wilt.</li>
+  <li><strong>Hoe wordt meerwerk geregeld?</strong> Een heldere meerwerkafspraak voorkomt verrassingen.</li>
+</ul>
+<p>Een offerte die elk onderdeel netjes uitsplitst, is per definitie makkelijker te vergelijken dan een totaalbedrag op een A4-tje. Meer tips staan bij <a href="/blog/offertes-vergelijken/">offertes vergelijken</a>.</p>
+
+<h2 id="snel-en-net">Snel en professioneel je tuinaanleg-offerte maken</h2>
+<p>Een verzorgde, gespecificeerde offerte laat de klant zien dat je je vak verstaat en dat je calculatie klopt. Met zoveel losse onderdelen en eenheden is dat handmatig bijhouden bewerkelijk en foutgevoelig. <a href="/app">Maak je tuinaanleg-offerte online met Offertje</a>: je voert per regel de omschrijving, het aantal, de eenheid en de prijs in, kiest het BTW-tarief en de tool levert een professionele PDF met kloppende totalen. Ter vergelijking met andere branches kun je ook <a href="/blog/offerte-voorbeeld/">een algemeen offerte voorbeeld</a> bekijken.</p>
+`,
+    faq: [
+        {
+            q: 'Wat moet er in een offerte voor tuinaanleg staan?',
+            a: 'Een tuinaanleg-offerte splitst het werk per onderdeel: ontwerp, grondwerk en afvoer, bestrating, beplanting en gazon, verlichting of drainage en eventuele constructies zoals een schutting of vlonder. Per regel staan aantal, eenheid, prijs per eenheid en BTW, met onderaan subtotaal, BTW en totaal inclusief, plus de geldigheidsduur.',
+        },
+        {
+            q: 'Welke eenheden gebruik je bij een tuinaanleg-offerte?',
+            a: 'Gebruik m2 voor bestrating, grondwerk en gazon, strekkende meter (m1) voor haag en schutting, stuks voor planten en armaturen, m3 voor afvoer van grond en puin, en uur voor arbeid. Het tuinontwerp neem je vaak als vaste post op.',
+        },
+        {
+            q: 'Welk BTW-tarief geldt bij tuinaanleg?',
+            a: 'Op tuinaanleg geldt in de regel 21% BTW, zowel op materiaal als op arbeid. Het verlaagde tarief voor arbeid bij woningrenovatie geldt doorgaans niet voor de aanleg van een tuin. Laat dit in twijfelgevallen bevestigen door je boekhouder of de Belastingdienst.',
+        },
+        {
+            q: 'Wat is een stelpost in een tuinofferte?',
+            a: 'Een stelpost is een vooraf afgesproken richtbedrag voor een onderdeel dat nog niet vaststaat, bijvoorbeeld de tegelkeuze of het exacte aantal planten. Je verrekent het later op basis van de werkelijke keuze of hoeveelheid. Vermeld duidelijk dat het een stelpost is en hoe je afrekent.',
+        },
+        {
+            q: 'Hoe ga je om met onverwacht grondwerk?',
+            a: 'Spreek in de offerte af dat je meerwerk, zoals een oude fundering, kabels of een slechte bodem die je pas tijdens het graven tegenkomt, eerst meldt met een prijsindicatie en pas na akkoord van de klant uitvoert. Zo voorkom je een onverwacht hoger eindbedrag.',
+        },
+    ],
+    related: ['offerte-hovenier', 'offerte-stratenmaker', 'offerte-maken'],
+};

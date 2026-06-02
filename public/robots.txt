@@ -2,4 +2,29 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
+# AI-zoekmachines en assistenten zijn expliciet welkom (AI Overviews, ChatGPT, Perplexity, Claude).
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+
 Sitemap: https://offertje.nl/sitemap.xml

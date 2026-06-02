@@ -178,6 +178,7 @@ const renderPost = (post, all) => {
             articleSection: post.category,
             wordCount: words,
             isPartOf: { '@type': 'WebSite', '@id': `${SITE.url}/#website` },
+            speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.post-hero h1', '.post-lead'] },
         },
         {
             '@context': 'https://schema.org',
@@ -185,7 +186,8 @@ const renderPost = (post, all) => {
             itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
                 { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}/blog/` },
-                { '@type': 'ListItem', position: 3, name: post.title, item: canonical },
+                { '@type': 'ListItem', position: 3, name: post.category, item: `${SITE.url}/blog/categorie/${catSlug(post.category)}/` },
+                { '@type': 'ListItem', position: 4, name: post.title, item: canonical },
             ],
         },
     ];
@@ -245,7 +247,7 @@ ${header()}
 <main class="post-wrap">
   <div class="wrap">
     <nav class="breadcrumb" aria-label="Kruimelpad">
-      <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span>${esc(post.category)}</span>
+      <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><a href="/blog/categorie/${catSlug(post.category)}/">${esc(post.category)}</a>
     </nav>
     <div class="post-hero">
       <span class="post-tag">${esc(post.category)}</span>
@@ -374,7 +376,7 @@ ${header()}
   </section>
   ${cats.map((c) => `
   <section class="wrap hub-cat">
-    <div class="hub-cat-head"><h2>${esc(c)}</h2></div>
+    <div class="hub-cat-head"><h2><a href="/blog/categorie/${catSlug(c)}/" style="color:inherit;text-decoration:none">${esc(c)}</a></h2></div>
     <div class="post-grid">
       ${byCat(c).filter((p) => p !== featured).map(card).join('')}
     </div>
@@ -388,6 +390,91 @@ ${header()}
   </section>
 </main>
 ${footer(posts)}
+<script src="/blog/assets/blog.js" defer></script>
+</body>
+</html>`;
+};
+
+/* ---------------- category pages ---------------- */
+
+const catSlug = (c) => c.toLowerCase().replace(/&/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const CAT_INFO = {
+    'Basis': 'De basis van offertes maken: wat erop hoort, hoe je ze opstelt en hoe je ze professioneel verstuurt.',
+    'Voorbeelden': 'Uitgewerkte offerte voorbeelden die je direct kunt overnemen voor je eigen situatie.',
+    'ZZP & freelance': 'Offertes voor zelfstandigen: je uurtarief bepalen, btw verwerken en professioneel overkomen als eenmanszaak.',
+    'Juridisch & BTW': 'Alles rond btw, algemene voorwaarden, geldigheid en de juridische kant van offertes in Nederland.',
+    'Verkoop & opvolging': 'Meer opdrachten winnen: je offerte opvolgen, onderhandelen en sneller akkoord krijgen.',
+    'Branche': 'Offertevoorbeelden, prijsopbouw en checklists per vak en branche, van bouw tot creatief.',
+    'Kosten': 'Wat kosten klussen en diensten in Nederland? Actuele, indicatieve prijsranges per onderwerp.',
+};
+
+const catCard = (p) => `
+    <a class="post-card" href="/blog/${p.slug}/" data-search="${esc((p.title + ' ' + p.excerpt + ' ' + p.slug).toLowerCase())}">
+      <div class="post-cover"></div>
+      <div class="post-body">
+        <span class="post-tag">${esc(p.category)}</span>
+        <h3>${esc(p.title)}</h3>
+        <p>${esc(p.excerpt)}</p>
+        <span class="post-more">Lees verder
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>`;
+
+const renderCategory = (category, all) => {
+    const cs = catSlug(category);
+    const canonical = `${SITE.url}/blog/categorie/${cs}/`;
+    const intro = CAT_INFO[category] || `Alle artikelen in de categorie ${category}.`;
+    const list = all.filter((p) => p.category === category);
+
+    const jsonld = [
+        {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: `${category} - Offertje kennisbank`,
+            description: intro,
+            url: canonical,
+            inLanguage: 'nl-NL',
+            isPartOf: { '@type': 'WebSite', '@id': `${SITE.url}/#website` },
+            mainEntity: {
+                '@type': 'ItemList',
+                itemListElement: list.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE.url}/blog/${p.slug}/`, name: p.title })),
+            },
+        },
+        {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+                { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}/blog/` },
+                { '@type': 'ListItem', position: 3, name: category, item: canonical },
+            ],
+        },
+    ];
+
+    return `<!DOCTYPE html>
+<html lang="nl">
+<head>${headTags({ title: `${category}: offerte gidsen en voorbeelden | Offertje`, description: intro, canonical, image: `${SITE.url}/og-image.png`, jsonld, ogType: 'website' })}
+</head>
+<body>
+${header()}
+<main class="post-wrap">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Kruimelpad">
+      <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span>${esc(category)}</span>
+    </nav>
+    <div class="post-hero">
+      <span class="post-tag">Categorie</span>
+      <h1>${esc(category)}</h1>
+      <p class="post-lead">${esc(intro)}</p>
+      <div class="post-meta"><span>${list.length} artikelen</span></div>
+    </div>
+    <div class="post-grid">
+      ${list.map(catCard).join('')}
+    </div>
+  </div>
+</main>
+${footer(all)}
 <script src="/blog/assets/blog.js" defer></script>
 </body>
 </html>`;
@@ -532,10 +619,12 @@ const BLOG_JS = `document.querySelectorAll('.faq-item').forEach(function(item){v
 /* ---------------- sitemap & robots ---------------- */
 
 const buildSitemap = (posts) => {
+    const cats = [...new Set(posts.map((p) => p.category))];
     const urls = [
         { loc: `${SITE.url}/`, priority: '1.0', changefreq: 'weekly' },
         { loc: `${SITE.url}/app`, priority: '0.9', changefreq: 'monthly' },
         { loc: `${SITE.url}/blog/`, priority: '0.8', changefreq: 'weekly' },
+        ...cats.map((c) => ({ loc: `${SITE.url}/blog/categorie/${catSlug(c)}/`, priority: '0.6', changefreq: 'weekly' })),
         ...posts.map((p) => ({
             loc: `${SITE.url}/blog/${p.slug}/`,
             priority: '0.7',
@@ -559,8 +648,46 @@ const ROBOTS = `User-agent: *
 Allow: /
 Disallow: /admin
 
+# AI-zoekmachines en assistenten zijn expliciet welkom (AI Overviews, ChatGPT, Perplexity, Claude).
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+
 Sitemap: ${SITE.url}/sitemap.xml
 `;
+
+/* AI-friendly content index (llms.txt standard). */
+const buildLlms = (posts, cats) => {
+    let out = `# Offertje\n\n> Offertje (offertje.nl) is een gratis online offerte generator voor ondernemers in Nederland: vul je gegevens in en download een professionele offerte als PDF. Daarnaast een uitgebreide kennisbank met gidsen, voorbeelden, kostenindicaties en checklists over offertes maken.\n\n## Tool\n- [Offerte maken](${SITE.url}/app): maak gratis een professionele offerte als PDF, in je eigen huisstijl.\n\n`;
+    for (const c of cats) {
+        out += `## ${c}\n`;
+        for (const p of posts.filter((x) => x.category === c)) {
+            out += `- [${p.title}](${SITE.url}/blog/${p.slug}/): ${p.excerpt}\n`;
+        }
+        out += `\n`;
+    }
+    return out;
+};
 
 /* ---------------- run ---------------- */
 
@@ -601,17 +728,26 @@ const run = async () => {
     // hub
     writeFileSync(join(OUT_DIR, 'index.html'), renderHub(posts));
 
+    // category pages (topical silos)
+    const cats = [...new Set(posts.map((p) => p.category))];
+    for (const c of cats) {
+        const dir = join(OUT_DIR, 'categorie', catSlug(c));
+        mkdirSync(dir, { recursive: true });
+        writeFileSync(join(dir, 'index.html'), renderCategory(c, posts));
+    }
+
     // machine-readable index (used by the admin dashboard "all blogs" list)
     writeFileSync(join(OUT_DIR, 'index.json'), JSON.stringify(posts.map((p) => ({
         slug: p.slug, title: p.title, category: p.category,
         date: p.date, updated: p.updated || p.date, excerpt: p.excerpt, url: `/blog/${p.slug}/`,
     }))));
 
-    // sitemap + robots
+    // sitemap + robots + llms.txt (AI engines)
     writeFileSync(join(ROOT, 'public', 'sitemap.xml'), buildSitemap(posts));
     writeFileSync(join(ROOT, 'public', 'robots.txt'), ROBOTS);
+    writeFileSync(join(ROOT, 'public', 'llms.txt'), buildLlms(posts, cats));
 
-    console.log(`Generated ${posts.length} posts + hub + sitemap.`);
+    console.log(`Generated ${posts.length} posts + ${cats.length} category pages + hub + sitemap + llms.txt.`);
     posts.forEach((p) => console.log(`  /blog/${p.slug}/  (${p.category})`));
 };
 

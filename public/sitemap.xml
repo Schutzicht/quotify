@@ -3,7 +3,20 @@
   <url><loc>https://offertje.nl/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://offertje.nl/app</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://offertje.nl/blog/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://offertje.nl/blog/categorie/branche/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://offertje.nl/blog/categorie/kosten/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://offertje.nl/blog/categorie/verkoop-opvolging/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://offertje.nl/blog/categorie/juridisch-btw/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://offertje.nl/blog/categorie/zzp-freelance/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://offertje.nl/blog/categorie/basis/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://offertje.nl/blog/categorie/voorbeelden/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-cv-ketel/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/wat-kost-een-airco/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/wat-kost-een-schutting/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/wat-kost-een-veranda/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/uurtarief-hovenier/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-gevelreiniging/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/uurtarief-loodgieter/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/wat-kost-een-aanbouw/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/wat-kost-een-dakkapel/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/wat-kost-zonnepanelen/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -15,13 +28,22 @@
   <url><loc>https://offertje.nl/blog/wat-kost-een-verbouwing/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/wat-kost-een-warmtepomp/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/wat-kost-schilderwerk/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-grondwerk/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/termijnbetaling-offerte/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-programma-zzp/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-garagedeur/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-geldigheid-verlopen/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-isolatie/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-sloopwerk/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-veranda/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/wat-kost-een-logo/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/wat-kost-een-webshop/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-zonwering/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/wat-kost-een-fotograaf/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/beste-offerte-software/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-aanvragen/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-dakgoot/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-dakkapel/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-glaszetter/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-installatiebedrijf/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-keukenrenovatie/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -33,10 +55,12 @@
   <url><loc>https://offertje.nl/blog/offerte-ventilatie/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-vloerverwarming/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-vochtbestrijding/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-voeger/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-zonnescherm/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/online-offerte-maken/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/regie-vs-aanneemsom/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/vaste-prijs-vs-nacalculatie/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/wat-kost-een-nieuwe-vloer/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/wat-kost-stucwerk/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/wat-kost-een-website/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-checklist/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -44,34 +68,65 @@
   <url><loc>https://offertje.nl/blog/offerte-veelgemaakte-fouten/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/van-offerte-naar-factuur/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/wat-kost-een-badkamer/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-keuken-plaatsen/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-kozijnen/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/uurtarief-elektricien/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-administratiekantoor/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-vertaler/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-dakdekker/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-ict-bedrijf/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-ondertekenen/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-airco/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-vijver/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-tekstschrijver/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-betonvloer/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-garantie/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-accepteren/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-warmtepomp/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-social-media-beheer/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-tuinaanleg/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-verhuisbedrijf/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-vloerlegger/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/algemene-voorwaarden-offerte/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-boomverzorging/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-kunstgras/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-marketingbureau/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-schoonmaakbedrijf/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-trainer-coach/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/kosten-offerte-laten-maken/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/meerwerk-en-offerte/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-badkamer-renovatie/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-elektricien/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-grafisch-ontwerper/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-onderhandelen/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-zonnepanelen/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offertes-vergelijken/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-fotobooth/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-hekwerk/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-nakomen-verplicht/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-schoonheidssalon/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-tegelzetter/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-template-excel/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-timmerman/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-webshop-laten-maken/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offertenummer/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/prijsopgave-vs-offerte/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-catering/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-software-vergelijken/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-stratenmaker/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/begeleidende-email-bij-offerte/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/aanbetaling-vragen/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-afwijzing-voorkomen/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-dj/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-hovenier/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-loodgieter/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-particulier-of-zakelijk/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-stukadoor/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-verbouwing/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-videograaf/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-voorbeeld-dienstverlening/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-webdesign-freelance/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://offertje.nl/blog/offerte-zonder-btw/</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-template-word-of-generator/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/professionele-offerte-tips/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://offertje.nl/blog/offerte-schilder/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
