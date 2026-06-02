@@ -128,7 +128,8 @@
                 Offertje Admin
             </div>
             <p>Log in om je blog en automatisering te beheren.</p>
-            <input type="password" id="pw" placeholder="Wachtwoord" autocomplete="current-password" autofocus>
+            <input type="email" id="email" placeholder="E-mailadres" autocomplete="username" autofocus>
+            <input type="password" id="pw" placeholder="Wachtwoord" autocomplete="current-password">
             <button class="btn btn-primary" type="submit">Inloggen</button>
             <div class="err" id="loginErr"></div>
         </form>
@@ -235,9 +236,10 @@
             e.preventDefault();
             $('loginErr').textContent = '';
             const password = $('pw').value;
+            const email = $('email').value;
             try {
                 const res = await fetch('/api/admin/login', {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password }),
+                    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password }),
                 });
                 const data = await res.json();
                 if (res.ok && data.ok) {

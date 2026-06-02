@@ -142,8 +142,12 @@ app.get('/api/cron/generate-blog', async (req, res) => {
     }
 });
 
-// ---- Admin dashboard API (login with ADMIN_PASSWORD or CRON_SECRET) ----
+// ---- Admin dashboard API ----
+// Password comes from env (the repo is public, so it must NOT live in code).
+// Falls back to CRON_SECRET so it keeps working if ADMIN_PASSWORD is unset.
+// Email is just a username and may live in code (env override possible).
 const adminSecret = () => process.env.ADMIN_PASSWORD || process.env.CRON_SECRET || '';
+const adminEmail = () => (process.env.ADMIN_EMAIL || 'jorik@agensea.nl').trim().toLowerCase();
 function adminOk(req) {
     const secret = adminSecret();
     if (!secret) return false;
@@ -154,9 +158,11 @@ function adminOk(req) {
 }
 
 app.post('/api/admin/login', (req, res) => {
-    if (!adminSecret()) return res.status(503).json({ error: 'Stel ADMIN_PASSWORD of CRON_SECRET in (Vercel env).' });
-    if (req.body && req.body.password === adminSecret()) return res.json({ ok: true });
-    return res.status(401).json({ ok: false, error: 'Onjuist wachtwoord' });
+    if (!adminSecret()) return res.status(503).json({ error: 'Stel ADMIN_PASSWORD in (Vercel env).' });
+    const email = String((req.body && req.body.email) || '').trim().toLowerCase();
+    const password = (req.body && req.body.password) || '';
+    if (email === adminEmail() && password === adminSecret()) return res.json({ ok: true });
+    return res.status(401).json({ ok: false, error: 'Onjuiste e-mail of wachtwoord' });
 });
 
 app.get('/api/admin/status', async (req, res) => {
