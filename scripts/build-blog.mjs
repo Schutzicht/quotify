@@ -142,7 +142,7 @@ const headTags = ({ title, description, canonical, image, jsonld, ogType = 'arti
   <link rel="apple-touch-icon" href="/icon-180.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/blog/assets/blog.css">
-  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/analytics.js"></script>
   ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n  ')}`;
 
 /* ---------------- post page ---------------- */
