@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetBtn = $('reset-btn');
     if (resetBtn) resetBtn.addEventListener('click', resetAll);
 
+    // Make the preview accent follow the chosen brand colour (matches the PDF)
+    document.documentElement.style.setProperty('--accent', state.branding.primaryColor || '#6366F1');
+
     updatePreview();
 
     console.log('OfferteGeneratory Gen 3 :: Initialized');
@@ -112,13 +115,14 @@ function initListeners() {
             const field = e.target.name;
             if (state[section]) {
                 state[section][field] = e.target.value;
+                if (section === 'meta' && field === 'validUntil') state.meta._validUntilAuto = false;
                 updatePreview();
             }
         });
     });
 
     const dateInput = $('meta-date');
-    if (dateInput) dateInput.addEventListener('change', (e) => { state.meta.date = e.target.value; updatePreview(); });
+    if (dateInput) dateInput.addEventListener('change', (e) => { state.meta.date = e.target.value; autoValidUntil(); updatePreview(); });
 
     const colorInput = $('accent-color');
     if (colorInput) {
@@ -169,7 +173,12 @@ function initListeners() {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = async (evt) => {
-                    state.branding.logo = evt.target.result;
+                    let dataUrl = evt.target.result;
+                    // SVG can't be embedded in the PDF directly, so rasterize to PNG.
+                    if (file.type === 'image/svg+xml' || /^data:image\/svg/i.test(dataUrl)) {
+                        dataUrl = await rasterizeSvg(dataUrl);
+                    }
+                    state.branding.logo = dataUrl;
 
                     // Calc Brightness
                     state.branding.logoBri = await getImageBrightness(state.branding.logo);
@@ -206,8 +215,9 @@ function initListeners() {
 }
 
 function setCurrentDate() {
-    state.meta.date = new Date().toLocaleDateString('nl-NL');
+    state.meta.date = formatNlDate(new Date());
     if ($('meta-date')) $('meta-date').value = state.meta.date;
+    autoValidUntil();
 }
 
 /* --- ITEMS LOGIC --- */
@@ -239,6 +249,63 @@ function resetAll() {
     location.reload();
 }
 
+/* --- INPUT / DATE / IMAGE HELPERS --- */
+
+// Accepts "1250", "1250,50", "1.250,50" and "1250.50"
+function parseNum(v) {
+    if (typeof v === 'number') return v;
+    let s = String(v == null ? '' : v).trim().replace(/\s/g, '');
+    if (s.includes(',') && s.includes('.')) s = s.replace(/\./g, '').replace(',', '.');
+    else s = s.replace(',', '.');
+    const n = parseFloat(s);
+    return isNaN(n) ? 0 : n;
+}
+
+const pad2 = (n) => String(n).padStart(2, '0');
+const formatNlDate = (d) => `${pad2(d.getDate())}-${pad2(d.getMonth() + 1)}-${d.getFullYear()}`;
+
+function parseNlDate(str) {
+    const m = String(str || '').trim().match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})$/);
+    if (!m) return null;
+    let [, dd, mm, yy] = m;
+    if (yy.length === 2) yy = '20' + yy;
+    const d = new Date(Number(yy), Number(mm) - 1, Number(dd));
+    return isNaN(d.getTime()) ? null : d;
+}
+
+// "Geldig tot" = datum + 30 dagen, tenzij de gebruiker zelf iets invulde.
+function autoValidUntil(force = false) {
+    if (state.meta.validUntil && state.meta._validUntilAuto === false && !force) return;
+    const base = parseNlDate(state.meta.date) || new Date();
+    const d = new Date(base);
+    d.setDate(d.getDate() + 30);
+    state.meta.validUntil = formatNlDate(d);
+    state.meta._validUntilAuto = true;
+    const inp = document.querySelector('#meta-form [name="validUntil"]');
+    if (inp) inp.value = state.meta.validUntil;
+}
+
+// Rasterize an SVG data URL to PNG so jsPDF can embed it.
+function rasterizeSvg(dataUrl) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+            const w = img.naturalWidth || img.width || 600;
+            const h = img.naturalHeight || img.height || 200;
+            const scale = Math.min(3, 600 / Math.max(1, w));
+            const cw = Math.max(1, Math.round(w * scale));
+            const ch = Math.max(1, Math.round(h * scale));
+            const canvas = document.createElement('canvas');
+            canvas.width = cw; canvas.height = ch;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, cw, ch);
+            try { resolve(canvas.toDataURL('image/png')); } catch (e) { resolve(dataUrl); }
+        };
+        img.onerror = () => resolve(dataUrl);
+        img.src = dataUrl;
+    });
+}
+
 function renderItemsUI() {
     const list = $('items-list');
     list.innerHTML = '';
@@ -252,13 +319,13 @@ function renderItemsUI() {
             </div>
             <div class="row-bot">
                 <div class="input-group-mini" style="flex:0 0 50px">
-                    <input type="number" class="i-qty" value="${item.quantity}" placeholder="#">
+                    <input type="text" inputmode="decimal" class="i-qty" value="${item.quantity}" placeholder="#">
                 </div>
                 <div class="input-group-mini" style="flex:0 0 60px">
                      <input type="text" class="i-unit" value="${item.unit || ''}" placeholder="Eenh.">
                 </div>
                 <div class="input-group-mini" style="flex:1">
-                    <input type="number" class="i-price" value="${item.price}" placeholder="Prijs">
+                    <input type="text" inputmode="decimal" class="i-price" value="${item.price}" placeholder="Prijs">
                 </div>
                 <div class="input-group-mini" style="flex:0 0 50px" title="Korting %">
                     <input type="number" class="i-disc" value="${item.discount}" placeholder="-%">
@@ -281,7 +348,7 @@ function renderItemsUI() {
         const bind = (sel, field, numeric = false) => {
             const el = row.querySelector(sel);
             if (el) el.addEventListener('input', (e) => {
-                item[field] = numeric ? Number(e.target.value) : e.target.value;
+                item[field] = numeric ? parseNum(e.target.value) : e.target.value;
                 updatePreview();
             });
         };
@@ -357,19 +424,10 @@ function updatePreview() {
     const existingWatermark = document.querySelector('.watermark-logo');
     if (existingWatermark) existingWatermark.remove();
 
-    // Creative Watermark (Background)
+    // Background watermark removed for a clean look that matches the PDF.
     const previewContainer = $('pdf-preview');
-    // Remove old one first
     const existingCreativeWatermark = previewContainer.querySelector('.watermark-creative');
     if (existingCreativeWatermark) existingCreativeWatermark.remove();
-
-    if (state.branding.logo) {
-        const watermark = document.createElement('img');
-        watermark.src = state.branding.logo;
-        watermark.className = 'watermark-creative';
-        // Note: CSS class handles positioning and opacity
-        if (previewContainer) previewContainer.prepend(watermark);
-    }
 
     // SMART CONTRAST CHECK
     const header = document.querySelector('.paper-header');
@@ -535,6 +593,7 @@ function renderItemsTable() {
                     <th class="col-desc">Omschrijving</th>
                     <th class="col-qty right">Aantal</th>
                     <th class="col-price right">Prijs</th>
+                    <th class="col-vat right">BTW</th>
                     <th class="col-total right">Totaal</th>
                 </tr>
             </thead>
@@ -548,13 +607,13 @@ function renderItemsTable() {
                 <td>
                     <div style="font-weight:500">${esc(item.description)}</div>
                     ${c.disc > 0 ? `<div style="font-size:0.75em; color:#EF4444">Korting: ${c.disc}%</div>` : ''}
-                    ${c.vat ? `<div style="font-size:0.7em; color:#9CA3AF">btw ${c.vat}%</div>` : ''}
                 </td>
                 <td class="right">
                     ${c.qty}
                     <span style="font-size:0.8em; color:#9CA3AF">${esc(item.unit || '')}</span>
                 </td>
                 <td class="right">${fmtEUR(c.price)}</td>
+                <td class="right">${c.vat}%</td>
                 <td class="right">${fmtEUR(c.exVat)}</td>
             `;
             tbody.appendChild(tr);

@@ -1702,3 +1702,54 @@ input::placeholder {
         display: flex !important;
     }
 }
+
+/* ===========================================================
+   PREVIEW MATCHES THE PDF
+   The on-screen A4 follows the chosen brand colour and uses
+   the same 5-column table + accents as the generated PDF.
+   =========================================================== */
+.paper-header {
+    border-bottom-color: var(--accent, #6366f1) !important;
+}
+
+.doc-type {
+    color: var(--accent, #6366f1) !important;
+    -webkit-text-fill-color: var(--accent, #6366f1) !important;
+    background: none !important;
+}
+
+.footer-line {
+    background: var(--accent, #6366f1) !important;
+}
+
+.totals-section {
+    border-top-color: var(--accent, #6366f1) !important;
+}
+
+/* 5-column items table (Omschrijving / Aantal / Prijs / BTW / Totaal) */
+.modern-table .col-desc {
+    width: 44%;
+}
+
+.modern-table .col-qty {
+    width: 12%;
+}
+
+.modern-table .col-price {
+    width: 17%;
+}
+
+.modern-table .col-vat {
+    width: 10%;
+}
+
+.modern-table .col-total {
+    width: 17%;
+}
+
+/* tabular figures so amounts line up like in the PDF */
+.modern-table td,
+.total-row,
+.meta-item .val {
+    font-variant-numeric: tabular-nums;
+}
