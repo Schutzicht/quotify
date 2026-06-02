@@ -8,7 +8,7 @@
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const DEFAULT_MODEL = 'llama-3.3-70b-versatile';
 
-export const CATEGORIES = ['Basis', 'Voorbeelden', 'ZZP & freelance', 'Juridisch & BTW', 'Verkoop & opvolging', 'Branche'];
+export const CATEGORIES = ['Basis', 'Voorbeelden', 'ZZP & freelance', 'Juridisch & BTW', 'Verkoop & opvolging', 'Branche', 'Kosten'];
 
 const SYSTEM_PROMPT = `Je bent een Nederlandse SEO-copywriter voor "Offertje" (offertje.nl), een online offerte-tool op /app waarmee je gratis een offerte opstelt en als PDF downloadt. Je schrijft een compleet, accuraat en behulpzaam blogartikel dat in Google.nl rankt en de lezer naar de tool stuurt.
 

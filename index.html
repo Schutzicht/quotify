@@ -18,6 +18,7 @@
         content="Maak gratis een professionele offerte als PDF. Eigen huisstijl, BTW automatisch, direct downloaden.">
     <meta property="og:url" content="https://offertje.nl/">
     <meta property="og:image" content="https://offertje.nl/og-image.png">
+    <meta property="og:locale" content="nl_NL">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Offerte maken in 2 minuten | Offertje">
     <meta name="twitter:description" content="Maak gratis een professionele offerte als PDF. Direct downloaden.">
@@ -27,6 +28,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/logo.svg">
+    <link rel="apple-touch-icon" href="/icon-180.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="/src/css/site.css">
 
     <script type="application/ld+json">
@@ -38,7 +41,22 @@
           "@id": "https://offertje.nl/#org",
           "name": "Offertje",
           "url": "https://offertje.nl/",
-          "logo": "https://offertje.nl/logo.svg"
+          "logo": "https://offertje.nl/logo.svg",
+          "description": "Online offerte generator voor ondernemers in Nederland.",
+          "areaServed": "NL"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://offertje.nl/#website",
+          "name": "Offertje",
+          "url": "https://offertje.nl/",
+          "inLanguage": "nl-NL",
+          "publisher": { "@id": "https://offertje.nl/#org" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://offertje.nl/blog/?q={search_term_string}" },
+            "query-input": "required name=search_term_string"
+          }
         },
         {
           "@type": "WebApplication",

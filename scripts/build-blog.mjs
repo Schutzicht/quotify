@@ -119,25 +119,28 @@ const footer = (posts) => {
 </footer>`;
 };
 
-const headTags = ({ title, description, canonical, image, jsonld }) => `
+const headTags = ({ title, description, canonical, image, jsonld, ogType = 'article' }) => `
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
   <link rel="canonical" href="${canonical}">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="theme-color" content="#6366f1">
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="${ogType}">
   <meta property="og:site_name" content="${SITE.name}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${image}">
+  <meta property="og:locale" content="nl_NL">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/blog/assets/blog.css">
   <script defer src="/_vercel/insights/script.js"></script>
   ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n  ')}`;
@@ -149,6 +152,7 @@ const renderPost = (post, all) => {
     const image = post.image ? `${SITE.url}${post.image}` : `${SITE.url}/og-image.png`;
     const toc = (post.toc && post.toc.length ? post.toc : tocFromBody(post.bodyHtml));
     const reading = post.readingTime || Math.max(3, Math.round(wordCount(post.bodyHtml) / 200));
+    const words = wordCount(post.bodyHtml);
     const related = (post.related || [])
         .map((slug) => all.find((p) => p.slug === slug))
         .filter(Boolean)
@@ -170,6 +174,10 @@ const renderPost = (post, all) => {
             },
             mainEntityOfPage: canonical,
             image,
+            inLanguage: 'nl-NL',
+            articleSection: post.category,
+            wordCount: words,
+            isPartOf: { '@type': 'WebSite', '@id': `${SITE.url}/#website` },
         },
         {
             '@context': 'https://schema.org',
@@ -292,10 +300,32 @@ const renderHub = (posts) => {
                 { '@type': 'ListItem', position: 2, name: 'Blog', item: canonical },
             ],
         },
+        {
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            '@id': `${SITE.url}/#org`,
+            name: SITE.name,
+            url: `${SITE.url}/`,
+            logo: `${SITE.url}/logo.svg`,
+        },
+        {
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            '@id': `${SITE.url}/#website`,
+            name: SITE.name,
+            url: `${SITE.url}/`,
+            inLanguage: 'nl-NL',
+            publisher: { '@id': `${SITE.url}/#org` },
+            potentialAction: {
+                '@type': 'SearchAction',
+                target: { '@type': 'EntryPoint', urlTemplate: `${SITE.url}/blog/?q={search_term_string}` },
+                'query-input': 'required name=search_term_string',
+            },
+        },
     ];
 
     const card = (p) => `
-    <a class="post-card" href="/blog/${p.slug}/">
+    <a class="post-card" href="/blog/${p.slug}/" data-search="${esc((p.title + ' ' + p.category + ' ' + p.excerpt + ' ' + p.slug).toLowerCase())}">
       <div class="post-cover"></div>
       <div class="post-body">
         <span class="post-tag">${esc(p.category)}</span>
@@ -314,6 +344,7 @@ const renderHub = (posts) => {
         canonical,
         image: `${SITE.url}/og-image.png`,
         jsonld,
+        ogType: 'website',
     })}
 </head>
 <body>
@@ -324,8 +355,11 @@ ${header()}
       <span class="eyebrow">Kennisbank</span>
       <h1>Alles over offertes maken</h1>
       <p>Praktische gidsen, voorbeelden en tips om professionele offertes te maken en meer opdrachten binnen te halen.</p>
+      <input id="blogSearch" type="search" placeholder="Zoek een onderwerp, bijvoorbeeld zonnepanelen, zzp of badkamer..." aria-label="Zoeken in artikelen"
+        style="width:100%;max-width:560px;margin-top:24px;padding:15px 18px;font-family:inherit;font-size:1rem;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:var(--shadow-sm)">
     </div>
   </section>
+  <p id="hubNoResults" class="wrap" style="display:none;color:var(--slate-500);padding-top:8px;">Geen artikelen gevonden. Probeer een ander woord.</p>
   <section class="wrap">
     <a class="hub-featured" href="/blog/${featured.slug}/">
       <div class="hub-featured-cover"></div>
@@ -492,7 +526,8 @@ h1,h2,h3,h4{color:var(--ink);letter-spacing:-.02em;line-height:1.2;font-weight:8
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 `;
 
-const BLOG_JS = `document.querySelectorAll('.faq-item').forEach(function(item){var q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');if(!q||!a)return;q.addEventListener('click',function(){var open=item.classList.contains('open');item.classList.toggle('open',!open);a.style.maxHeight=open?null:a.scrollHeight+'px';});});`;
+const BLOG_JS = `document.querySelectorAll('.faq-item').forEach(function(item){var q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');if(!q||!a)return;q.addEventListener('click',function(){var open=item.classList.contains('open');item.classList.toggle('open',!open);a.style.maxHeight=open?null:a.scrollHeight+'px';});});
+(function(){var inp=document.getElementById('blogSearch');if(!inp)return;var cards=[].slice.call(document.querySelectorAll('.post-card[data-search]'));var nores=document.getElementById('hubNoResults');var feat=document.querySelector('.hub-featured');function apply(q){q=(q||'').trim().toLowerCase();var any=false;cards.forEach(function(c){var hit=!q||(c.getAttribute('data-search')||'').indexOf(q)>-1;c.style.display=hit?'':'none';if(hit)any=true;});document.querySelectorAll('.hub-cat').forEach(function(sec){var vis=0;sec.querySelectorAll('.post-card').forEach(function(c){if(c.style.display!=='none')vis++;});sec.style.display=vis?'':'none';});if(feat)feat.style.display=q?'none':'';if(nores)nores.style.display=any?'none':'block';}var q0=new URLSearchParams(location.search).get('q');if(q0){inp.value=q0;apply(q0);}inp.addEventListener('input',function(){apply(inp.value);});})();`;
 
 /* ---------------- sitemap & robots ---------------- */
 

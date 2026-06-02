@@ -1,0 +1,138 @@
+export default {
+    slug: 'van-offerte-naar-factuur',
+    title: 'Van offerte naar factuur: zo zet je de stap na akkoord',
+    metaTitle: 'Van offerte naar factuur: stap voor stap | Offertje',
+    metaDescription:
+        'Van offerte naar factuur na akkoord: welke gegevens neem je over, welke termijnen gelden en welke factuurgegevens zijn verplicht. Lees de heldere stappen.',
+    category: 'Juridisch & BTW',
+    keyword: 'van offerte naar factuur',
+    date: '2026-04-15',
+    updated: '2026-06-02',
+    readingTime: 8,
+    excerpt:
+        'Na akkoord op je offerte volgt de factuur. We laten zien welke gegevens je overneemt, welke termijnen gelden en welke factuurgegevens wettelijk verplicht zijn.',
+    bodyHtml: `
+<p>De klant heeft ja gezegd op je offerte. Mooi moment, maar nu begint het echte werk: het voorstel omzetten in een opdracht en uiteindelijk in een factuur. De stap van offerte naar factuur lijkt klein, maar er gaat in de praktijk vaak iets mis. Gegevens worden niet correct overgenomen, een termijn wordt vergeten of de factuur mist een verplicht gegeven. In dit artikel lopen we de hele route langs: wat doe je direct na akkoord, welke gegevens neem je een-op-een over uit de offerte, welke termijnen spelen er en welke factuurgegevens zijn wettelijk verplicht. Zo zet je de stap van offerte naar factuur soepel en zonder discussie.</p>
+
+<div class="key-takeaways">
+  <strong>In het kort</strong>
+  <ul>
+    <li>Na akkoord ontstaat een overeenkomst, de offerte is dan je leidraad voor het werk en de factuur.</li>
+    <li>Veel gegevens van de offerte neem je rechtstreeks over op de factuur, zoals omschrijving, bedragen en BTW.</li>
+    <li>Een factuur heeft wel wettelijk verplichte gegevens, een offerte niet.</li>
+    <li>Spreek een duidelijke betaaltermijn af en verwijs op de factuur naar het offertenummer.</li>
+  </ul>
+</div>
+
+<h2 id="wat-gebeurt-er-na-akkoord">Wat gebeurt er na akkoord?</h2>
+<p>Zodra de klant akkoord geeft op je offerte, verandert de status van het document. Tot dat moment was het een vrijblijvend voorstel, nu is er een overeenkomst. Jullie zijn vanaf dat punt gebonden aan de afspraken die in de offerte staan: de omschrijving van het werk, de prijs, de BTW en de voorwaarden. Daarom is het zo belangrijk dat je offerte vooraf compleet en helder is. Alles wat erin staat, vormt nu de basis voor het werk en straks voor de factuur. Hoe je een offerte netjes laat accepteren, lees je in <a href="/blog/offerte-accepteren/">offerte accepteren</a>.</p>
+<p>Leg het akkoord altijd schriftelijk vast. Een e-mail met ja, een ondertekende offerte of een akkoord via een tool is genoeg. Dit voorkomt latere discussie over de vraag of er wel of geen opdracht was. Wil je weten welke vormen rechtsgeldig zijn, lees dan <a href="/blog/offerte-ondertekenen/">offerte ondertekenen</a>. Pas na een vastgelegd akkoord ga je aan de slag en bouw je richting de factuur.</p>
+
+<h2 id="offerte-en-factuur-niet-hetzelfde">Offerte en factuur zijn niet hetzelfde</h2>
+<p>Voordat je gegevens overzet, is het goed om het onderscheid scherp te hebben. Een offerte is een aanbod vooraf, een factuur is een betalingsverzoek achteraf. De offerte overtuigt, de factuur int. Voor de offerte gelden geen wettelijke vormeisen, voor de factuur wel. Dat betekent dat je niet zomaar je offerte mag omdopen tot factuur. Het volledige onderscheid lees je in <a href="/blog/verschil-offerte-en-factuur/">het verschil tussen offerte en factuur</a>.</p>
+<p>Wat je wel doet, is de inhoudelijke gegevens hergebruiken. De omschrijving, de regels, de bedragen en de BTW staan al keurig in je offerte. Die neem je over en vul je aan met de verplichte factuurgegevens. Zo bespaar je tijd en houd je de twee documenten consistent, wat vertrouwen wekt bij de klant.</p>
+
+<h2 id="welke-gegevens-overnemen">Welke gegevens neem je over uit de offerte?</h2>
+<p>Een groot deel van de factuur staat al in je offerte. Door deze gegevens een-op-een over te nemen, voorkom je fouten en houd je beide documenten gelijk. Dit zijn de onderdelen die je rechtstreeks overzet:</p>
+<ul>
+  <li><strong>Je eigen bedrijfsgegevens</strong> zoals naam, adres, KVK-nummer en BTW-nummer.</li>
+  <li><strong>De klantgegevens</strong> zoals naam, adres en eventueel het BTW-nummer bij zakelijke klanten.</li>
+  <li><strong>De omschrijving van het werk</strong> in dezelfde regels als op de offerte.</li>
+  <li><strong>De bedragen per regel</strong> met aantal, eenheid en prijs.</li>
+  <li><strong>Het BTW-tarief en het BTW-bedrag</strong> per regel of per tarief.</li>
+  <li><strong>Het totaal exclusief en inclusief BTW.</strong></li>
+</ul>
+<p>Wat je toevoegt, zijn de gegevens die specifiek bij een factuur horen: een uniek factuurnummer, de factuurdatum, de betaaltermijn en je betaalgegevens zoals het IBAN. Verwijs in de factuur naar het offertenummer, zodat de klant direct ziet bij welke afspraak de rekening hoort. Werk je met een tool, dan worden deze gegevens vaak automatisch meegenomen. Een goede checklist van wat er minimaal op een offerte hoort, vind je in <a href="/blog/wat-moet-er-op-een-offerte-staan/">wat er op een offerte moet staan</a>.</p>
+
+{{CTA:Van offerte naar PDF in een paar minuten|Met Offertje stel je gratis een nette offerte op met automatische BTW-berekening, en download je het resultaat als verzorgde PDF.}}
+
+<h2 id="verplichte-factuurgegevens">Verplichte factuurgegevens</h2>
+<p>Anders dan bij een offerte stelt de wet wel eisen aan een factuur. Voor de Belastingdienst en voor de klant die de BTW wil terugvragen, moet de factuur compleet zijn. In grote lijnen horen deze gegevens er altijd op:</p>
+<ul>
+  <li>Je volledige bedrijfsnaam en adres.</li>
+  <li>Je BTW-identificatienummer.</li>
+  <li>Je KVK-nummer.</li>
+  <li>De naam en het adres van je klant.</li>
+  <li>Een uniek, doorlopend factuurnummer.</li>
+  <li>De factuurdatum.</li>
+  <li>De datum waarop het werk is geleverd of de dienst is verricht.</li>
+  <li>Een duidelijke omschrijving van de geleverde goederen of diensten.</li>
+  <li>Het bedrag exclusief BTW, het toegepaste BTW-tarief, het BTW-bedrag en het totaal inclusief BTW.</li>
+</ul>
+<p>Lever je aan een ondernemer in een ander EU-land, of pas je een verleggingsregeling toe, dan gelden er aanvullende eisen en vermeldingen. Houd voor de exacte eisen altijd de actuele informatie van de Belastingdienst aan. Een offerte hoeft deze gegevens niet allemaal te bevatten, maar hoe completer je offerte al is, hoe makkelijker de stap naar de factuur.</p>
+
+<div class="callout">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <p>Gebruik een doorlopende factuurnummering zonder gaten. Begin bijvoorbeeld bij 2026-001 en tel per factuur op. De Belastingdienst verwacht een logische, ononderbroken reeks.</p>
+</div>
+
+<h2 id="van-offerteregel-naar-factuurregel">Van offerteregel naar factuurregel</h2>
+<p>Het mooie van een goede offerte is dat de factuur er bijna vanzelf uit rolt. Stel, je hebt als hovenier een offerte afgegeven voor de aanleg van een tuin. De regels op de offerte zien er ongeveer zo uit, en die neem je vrijwel ongewijzigd over op de factuur:</p>
+<table>
+  <thead>
+    <tr><th>Omschrijving</th><th>Aantal</th><th>Prijs</th><th>BTW</th><th>Totaal</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Grondwerk en egaliseren</td><td>1 post</td><td>&euro; 850,00</td><td>21%</td><td>&euro; 850,00</td></tr>
+    <tr><td>Bestrating leggen</td><td>40 m2</td><td>&euro; 45,00</td><td>21%</td><td>&euro; 1.800,00</td></tr>
+    <tr><td>Beplanting en aanplant</td><td>1 post</td><td>&euro; 650,00</td><td>21%</td><td>&euro; 650,00</td></tr>
+    <tr><td>Afvoer en afval</td><td>1 post</td><td>&euro; 200,00</td><td>21%</td><td>&euro; 200,00</td></tr>
+  </tbody>
+</table>
+<p>De optelsom hieronder hoort zowel bij de offerte als bij de factuur. Het enige verschil is dat je op de factuur het factuurnummer, de factuurdatum, de leverdatum en de betaaltermijn toevoegt:</p>
+<table>
+  <thead>
+    <tr><th>Omschrijving</th><th>Bedrag</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Subtotaal exclusief BTW</td><td>&euro; 3.500,00</td></tr>
+    <tr><td>BTW 21%</td><td>&euro; 735,00</td></tr>
+    <tr><td><strong>Totaal inclusief BTW</strong></td><td><strong>&euro; 4.235,00</strong></td></tr>
+  </tbody>
+</table>
+<p>Werk je aan een woning ouder dan twee jaar, dan kan voor bepaald arbeidsloon het verlaagde tarief van 9% gelden in plaats van 21%. Of dat in jouw situatie speelt, hangt af van het type werk en de woning. Controleer dit per opdracht en raadpleeg bij twijfel de Belastingdienst. Meer uitleg over tarieven lees je in <a href="/blog/btw-op-de-offerte/">BTW op de offerte</a>.</p>
+
+<h2 id="termijnen-en-betaling">Termijnen en betaling</h2>
+<p>Twee soorten termijnen spelen een rol bij de stap van offerte naar factuur. De eerste is de geldigheidsduur van de offerte zelf. Die loopt tot het akkoord en geeft de klant een redelijke periode om te beslissen. Hoe je daarmee omgaat, lees je in <a href="/blog/hoe-lang-is-een-offerte-geldig/">hoe lang een offerte geldig is</a>. De tweede termijn is de betaaltermijn op de factuur. Die bepaalt binnen hoeveel dagen de klant moet betalen.</p>
+<p>Een gangbare betaaltermijn is 14 of 30 dagen. Zet de termijn duidelijk op de factuur, bijvoorbeeld door een vervaldatum te noemen. Heb je al in je offerte of algemene voorwaarden een betaaltermijn afgesproken, neem die dan consequent over. Betaalt de klant niet op tijd, dan kun je een betalingsherinnering sturen, daarna een aanmaning en uiteindelijk overgaan tot incasso. Een nette offerte met heldere voorwaarden vooraf maakt deze fase een stuk makkelijker.</p>
+
+<div class="callout">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <p>Bij grotere opdrachten kun je in delen factureren. Een aanbetaling na akkoord en het restant bij oplevering verdeelt het risico en houdt je liquiditeit gezond.</p>
+</div>
+
+<h2 id="deelfacturen-en-aanbetaling">Deelfacturen en aanbetaling</h2>
+<p>Niet elke opdracht eindigt met een enkele factuur. Bij langlopende of grote projecten is het gebruikelijk om in termijnen te factureren. Je spreekt dan bijvoorbeeld af dat de klant een deel vooraf betaalt en de rest na oplevering. Die afspraak leg je al vast in de offerte, zodat de klant precies weet welke deelbedragen wanneer komen. Wil je een vooruitbetaling vragen, lees dan hoe je dat netjes regelt in <a href="/blog/aanbetaling-vragen/">een aanbetaling vragen</a>.</p>
+<p>Elke deelfactuur is een volledige factuur met een eigen nummer en de verplichte gegevens. Verwijs op elke deelfactuur naar het offertenummer en geef aan welk deel van het project je in rekening brengt, bijvoorbeeld de eerste termijn van vijftig procent. Zo houden jij en de klant het overzicht en sluit het totaal van de deelfacturen straks aan op het bedrag uit de offerte.</p>
+
+<h2 id="veelgemaakte-fouten">Veelgemaakte fouten bij de overstap</h2>
+<p>De stap van offerte naar factuur gaat regelmatig mis op een paar punten. Het meest voorkomend is factureren zonder vastgelegd akkoord. Dan stuur je een rekening voor werk waar de klant nooit duidelijk ja tegen heeft gezegd, en sta je zwak bij discussie. Voorkom dit door het akkoord altijd schriftelijk te bevestigen voordat je begint.</p>
+<p>Een tweede fout is afwijken van de offerte zonder dat te melden. Komt er extra werk bij, dan hoort daar een aanvullend aanbod bij voordat je het op de factuur zet. Hoe je meerwerk netjes afhandelt, lees je in <a href="/blog/meerwerk-en-offerte/">meerwerk en de offerte</a>. Een derde valkuil is het vergeten van een verplicht factuurgegeven, zoals een BTW-nummer of factuurnummer. Daardoor kan de klant de BTW niet terugvragen en ontstaan vragen bij je aangifte. Door je offerte vooraf compleet te maken en de gegevens consequent over te nemen, voorkom je deze problemen.</p>
+
+<h2 id="aan-de-slag">Aan de slag</h2>
+<p>De route van offerte naar factuur begint bij een sterke offerte. Hoe completer en helderder je voorstel, hoe soepeler je straks factureert. Met <a href="/app">Offertje</a> stel je snel een verzorgde offerte op met automatische BTW-berekening en je eigen logo, die je daarna als PDF downloadt. Wil je weten hoe je een offerte stap voor stap opbouwt, lees dan de gids <a href="/blog/offerte-maken/">offerte maken</a>. Zo zet je vanaf het eerste contact tot de laatste factuur een professionele indruk neer.</p>
+`,
+    faq: [
+        {
+            q: 'Mag ik mijn offerte gebruiken als factuur?',
+            a: 'Nee. Een offerte is een voorstel vooraf en voldoet niet aan de wettelijke eisen voor een factuur. Je neemt de inhoud over, maar maakt na akkoord en levering altijd een aparte factuur met de verplichte gegevens.',
+        },
+        {
+            q: 'Welke gegevens neem ik over van offerte naar factuur?',
+            a: 'Je neemt de omschrijving, de regels met aantal en prijs, de bedragen en de BTW over. Je voegt toe: een uniek factuurnummer, de factuurdatum, de leverdatum, de betaaltermijn en je betaalgegevens.',
+        },
+        {
+            q: 'Welke betaaltermijn zet ik op de factuur?',
+            a: 'Een gangbare betaaltermijn is 14 of 30 dagen. Zet de termijn of een vervaldatum duidelijk op de factuur. Heb je vooraf een termijn afgesproken in je offerte of voorwaarden, neem die dan consequent over.',
+        },
+        {
+            q: 'Moet ik op de factuur naar de offerte verwijzen?',
+            a: 'Het is niet wettelijk verplicht, maar wel sterk aan te raden. Door het offertenummer op de factuur te zetten, koppel je het werk aan de oorspronkelijke afspraak en houden jij en de klant het overzicht.',
+        },
+        {
+            q: 'Mag ik in termijnen factureren na akkoord?',
+            a: 'Ja. Bij grotere projecten is dat gebruikelijk. Leg de deelbedragen vast in de offerte en maak per termijn een volledige factuur met eigen nummer. Het totaal van de deelfacturen sluit dan aan op de offerte.',
+        },
+    ],
+    related: ['verschil-offerte-en-factuur', 'offerte-accepteren', 'offerte-maken'],
+};

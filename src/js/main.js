@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetBtn = $('reset-btn');
     if (resetBtn) resetBtn.addEventListener('click', resetAll);
 
+    document.querySelectorAll('.qs-btn').forEach((b) =>
+        b.addEventListener('click', () => applyTemplate(b.dataset.tpl))
+    );
+
     // Make the preview accent follow the chosen brand colour (matches the PDF)
     document.documentElement.style.setProperty('--accent', state.branding.primaryColor || '#6366F1');
 
@@ -291,6 +295,49 @@ function rasterizeSvg(dataUrl) {
     });
 }
 
+const escapeHtml = (s) =>
+    String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+/* Quick-start example line items (the user edits them after loading). */
+const TEMPLATES = {
+    dienst: [
+        { description: 'Voorbereiding en intake', quantity: 2, unit: 'uur', price: 75, vat: 21, discount: 0, period: 'one-off' },
+        { description: 'Uitvoering werkzaamheden', quantity: 8, unit: 'uur', price: 75, vat: 21, discount: 0, period: 'one-off' },
+        { description: 'Oplevering en nazorg', quantity: 1, unit: 'uur', price: 75, vat: 21, discount: 0, period: 'one-off' },
+    ],
+    project: [
+        { description: 'Ontwerp en voorbereiding', quantity: 1, unit: '', price: 750, vat: 21, discount: 0, period: 'one-off' },
+        { description: 'Realisatie', quantity: 1, unit: '', price: 1500, vat: 21, discount: 0, period: 'one-off' },
+        { description: 'Oplevering en uitleg', quantity: 1, unit: '', price: 250, vat: 21, discount: 0, period: 'one-off' },
+    ],
+    abonnement: [
+        { description: 'Eenmalige opstartkosten', quantity: 1, unit: '', price: 500, vat: 21, discount: 0, period: 'one-off' },
+        { description: 'Onderhoud en support', quantity: 1, unit: 'maand', price: 50, vat: 21, discount: 0, period: 'monthly' },
+    ],
+};
+
+function hasItemContent() {
+    return state.items.some((i) => (i.description && i.description.trim()) || Number(i.price) > 0);
+}
+
+function applyTemplate(key) {
+    const tpl = TEMPLATES[key];
+    if (!tpl) return;
+    if (hasItemContent() && !confirm('De huidige regels vervangen door dit voorbeeld?')) return;
+    state.items = tpl.map((it, i) => ({ id: Date.now() + i, ...it }));
+    renderItemsUI();
+    updatePreview();
+}
+
+let savedTimer = null;
+function flashSaved() {
+    const el = $('autosave-hint');
+    if (!el) return;
+    el.classList.add('saved');
+    clearTimeout(savedTimer);
+    savedTimer = setTimeout(() => el.classList.remove('saved'), 1200);
+}
+
 function renderItemsUI() {
     const list = $('items-list');
     list.innerHTML = '';
@@ -299,15 +346,18 @@ function renderItemsUI() {
         row.className = 'item-row';
         row.innerHTML = `
             <div class="row-top">
-                <input type="text" class="i-desc" value="${item.description}" placeholder="Omschrijving">
-                <button class="btn-remove">×</button>
+                <input type="text" class="i-desc" value="${escapeHtml(item.description)}" placeholder="Omschrijving">
+                <button class="btn-dup" type="button" title="Dupliceer regel" aria-label="Dupliceer regel">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                </button>
+                <button class="btn-remove" type="button" title="Verwijder regel" aria-label="Verwijder regel">×</button>
             </div>
             <div class="row-bot">
                 <div class="input-group-mini" style="flex:0 0 50px">
                     <input type="text" inputmode="decimal" class="i-qty" value="${item.quantity}" placeholder="#">
                 </div>
                 <div class="input-group-mini" style="flex:0 0 60px">
-                     <input type="text" class="i-unit" value="${item.unit || ''}" placeholder="Eenh.">
+                     <input type="text" class="i-unit" value="${escapeHtml(item.unit || '')}" placeholder="Eenh.">
                 </div>
                 <div class="input-group-mini" style="flex:1">
                     <input type="text" inputmode="decimal" class="i-price" value="${item.price}" placeholder="Prijs">
@@ -349,6 +399,15 @@ function renderItemsUI() {
 
         row.querySelector('.i-vat').addEventListener('change', (e) => { item.vat = Number(e.target.value); updatePreview(); });
         row.querySelector('.i-period').addEventListener('change', (e) => { item.period = e.target.value; updatePreview(); });
+
+        const dupBtn = row.querySelector('.btn-dup');
+        if (dupBtn) dupBtn.addEventListener('click', () => {
+            const idx = state.items.findIndex((i) => i.id === item.id);
+            state.items.splice(idx + 1, 0, { ...item, id: Date.now() });
+            renderItemsUI();
+            updatePreview();
+        });
+
         row.querySelector('.btn-remove').addEventListener('click', () => {
             state.items = state.items.filter(i => i.id !== item.id);
             renderItemsUI();
@@ -379,22 +438,27 @@ function updatePreview() {
         projLine.style.display = 'block';
     } else { projLine.style.display = 'none'; }
 
-    // 3. Address
+    // 3. Address (preview-only placeholders guide first-time users; the PDF stays clean)
     const senderHtml = buildAddressBlock(state.sender);
     const senderBlock = $('prev-sender-block');
-    // FIX: Remove 'Jouw Bedrijf' fallback. Empty is empty.
-    if (senderBlock) senderBlock.innerHTML = `<strong>${state.sender.company || ''}</strong>${senderHtml}`;
+    if (senderBlock) {
+        senderBlock.innerHTML = state.sender.company
+            ? `<strong>${escapeHtml(state.sender.company)}</strong>${senderHtml}`
+            : `<strong class="prev-ph">Je bedrijfsnaam</strong>`;
+    }
 
     const clientHtml = buildAddressBlock(state.client);
     const clientBlock = $('prev-client-block');
     if (clientBlock) {
-        // FIX: Remove 'De Klant' fallback.
-        clientBlock.innerHTML = `
-            <strong>${state.client.company || ''}</strong>
-            ${state.client.contact ? `<div>T.a.v. ${state.client.contact}</div>` : ''}
+        const hasClient = state.client.company || state.client.contact || state.client.address;
+        clientBlock.innerHTML = hasClient
+            ? `
+            <strong>${escapeHtml(state.client.company || '')}</strong>
+            ${state.client.contact ? `<div>T.a.v. ${escapeHtml(state.client.contact)}</div>` : ''}
             ${clientHtml}
-            ${state.client.reference ? `<div style="margin-top:0.5rem; font-size:0.8em; color:#6B7280">Ref: ${state.client.reference}</div>` : ''}
-        `;
+            ${state.client.reference ? `<div style="margin-top:0.5rem; font-size:0.8em; color:#6B7280">Ref: ${escapeHtml(state.client.reference)}</div>` : ''}
+        `
+            : `<strong class="prev-ph">Naam van je klant</strong>`;
     }
 
     // 4. Items & Financials
@@ -468,8 +532,8 @@ function restoreInputs() {
 
 function buildAddressBlock(data) {
     let html = '';
-    if (data.address) html += `<span>${data.address}</span>`;
-    if (data.zip || data.city) html += `<span>${data.zip || ''} ${data.city || ''}</span>`;
+    if (data.address) html += `<span>${escapeHtml(data.address)}</span>`;
+    if (data.zip || data.city) html += `<span>${escapeHtml(`${data.zip || ''} ${data.city || ''}`.trim())}</span>`;
     return html;
 }
 

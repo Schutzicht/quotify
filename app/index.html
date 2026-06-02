@@ -56,6 +56,21 @@
                     </svg>
                     Nieuwe offerte
                 </button>
+                <div class="quick-start">
+                    <span class="qs-label">Snel beginnen met een voorbeeld</span>
+                    <div class="qs-btns">
+                        <button class="qs-btn" type="button" data-tpl="dienst">Uurtarief</button>
+                        <button class="qs-btn" type="button" data-tpl="project">Project</button>
+                        <button class="qs-btn" type="button" data-tpl="abonnement">Abonnement</button>
+                    </div>
+                </div>
+                <div class="autosave-hint" id="autosave-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                    <span>Automatisch bewaard</span>
+                </div>
             </div>
 
             <div class="config-scroll">
@@ -72,10 +87,12 @@
                     <div class="color-selector">
                         <label>Accent Kleur</label>
                         <div class="color-options">
-                            <button class="c-opt active" data-color="#0F172A" style="background:#0F172A"></button>
-                            <button class="c-opt" data-color="#2563EB" style="background:#2563EB"></button>
-                            <button class="c-opt" data-color="#059669" style="background:#059669"></button>
-                            <button class="c-opt" data-color="#DC2626" style="background:#DC2626"></button>
+                            <button class="c-opt active" data-color="#0F172A" style="background:#0F172A" title="Slate" aria-label="Slate"></button>
+                            <button class="c-opt" data-color="#6366F1" style="background:#6366F1" title="Indigo" aria-label="Indigo"></button>
+                            <button class="c-opt" data-color="#2563EB" style="background:#2563EB" title="Blauw" aria-label="Blauw"></button>
+                            <button class="c-opt" data-color="#059669" style="background:#059669" title="Groen" aria-label="Groen"></button>
+                            <button class="c-opt" data-color="#DC2626" style="background:#DC2626" title="Rood" aria-label="Rood"></button>
+                            <button class="c-opt" data-color="#EA580C" style="background:#EA580C" title="Oranje" aria-label="Oranje"></button>
                             <div class="custom-color-wrapper" title="Kies eigen kleur">
                                 <input type="color" id="accent-color" value="#0F172A">
                                 <svg class="pipette-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -291,6 +308,10 @@
                 <h2>Regels</h2>
                 <div id="items-list"></div>
                 <button id="add-item-btn" class="btn-secondary full-width">+ Regel toevoegen</button>
+                <div class="live-total" id="live-total">
+                    <span>Totaal incl. btw</span>
+                    <strong id="live-total-amt">&euro; 0,00</strong>
+                </div>
             </div>
         </aside>
 

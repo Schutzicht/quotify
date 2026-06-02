@@ -1,0 +1,148 @@
+export default {
+    slug: 'wat-kost-een-verbouwing',
+    title: 'Wat kost een verbouwing? Prijzen per m2, per type en budgettips',
+    metaTitle: 'Wat kost een verbouwing? Prijzen 2026 | Offertje',
+    metaDescription:
+        'Wat kost een verbouwing in 2026? Bekijk actuele richtprijzen per m2 voor uitbouw, doorbraak en dakopbouw, plus stelposten en tips om je budget te bewaken.',
+    category: 'Kosten',
+    keyword: 'wat kost een verbouwing',
+    date: '2026-05-08',
+    updated: '2026-06-02',
+    readingTime: 11,
+    excerpt:
+        'Wat kost een verbouwing in 2026? Een overzicht van richtprijzen per m2 en per type, van uitbouw en doorbraak tot dakopbouw, met stelposten en budgettips.',
+    bodyHtml: `
+<p>Wat kost een verbouwing? Het eerlijke antwoord is: dat hangt enorm af van wat je laat doen, hoe groot het wordt en welke afwerking je kiest. Een doorbraak tussen twee kamers loopt in de duizenden euro's, een complete uitbouw met fundering en installaties al snel in de tienduizenden. Toch wil je voordat je offertes opvraagt een realistisch gevoel hebben bij de bedragen, zodat je niet schrikt van de eerste prijs en zodat je offertes onderling kunt vergelijken. In dit artikel zetten we de richtprijzen voor 2026 op een rij: per vierkante meter, per type verbouwing en per onderdeel. Je leest ook wat stelposten zijn, welke kosten mensen vaak vergeten en hoe je je budget bewaakt. Alle bedragen zijn indicatief en verschillen per situatie, regio en aannemer.</p>
+
+<div class="key-takeaways">
+  <strong>In het kort</strong>
+  <ul>
+    <li>Een uitbouw kost grofweg &euro; 1.800,00 tot &euro; 3.000,00 per m2, inclusief casco, installaties en afwerking.</li>
+    <li>Een doorbraak in een dragende muur ligt meestal tussen &euro; 4.500,00 en &euro; 15.000,00, afhankelijk van de breedte.</li>
+    <li>Reken bovenop het bouwwerk altijd op bijkomende kosten: ontwerp, constructieberekening, vergunning en afwerking.</li>
+    <li>Werk met stelposten voor keuken, sanitair en tegels en houd een buffer van 10 tot 15 procent voor meerwerk aan.</li>
+  </ul>
+</div>
+
+<h2 id="waar-prijs-van-afhangt">Waar de prijs van een verbouwing van afhangt</h2>
+<p>Voordat je naar tabellen kijkt, is het goed te begrijpen waarom dezelfde klus bij de ene woning twee keer zo duur uitvalt als bij de andere. De prijs van een verbouwing wordt bepaald door de omvang, de constructie, de afwerking en de bereikbaarheid. Een uitbouw op een goede ondergrond is goedkoper dan een uitbouw waarvoor de aannemer op palen moet funderen. Een keuken met basis-kastjes kost een fractie van een keuken op maat met natuurstenen blad. En een woning in een drukke straat waar materiaal lastig aangevoerd kan worden, kost meer aan arbeid en logistiek.</p>
+<p>Daarnaast spelen installaties een grote rol. Zodra er water, elektra, riolering, ventilatie of vloerverwarming bij komt, loopt de prijs per vierkante meter snel op. Houd dat in je achterhoofd: een laag bedrag per m2 gaat vaak over casco of een eenvoudige ruimte, een hoog bedrag over een volledig afgewerkte en geinstalleerde ruimte. Wil je weten hoe een aannemer een grote klus opbouwt in losse regels, lees dan ook hoe je <a href="/blog/offerte-verbouwing/">een offerte voor een verbouwing</a> leest en beoordeelt.</p>
+
+<h2 id="prijs-per-m2">Wat kost een verbouwing per m2?</h2>
+<p>De vierkantemeterprijs is de handigste manier om verschillende plannen snel met elkaar te vergelijken. Hieronder staan indicatieve richtprijzen voor 2026 per type ingreep. Het zijn ranges, want de afwerking en complexiteit bepalen waar je binnen die band uitkomt. Gebruik ze om een eerste budget te schatten, niet als harde offerte.</p>
+<table>
+  <thead>
+    <tr><th>Type verbouwing</th><th>Richtprijs per m2</th><th>Wat zit er ongeveer in</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Uitbouw of aanbouw begane grond</td><td>&euro; 1.800,00 - &euro; 3.000,00</td><td>Fundering, casco, dak, installaties en afwerking</td></tr>
+    <tr><td>Dakopbouw (eenzijdig, prefab casco)</td><td>&euro; 1.600,00 - &euro; 2.200,00</td><td>Wind- en waterdicht casco, zonder afwerking</td></tr>
+    <tr><td>Dakopbouw volledig afgewerkt</td><td>&euro; 2.200,00 - &euro; 2.750,00</td><td>Inclusief isolatie, installaties en afwerking</td></tr>
+    <tr><td>Nokverhoging (tweezijdige opbouw)</td><td>&euro; 2.600,00 - &euro; 4.200,00</td><td>Zwaardere constructie, complexer maatwerk</td></tr>
+    <tr><td>Binnenverbouwing met afwerking</td><td>&euro; 700,00 - &euro; 1.500,00</td><td>Indeling wijzigen, stuc-, schilder- en vloerwerk</td></tr>
+  </tbody>
+</table>
+<p>Een uitbouw van 20 m2 komt met deze cijfers uit op grofweg &euro; 44.000,00 tot &euro; 60.000,00 inclusief BTW, afhankelijk van afwerking en installaties. Een afgewerkte dakopbouw van 40 m2 ligt al snel tussen de &euro; 88.000,00 en &euro; 110.000,00. Dit zijn complete projecten waarin de aannemer alles regelt. Kies je voor casco en doe je de afwerking zelf, dan val je lager uit, maar reken dan ook je eigen tijd en de materialen mee.</p>
+
+<h2 id="per-type">Wat kosten de bekende verbouwingen per type?</h2>
+<p>Niet elke verbouwing reken je handig per m2. Sommige ingrepen, zoals een doorbraak of een dakkapel, hebben een vrij vaste prijs die vooral afhangt van de breedte of het type. Hieronder de meest gevraagde verbouwingen met hun richtprijs voor 2026.</p>
+
+<h3>Doorbraak in een dragende muur</h3>
+<p>Een doorbraak om twee kamers samen te voegen is een klassieker. De prijs hangt vooral af van de breedte van de opening, want hoe breder, hoe zwaarder en duurder de stalen balk die de last opvangt. Reken voor een opening tot 2,5 meter op zo'n &euro; 4.500,00 tot &euro; 8.000,00. Tussen de 2,5 en 3,5 meter ligt het tussen &euro; 6.500,00 en &euro; 10.000,00. Een brede opening van meer dan 5 meter kan oplopen tot &euro; 15.000,00. Bij een dragende muur heb je daarnaast altijd een constructieberekening nodig (ongeveer &euro; 450,00 tot &euro; 900,00) en vaak een vergunning.</p>
+
+<h3>Dakkapel</h3>
+<p>Een dakkapel zit prijstechnisch tussen klein en groot werk in. Afhankelijk van de afmeting, het materiaal en de afwerking betaal je in 2026 ongeveer &euro; 4.000,00 tot &euro; 14.000,00. Een smalle, geprefabriceerde dakkapel valt aan de onderkant, een brede dakkapel over de volle breedte met luxe afwerking aan de bovenkant. In ons aparte artikel <a href="/blog/wat-kost-een-dakkapel/">wat kost een dakkapel</a> vind je een gedetailleerde uitsplitsing.</p>
+
+<h3>Aanbouw en uitbouw</h3>
+<p>Een aanbouw of uitbouw is vaak de grootste ingreep aan een woning. Voor 9 tot 15 m2 reken je grofweg &euro; 17.500,00 tot &euro; 35.000,00. Een uitbouw van 20 m2 ligt rond de &euro; 35.000,00 tot &euro; 60.000,00, en bij 30 m2 begint het al snel boven de &euro; 50.000,00. Wat de prijs sterk beweegt: openslaande deuren, vloerverwarming, de noodzaak om op palen te funderen en de afwerkingskwaliteit. Meer hierover lees je in <a href="/blog/wat-kost-een-aanbouw/">wat kost een aanbouw</a>.</p>
+
+{{CTA:Verbouwofferte zelf netjes uitwerken|Heb je richtprijzen van een aannemer ontvangen en wil je ze overzichtelijk op papier? Met Offertje zet je elke regel, het BTW-tarief en de stelposten neer en krijg je een verzorgde PDF met kloppende totalen.}}
+
+<h2 id="bijkomende-kosten">Bijkomende kosten die mensen vaak vergeten</h2>
+<p>De prijs van het bouwwerk zelf is maar een deel van het verhaal. Rond een verbouwing komen kosten kijken die niet altijd in de eerste richtprijs zitten, en die samen flink kunnen oplopen. Houd hier vanaf het begin rekening mee, anders klopt je budget halverwege niet meer.</p>
+<ul>
+  <li><strong>Ontwerp en tekeningen:</strong> een architect of bouwkundig tekenaar rekent vaak &euro; 1.500,00 tot &euro; 4.000,00, afhankelijk van de complexiteit.</li>
+  <li><strong>Constructieberekening:</strong> bij doorbraken en opbouwen reken je op &euro; 450,00 tot &euro; 1.200,00 per berekening.</li>
+  <li><strong>Vergunning en leges:</strong> de kosten verschillen per gemeente en lopen meestal van enkele honderden tot ruim &euro; 1.500,00.</li>
+  <li><strong>Sloop, container en afvoer:</strong> puin afvoeren en stortkosten worden vaak vergeten en tellen toch op.</li>
+  <li><strong>Afwerking en inrichting:</strong> verf, vloer, gordijnen en losse meubels staan zelden in de bouwofferte.</li>
+</ul>
+<p>Tel deze posten op bij de bouwsom voordat je je definitieve budget vaststelt. Bij grote verbouwingen is het verstandig om vergunning- en ontwerpkosten apart te begroten, zodat je per fase grip houdt op het geld.</p>
+
+<div class="callout">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <p>Vraag elke aannemer om dezelfde onderdelen te offreren. Pas als sloop, casco, installaties en afwerking op dezelfde manier zijn opgesplitst, kun je prijzen eerlijk naast elkaar leggen.</p>
+</div>
+
+<h2 id="stelposten">Stelposten: budget voor wat nog niet vaststaat</h2>
+<p>Bij een verbouwing staan veel keuzes nog open op het moment dat je de prijs opvraagt. Je weet dat er een keuken komt, maar hebt er nog geen uitgekozen. Hetzelfde geldt voor tegels en sanitair. Voor die onderdelen neemt een aannemer een stelpost op: een geschat budget met de vermelding dat het een raming is. Kies je duurder, dan betaal je het verschil bij. Kies je goedkoper, dan krijg je dat terug. Let er bij het vergelijken van offertes op of de stelposten realistisch en gelijk zijn ingeschat. Een aannemer die de keukenstelpost laag zet, lijkt goedkoper, maar je betaalt het verschil later alsnog.</p>
+<p>Vraag daarom altijd of montage in de stelpost zit of apart komt. De meeste discussies ontstaan doordat iemand denkt dat het plaatsen van de keuken in de stelpost zat, terwijl alleen het product was begroot. Wil je weten hoe je dit soort offertes goed naast elkaar legt, lees dan <a href="/blog/offertes-vergelijken/">hoe je offertes vergelijkt</a>.</p>
+
+<h2 id="voorbeeld">Voorbeeldbegroting: doorbraak en nieuwe woonkeuken</h2>
+<p>Om het concreet te maken, hieronder een illustratieve begroting voor een veelgevraagde verbouwing: de benedenverdieping wordt opengebroken tot een woonkeuken. De bedragen zijn voorbeelden en dienen alleen om de opbouw te laten zien. Let op hoe casco, installaties en stelposten apart staan.</p>
+<table>
+  <thead>
+    <tr><th>Omschrijving</th><th>Aantal</th><th>Eenheid</th><th>Prijs p/e</th><th>Totaal</th><th>BTW</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Sloop wand en oude keuken, inclusief afvoer en container</td><td>1</td><td>post</td><td>&euro; 2.200,00</td><td>&euro; 2.200,00</td><td>21%</td></tr>
+    <tr><td>Stalen balk en raveelwerk voor doorbraak (3 meter)</td><td>1</td><td>post</td><td>&euro; 3.400,00</td><td>&euro; 3.400,00</td><td>21%</td></tr>
+    <tr><td>Constructieberekening dragende muur</td><td>1</td><td>stuk</td><td>&euro; 650,00</td><td>&euro; 650,00</td><td>21%</td></tr>
+    <tr><td>Nieuwe dekvloer met vloerverwarming</td><td>40</td><td>m2</td><td>&euro; 78,00</td><td>&euro; 3.120,00</td><td>21%</td></tr>
+    <tr><td>Aanpassen elektra en groepenkast</td><td>1</td><td>post</td><td>&euro; 2.450,00</td><td>&euro; 2.450,00</td><td>21%</td></tr>
+    <tr><td>Stucwerk wanden en plafond, behangklaar</td><td>95</td><td>m2</td><td>&euro; 24,00</td><td>&euro; 2.280,00</td><td>21%</td></tr>
+    <tr><td>Stelpost keuken (exclusief montage, naar keuze)</td><td>1</td><td>post</td><td>&euro; 9.000,00</td><td>&euro; 9.000,00</td><td>21%</td></tr>
+    <tr><td>Stelpost tegel- en vloerafwerking</td><td>1</td><td>post</td><td>&euro; 2.600,00</td><td>&euro; 2.600,00</td><td>21%</td></tr>
+  </tbody>
+</table>
+<p>De afsluiting bouw je op met een helder subtotaal, de BTW en het totaal inclusief, zodat je in een oogopslag ziet wat je betaalt:</p>
+<table>
+  <thead>
+    <tr><th>Omschrijving</th><th>Bedrag</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Subtotaal (excl. BTW)</td><td>&euro; 25.700,00</td></tr>
+    <tr><td>BTW 21%</td><td>&euro; 5.397,00</td></tr>
+    <tr><td><strong>Totaal (incl. BTW)</strong></td><td><strong>&euro; 31.097,00</strong></td></tr>
+  </tbody>
+</table>
+<p>Voor renovatie- en herstelwerk aan woningen die ouder zijn dan twee jaar kan in afgebakende gevallen het lage tarief van 9 procent op de arbeid gelden. Of dat in jouw situatie geldt, laat je je aannemer toelichten of controleer je bij de Belastingdienst. Meer over de tarieven lees je in <a href="/blog/btw-op-de-offerte/">BTW op de offerte</a>.</p>
+
+<h2 id="budget-bewaken">Je budget bewaken tijdens de verbouwing</h2>
+<p>Geen enkele verbouwing verloopt exact volgens plan. Achter een wand zit oude leiding, de vloer blijkt niet vlak of je wilt onderweg toch die extra wandcontactdoos. Dat is meerwerk en het is volkomen normaal. Wat je wilt voorkomen, is dat je er pas op de eindafrekening achter komt. Een paar manieren om grip te houden:</p>
+<ul>
+  <li>Houd een buffer van 10 tot 15 procent boven op de offertesom aan voor meerwerk en tegenvallers.</li>
+  <li>Spreek vooraf af hoe meerwerk wordt geprijsd en dat het pas wordt uitgevoerd na jouw schriftelijk akkoord.</li>
+  <li>Koppel betaling aan fases: een aanbetaling bij start, een termijn na het casco en een slottermijn bij oplevering.</li>
+  <li>Laat stelposten zo realistisch mogelijk inschatten, zodat je niet later voor verrassingen staat.</li>
+</ul>
+<p>Door deze afspraken vooraf vast te leggen, wordt meerwerk een normaal onderdeel van het project in plaats van een conflict. Ga je zelf offertes opvragen en wil je ze net en overzichtelijk vastleggen? Dan kun je met <a href="/app">Offertje gratis een offerte opstellen</a> en als PDF downloaden, zodat je per regel ziet wat je betaalt en aannemers eerlijk kunt vergelijken.</p>
+
+<h2 id="subsidie">Subsidie en verduurzaming bij een verbouwing</h2>
+<p>Verbouw je met een duurzaam doel, zoals isolatie, een warmtepomp of zonnepanelen, dan zijn er landelijke regelingen die een deel van de kosten kunnen drukken. De voorwaarden en bedragen veranderen regelmatig, dus check de actuele regelingen bij je gemeente en bij de Rijksdienst voor Ondernemend Nederland voordat je begint. Vaak moet je de subsidie aanvragen voordat de werkzaamheden starten.</p>
+<p>Verduurzaming verhoogt je verbouwbudget op de korte termijn, maar kan zich terugverdienen via een lagere energierekening. Voor zonnepanelen op een woning geldt bovendien 0 procent BTW. Wil je daar dieper in duiken, bekijk dan <a href="/blog/wat-kost-zonnepanelen/">wat zonnepanelen kosten</a> en <a href="/blog/wat-kost-een-warmtepomp/">wat een warmtepomp kost</a>.</p>
+`,
+    faq: [
+        {
+            q: 'Wat kost een verbouwing gemiddeld per m2?',
+            a: 'Dat hangt af van het type. Een uitbouw kost grofweg 1.800 tot 3.000 euro per m2 inclusief casco, installaties en afwerking. Een afgewerkte dakopbouw ligt tussen 2.200 en 2.750 euro per m2 en een binnenverbouwing met afwerking grofweg 700 tot 1.500 euro per m2. De bedragen zijn indicatief en verschillen per situatie en regio.',
+        },
+        {
+            q: 'Wat kost het om een dragende muur door te breken?',
+            a: 'Een doorbraak in een dragende muur kost meestal tussen 4.500 en 15.000 euro. De breedte van de opening is bepalend: tot 2,5 meter zit je rond 4.500 tot 8.000 euro, boven de 5 meter kan het oplopen tot 15.000 euro. Daar komt een constructieberekening van ongeveer 450 tot 900 euro bij en vaak een vergunning.',
+        },
+        {
+            q: 'Welke kosten worden bij een verbouwing vaak vergeten?',
+            a: 'Mensen vergeten vaak het ontwerp en de tekeningen, de constructieberekening, de vergunning en leges, de sloop met container en afvoer, en de afwerking en inrichting zoals verf, vloer en meubels. Tel deze posten altijd op bij de bouwsom voordat je je budget vaststelt.',
+        },
+        {
+            q: 'Wat is een stelpost en waarom is die belangrijk?',
+            a: 'Een stelpost is een geschat budget voor een onderdeel waarvan de keuze nog niet vaststaat, zoals keuken, tegels of sanitair. Kies je duurder, dan betaal je het verschil bij, kies je goedkoper, dan krijg je het terug. Let bij het vergelijken van offertes op of de stelposten realistisch en gelijk zijn ingeschat.',
+        },
+        {
+            q: 'Hoeveel buffer moet ik aanhouden voor meerwerk?',
+            a: 'Houd een buffer van 10 tot 15 procent boven op de offertesom aan voor meerwerk en tegenvallers. Bij een verbouwing komt vaak verborgen werk boven water, zoals oude leidingen of een onvlakke vloer. Spreek vooraf af hoe meerwerk wordt geprijsd en dat het pas wordt uitgevoerd na jouw schriftelijk akkoord.',
+        },
+    ],
+    related: ['offerte-verbouwing', 'offertes-vergelijken', 'offerte-maken'],
+};
