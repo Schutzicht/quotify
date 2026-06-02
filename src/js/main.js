@@ -1,4 +1,5 @@
 import { generatePDF } from './pdf-gen.js';
+import { computeQuote, fmtEUR } from './calc.js';
 
 /* --- STATE MANAGEMENT --- */
 const state = {
@@ -511,55 +512,19 @@ function renderItemsTable() {
     paperBody.innerHTML = '';
     if (addressGrid) paperBody.appendChild(addressGrid);
 
-    // Grouping & Calc
-    const groups = {
-        'one-off': { label: 'Eenmalige Investering', items: [], subtotal: 0, vatTotal: 0 },
-        'start': { label: 'Opstartkosten', items: [], subtotal: 0, vatTotal: 0 },
-        'weekly': { label: 'Wekelijkse Kosten', items: [], subtotal: 0, vatTotal: 0 },
-        'monthly': { label: 'Maandelijkse Kosten', items: [], subtotal: 0, vatTotal: 0 },
-        'quarterly': { label: 'Kosten per Kwartaal', items: [], subtotal: 0, vatTotal: 0 },
-        'yearly': { label: 'Jaarlijkse Kosten', items: [], subtotal: 0, vatTotal: 0 }
-    };
+    // Single source of truth: same calculation as the PDF (calc.js)
+    const q = computeQuote(state);
+    const accent = state.branding.primaryColor;
+    const esc = (s) => String(s == null ? '' : s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 
-    // Tax Buckets just for One-Off usually, but let's track globally or per group? 
-    // Usually a quote sums up One-Off costs. Recurring are separate.
-    // Let's do a rigorous One-Off calculation.
-    let vatBuckets = {};
-
-    state.items.forEach(item => {
-        const pd = item.period || 'one-off';
-        if (groups[pd]) {
-            const raw = item.price * item.quantity;
-            const discAmount = raw * ((item.discount || 0) / 100);
-            const exVat = raw - discAmount;
-            const vatAmount = exVat * ((item.vat || 0) / 100);
-
-            item._calculated = { exVat, vatAmount, total: exVat + vatAmount }; // Store for row render
-
-            groups[pd].items.push(item);
-            groups[pd].subtotal += exVat;
-            groups[pd].vatTotal += vatAmount;
-
-            if (pd === 'one-off') {
-                const vatKey = item.vat || 0;
-                if (!vatBuckets[vatKey]) vatBuckets[vatKey] = 0;
-                vatBuckets[vatKey] += vatAmount;
-            }
-        }
-    });
-
-    // Render Groups
-    Object.keys(groups).forEach(key => {
-        const group = groups[key];
-        if (group.items.length === 0) return;
-
+    q.activeGroups.forEach((group) => {
         const container = document.createElement('div');
         container.className = 'group-section';
 
         const header = document.createElement('h3');
         header.className = 'group-header';
         header.textContent = group.label;
-        header.style.color = state.branding.primaryColor;
+        header.style.color = accent;
         container.appendChild(header);
 
         const table = document.createElement('table');
@@ -576,87 +541,78 @@ function renderItemsTable() {
             <tbody></tbody>
         `;
         const tbody = table.querySelector('tbody');
-        group.items.forEach(item => {
-            const calc = item._calculated;
+        group.items.forEach((item) => {
+            const c = item._calc;
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>
-                    <div style="font-weight:500">${item.description}</div>
-                    ${item.discount > 0 ? `<div style="font-size:0.75em; color:#EF4444">Korting: ${item.discount}%</div>` : ''}
+                    <div style="font-weight:500">${esc(item.description)}</div>
+                    ${c.disc > 0 ? `<div style="font-size:0.75em; color:#EF4444">Korting: ${c.disc}%</div>` : ''}
+                    ${c.vat ? `<div style="font-size:0.7em; color:#9CA3AF">btw ${c.vat}%</div>` : ''}
                 </td>
                 <td class="right">
-                    ${item.quantity} 
-                    <span style="font-size:0.8em; color:#9CA3AF">${item.unit || ''}</span>
+                    ${c.qty}
+                    <span style="font-size:0.8em; color:#9CA3AF">${esc(item.unit || '')}</span>
                 </td>
-                <td class="right">€ ${item.price.toFixed(2)}</td>
-                <td class="right">€ ${calc.exVat.toFixed(2)}</td> 
+                <td class="right">${fmtEUR(c.price)}</td>
+                <td class="right">${fmtEUR(c.exVat)}</td>
             `;
             tbody.appendChild(tr);
         });
 
-        // If one-off, we do Detailed Summary. If recurring, simple line.
-        if (key !== 'one-off') {
+        container.appendChild(table);
+
+        if (group.key !== 'one-off') {
             const totalRow = document.createElement('div');
             totalRow.className = 'group-total recurring';
-            totalRow.innerHTML = `<span>Totaal ${group.label} (Ex BTW)</span> <span>€ ${group.subtotal.toFixed(2)}</span>`;
-            container.appendChild(table);
+            const suffix = group.suffix ? ` <span style="color:#94a3b8; font-weight:500">${group.suffix}</span>` : '';
+            totalRow.innerHTML = `<span>Totaal ${group.label.toLowerCase()} (excl. btw)</span> <span>${fmtEUR(group.subtotal)}${suffix}</span>`;
             container.appendChild(totalRow);
-        } else {
-            container.appendChild(table);
         }
 
         paperBody.appendChild(container);
     });
 
-    // TOTALS SECTION for ONE-OFF
-    const oneOff = groups['one-off'];
-    if (oneOff.items.length > 0) {
+    // TOTALS for one-off
+    if (q.oneOff.items.length > 0) {
         const totalsSec = document.createElement('div');
         totalsSec.className = 'totals-section';
-        totalsSec.style.borderTopColor = state.branding.primaryColor;
+        totalsSec.style.borderTopColor = accent;
 
         const subRow = `
             <div class="total-row">
-                <span>Subtotaal (Excl. BTW)</span>
-                <span>€ ${oneOff.subtotal.toFixed(2)}</span>
+                <span>Subtotaal (excl. btw)</span>
+                <span>${fmtEUR(q.grandSubtotal)}</span>
             </div>
         `;
 
         let vatRows = '';
-        Object.keys(vatBuckets).forEach(rate => {
-            if (vatBuckets[rate] > 0) {
-                vatRows += `
+        Object.keys(q.vatBuckets)
+            .sort((a, b) => Number(a) - Number(b))
+            .forEach((rate) => {
+                if (q.vatBuckets[rate] !== 0) {
+                    vatRows += `
                     <div class="total-row">
-                        <span>BTW (${rate}%)</span>
-                        <span>€ ${vatBuckets[rate].toFixed(2)}</span>
-                    </div>
-                `;
-            }
-        });
+                        <span>btw ${rate}%</span>
+                        <span>${fmtEUR(q.vatBuckets[rate])}</span>
+                    </div>`;
+                }
+            });
 
         const totalRow = `
-             <div class="total-row final" style="color:${state.branding.primaryColor}">
-                <span>Totaal (Incl. BTW)</span>
-                <span>€ ${(oneOff.subtotal + oneOff.vatTotal).toFixed(2)}</span>
+             <div class="total-row final" style="color:${accent}">
+                <span>Totaal (incl. btw)</span>
+                <span>${fmtEUR(q.grandTotal)}</span>
             </div>
         `;
 
         totalsSec.innerHTML = subRow + vatRows + totalRow;
         paperBody.appendChild(totalsSec);
-
-        state.total = oneOff.subtotal + oneOff.vatTotal;
-    } else {
-        state.total = 0;
     }
+
+    state.total = q.grandTotal;
 
     if (notesSection) paperBody.appendChild(notesSection);
-
-    // Sidebar Summary Update
-    let summaryText = `€ ${state.total.toFixed(2)}`;
-    // Maybe add monthly?
-    if (groups['monthly'].subtotal > 0) {
-        summaryText += ` + € ${groups['monthly'].subtotal.toFixed(2)} p/m`;
-    }
 }
 
 function renderFooter() {
