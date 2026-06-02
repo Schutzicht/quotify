@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     checkPaymentSuccess();
 
     initMobileTabs();
+
+    const resetBtn = $('reset-btn');
+    if (resetBtn) resetBtn.addEventListener('click', resetAll);
+
     updatePreview();
 
     console.log('OfferteGeneratory Gen 3 :: Initialized');
@@ -219,12 +223,19 @@ function initItems() {
 
 function resetToDefaultItems() {
     if (state.items.length === 0) {
+        // Start with one empty row so the user has something to fill in (no demo data).
         state.items.push({
-            id: 1, description: 'Website Design & Development', price: 2500, quantity: 1,
-            unit: 'project', vat: 21, discount: 0, period: 'one-off'
+            id: 1, description: '', price: 0, quantity: 1,
+            unit: 'stk', vat: 21, discount: 0, period: 'one-off'
         });
         renderItemsUI();
     }
+}
+
+function resetAll() {
+    if (!confirm('Weet je zeker dat je opnieuw wilt beginnen? Alle ingevulde gegevens van deze offerte worden gewist.')) return;
+    localStorage.removeItem('offertje_state');
+    location.reload();
 }
 
 function renderItemsUI() {
@@ -425,11 +436,11 @@ function updatePreview() {
     renderFooter();
 
     // SAVE STATE (For Payment Return)
-    localStorage.setItem('quotify_state', JSON.stringify(state));
+    localStorage.setItem('offertje_state', JSON.stringify(state));
 }
 
 function loadState() {
-    const saved = localStorage.getItem('quotify_state');
+    const saved = localStorage.getItem('offertje_state');
     if (saved) {
         try {
             const parsed = JSON.parse(saved);
