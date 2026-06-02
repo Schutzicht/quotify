@@ -127,6 +127,9 @@ export async function generatePostObject(topic, opts = {}) {
         return stubPost(topic, slugSet);
     }
 
+    // Model resolution: explicit --model > GROQ_MODEL env > sensible default.
+    const model = opts.model || process.env.GROQ_MODEL || DEFAULT_MODEL;
+
     const res = await fetch(GROQ_URL, {
         method: 'POST',
         headers: {
@@ -134,7 +137,7 @@ export async function generatePostObject(topic, opts = {}) {
             Authorization: `Bearer ${opts.apiKey}`,
         },
         body: JSON.stringify({
-            model: opts.model || DEFAULT_MODEL,
+            model,
             temperature: 0.6,
             max_tokens: 6000,
             response_format: { type: 'json_object' },

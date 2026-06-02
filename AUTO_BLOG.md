@@ -41,6 +41,7 @@ Ingesteld in [`vercel.json`](vercel.json): elke maandag 09:00 UTC roept Vercel `
 | Variabele | Verplicht | Uitleg |
 |---|---|---|
 | `GROQ_API_KEY` | ja | Groq API-key (zelfde provider als app.agensea) |
+| `GROQ_MODEL` | nee | model-ID, standaard `llama-3.3-70b-versatile`. Voor betere kwaliteit: `openai/gpt-oss-120b` |
 | `GITHUB_TOKEN` | ja | GitHub Personal Access Token met `repo`-scope (Contents + Pull requests: read/write) |
 | `GITHUB_OWNER` | nee | standaard `Schutzicht` |
 | `GITHUB_REPO` | nee | standaard `quotify` |
