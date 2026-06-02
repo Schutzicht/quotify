@@ -43,6 +43,20 @@ export async function blogSlugsOnGithub(token, owner, repo) {
     }
 }
 
+/** Recent commits that touched content/blog (newest first). */
+export async function recentBlogCommits(token, owner, repo, perPage = 15) {
+    try {
+        const list = await gh(token, 'GET', `/repos/${owner}/${repo}/commits?path=content/blog&per_page=${perPage}`);
+        return (Array.isArray(list) ? list : []).map((c) => ({
+            message: c.commit && c.commit.message ? c.commit.message.split('\n')[0] : '',
+            date: c.commit && c.commit.author ? c.commit.author.date : null,
+            url: c.html_url,
+        }));
+    } catch {
+        return [];
+    }
+}
+
 /**
  * Commit the new post file straight to the branch (default main).
  * No PR, no review step: the commit triggers a Vercel build and the

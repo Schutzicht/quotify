@@ -523,6 +523,7 @@ ${urls
 
 const ROBOTS = `User-agent: *
 Allow: /
+Disallow: /admin
 
 Sitemap: ${SITE.url}/sitemap.xml
 `;
@@ -565,6 +566,12 @@ const run = async () => {
 
     // hub
     writeFileSync(join(OUT_DIR, 'index.html'), renderHub(posts));
+
+    // machine-readable index (used by the admin dashboard "all blogs" list)
+    writeFileSync(join(OUT_DIR, 'index.json'), JSON.stringify(posts.map((p) => ({
+        slug: p.slug, title: p.title, category: p.category,
+        date: p.date, updated: p.updated || p.date, excerpt: p.excerpt, url: `/blog/${p.slug}/`,
+    }))));
 
     // sitemap + robots
     writeFileSync(join(ROOT, 'public', 'sitemap.xml'), buildSitemap(posts));

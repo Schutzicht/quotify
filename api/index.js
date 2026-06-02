@@ -9,7 +9,7 @@ import { dirname } from 'path';
 import autoTopics from '../content/blog/_topics.mjs';
 import { generatePostObject } from '../scripts/lib/ai-writer.mjs';
 import { serializePost } from '../scripts/lib/post-file.mjs';
-import { blogSlugsOnGithub, commitPostDirect } from '../scripts/lib/github.mjs';
+import { blogSlugsOnGithub, commitPostDirect, recentBlogCommits } from '../scripts/lib/github.mjs';
 
 dotenv.config();
 
@@ -100,45 +100,101 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), (req
     res.send();
 });
 
-// 3. Auto-blog cron: generate the next queued post and open a pull request.
-//    Scheduled in vercel.json. Needs env: GROQ_API_KEY, GITHUB_TOKEN
-//    (optional: GITHUB_OWNER, GITHUB_REPO, GITHUB_BASE, CRON_SECRET).
+// ---- Auto-blog: shared generate + publish helper ----
+const ghEnv = () => ({
+    token: process.env.GITHUB_TOKEN,
+    groqKey: process.env.GROQ_API_KEY,
+    owner: process.env.GITHUB_OWNER || 'Schutzicht',
+    repo: process.env.GITHUB_REPO || 'quotify',
+    base: process.env.GITHUB_BASE || 'main',
+});
+
+async function generateAndPublishNext() {
+    const { token, groqKey, owner, repo, base } = ghEnv();
+    if (!token) throw new Error('GITHUB_TOKEN ontbreekt');
+    if (!groqKey) throw new Error('GROQ_API_KEY ontbreekt');
+
+    // Source of truth for "what already exists" is the repo itself.
+    const taken = await blogSlugsOnGithub(token, owner, repo);
+    const topic = autoTopics.find((t) => t && t.slug && !taken.has(t.slug));
+    if (!topic) return { status: 'leeg', message: 'Geen onderwerpen meer in de wachtrij.' };
+
+    const post = await generatePostObject(topic, { apiKey: groqKey, slugList: [...taken] });
+    post.date = new Date().toISOString().slice(0, 10);
+    post.updated = post.date;
+    const commit = await commitPostDirect({
+        token, owner, repo, branch: base, slug: post.slug, fileContent: serializePost(post),
+    });
+    return { status: 'ok', slug: post.slug, title: post.title, commit };
+}
+
+// 3. Auto-blog cron: generate the next queued post and publish it directly.
+//    Scheduled in vercel.json. Needs env: GROQ_API_KEY, GITHUB_TOKEN (optional CRON_SECRET).
 app.get('/api/cron/generate-blog', async (req, res) => {
-    // Optional shared secret. Vercel Cron sends "Authorization: Bearer <CRON_SECRET>".
-    if (process.env.CRON_SECRET) {
-        if ((req.headers.authorization || '') !== `Bearer ${process.env.CRON_SECRET}`) {
-            return res.status(401).json({ error: 'unauthorized' });
-        }
+    if (process.env.CRON_SECRET && (req.headers.authorization || '') !== `Bearer ${process.env.CRON_SECRET}`) {
+        return res.status(401).json({ error: 'unauthorized' });
     }
-
-    const token = process.env.GITHUB_TOKEN;
-    const groqKey = process.env.GROQ_API_KEY;
-    const owner = process.env.GITHUB_OWNER || 'Schutzicht';
-    const repo = process.env.GITHUB_REPO || 'quotify';
-    const base = process.env.GITHUB_BASE || 'main';
-
-    if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN ontbreekt' });
-    if (!groqKey) return res.status(500).json({ error: 'GROQ_API_KEY ontbreekt' });
-
     try {
-        // Source of truth for "what already exists" is the repo itself.
-        const taken = await blogSlugsOnGithub(token, owner, repo);
-        const topic = autoTopics.find((t) => t && t.slug && !taken.has(t.slug));
-        if (!topic) return res.json({ status: 'leeg', message: 'Geen onderwerpen meer in de wachtrij.' });
-
-        const post = await generatePostObject(topic, { apiKey: groqKey, slugList: [...taken] });
-        post.date = new Date().toISOString().slice(0, 10);
-        post.updated = post.date;
-
-        const url = await commitPostDirect({
-            token, owner, repo, branch: base,
-            slug: post.slug,
-            fileContent: serializePost(post),
-        });
-
-        return res.json({ status: 'ok', slug: post.slug, commit: url });
+        return res.json(await generateAndPublishNext());
     } catch (e) {
         console.error('Auto-blog cron error:', e);
+        return res.status(500).json({ error: e.message });
+    }
+});
+
+// ---- Admin dashboard API (login with ADMIN_PASSWORD or CRON_SECRET) ----
+const adminSecret = () => process.env.ADMIN_PASSWORD || process.env.CRON_SECRET || '';
+function adminOk(req) {
+    const secret = adminSecret();
+    if (!secret) return false;
+    const key = req.headers['x-admin-key']
+        || (req.headers.authorization || '').replace(/^Bearer\s+/i, '')
+        || (req.body && req.body.password);
+    return key === secret;
+}
+
+app.post('/api/admin/login', (req, res) => {
+    if (!adminSecret()) return res.status(503).json({ error: 'Stel ADMIN_PASSWORD of CRON_SECRET in (Vercel env).' });
+    if (req.body && req.body.password === adminSecret()) return res.json({ ok: true });
+    return res.status(401).json({ ok: false, error: 'Onjuist wachtwoord' });
+});
+
+app.get('/api/admin/status', async (req, res) => {
+    if (!adminOk(req)) return res.status(401).json({ error: 'unauthorized' });
+    const { token, owner, repo } = ghEnv();
+    const PREFIX = 'content: auto-blog ';
+    try {
+        let taken = new Set();
+        let commits = [];
+        if (token) {
+            taken = await blogSlugsOnGithub(token, owner, repo);
+            commits = await recentBlogCommits(token, owner, repo, 20);
+        }
+        const auto = commits
+            .filter((c) => c.message.startsWith(PREFIX))
+            .map((c) => ({ slug: c.message.slice(PREFIX.length).trim(), date: c.date, url: c.url }));
+        const today = new Date().toISOString().slice(0, 10);
+        return res.json({
+            ok: true,
+            ranToday: auto.some((a) => (a.date || '').slice(0, 10) === today),
+            latest: auto[0] || null,
+            recent: auto.slice(0, 8),
+            published: taken.size,
+            queueLeft: autoTopics.filter((t) => !taken.has(t.slug)).length,
+            totalTopics: autoTopics.length,
+            hasGithub: !!token,
+            hasGroq: !!process.env.GROQ_API_KEY,
+        });
+    } catch (e) {
+        return res.status(500).json({ error: e.message });
+    }
+});
+
+app.post('/api/admin/run', async (req, res) => {
+    if (!adminOk(req)) return res.status(401).json({ error: 'unauthorized' });
+    try {
+        return res.json(await generateAndPublishNext());
+    } catch (e) {
         return res.status(500).json({ error: e.message });
     }
 });
