@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-fotograaf',
     title: 'Offerte fotograaf: zo stel je een sterk fotografie-voorstel op',
-    metaTitle: 'Offerte fotograaf maken: gids + voorbeeld | Quotify',
+    metaTitle: 'Offerte fotograaf maken: gids + voorbeeld | Offertje',
     metaDescription:
         'Offerte fotograaf opstellen? Leer hoe je shoot, nabewerking, bewerkte foto\'s, gebruiksrechten en reiskosten verwerkt. Met voorbeeldtabel en pakketten.',
     category: 'Branche',
@@ -57,7 +57,7 @@ export default {
 <h3>Levering</h3>
 <p>Beschrijf hoe en wanneer de klant de foto\'s ontvangt: via een online galerij, een downloadlink of op een usb-stick. Noem de levertermijn, bijvoorbeeld binnen twee weken na de shoot, en of er extra producten bij kunnen zoals een fotoboek of afdrukken.</p>
 
-{{CTA:Sneller een fotografie-offerte maken|Met Quotify zet je je shoot, nabewerking, gebruiksrechten en reiskosten in een paar minuten om in een verzorgde PDF in je eigen huisstijl.}}
+{{CTA:Sneller een fotografie-offerte maken|Met Offertje zet je je shoot, nabewerking, gebruiksrechten en reiskosten in een paar minuten om in een verzorgde PDF in je eigen huisstijl.}}
 
 <h2 id="pakketten">Werken met pakketten: basis en uitgebreid</h2>
 <p>Klanten vinden kiezen makkelijker dan zelf onderdelen samenstellen. Door je aanbod in twee of drie pakketten te gieten, stuur je de klant naar de optie die voor jullie beiden goed werkt. Een veelgebruikte opzet voor een bedrijfs- of portretshoot:</p>
@@ -103,7 +103,7 @@ export default {
 <p>Meer aanscherpingen vind je in onze <a href="/blog/professionele-offerte-tips/">professionele offerte tips</a>. Een sterke begeleidende mail bij je voorstel maakt het verschil tussen wegklikken en reageren.</p>
 
 <h2 id="aan-de-slag">Direct een fotografie-offerte maken</h2>
-<p>Je hoeft niet elke offerte handmatig in Word op te maken en de BTW met de hand uit te rekenen. Met <a href="/app">Quotify</a> vul je je shoot, het aantal bewerkte foto\'s, de gebruiksrechten en je reiskosten in en download je een verzorgde PDF in je eigen kleur en met je logo. De totalen en BTW worden automatisch berekend, zodat jij je tijd besteedt aan fotograferen in plaats van aan opmaak. Sla je gegevens een keer op en elke volgende offerte kost je nog maar een paar minuten.</p>
+<p>Je hoeft niet elke offerte handmatig in Word op te maken en de BTW met de hand uit te rekenen. Met <a href="/app">Offertje</a> vul je je shoot, het aantal bewerkte foto\'s, de gebruiksrechten en je reiskosten in en download je een verzorgde PDF in je eigen kleur en met je logo. De totalen en BTW worden automatisch berekend, zodat jij je tijd besteedt aan fotograferen in plaats van aan opmaak. Sla je gegevens een keer op en elke volgende offerte kost je nog maar een paar minuten.</p>
 `,
     faq: [
         {

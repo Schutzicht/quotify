@@ -1,4 +1,4 @@
-# Quotify blogpost schema
+# Offertje blogpost schema
 
 Elke post is een bestand `content/blog/<slug>.mjs` met `export default { ... }`.
 
@@ -8,7 +8,7 @@ Elke post is een bestand `content/blog/<slug>.mjs` met `export default { ... }`.
 |---|---|---|
 | `slug` | string | kebab-case, = mapnaam en URL `/blog/<slug>/` |
 | `title` | string | H1 op de pagina (mag jaartal/term bevatten) |
-| `metaTitle` | string | `<title>`, ~55-60 tekens, bevat keyword + " | Quotify" |
+| `metaTitle` | string | `<title>`, ~55-60 tekens, bevat keyword + " | Offertje" |
 | `metaDescription` | string | ~150-160 tekens, wervend, met keyword |
 | `category` | string | exact 1 van: `Basis`, `Voorbeelden`, `ZZP & freelance`, `Juridisch & BTW`, `Verkoop & opvolging`, `Branche` |
 | `keyword` | string | primaire zoekterm |

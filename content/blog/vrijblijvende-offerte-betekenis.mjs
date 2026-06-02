@@ -1,7 +1,7 @@
 export default {
     slug: 'vrijblijvende-offerte-betekenis',
     title: 'Vrijblijvende offerte: betekenis en wat het voor jou inhoudt',
-    metaTitle: 'Vrijblijvende offerte: betekenis uitgelegd | Quotify',
+    metaTitle: 'Vrijblijvende offerte: betekenis uitgelegd | Offertje',
     metaDescription:
         'Wat betekent een vrijblijvende offerte? Lees wanneer een offerte vrijblijvend is, of je hem kunt intrekken en hoe hij verschilt van een bindend aanbod.',
     category: 'Juridisch & BTW',
@@ -51,7 +51,7 @@ export default {
 </table>
 <p>Een bindend aanbod kan een verkoopargument zijn: je geeft de klant de zekerheid dat de prijs vaststaat tot een bepaalde datum. Maar het beperkt jou. Kies dus bewust. In de meeste gevallen is een vrijblijvende offerte met een duidelijke <a href="/blog/hoe-lang-is-een-offerte-geldig/">geldigheidsduur</a> de verstandigste route: je geeft de klant een heldere termijn om te beslissen, terwijl jij flexibel blijft.</p>
 
-{{CTA:Maak een nette, vrijblijvende offerte|Met Quotify zet je in een paar minuten een professionele offerte op met je voorwaarden en geldigheidsduur erin. Download direct een verzorgde PDF.}}
+{{CTA:Maak een nette, vrijblijvende offerte|Met Offertje zet je in een paar minuten een professionele offerte op met je voorwaarden en geldigheidsduur erin. Download direct een verzorgde PDF.}}
 
 <h2 id="hoe-vermeld-je">Zo maak je je offerte vrijblijvend op papier</h2>
 <p>Hoewel een offerte standaard al vrijblijvend is, is het slim om het zwart op wit te zetten. Een paar gangbare manieren:</p>
@@ -78,7 +78,7 @@ export default {
 <p>Kortom, vrijblijvend is geen zwaktebod maar een verstandige, gangbare keuze. Combineer je het met een duidelijke geldigheidsduur en een complete omschrijving, dan heb je het beste van twee werelden: rust voor jou en helderheid voor de klant. Wil je het hele plaatje van een sterk voorstel zien, lees dan onze <a href="/blog/professionele-offerte-tips/">professionele offerte tips</a>.</p>
 
 <h2 id="conclusie">Kort samengevat</h2>
-<p>Een vrijblijvende offerte geeft je rust: je presenteert je aanbod zonder je meteen voor eeuwig vast te leggen. Tot het akkoord kun je je voorstel intrekken of aanpassen, en met een enkel woord als vrijblijvend of een zin als zolang de voorraad strekt maak je dat extra duidelijk. Wil je een bindend aanbod doen om de klant zekerheid te geven, dan kan dat ook, maar dat beperkt je eigen ruimte. Voor de meeste ondernemers is de gulden middenweg een vrijblijvende offerte met een heldere geldigheidsduur. <a href="/app">Maak je vrijblijvende offerte direct online met Quotify</a> en zet je voorwaarden, geldigheidsduur en regels netjes op papier, klaar als professionele PDF.</p>
+<p>Een vrijblijvende offerte geeft je rust: je presenteert je aanbod zonder je meteen voor eeuwig vast te leggen. Tot het akkoord kun je je voorstel intrekken of aanpassen, en met een enkel woord als vrijblijvend of een zin als zolang de voorraad strekt maak je dat extra duidelijk. Wil je een bindend aanbod doen om de klant zekerheid te geven, dan kan dat ook, maar dat beperkt je eigen ruimte. Voor de meeste ondernemers is de gulden middenweg een vrijblijvende offerte met een heldere geldigheidsduur. <a href="/app">Maak je vrijblijvende offerte direct online met Offertje</a> en zet je voorwaarden, geldigheidsduur en regels netjes op papier, klaar als professionele PDF.</p>
 `,
     faq: [
         {

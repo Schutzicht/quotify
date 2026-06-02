@@ -1,5 +1,5 @@
 /* ===========================================================
-   Quotify blog generator
+   Offertje blog generator
    Reads content/blog/*.mjs and renders static, SEO-optimized
    HTML into public/blog/ + sitemap.xml + robots.txt.
    Run: node scripts/build-blog.mjs
@@ -15,8 +15,8 @@ const CONTENT_DIR = join(ROOT, 'content', 'blog');
 const OUT_DIR = join(ROOT, 'public', 'blog');
 
 const SITE = {
-    url: 'https://quotify.vercel.app', // <-- pas dit aan zodra je een eigen domein hebt
-    name: 'Quotify',
+    url: 'https://offertje.nl', // productiedomein (koop offertje.nl en koppel in Vercel)
+    name: 'Offertje',
     tagline: 'Online offerte generator',
     appUrl: '/app',
 };
@@ -253,7 +253,7 @@ ${header()}
       ${tocHtml}
       <article class="post-content">
         ${renderBody(post)}
-        ${ctaBox('Maak nu je eigen offerte', 'Zet de theorie meteen om in de praktijk. Met Quotify maak je in 2 minuten een professionele offerte als PDF, in jouw huisstijl.')}
+        ${ctaBox('Maak nu je eigen offerte', 'Zet de theorie meteen om in de praktijk. Met Offertje maak je in 2 minuten een professionele offerte als PDF, in jouw huisstijl.')}
         ${faqHtml}
         ${relatedHtml}
       </article>
@@ -280,7 +280,7 @@ const renderHub = (posts) => {
         {
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
-            name: 'Quotify Blog - alles over offertes maken',
+            name: 'Offertje Blog - alles over offertes maken',
             description: 'Gidsen, voorbeelden en tips om professionele offertes te maken en meer opdrachten binnen te halen.',
             url: canonical,
         },
@@ -309,7 +309,7 @@ const renderHub = (posts) => {
     return `<!DOCTYPE html>
 <html lang="nl">
 <head>${headTags({
-        title: 'Blog over offertes maken | Quotify kennisbank',
+        title: 'Blog over offertes maken | Offertje kennisbank',
         description: 'Praktische gidsen, voorbeelden en tips over offertes maken, opvolgen en winnen. Leer hoe je met een professionele offerte meer opdrachten binnenhaalt.',
         canonical,
         image: `${SITE.url}/og-image.png`,
@@ -349,7 +349,7 @@ ${header()}
     <div class="cta-band">
       <h2>Begin met je eigen offerte</h2>
       <p>Zet wat je leest direct om in de praktijk. Gratis opstellen, 0,50 euro per download.</p>
-      <a href="${SITE.appUrl}" class="btn btn-primary btn-lg">Offerte maken met Quotify</a>
+      <a href="${SITE.appUrl}" class="btn btn-primary btn-lg">Offerte maken met Offertje</a>
     </div>
   </section>
 </main>
@@ -361,7 +361,7 @@ ${footer(posts)}
 
 /* ---------------- assets ---------------- */
 
-const BLOG_CSS = `/* Quotify blog styles */
+const BLOG_CSS = `/* Offertje blog styles */
 :root{--font-sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--indigo:#6366f1;--indigo-600:#4f46e5;--indigo-700:#4338ca;--indigo-glow:rgba(99,102,241,.45);--ink:#0f172a;--ink-700:#1e293b;--slate-600:#475569;--slate-500:#64748b;--slate-400:#94a3b8;--line:#e2e8f0;--line-soft:#f1f5f9;--bg:#fff;--bg-soft:#f8fafc;--bg-indigo:#eef2ff;--radius:16px;--radius-lg:24px;--shadow-sm:0 1px 2px rgba(15,23,42,.06);--shadow-md:0 10px 30px -12px rgba(15,23,42,.18);--shadow-lg:0 30px 60px -20px rgba(15,23,42,.28);--shadow-glow:0 18px 40px -12px var(--indigo-glow);--maxw:1140px;--ease:cubic-bezier(.16,1,.3,1)}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
 html{scroll-behavior:smooth;scroll-padding-top:96px}

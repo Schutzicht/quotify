@@ -1,7 +1,7 @@
 export default {
     slug: 'begeleidende-email-bij-offerte',
     title: 'Begeleidende e-mail bij je offerte: zo schrijf je hem (met voorbeelden)',
-    metaTitle: 'Begeleidende e-mail offerte: 3 voorbeelden | Quotify',
+    metaTitle: 'Begeleidende e-mail offerte: 3 voorbeelden | Offertje',
     metaDescription:
         'Hoe schrijf je de begeleidende e-mail offerte waarmee je je PDF verstuurt? Met onderwerpregel, opbouw en drie complete voorbeeldteksten om direct te gebruiken.',
     category: 'Verkoop & opvolging',
@@ -55,7 +55,7 @@ export default {
   <p>Stuur je offerte altijd als PDF, nooit als Word-bestand. Een PDF ziet er overal hetzelfde uit en kan niet per ongeluk worden aangepast.</p>
 </div>
 
-{{CTA:Een PDF die klaar is om te versturen|Met Quotify maak je een verzorgde offerte als PDF, zodat je begeleidende e-mail alleen nog het persoonlijke tintje hoeft toe te voegen.}}
+{{CTA:Een PDF die klaar is om te versturen|Met Offertje maak je een verzorgde offerte als PDF, zodat je begeleidende e-mail alleen nog het persoonlijke tintje hoeft toe te voegen.}}
 
 <h2 id="voorbeeld-formeel">Voorbeeld 1: formele variant</h2>
 <p>Gebruik deze variant voor zakelijke klanten, grotere opdrachten of als je elkaar nog niet goed kent. De toon is correct en professioneel.</p>
@@ -108,7 +108,7 @@ Jansen Fotografie
 <p>En vergeet niet: het versturen is niet het eindpunt. Blijft een reactie uit, dan is het slim om de offerte na een paar dagen op te volgen. Hoe je dat doet zonder opdringerig te zijn, lees je in <a href="/blog/offerte-opvolgen/">offerte opvolgen</a>. Een goede begeleidende mail en nette opvolging vormen samen een sterk verkoopproces.</p>
 
 <h2 id="conclusie">Kort samengevat</h2>
-<p>De begeleidende e-mail bij je offerte is meer dan een formaliteit: hij bepaalt mede of je voorstel wordt gelezen en serieus genomen. Gebruik een duidelijke onderwerpregel, houd de tekst kort en persoonlijk, verwijs naar het gesprek en sluit af met een heldere uitnodiging om te reageren. Stuur de offerte altijd als PDF. Met de drie voorbeeldteksten hierboven heb je voor elke situatie een startpunt. <a href="/app">Maak je offerte als verzorgde PDF met Quotify</a> en voeg er een persoonlijke begeleidende mail bij, dan staat je voorstel meteen sterk.</p>
+<p>De begeleidende e-mail bij je offerte is meer dan een formaliteit: hij bepaalt mede of je voorstel wordt gelezen en serieus genomen. Gebruik een duidelijke onderwerpregel, houd de tekst kort en persoonlijk, verwijs naar het gesprek en sluit af met een heldere uitnodiging om te reageren. Stuur de offerte altijd als PDF. Met de drie voorbeeldteksten hierboven heb je voor elke situatie een startpunt. <a href="/app">Maak je offerte als verzorgde PDF met Offertje</a> en voeg er een persoonlijke begeleidende mail bij, dan staat je voorstel meteen sterk.</p>
 `,
     faq: [
         {
@@ -125,7 +125,7 @@ Jansen Fotografie
         },
         {
             q: 'Stuur ik een offerte als PDF of als Word-bestand?',
-            a: 'Altijd als PDF. Een PDF ziet er op elk apparaat hetzelfde uit en kan niet per ongeluk worden aangepast. Een Word-bestand oogt onverzorgder en is bewerkbaar. Met een tool als <a href="/app">Quotify</a> maak je direct een nette PDF.',
+            a: 'Altijd als PDF. Een PDF ziet er op elk apparaat hetzelfde uit en kan niet per ongeluk worden aangepast. Een Word-bestand oogt onverzorgder en is bewerkbaar. Met een tool als <a href="/app">Offertje</a> maak je direct een nette PDF.',
         },
         {
             q: 'Wat doe ik als de klant niet reageert op mijn begeleidende e-mail?',

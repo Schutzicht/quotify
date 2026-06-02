@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-template-word-of-generator',
     title: 'Offerte template in Word of een online generator?',
-    metaTitle: 'Offerte template Word of generator | Quotify',
+    metaTitle: 'Offerte template Word of generator | Offertje',
     metaDescription:
         'Offerte template Word of Excel versus een online generator? Vergelijk de voor- en nadelen, bekijk de vergelijkingstabel en lees wanneer je wat het beste kiest.',
     category: 'Basis',
@@ -56,11 +56,11 @@ export default {
 
 <h3 id="nadelen-generator">Nadelen van een generator</h3>
 <ul>
-  <li><strong>Soms een klein bedrag per offerte.</strong> Veel tools werken met een laag tarief per download in plaats van gratis. Bij Quotify is dat 0,50 euro per offerte.</li>
+  <li><strong>Soms een klein bedrag per offerte.</strong> Veel tools werken met een laag tarief per download in plaats van gratis. Bij Offertje is dat 0,50 euro per offerte.</li>
   <li><strong>Minder eindeloze vrijheid.</strong> Je werkt binnen een vormgegeven sjabloon, dus je hebt iets minder ruimte voor exotische opmaakwensen. Voor de meeste ondernemers is dat juist een voordeel, want het houdt het strak.</li>
 </ul>
 
-{{CTA:Probeer het zelf in een paar minuten|Met Quotify vul je je gegevens in, kies je je BTW-tarief en download je een verzorgde offerte als PDF. Geen scheve tabellen, geen rekenfouten.}}
+{{CTA:Probeer het zelf in een paar minuten|Met Offertje vul je je gegevens in, kies je je BTW-tarief en download je een verzorgde offerte als PDF. Geen scheve tabellen, geen rekenfouten.}}
 
 <h2 id="vergelijkingstabel">Word-template versus generator in één tabel</h2>
 <p>Hieronder zie je de belangrijkste verschillen in één oogopslag. Zo wordt snel duidelijk waar elk van beide sterk en zwak is.</p>
@@ -95,7 +95,7 @@ export default {
 
 <h2 id="conclusie">De keuze die je tijd en opdrachten oplevert</h2>
 <p>Een offerte template in Word of Excel is een prima startpunt als je zelden offreert en niet veel om consistentie geeft. Maar zodra je vaker een offerte stuurt, begint het handwerk te knellen: de opmaak verschuift, je rekent zelf en geen twee offertes zien er hetzelfde uit. Een online generator lost precies die drie problemen op. De opmaak ligt vast, de BTW en totalen rekenen vanzelf, en je downloadt elke keer een verzorgde PDF die er professioneel uitziet.</p>
-<p>Wie regelmatig offreert en zijn tijd liever aan klanten dan aan tabellen besteedt, kiest daarom voor een generator. <a href="/app">Maak je offerte met Quotify</a> en ervaar zelf hoeveel sneller en netter het gaat dan met een sjabloon. Een verzorgde offerte kost je voortaan minuten in plaats van een ergernis.</p>
+<p>Wie regelmatig offreert en zijn tijd liever aan klanten dan aan tabellen besteedt, kiest daarom voor een generator. <a href="/app">Maak je offerte met Offertje</a> en ervaar zelf hoeveel sneller en netter het gaat dan met een sjabloon. Een verzorgde offerte kost je voortaan minuten in plaats van een ergernis.</p>
 `,
     faq: [
         {

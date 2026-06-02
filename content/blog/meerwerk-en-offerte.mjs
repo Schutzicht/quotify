@@ -1,7 +1,7 @@
 export default {
     slug: 'meerwerk-en-offerte',
     title: 'Meerwerk en de offerte: zo regel je het zonder conflict',
-    metaTitle: 'Meerwerk in de offerte goed regelen | Quotify',
+    metaTitle: 'Meerwerk in de offerte goed regelen | Offertje',
     metaDescription:
         'Meerwerk offerte goed regelen voorkomt ruzie over de eindfactuur. Leer wat meerwerk is, hoe je het vooraf afspreekt en laat zien met een meerwerkclausule.',
     category: 'Juridisch & BTW',
@@ -42,7 +42,7 @@ export default {
 <p>Soms weet je vooraf dat een onderdeel onzeker is, maar kun je de omvang nog niet inschatten. Denk aan grondwerk waarvan je de bodemgesteldheid niet kent, of aan herstelwerk dat pas zichtbaar wordt als je ergens openmaakt. Voor zulke gevallen gebruik je een stelpost: een geschat bedrag dat je in de offerte opneemt met de duidelijke vermelding dat het een schatting is en dat de werkelijke kosten op nacalculatie worden afgerekend.</p>
 <p>Een stelpost is geen vrijbrief om er maar op los te begroten. Hij is bedoeld om de klant te laten zien dat je dit onderdeel hebt voorzien en dat de definitieve prijs afhangt van wat je tegenkomt. Wees daar transparant over, dan voelt de klant zich serieus genomen in plaats van overvallen. In het <a href="/blog/offerte-voorbeeld-bouw/">offerte voorbeeld voor de bouw</a> zie je hoe stelposten en meerwerk in de praktijk samenkomen.</p>
 
-{{CTA:Voeg moeiteloos meerwerkregels toe|Met Quotify zet je een meerwerktarief, stelposten en heldere voorwaarden zo in je offerte. Alle totalen kloppen automatisch, ook bij latere wijzigingen.}}
+{{CTA:Voeg moeiteloos meerwerkregels toe|Met Offertje zet je een meerwerktarief, stelposten en heldere voorwaarden zo in je offerte. Alle totalen kloppen automatisch, ook bij latere wijzigingen.}}
 
 <h2 id="meerwerk-laten-goedkeuren">Meerwerk tijdens de opdracht laten goedkeuren</h2>
 <p>Vooraf afspreken hoe je met meerwerk omgaat is stap een. Stap twee is minstens zo belangrijk: zodra er zich daadwerkelijk meerwerk voordoet, laat je dat schriftelijk goedkeuren voordat je begint. Mondeling akkoord op de bouwplaats voelt makkelijk, maar als er later discussie ontstaat, staat het woord van de een tegen dat van de ander.</p>
@@ -69,7 +69,7 @@ export default {
 
 <h2 id="zorgeloos-offreren">Zorgeloos offreren met ruimte voor meerwerk</h2>
 <p>Meerwerk hoeft geen bron van conflict te zijn. Het wordt er pas een als je het verzwijgt tot de eindafrekening. Spreek vooraf af tegen welk tarief je extra werk doet, gebruik stelposten waar de toekomst onzeker is, en laat elk meerwerk schriftelijk bevestigen voordat je begint. Dan blijft de relatie met je klant goed, ook als de opdracht onderweg groeit.</p>
-<p>Het mooiste is dat je dit allemaal in je standaardofferte kunt verwerken, zodat je er nooit meer aan hoeft te denken. <a href="/app">Maak je offerte met Quotify</a> en neem je meerwerktarief, je stelposten en je voorwaarden in een vaste sjabloon op. Wil je eerst zien hoe zo'n complete offerte eruitziet, bekijk dan een <a href="/blog/offerte-voorbeeld/">offerte voorbeeld</a>.</p>
+<p>Het mooiste is dat je dit allemaal in je standaardofferte kunt verwerken, zodat je er nooit meer aan hoeft te denken. <a href="/app">Maak je offerte met Offertje</a> en neem je meerwerktarief, je stelposten en je voorwaarden in een vaste sjabloon op. Wil je eerst zien hoe zo'n complete offerte eruitziet, bekijk dan een <a href="/blog/offerte-voorbeeld/">offerte voorbeeld</a>.</p>
 `,
     faq: [
         {

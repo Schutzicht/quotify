@@ -1,4 +1,4 @@
-/* Quotify blog styles */
+/* Offertje blog styles */
 :root{--font-sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--indigo:#6366f1;--indigo-600:#4f46e5;--indigo-700:#4338ca;--indigo-glow:rgba(99,102,241,.45);--ink:#0f172a;--ink-700:#1e293b;--slate-600:#475569;--slate-500:#64748b;--slate-400:#94a3b8;--line:#e2e8f0;--line-soft:#f1f5f9;--bg:#fff;--bg-soft:#f8fafc;--bg-indigo:#eef2ff;--radius:16px;--radius-lg:24px;--shadow-sm:0 1px 2px rgba(15,23,42,.06);--shadow-md:0 10px 30px -12px rgba(15,23,42,.18);--shadow-lg:0 30px 60px -20px rgba(15,23,42,.28);--shadow-glow:0 18px 40px -12px var(--indigo-glow);--maxw:1140px;--ease:cubic-bezier(.16,1,.3,1)}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
 html{scroll-behavior:smooth;scroll-padding-top:96px}

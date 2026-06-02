@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-opvolgen',
     title: 'Offerte opvolgen: zo win je deals die anders verloren gaan',
-    metaTitle: 'Offerte opvolgen: timing, script en tips | Quotify',
+    metaTitle: 'Offerte opvolgen: timing, script en tips | Offertje',
     metaDescription:
         'Leer je offerte opvolgen zonder opdringerig te zijn. Met timing, een concreet belscript en een voorbeeldmail haal je deals binnen die anders verloren gaan.',
     category: 'Verkoop & opvolging',
@@ -55,7 +55,7 @@ export default {
   <p>Bel je liever? Zet dan vooraf een paar steekwoorden klaar over de offerte. Dan klink je voorbereid en val je niet stil als de klant een vraag stelt.</p>
 </div>
 
-{{CTA:Een offerte die zichzelf half verkoopt|Met Quotify maak je in een paar minuten een strakke, professionele offerte als PDF. Hoe duidelijker je voorstel, hoe makkelijker het opvolgen.}}
+{{CTA:Een offerte die zichzelf half verkoopt|Met Offertje maak je in een paar minuten een strakke, professionele offerte als PDF. Hoe duidelijker je voorstel, hoe makkelijker het opvolgen.}}
 
 <h2 id="wat-zeg-je">Wat zeg je tijdens het opvolgen?</h2>
 <p>De grootste angst is overkomen als een opdringerige verkoper. De oplossing is simpel: stel je niet op als verkoper, maar als iemand die wil helpen. Je belt of mailt niet om te pushen, maar om te checken of alles duidelijk is en of je ergens bij kunt ondersteunen. Dat verschil in toon bepaalt alles.</p>
@@ -98,7 +98,7 @@ Met vriendelijke groet,<br>
 <p>Deze toon laat een professionele indruk achter. Klanten onthouden hoe je met een nee omgaat. Door begripvol af te sluiten, blijf je in beeld voor een volgende keer. En soms komt die afsluitende mail juist als de trigger die de klant nodig had om alsnog ja te zeggen.</p>
 
 <h2 id="conclusie">Kort samengevat</h2>
-<p>Een offerte opvolgen is geen opdringerigheid, maar service. De meeste deals gaan verloren door stilte, niet door de prijs. Volg de eerste keer op na 2 tot 4 werkdagen, daarna nog een of twee keer met ruimte ertussen, en stel je telkens behulpzaam op in plaats van als verkoper. Combineer mailen en bellen, speel in op de geldigheidsduur en sluit na drie keer netjes af. Begin met een sterk voorstel: <a href="/app">maak je offerte direct online met Quotify</a> en zorg dat opvolgen alleen nog een vriendelijk duwtje hoeft te zijn.</p>
+<p>Een offerte opvolgen is geen opdringerigheid, maar service. De meeste deals gaan verloren door stilte, niet door de prijs. Volg de eerste keer op na 2 tot 4 werkdagen, daarna nog een of twee keer met ruimte ertussen, en stel je telkens behulpzaam op in plaats van als verkoper. Combineer mailen en bellen, speel in op de geldigheidsduur en sluit na drie keer netjes af. Begin met een sterk voorstel: <a href="/app">maak je offerte direct online met Offertje</a> en zorg dat opvolgen alleen nog een vriendelijk duwtje hoeft te zijn.</p>
 `,
     faq: [
         {

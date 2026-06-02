@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-schilder',
     title: 'Offerte schilderwerk: zo bereken je per m2, per uur en de juiste lagen',
-    metaTitle: 'Offerte schilderwerk maken | Quotify',
+    metaTitle: 'Offerte schilderwerk maken | Offertje',
     metaDescription:
         'Offerte schilderwerk opstellen? Leer rekenen per m2 of per uur, voorbehandeling, grond- en aflaklagen, binnen versus buiten en het lage 9 procent BTW-tarief.',
     category: 'Branche',
@@ -48,7 +48,7 @@ export default {
 <h2 id="binnen-versus-buiten">Binnen versus buiten</h2>
 <p>Binnen- en buitenschilderwerk verschillen wezenlijk en dat hoort terug te komen in je prijs. Binnenwerk is voorspelbaarder: een geconditioneerde ruimte, geen weer dat tegenwerkt en meestal minder zware voorbehandeling. Buitenwerk is een ander verhaal. De ondergrond heeft te lijden onder zon, regen en vorst, je bent afhankelijk van droog weer, je werkt vaak op hoogte met steiger of ladder en je gebruikt duurzamere, vaak duurdere verf. Reken voor buitenwerk doorgaans meer voorbereidingstijd en houd rekening met het seizoen. Maak in je offerte duidelijk welk deel binnen en welk deel buiten is, zeker als beide in een klus zitten.</p>
 
-{{CTA:Schilderofferte met kloppende lagen en BTW|Met Quotify zet je voorbehandeling, grondlaag, aflakken en materiaal als losse regels neer, kiest per regel het BTW-tarief en downloadt een verzorgde PDF met kloppende totalen.}}
+{{CTA:Schilderofferte met kloppende lagen en BTW|Met Offertje zet je voorbehandeling, grondlaag, aflakken en materiaal als losse regels neer, kiest per regel het BTW-tarief en downloadt een verzorgde PDF met kloppende totalen.}}
 
 <h2 id="materiaalkosten">Materiaalkosten in de offerte</h2>
 <p>Verf, primer, plamuur, schuurpapier, afplaktape en folie zijn kosten die je terugverdient. Je kunt ze op twee manieren verwerken: als losse materiaalregel naast de arbeid, of verwerkt in je m2-prijs. Beide kan, als je maar consequent en duidelijk bent. Werk je met een aparte materiaalregel, dan ziet de klant precies wat de verf kost; verwerk je het in de m2-prijs, dan oogt de offerte rustiger. Vermeld in beide gevallen welke verfkwaliteit je gebruikt, want een premium verf rechtvaardigt een hogere prijs en gaat langer mee.</p>
@@ -91,7 +91,7 @@ export default {
 <p>Bij schilderwerk komt regelmatig extra werk boven water dat je vooraf niet kon zien. Achter een meubel zit een vochtplek, het kozijn blijkt verder verrot dan gedacht of de oude verf laat los. Spreek daarom in je offerte af hoe je met dit soort extra werk omgaat: dat je het meldt voordat je het uitvoert, tegen welk uurtarief en pas na akkoord van de klant. Zo voorkom je een onaangename eindafrekening en houd je de relatie goed. Meer over deze afspraken lees je bij <a href="/blog/meerwerk-en-offerte/">meerwerk en de offerte</a>.</p>
 
 <h2 id="snel-en-net">Snel en professioneel je schilderofferte maken</h2>
-<p>Een nette offerte voor schilderwerk laat zien dat je je vak verstaat: de juiste opbouw, heldere lagen, kloppende BTW en een verzorgde uitstraling. Dat handmatig in een tekstverwerker bijhouden kost tijd en is foutgevoelig, zeker met twee BTW-tarieven. <a href="/app">Maak je schilderofferte online met Quotify</a>: je voert per regel de omschrijving, het aantal, de eenheid en het tarief in, en de tool levert een professionele PDF met kloppende totalen. Wil je eerst de algemene basis, lees dan <a href="/blog/offerte-maken/">hoe je een offerte maakt</a>.</p>
+<p>Een nette offerte voor schilderwerk laat zien dat je je vak verstaat: de juiste opbouw, heldere lagen, kloppende BTW en een verzorgde uitstraling. Dat handmatig in een tekstverwerker bijhouden kost tijd en is foutgevoelig, zeker met twee BTW-tarieven. <a href="/app">Maak je schilderofferte online met Offertje</a>: je voert per regel de omschrijving, het aantal, de eenheid en het tarief in, en de tool levert een professionele PDF met kloppende totalen. Wil je eerst de algemene basis, lees dan <a href="/blog/offerte-maken/">hoe je een offerte maakt</a>.</p>
 `,
     faq: [
         {

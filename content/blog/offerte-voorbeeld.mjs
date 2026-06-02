@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-voorbeeld',
     title: 'Offerte voorbeeld: een compleet model met uitleg per onderdeel',
-    metaTitle: 'Offerte voorbeeld + gratis template (2026) | Quotify',
+    metaTitle: 'Offerte voorbeeld + gratis template (2026) | Offertje',
     metaDescription:
         'Bekijk een compleet offerte voorbeeld met uitleg per onderdeel. Zie precies hoe een professionele offerte eruitziet en maak in 2 minuten je eigen versie.',
     category: 'Voorbeelden',
@@ -77,12 +77,12 @@ export default {
 <p>Geef de klant een eenvoudige manier om ja te zeggen. Dat kan met een zin als: voor akkoord graag deze offerte ondertekend retour, of een bevestiging per e-mail volstaat. Hoe lager de drempel, hoe sneller het akkoord. Lees ook <a href="/blog/wat-moet-er-op-een-offerte-staan/">wat er allemaal op een offerte hoort</a> om niets te vergeten.</p>
 
 <h2 id="zelf-maken">Maak je eigen offerte met dit voorbeeld</h2>
-<p>Je hoeft dit model niet handmatig na te bouwen in Word. Met <a href="/app">Quotify</a> vul je bovenstaande velden in en krijg je automatisch een nette PDF in deze opbouw, in je eigen kleur en met je eigen logo. De BTW en totalen worden voor je uitgerekend. Wil je eerst weten welke stappen je doorloopt, lees dan de uitgebreide gids <a href="/blog/offerte-maken/">offerte maken</a>. Werk je in een specifieke branche, bekijk dan bijvoorbeeld het <a href="/blog/offerte-voorbeeld-bouw/">offerte voorbeeld voor de bouw</a>.</p>
+<p>Je hoeft dit model niet handmatig na te bouwen in Word. Met <a href="/app">Offertje</a> vul je bovenstaande velden in en krijg je automatisch een nette PDF in deze opbouw, in je eigen kleur en met je eigen logo. De BTW en totalen worden voor je uitgerekend. Wil je eerst weten welke stappen je doorloopt, lees dan de uitgebreide gids <a href="/blog/offerte-maken/">offerte maken</a>. Werk je in een specifieke branche, bekijk dan bijvoorbeeld het <a href="/blog/offerte-voorbeeld-bouw/">offerte voorbeeld voor de bouw</a>.</p>
 `,
     faq: [
         {
             q: 'Is er een gratis offerte template?',
-            a: 'Ja. In plaats van een statisch Word-bestand kun je met <a href="/app">Quotify</a> gratis een offerte opstellen volgens dit voorbeeld. Je betaalt alleen wanneer je de PDF downloadt.',
+            a: 'Ja. In plaats van een statisch Word-bestand kun je met <a href="/app">Offertje</a> gratis een offerte opstellen volgens dit voorbeeld. Je betaalt alleen wanneer je de PDF downloadt.',
         },
         {
             q: 'Moet ik alle bedragen inclusief of exclusief BTW tonen?',

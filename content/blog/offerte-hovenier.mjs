@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-hovenier',
     title: 'Offerte hovenier: tuinaanleg, beplanting en onderhoud specificeren',
-    metaTitle: 'Offerte hovenier maken | Quotify',
+    metaTitle: 'Offerte hovenier maken | Offertje',
     metaDescription:
         'Offerte hovenier opstellen? Leer hoe je tuinontwerp, grondwerk, bestrating, beplanting en onderhoudsabonnement specificeert, met voorbeeldtabel voor tuinaanleg.',
     category: 'Branche',
@@ -73,7 +73,7 @@ export default {
   </tbody>
 </table>
 
-{{CTA:Een tuinofferte die elk onderdeel laat zien|Met Quotify zet je ontwerp, grondwerk, bestrating, beplanting en constructies als losse regels neer met de juiste eenheid, en de tool rekent subtotaal, BTW en totaal automatisch uit als nette PDF.}}
+{{CTA:Een tuinofferte die elk onderdeel laat zien|Met Offertje zet je ontwerp, grondwerk, bestrating, beplanting en constructies als losse regels neer met de juiste eenheid, en de tool rekent subtotaal, BTW en totaal automatisch uit als nette PDF.}}
 
 <h2 id="eenmalig-versus-onderhoud">Eenmalig aanlegwerk versus terugkerend onderhoud</h2>
 <p>Tuinwerk kent twee duidelijk verschillende vormen, en het loont om die in je offertes uit elkaar te houden. De aanleg is een eenmalig project met een eindbedrag. Onderhoud is terugkerend werk: snoeien, schoffelen, gazon maaien, bemesten en het seizoensklaar maken van de tuin. Behandel je die twee in een en dezelfde offerte zonder onderscheid, dan ontstaat verwarring over wat eenmalig is en wat doorloopt.</p>
@@ -92,7 +92,7 @@ export default {
 <p>Bij grondwerk kom je geregeld iets tegen dat je vooraf niet zag: een oude fundering onder de grond, kabels, of een drassige bodem die extra drainage vraagt. Dat is extra werk. Spreek in je offerte af hoe je daarmee omgaat: dat je het meldt voordat je het uitvoert, tegen welk uurtarief en pas na akkoord van de klant. Zo voorkom je een onverwacht hoger eindbedrag. Meer over deze afspraken lees je bij <a href="/blog/meerwerk-en-offerte/">meerwerk en de offerte</a>.</p>
 
 <h2 id="snel-en-net">Snel en professioneel je tuinofferte maken</h2>
-<p>Een verzorgde offerte laat de klant zien dat je je vak verstaat en dat je calculatie klopt. Met veel losse onderdelen en eenheden is dat handmatig bijhouden bewerkelijk en foutgevoelig. <a href="/app">Maak je hoveniersofferte online met Quotify</a>: je voert per regel de omschrijving, het aantal, de eenheid en de prijs in, kiest het BTW-tarief en de tool levert een professionele PDF met kloppende totalen. Ter vergelijking met andere branches kun je ook <a href="/blog/offerte-voorbeeld/">een algemeen offerte voorbeeld</a> bekijken.</p>
+<p>Een verzorgde offerte laat de klant zien dat je je vak verstaat en dat je calculatie klopt. Met veel losse onderdelen en eenheden is dat handmatig bijhouden bewerkelijk en foutgevoelig. <a href="/app">Maak je hoveniersofferte online met Offertje</a>: je voert per regel de omschrijving, het aantal, de eenheid en de prijs in, kiest het BTW-tarief en de tool levert een professionele PDF met kloppende totalen. Ter vergelijking met andere branches kun je ook <a href="/blog/offerte-voorbeeld/">een algemeen offerte voorbeeld</a> bekijken.</p>
 `,
     faq: [
         {

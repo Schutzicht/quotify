@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-maken-als-zzper',
     title: "Offerte maken als zzp'er: complete gids voor freelancers",
-    metaTitle: "Offerte maken zzp: stap voor stap | Quotify",
+    metaTitle: "Offerte maken zzp: stap voor stap | Offertje",
     metaDescription:
         "Offerte maken zzp: leer welke gegevens erop moeten, hoe je je uurtarief of projectprijs bepaalt en hoe je als eenmanszaak professioneel overkomt bij klanten.",
     category: 'ZZP & freelance',
@@ -68,7 +68,7 @@ export default {
   </tbody>
 </table>
 
-{{CTA:Sneller een offerte als zzp'er|Met Quotify vul je je KVK, BTW-nummer en regels eenmaal in en download je in een paar minuten een verzorgde PDF in je eigen stijl.}}
+{{CTA:Sneller een offerte als zzp'er|Met Offertje vul je je KVK, BTW-nummer en regels eenmaal in en download je in een paar minuten een verzorgde PDF in je eigen stijl.}}
 
 <h2 id="uren-inschatten">Hoe schat je je uren realistisch in?</h2>
 <p>De meeste zzp'ers schatten hun uren te laag in, simpelweg omdat ze alleen aan het zichtbare werk denken. Maar een opdracht bestaat uit veel meer dan de uitvoering alleen. Reken daarom altijd ook deze posten mee:</p>
@@ -95,7 +95,7 @@ export default {
 <p>Meer concrete aanscherpingen vind je in onze <a href="/blog/professionele-offerte-tips/">professionele offerte tips</a>. En wil je gewoon zien hoe een sterk model eruitziet, bekijk dan het <a href="/blog/offerte-voorbeeld/">offerte voorbeeld</a>.</p>
 
 <h2 id="aan-de-slag">Snel aan de slag zonder Word-gepuzzel</h2>
-<p>Als zzp'er is je tijd je voornaamste grondstof. Uren besteden aan scheve tabellen en handmatig BTW rekenen is zonde. Met een online tool sla je dat over: je vult je vaste gegevens een keer in en daarna kost elke nieuwe offerte je nog maar een paar minuten. <a href="/app">Maak je offerte direct online met Quotify</a>, voeg je regels toe en download een professionele PDF met je KVK, BTW-nummer en automatisch berekende totalen. Zo besteed je je tijd aan het werk waar je goed in bent, niet aan de opmaak.</p>
+<p>Als zzp'er is je tijd je voornaamste grondstof. Uren besteden aan scheve tabellen en handmatig BTW rekenen is zonde. Met een online tool sla je dat over: je vult je vaste gegevens een keer in en daarna kost elke nieuwe offerte je nog maar een paar minuten. <a href="/app">Maak je offerte direct online met Offertje</a>, voeg je regels toe en download een professionele PDF met je KVK, BTW-nummer en automatisch berekende totalen. Zo besteed je je tijd aan het werk waar je goed in bent, niet aan de opmaak.</p>
 `,
     faq: [
         {

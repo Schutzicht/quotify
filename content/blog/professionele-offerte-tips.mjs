@@ -1,7 +1,7 @@
 export default {
     slug: 'professionele-offerte-tips',
     title: 'Professionele offerte maken: 8 tips die je conversie verhogen',
-    metaTitle: 'Professionele offerte: 8 tips voor meer ja | Quotify',
+    metaTitle: 'Professionele offerte: 8 tips voor meer ja | Offertje',
     metaDescription:
         'Een professionele offerte wint meer opdrachten. Met 8 praktische tips over opmaak, opties, social proof en akkoord geven verhoog je je conversie meteen.',
     category: 'Verkoop & opvolging',
@@ -56,7 +56,7 @@ export default {
 <p>Mensen vertrouwen op de ervaring van anderen. Een korte verwijzing naar een tevreden klant of een vergelijkbaar project verlaagt de drempel enorm. Dat kan een enkele regel zijn, bijvoorbeeld een korte quote van een eerdere opdrachtgever of de vermelding dat je dit soort werk al vaak hebt uitgevoerd.</p>
 <p>Heb je geen quotes? Dan werkt ook een feitelijke verwijzing: het aantal jaren ervaring, een keurmerk, of een beschrijving van een recent vergelijkbaar project. Het gaat erom dat de klant ziet dat hij niet de eerste is die jou vertrouwt. Zet het kort en oprecht, want overdreven claims werken averechts.</p>
 
-{{CTA:Maak in minuten een offerte die verkoopt|Met Quotify zet je je gegevens om in een strakke, professionele PDF met je logo, duidelijke regels en btw. Klaar om te versturen en te winnen.}}
+{{CTA:Maak in minuten een offerte die verkoopt|Met Offertje zet je je gegevens om in een strakke, professionele PDF met je logo, duidelijke regels en btw. Klaar om te versturen en te winnen.}}
 
 <h2 id="zachte-deadline">Tip 5: bouw een zachte deadline in via de geldigheidsduur</h2>
 <p>Zonder einddatum blijft een offerte eindeloos open en raakt hij onderop de stapel. Door een geldigheidsduur op te nemen, bijvoorbeeld dat het aanbod 30 dagen geldig is, geef je de klant een natuurlijke reden om te beslissen. Het is geen harde druk, maar een vriendelijke aansporing.</p>
@@ -75,7 +75,7 @@ export default {
 <p>Vermeld ook helder de vervolgstappen: wat gebeurt er na akkoord, wanneer kun je beginnen, hoe verloopt de betaling. Een klant die precies weet wat hem te wachten staat, zegt sneller ja. Onzekerheid over het vervolg is een veelvoorkomende reden dat een offerte blijft liggen. Wil je weten hoe je het opvolgt als die ja uitblijft, lees dan <a href="/blog/offerte-opvolgen/">offerte opvolgen</a>.</p>
 
 <h2 id="conclusie">Kort samengevat</h2>
-<p>Een professionele offerte verkoopt zichzelf voor een groot deel. Zorg voor strakke opmaak en een eigen huisstijl, splits je werk in duidelijke regels en bied opties aan met goed, beter en best. Voeg social proof toe, bouw een zachte deadline in via de geldigheidsduur en stuur je voorstel snel met een persoonlijke noot. Maak tot slot akkoord geven zo makkelijk mogelijk. Pas je deze acht tips toe, dan win je opdrachten die anders aan een concurrent zouden zijn gegaan. <a href="/app">Maak je professionele offerte direct met Quotify</a> en zet alle tips in één verzorgde PDF.</p>
+<p>Een professionele offerte verkoopt zichzelf voor een groot deel. Zorg voor strakke opmaak en een eigen huisstijl, splits je werk in duidelijke regels en bied opties aan met goed, beter en best. Voeg social proof toe, bouw een zachte deadline in via de geldigheidsduur en stuur je voorstel snel met een persoonlijke noot. Maak tot slot akkoord geven zo makkelijk mogelijk. Pas je deze acht tips toe, dan win je opdrachten die anders aan een concurrent zouden zijn gegaan. <a href="/app">Maak je professionele offerte direct met Offertje</a> en zet alle tips in één verzorgde PDF.</p>
 `,
     faq: [
         {

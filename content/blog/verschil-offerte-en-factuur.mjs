@@ -1,7 +1,7 @@
 export default {
     slug: 'verschil-offerte-en-factuur',
     title: 'Het verschil tussen een offerte en een factuur uitgelegd',
-    metaTitle: 'Verschil offerte en factuur: helder uitgelegd | Quotify',
+    metaTitle: 'Verschil offerte en factuur: helder uitgelegd | Offertje',
     metaDescription:
         'Het verschil offerte en factuur uitgelegd: doel, timing, status en gegevens vergeleken in een heldere tabel. Zo weet je precies wat je wanneer moet sturen.',
     category: 'Juridisch & BTW',
@@ -49,7 +49,7 @@ export default {
   </tbody>
 </table>
 
-{{CTA:Begin bij de offerte|Met Quotify stel je in een paar minuten een nette offerte op, inclusief automatische BTW-berekening en je eigen huisstijl.}}
+{{CTA:Begin bij de offerte|Met Offertje stel je in een paar minuten een nette offerte op, inclusief automatische BTW-berekening en je eigen huisstijl.}}
 
 <h2 id="wanneer-stuur-je-wat">Wanneer stuur je wat?</h2>
 <p>De volgorde is in de meeste gevallen vast. Hieronder zie je hoe een typische opdracht verloopt:</p>
@@ -102,7 +102,7 @@ export default {
 <p>Op zowel de offerte als de factuur vermeld je de BTW, maar de lat ligt bij de factuur hoger. Op de offerte help je de klant door het bedrag exclusief BTW, de BTW en het totaal inclusief BTW apart te tonen, zodat hij weet waar hij aan toe is. Op de factuur is een correcte BTW-vermelding wettelijk verplicht, omdat de klant op basis daarvan eventueel de BTW terugvraagt. Een volledige uitleg over tarieven en uitzonderingen lees je in <a href="/blog/btw-op-de-offerte/">BTW op de offerte</a>.</p>
 
 <h2 id="aan-de-slag">Aan de slag</h2>
-<p>Begin altijd bij de offerte. Een sterk voorstel haalt de opdracht binnen, en pas daarna komt de factuur in beeld. Met <a href="/app">Quotify</a> stel je snel een verzorgde offerte op, met automatische BTW-berekening en je eigen logo. Wil je weten hoe je een offerte stap voor stap opbouwt, lees dan de gids <a href="/blog/offerte-maken/">offerte maken</a>. Zo zet je de eerste stap richting een tevreden klant en een correcte factuur.</p>
+<p>Begin altijd bij de offerte. Een sterk voorstel haalt de opdracht binnen, en pas daarna komt de factuur in beeld. Met <a href="/app">Offertje</a> stel je snel een verzorgde offerte op, met automatische BTW-berekening en je eigen logo. Wil je weten hoe je een offerte stap voor stap opbouwt, lees dan de gids <a href="/blog/offerte-maken/">offerte maken</a>. Zo zet je de eerste stap richting een tevreden klant en een correcte factuur.</p>
 `,
     faq: [
         {

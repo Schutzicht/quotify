@@ -1,7 +1,7 @@
 export default {
     slug: 'btw-op-de-offerte',
     title: 'BTW op de offerte: zo verwerk je het tarief correct',
-    metaTitle: 'BTW op offerte correct verwerken | Quotify',
+    metaTitle: 'BTW op offerte correct verwerken | Offertje',
     metaDescription:
         'BTW op offerte goed verwerken? Leer hoe je prijzen exclusief toont, subtotaal en totaal inclusief opbouwt en welk tarief (21, 9 of 0 procent) wanneer geldt.',
     category: 'Juridisch & BTW',
@@ -61,7 +61,7 @@ export default {
 </ul>
 <p>Het verschil tussen 0 procent en vrijgesteld is subtiel maar belangrijk. Bij 0 procent reken je wel BTW, alleen tegen nul, en je mag de BTW op je inkopen aftrekken. Bij een vrijstelling val je helemaal buiten de BTW en kun je die aftrek juist niet toepassen.</p>
 
-{{CTA:BTW automatisch correct op je offerte|Met Quotify kies je per regel het juiste tarief en de tool rekent subtotaal, BTW en totaal inclusief feilloos uit. Geen rekenfouten meer.}}
+{{CTA:BTW automatisch correct op je offerte|Met Offertje kies je per regel het juiste tarief en de tool rekent subtotaal, BTW en totaal inclusief feilloos uit. Geen rekenfouten meer.}}
 
 <h2 id="meerdere-tarieven">Meerdere BTW-tarieven op een offerte</h2>
 <p>Soms bevat een opdracht regels met verschillende tarieven. Denk aan een klus waarbij een deel van het werk onder 9 procent valt en de materialen of advieskosten onder 21 procent. In dat geval reken je per tarief apart. Je telt dus niet alle regels in een keer bij elkaar en past er een tarief op toe, maar je groepeert per tarief.</p>
@@ -90,7 +90,7 @@ export default {
 <p>Of de KOR voor jou voordelig is, hangt af van je omzet, je kosten en je type klanten. Werk je vooral voor zakelijke klanten die BTW toch verrekenen, dan levert vrijstelling hen geen voordeel op. Bespreek je situatie met een boekhouder voor een afgewogen keuze.</p>
 
 <h2 id="netjes-en-foutloos">Netjes en foutloos in de praktijk</h2>
-<p>BTW correct op je offerte zetten is geen hogere wiskunde, maar het luistert nauw. Een verkeerd tarief, een rekenfout in het totaal of een onduidelijke vermelding kan je geloofwaardigheid schaden. Wie veel offertes maakt, wint daarom met een systeem dat het rekenwerk overneemt. <a href="/app">Maak je offerte online met Quotify</a>: je kiest per regel het tarief, de tool berekent het subtotaal, de BTW per tarief en het totaal inclusief, en je downloadt een verzorgde PDF. Zo staat de BTW altijd kloppend en netjes op je offerte. Wil je eerst de basis doornemen, begin dan bij <a href="/blog/offerte-maken/">hoe je een offerte maakt</a>.</p>
+<p>BTW correct op je offerte zetten is geen hogere wiskunde, maar het luistert nauw. Een verkeerd tarief, een rekenfout in het totaal of een onduidelijke vermelding kan je geloofwaardigheid schaden. Wie veel offertes maakt, wint daarom met een systeem dat het rekenwerk overneemt. <a href="/app">Maak je offerte online met Offertje</a>: je kiest per regel het tarief, de tool berekent het subtotaal, de BTW per tarief en het totaal inclusief, en je downloadt een verzorgde PDF. Zo staat de BTW altijd kloppend en netjes op je offerte. Wil je eerst de basis doornemen, begin dan bij <a href="/blog/offerte-maken/">hoe je een offerte maakt</a>.</p>
 `,
     faq: [
         {

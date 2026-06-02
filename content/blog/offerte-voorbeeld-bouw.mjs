@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-voorbeeld-bouw',
     title: 'Offerte voorbeeld bouw: zo specificeer je een aanbouw of verbouwing',
-    metaTitle: 'Offerte voorbeeld bouw maken | Quotify',
+    metaTitle: 'Offerte voorbeeld bouw maken | Offertje',
     metaDescription:
         'Offerte voorbeeld bouw nodig? Leer hoe je materiaal, arbeid, onderaanneming, stelposten en meerwerk specificeert, met een voorbeeldtabel voor aannemers.',
     category: 'Branche',
@@ -76,7 +76,7 @@ export default {
   </tbody>
 </table>
 
-{{CTA:Een bouwofferte die tot op de regel klopt|Met Quotify zet je materiaal, uren, onderaanneming en stelposten als losse regels neer en de tool rekent subtotaal, BTW en totaal automatisch uit. Klaar als verzorgde PDF.}}
+{{CTA:Een bouwofferte die tot op de regel klopt|Met Offertje zet je materiaal, uren, onderaanneming en stelposten als losse regels neer en de tool rekent subtotaal, BTW en totaal automatisch uit. Klaar als verzorgde PDF.}}
 
 <h2 id="omschrijving">Een duidelijke omschrijving voorkomt de meeste ruzie</h2>
 <p>In de bouw zit het verschil tussen een tevreden en een boze klant vaak in een paar woorden. Schrijf je metselwerk, dan kan de klant denken dat voegwerk, schoonmaken en afwerking inbegrepen zijn. Vermeld daarom per regel wat je wel en niet doet. Een paar voorbeelden die discussie voorkomen:</p>
@@ -102,7 +102,7 @@ export default {
 <p>Bouwmateriaal schommelt in prijs. Een offerte die je in januari maakt, kan in mei niet meer haalbaar zijn als hout of staal flink is gestegen. Neem daarom een geldigheidstermijn op, bijvoorbeeld dertig dagen, en eventueel een clausule dat de materiaalprijzen gelden onder voorbehoud van prijswijzigingen door je leverancier. Zo dek je jezelf in zonder de klant af te schrikken. Meer hierover lees je bij <a href="/blog/hoe-lang-is-een-offerte-geldig/">hoe lang een offerte geldig is</a>.</p>
 
 <h2 id="snel-en-net">Snel en net je bouwofferte opstellen</h2>
-<p>Een goede bouwofferte vraagt aandacht, maar het opstellen ervan hoeft geen avondwerk te zijn. Wie regelmatig offreert, wint met een opzet waarin de regels, eenheden en BTW automatisch worden berekend. <a href="/app">Maak je bouwofferte online met Quotify</a>: je voert per regel de omschrijving, het aantal, de eenheid en de prijs in, kiest het BTW-tarief en de tool levert een nette PDF met kloppende totalen. Zo staat je calculatie er professioneel op en houd je tijd over voor de bouwplaats zelf.</p>
+<p>Een goede bouwofferte vraagt aandacht, maar het opstellen ervan hoeft geen avondwerk te zijn. Wie regelmatig offreert, wint met een opzet waarin de regels, eenheden en BTW automatisch worden berekend. <a href="/app">Maak je bouwofferte online met Offertje</a>: je voert per regel de omschrijving, het aantal, de eenheid en de prijs in, kiest het BTW-tarief en de tool levert een nette PDF met kloppende totalen. Zo staat je calculatie er professioneel op en houd je tijd over voor de bouwplaats zelf.</p>
 `,
     faq: [
         {

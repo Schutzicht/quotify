@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-maken',
     title: 'Offerte maken: de complete gids voor een offerte die scoort',
-    metaTitle: 'Offerte maken in 7 stappen (2026) | Quotify',
+    metaTitle: 'Offerte maken in 7 stappen (2026) | Offertje',
     metaDescription:
         'Leer hoe je een professionele offerte maakt die opdrachten oplevert. Stappenplan, verplichte gegevens, voorbeeld en de meestgemaakte fouten. Direct toepasbaar.',
     category: 'Basis',
@@ -65,7 +65,7 @@ export default {
 <h3>Stap 5: Voeg voorwaarden en een persoonlijke noot toe</h3>
 <p>Vermeld je betaaltermijn en eventuele afspraken over levering of meerwerk. Een korte, vriendelijke begeleidende zin maakt het verschil tussen een kil document en een uitnodigend voorstel.</p>
 
-{{CTA:Sla het knutselen over|Met Quotify vul je je gegevens in en zie je je offerte live opbouwen. BTW en totalen rekent de tool automatisch uit.}}
+{{CTA:Sla het knutselen over|Met Offertje vul je je gegevens in en zie je je offerte live opbouwen. BTW en totalen rekent de tool automatisch uit.}}
 
 <h3>Stap 6: Controleer de preview</h3>
 <p>Lees alles nog een keer rustig na. Klopt de spelling van de klantnaam? Tellen de bedragen op? Staat je geldigheidsduur erbij? Een offerte zonder slordigheden verkoopt zichzelf een stuk makkelijker.</p>
@@ -88,7 +88,7 @@ export default {
 
 <h2 id="word-of-tool">Offerte maken in Word of met een tool?</h2>
 <p>Je kunt een offerte prima in Word of Excel maken, maar je loopt al snel tegen de grenzen aan: kolommen die verschuiven, BTW die je met de hand uitrekent en een opmaak die per document verschilt. Een online offerte generator neemt dat werk uit handen. We zetten de opties naast elkaar in <a href="/blog/offerte-template-word-of-generator/">offerte template in Word of een generator</a>.</p>
-<p>De snelste route is simpel: <a href="/app">maak je offerte direct online met Quotify</a>. Je vult je gegevens in, voegt je regels toe en downloadt een verzorgde PDF in je eigen huisstijl. De BTW en totalen worden automatisch berekend, zodat je je kunt richten op de inhoud en de prijs.</p>
+<p>De snelste route is simpel: <a href="/app">maak je offerte direct online met Offertje</a>. Je vult je gegevens in, voegt je regels toe en downloadt een verzorgde PDF in je eigen huisstijl. De BTW en totalen worden automatisch berekend, zodat je je kunt richten op de inhoud en de prijs.</p>
 `,
     faq: [
         {
@@ -105,7 +105,7 @@ export default {
         },
         {
             q: 'Met welk programma maak ik het snelst een offerte?',
-            a: 'Een online offerte generator zoals <a href="/app">Quotify</a> is het snelst: je vult je gegevens in en de opmaak, BTW en totalen gaan automatisch. Je downloadt direct een nette PDF, zonder Word-gepuzzel.',
+            a: 'Een online offerte generator zoals <a href="/app">Offertje</a> is het snelst: je vult je gegevens in en de opmaak, BTW en totalen gaan automatisch. Je downloadt direct een nette PDF, zonder Word-gepuzzel.',
         },
     ],
     related: ['offerte-voorbeeld', 'wat-moet-er-op-een-offerte-staan', 'offerte-opvolgen'],

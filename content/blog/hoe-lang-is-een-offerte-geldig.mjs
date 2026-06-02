@@ -1,7 +1,7 @@
 export default {
     slug: 'hoe-lang-is-een-offerte-geldig',
     title: 'Hoe lang is een offerte geldig? Termijnen en tips',
-    metaTitle: 'Hoe lang is een offerte geldig? Termijnen | Quotify',
+    metaTitle: 'Hoe lang is een offerte geldig? Termijnen | Offertje',
     metaDescription:
         'Hoe lang is een offerte geldig? Lees over gangbare termijnen, vrijblijvend versus onherroepelijk en wat je doet als een offerte verlopen is. Met tips.',
     category: 'Juridisch & BTW',
@@ -53,7 +53,7 @@ export default {
   <p>Twijfel je over je positie? Neem standaard de zin op dat je offerte vrijblijvend is en een geldigheidsduur heeft. Zo houd je flexibiliteit en geef je de klant tegelijk duidelijkheid.</p>
 </div>
 
-{{CTA:Zet de geldigheidsduur er automatisch op|Met Quotify vul je een einddatum in en staat de geldigheidsduur netjes op je offerte. Geen vergeten velden, geen losse eindjes.}}
+{{CTA:Zet de geldigheidsduur er automatisch op|Met Offertje vul je een einddatum in en staat de geldigheidsduur netjes op je offerte. Geen vergeten velden, geen losse eindjes.}}
 
 <h2 id="waarom-einddatum">Waarom een einddatum zo belangrijk is</h2>
 <p>Een geldigheidsduur doet meer dan je beschermen tegen prijsstijgingen. Hij geeft de klant ook een zacht duwtje om te beslissen. Een aanbod dat eindeloos blijft staan, creëert geen enkele urgentie. Een einddatum maakt subtiel duidelijk dat de klant niet oneindig de tijd heeft. Dat helpt bij <a href="/blog/offerte-opvolgen/">het opvolgen van je offerte</a>, want je hebt een natuurlijke aanleiding om contact op te nemen: de offerte loopt binnenkort af.</p>
@@ -86,7 +86,7 @@ export default {
 <p>Een korte herinnering een paar dagen voor de einddatum werkt vaak goed: je laat weten dat de offerte bijna verloopt en vraagt of de klant nog vragen heeft. Zo combineer je je geldigheidsduur met actieve <a href="/blog/offerte-opvolgen/">opvolging van je offerte</a> en haal je meer deals binnen zonder te pushen. Hoe je die opvolging concreet aanpakt en hoe je een afwijzing voorkomt, lees je in <a href="/blog/offerte-afwijzing-voorkomen/">een offerteafwijzing voorkomen</a>.</p>
 
 <h2 id="conclusie">Kort samengevat</h2>
-<p>Je bepaalt zelf hoe lang je offerte geldig is, maar 14 tot 30 dagen is gangbaar en redelijk. Vermeld de termijn altijd als een concrete einddatum, kies bewust voor een vrijblijvend aanbod en dek je in tegen prijsstijgingen. Is een offerte verlopen, dan stuur je simpelweg een herziene versie. Wil je dit allemaal automatisch goed hebben, dan stel je met <a href="/app">Quotify</a> in een paar minuten een offerte op met een nette geldigheidsduur, in je eigen huisstijl en met automatische BTW-berekening.</p>
+<p>Je bepaalt zelf hoe lang je offerte geldig is, maar 14 tot 30 dagen is gangbaar en redelijk. Vermeld de termijn altijd als een concrete einddatum, kies bewust voor een vrijblijvend aanbod en dek je in tegen prijsstijgingen. Is een offerte verlopen, dan stuur je simpelweg een herziene versie. Wil je dit allemaal automatisch goed hebben, dan stel je met <a href="/app">Offertje</a> in een paar minuten een offerte op met een nette geldigheidsduur, in je eigen huisstijl en met automatische BTW-berekening.</p>
 `,
     faq: [
         {
@@ -99,7 +99,7 @@ export default {
         },
         {
             q: 'Wat doe ik als mijn offerte is verlopen en de klant alsnog ja zegt?',
-            a: 'Je kunt het aanbod bevestigen als je prijzen gelijk zijn, of een herziene offerte met nieuwe prijzen en een nieuw offertenummer sturen. Met <a href="/app">Quotify</a> maak je een nieuwe versie in een paar minuten.',
+            a: 'Je kunt het aanbod bevestigen als je prijzen gelijk zijn, of een herziene offerte met nieuwe prijzen en een nieuw offertenummer sturen. Met <a href="/app">Offertje</a> maak je een nieuwe versie in een paar minuten.',
         },
         {
             q: 'Hoe voorkom ik dat een oude offerte mij aan een te lage prijs bindt?',

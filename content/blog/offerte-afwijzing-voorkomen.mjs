@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-afwijzing-voorkomen',
     title: 'Offerte afgewezen? Zo voorkom je het de volgende keer',
-    metaTitle: 'Offerte afgewezen voorkomen: 5 redenen | Quotify',
+    metaTitle: 'Offerte afgewezen voorkomen: 5 redenen | Offertje',
     metaDescription:
         'Offerte afgewezen? Ontdek de vijf echte redenen waarom klanten nee zeggen en wat je per reden doet om het te voorkomen. Plus hoe je netjes op een nee reageert.',
     category: 'Verkoop & opvolging',
@@ -56,7 +56,7 @@ export default {
   </tbody>
 </table>
 
-{{CTA:Snel een offerte die overtuigt|Met Quotify maak je in minuten een verzorgde offerte met heldere regels en kloppende totalen. Sneller versturen betekent vaker een ja.}}
+{{CTA:Snel een offerte die overtuigt|Met Offertje maak je in minuten een verzorgde offerte met heldere regels en kloppende totalen. Sneller versturen betekent vaker een ja.}}
 
 <h2 id="reden-4-geen-vertrouwen">Reden 4: er ontbreekt vertrouwen</h2>
 <p>Een offerte is voor de klant een belofte op papier. Ziet die er rommelig uit, mist hij gegevens, of straalt hij geen zorg uit, dan twijfelt de klant of jij het werk wel netjes uitvoert. Een document met scheve tabellen, ontbrekende bedrijfsgegevens of een rekenfout in het totaal ondermijnt je geloofwaardigheid, hoe goed je vakwerk ook is.</p>
@@ -75,7 +75,7 @@ export default {
 
 <h2 id="van-afwijzing-naar-opdracht">Van afwijzing naar opdracht</h2>
 <p>Een offerte afgewezen krijgen voelt persoonlijk, maar in bijna alle gevallen is er iets aan te doen. Maak je offerte specifiek in plaats van vaag, onderbouw je prijs met waarde, verstuur snel, zorg dat het document vertrouwen wekt en volg consequent op. Reageer je dan ook nog netjes op een nee, dan bouw je een reputatie op die toekomstige opdrachten naar je toe trekt.</p>
-<p>Het mooie is dat veel van deze punten samenkomen in hoe je de offerte maakt. Een snelle, heldere en verzorgde offerte is geen kwestie van talent maar van het juiste gereedschap. <a href="/app">Maak je volgende offerte met Quotify</a> en zet voortaan een document op tafel dat klanten eerder ja laat zeggen.</p>
+<p>Het mooie is dat veel van deze punten samenkomen in hoe je de offerte maakt. Een snelle, heldere en verzorgde offerte is geen kwestie van talent maar van het juiste gereedschap. <a href="/app">Maak je volgende offerte met Offertje</a> en zet voortaan een document op tafel dat klanten eerder ja laat zeggen.</p>
 `,
     faq: [
         {

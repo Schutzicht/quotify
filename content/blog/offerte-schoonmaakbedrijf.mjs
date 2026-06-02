@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-schoonmaakbedrijf',
     title: 'Offerte schoonmaakbedrijf: zo stel je een sterk voorstel op',
-    metaTitle: 'Offerte schoonmaak maken: gids + voorbeeld | Quotify',
+    metaTitle: 'Offerte schoonmaak maken: gids + voorbeeld | Offertje',
     metaDescription:
         'Offerte schoonmaak opstellen? Leer het verschil tussen eenmalig en contract, prijs per m2, uur of beurt en frequentie. Met voorbeeldtabel kantoorschoonmaak.',
     category: 'Branche',
@@ -56,7 +56,7 @@ export default {
   </tbody>
 </table>
 
-{{CTA:Sneller een schoonmaak-offerte maken|Met Quotify zet je je beurttarief, frequentie en eventuele opstartkosten in een paar minuten om in een verzorgde PDF in je eigen huisstijl.}}
+{{CTA:Sneller een schoonmaak-offerte maken|Met Offertje zet je je beurttarief, frequentie en eventuele opstartkosten in een paar minuten om in een verzorgde PDF in je eigen huisstijl.}}
 
 <h2 id="frequentie">Frequentie en wat is inbegrepen</h2>
 <p>Bij een contract is de frequentie een kernonderdeel van je offerte. Wekelijks, tweewekelijks of maandelijks schoonmaken scheelt aanzienlijk in de prijs en in de staat waarin het pand blijft. Vermeld de frequentie duidelijk en koppel er een vast bedrag aan per beurt of per maand.</p>
@@ -113,7 +113,7 @@ export default {
 <p>Meer aanscherpingen vind je in onze <a href="/blog/professionele-offerte-tips/">professionele offerte tips</a>. En wil je het algemene stappenplan, lees dan <a href="/blog/offerte-maken/">hoe je een offerte maakt</a>.</p>
 
 <h2 id="aan-de-slag">Direct een schoonmaak-offerte maken</h2>
-<p>Je hoeft niet elke offerte in Word op te maken en de BTW met de hand te berekenen. Met <a href="/app">Quotify</a> vul je je beurttarief, je frequentie, je verbruiksartikelen en je eenmalige opstartkosten in en download je een verzorgde PDF in je eigen kleur en met je logo. De totalen en BTW worden automatisch berekend. Sla je vaste gegevens een keer op en elke volgende offerte kost je nog maar een paar minuten, zodat je je tijd aan schoonmaken besteedt in plaats van aan opmaak.</p>
+<p>Je hoeft niet elke offerte in Word op te maken en de BTW met de hand te berekenen. Met <a href="/app">Offertje</a> vul je je beurttarief, je frequentie, je verbruiksartikelen en je eenmalige opstartkosten in en download je een verzorgde PDF in je eigen kleur en met je logo. De totalen en BTW worden automatisch berekend. Sla je vaste gegevens een keer op en elke volgende offerte kost je nog maar een paar minuten, zodat je je tijd aan schoonmaken besteedt in plaats van aan opmaak.</p>
 `,
     faq: [
         {

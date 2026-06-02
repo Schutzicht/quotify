@@ -1,7 +1,7 @@
 export default {
     slug: 'wat-moet-er-op-een-offerte-staan',
     title: 'Wat moet er op een offerte staan? De complete checklist',
-    metaTitle: 'Wat moet er op een offerte staan? Checklist | Quotify',
+    metaTitle: 'Wat moet er op een offerte staan? Checklist | Offertje',
     metaDescription:
         'Wat moet er op een offerte staan? De complete checklist met alle verplichte en handige gegevens, per onderdeel uitgelegd. Zo vergeet je nooit meer iets.',
     category: 'Basis',
@@ -58,7 +58,7 @@ export default {
 <p>Het hart van je offerte is de beschrijving van wat je gaat leveren. Splits het werk op in logische regels in plaats van een vage verzamelpost. In plaats van een regel van duizend euro voor een website toon je losse onderdelen: ontwerp, bouw, contentmigratie en oplevering. Per regel vermeld je een omschrijving, een aantal of hoeveelheid, en de prijs.</p>
 <p>Waarom dit ertoe doet: hoe specifieker je bent, hoe minder vragen en onderhandeling je krijgt. De klant ziet precies waar zijn geld naartoe gaat en krijgt vertrouwen in je aanpak.</p>
 
-{{CTA:Vergeet nooit meer een onderdeel|Met Quotify vul je elk veld van de checklist in en zie je je offerte live opbouwen. BTW en totalen rekent de tool automatisch uit.}}
+{{CTA:Vergeet nooit meer een onderdeel|Met Offertje vul je elk veld van de checklist in en zie je je offerte live opbouwen. BTW en totalen rekent de tool automatisch uit.}}
 
 <h2 id="prijs-en-btw">6. Prijs per onderdeel, BTW en totaal</h2>
 <p>Toon per regel de prijs en het juiste BTW-tarief. In Nederland werk je met 21%, 9% of 0%, afhankelijk van wat je levert. Sluit af met een helder totaaloverzicht waarin je drie bedragen apart noemt: het subtotaal exclusief BTW, de BTW en het totaal inclusief BTW.</p>
@@ -121,7 +121,7 @@ export default {
   <li><strong>Een korte, persoonlijke begeleidende tekst</strong>, waarmee je de toon van het document warmer maakt. Meer hierover in <a href="/blog/professionele-offerte-tips/">professionele offerte tips</a>.</li>
   <li><strong>Een geldig betaalmiddel of IBAN</strong>, handig als de klant na akkoord direct een aanbetaling wil doen.</li>
 </ul>
-<p>Wil je niet handmatig controleren of alles erop staat? Met <a href="/app">Quotify</a> vul je de velden van deze checklist in en krijg je automatisch een nette PDF in je eigen huisstijl. De opmaak, BTW en totalen worden voor je verzorgd, zodat je nooit meer een onderdeel vergeet. Wil je eerst zien hoe een compleet document eruitziet, bekijk dan ons <a href="/blog/offerte-voorbeeld/">offerte voorbeeld</a> met uitleg per onderdeel.</p>
+<p>Wil je niet handmatig controleren of alles erop staat? Met <a href="/app">Offertje</a> vul je de velden van deze checklist in en krijg je automatisch een nette PDF in je eigen huisstijl. De opmaak, BTW en totalen worden voor je verzorgd, zodat je nooit meer een onderdeel vergeet. Wil je eerst zien hoe een compleet document eruitziet, bekijk dan ons <a href="/blog/offerte-voorbeeld/">offerte voorbeeld</a> met uitleg per onderdeel.</p>
 `,
     faq: [
         {
@@ -134,7 +134,7 @@ export default {
         },
         {
             q: 'Wat als ik een onderdeel vergeet op mijn offerte?',
-            a: 'Zolang de klant nog geen akkoord heeft gegeven, stuur je een aangepaste offerte met een nieuw of bijgewerkt nummer. Met een tool als <a href="/app">Quotify</a> voorkom je vergeten velden doordat de structuur vastligt.',
+            a: 'Zolang de klant nog geen akkoord heeft gegeven, stuur je een aangepaste offerte met een nieuw of bijgewerkt nummer. Met een tool als <a href="/app">Offertje</a> voorkom je vergeten velden doordat de structuur vastligt.',
         },
         {
             q: 'Moet er een handtekening op een offerte?',

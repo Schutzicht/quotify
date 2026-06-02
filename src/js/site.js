@@ -1,4 +1,4 @@
-/* Quotify marketing site - lightweight interactions, no dependencies */
+/* Offertje marketing site - lightweight interactions, no dependencies */
 
 // Header shadow on scroll
 const header = document.getElementById('header');

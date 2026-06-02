@@ -1,7 +1,7 @@
 export default {
     slug: 'offerte-webdesign-freelance',
     title: 'Offerte webdesign: zo stel je als freelancer een sterk voorstel op',
-    metaTitle: 'Offerte webdesign maken: gids + voorbeeld | Quotify',
+    metaTitle: 'Offerte webdesign maken: gids + voorbeeld | Offertje',
     metaDescription:
         'Offerte webdesign opstellen als freelancer? Leer hoe je fasen, vaste prijs of uurtarief, scope en onderhoud verwerkt. Met voorbeeldtabel voor je website.',
     category: 'Branche',
@@ -67,7 +67,7 @@ export default {
   </tbody>
 </table>
 
-{{CTA:Sneller een webdesign-offerte maken|Met Quotify zet je je fasen, je projectprijs of uurtarief en je terugkerende onderhoudspost in een paar minuten om in een verzorgde PDF in je eigen huisstijl.}}
+{{CTA:Sneller een webdesign-offerte maken|Met Offertje zet je je fasen, je projectprijs of uurtarief en je terugkerende onderhoudspost in een paar minuten om in een verzorgde PDF in je eigen huisstijl.}}
 
 <h2 id="scope-en-meerwerk">Scope en meerwerk afbakenen</h2>
 <p>De grootste valkuil bij webprojecten is scope creep: de klant vraagt gaandeweg om steeds meer en jij levert dat in de veronderstelling dat het erbij hoort. Voorkom dat door je scope op de offerte concreet te maken.</p>
@@ -115,7 +115,7 @@ export default {
 <p>Meer aanscherpingen vind je in onze <a href="/blog/professionele-offerte-tips/">professionele offerte tips</a>.</p>
 
 <h2 id="aan-de-slag">Direct een webdesign-offerte maken</h2>
-<p>Je hoeft niet elke offerte in Word op te maken en de BTW met de hand te berekenen. Met <a href="/app">Quotify</a> vul je je fasen, je projectprijs of uurtarief en je terugkerende onderhoudspost in en download je een verzorgde PDF in je eigen kleur en met je logo. De totalen en BTW worden automatisch berekend. Sla je vaste gegevens een keer op en elke volgende offerte kost je nog maar een paar minuten, zodat je je tijd aan bouwen besteedt in plaats van aan opmaak.</p>
+<p>Je hoeft niet elke offerte in Word op te maken en de BTW met de hand te berekenen. Met <a href="/app">Offertje</a> vul je je fasen, je projectprijs of uurtarief en je terugkerende onderhoudspost in en download je een verzorgde PDF in je eigen kleur en met je logo. De totalen en BTW worden automatisch berekend. Sla je vaste gegevens een keer op en elke volgende offerte kost je nog maar een paar minuten, zodat je je tijd aan bouwen besteedt in plaats van aan opmaak.</p>
 `,
     faq: [
         {
