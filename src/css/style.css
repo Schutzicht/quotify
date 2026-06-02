@@ -2050,45 +2050,64 @@ input::placeholder {
 }
 
 /* ===========================================================
-   AUTHORITATIVE MOBILE SCROLL FIX
-   The active tab (config sidebar or preview stage) must be a
-   full-height scroll container. Earlier rules set
-   ".sidebar { overflow: visible !important }" which broke
-   scrolling once the form grew taller than the screen (e.g.
-   after loading a quick-start example). This block wins.
+   AUTHORITATIVE MOBILE SCROLL FIX (native document scroll)
+   The "body: fixed + inner overflow scroll" model was fragile
+   and broke touch scrolling once a quick-start preset made the
+   form taller than the screen. We switch mobile to plain native
+   page scroll: the document scrolls, only the bottom tab bar and
+   the preview toolbar stay fixed. This block wins (loaded last,
+   uses !important).
    =========================================================== */
 @media (max-width: 768px) {
     html,
     body {
-        height: 100%;
-        overflow: hidden;
-        position: fixed;
-        width: 100%;
-        overscroll-behavior: none;
+        height: auto !important;
+        min-height: 100% !important;
+        max-height: none !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        position: static !important;
+        width: auto !important;
+        overscroll-behavior: auto !important;
     }
 
     .gen3-layout {
-        height: 100dvh !important;
-        max-height: 100dvh !important;
-        overflow: hidden !important;
+        display: block !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
     }
 
     .gen3-layout.tab-config .sidebar {
         display: block !important;
-        height: 100dvh !important;
-        max-height: 100dvh !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 120px !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding-bottom: 130px !important;
+    }
+
+    .gen3-layout.tab-config .main-stage {
+        display: none !important;
+    }
+
+    .gen3-layout.tab-preview .sidebar {
+        display: none !important;
     }
 
     .gen3-layout.tab-preview .main-stage {
         display: block !important;
-        height: 100dvh !important;
-        max-height: 100dvh !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 120px;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding-bottom: 130px !important;
+    }
+
+    .config-scroll {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
     }
 }
