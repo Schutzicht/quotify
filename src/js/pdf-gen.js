@@ -73,8 +73,10 @@ export function buildPdf(state, JsPDF) {
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(15);
         setText(INK);
-        doc.text(sender.company, M, 22);
-        headerBottom = Math.max(headerBottom, 26);
+        // Wrap so a long name never collides with the title on the right.
+        const nameLines = doc.splitTextToSize(sender.company, 105).slice(0, 2);
+        doc.text(nameLines, M, 21);
+        headerBottom = Math.max(headerBottom, 17 + nameLines.length * 6);
     }
 
     // document title (right)
@@ -110,29 +112,41 @@ export function buildPdf(state, JsPDF) {
     /* ---------- ADDRESSES ---------- */
     const colRX = M + (RIGHT - M) / 2 + 4;
 
-    const addressBlock = (data, x, label) => {
+    const addressBlock = (data, x, label, colW) => {
         let cy = y;
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(7.5);
         setText(FAINT);
         doc.text(label.toUpperCase(), x, cy);
         cy += 5;
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(10.5);
-        setText(INK);
-        if (data.company) { doc.text(data.company, x, cy); cy += 5; }
+        if (data.company) {
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(10.5);
+            setText(INK);
+            const cl = doc.splitTextToSize(data.company, colW);
+            doc.text(cl, x, cy);
+            cy += cl.length * 5;
+        }
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(9.5);
         setText(GRAY);
-        if (data.contact) { doc.text('T.a.v. ' + data.contact, x, cy); cy += 4.6; }
-        if (data.address) { doc.text(data.address, x, cy); cy += 4.6; }
-        if (data.zip || data.city) { doc.text(`${data.zip || ''} ${data.city || ''}`.trim(), x, cy); cy += 4.6; }
-        if (data.reference) { doc.text('Ref: ' + data.reference, x, cy); cy += 4.6; }
+        const line = (txt) => {
+            if (!txt) return;
+            const ls = doc.splitTextToSize(txt, colW);
+            doc.text(ls, x, cy);
+            cy += ls.length * 4.6;
+        };
+        if (data.contact) line('T.a.v. ' + data.contact);
+        line(data.address);
+        if (data.zip || data.city) line(`${data.zip || ''} ${data.city || ''}`.trim());
+        if (data.reference) line('Ref: ' + data.reference);
         return cy;
     };
 
-    const fromY = addressBlock(sender, M, 'Van');
-    const toY = addressBlock(client, colRX, 'Voor');
+    const leftColW = colRX - M - 6;
+    const rightColW = RIGHT - colRX;
+    const fromY = addressBlock(sender, M, 'Van', leftColW);
+    const toY = addressBlock(client, colRX, 'Voor', rightColW);
     y = Math.max(fromY, toY) + 6;
 
     // project line
@@ -144,8 +158,9 @@ export function buildPdf(state, JsPDF) {
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(11);
         setText(INK);
-        doc.text(meta.project, M + 22, y);
-        y += 8;
+        const pls = doc.splitTextToSize(meta.project, RIGHT - (M + 24));
+        doc.text(pls, M + 24, y);
+        y += Math.max(8, pls.length * 5.2);
     }
 
     // separator
@@ -327,17 +342,21 @@ export function buildPdf(state, JsPDF) {
         doc.text('Voor akkoord', rightCol, lineY + 5);
 
         doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
         setText(INK);
-        doc.text(sender.company || 'Opdrachtnemer', leftX, lineY + 9.5);
-        doc.text(client.company || 'Opdrachtgever', rightCol, lineY + 9.5);
+        const sName = doc.splitTextToSize(sender.company || 'Opdrachtnemer', colW).slice(0, 2);
+        const cName = doc.splitTextToSize(client.company || 'Opdrachtgever', colW).slice(0, 2);
+        doc.text(sName, leftX, lineY + 9.5);
+        doc.text(cName, rightCol, lineY + 9.5);
 
+        const nameRows = Math.max(sName.length, cName.length);
+        const dateY = lineY + 9.5 + nameRows * 4 + 1.5;
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(8);
         setText(FAINT);
-        const today = meta.date || '';
-        doc.text('Datum: ' + (today || '............'), leftX, lineY + 14);
-        doc.text('Datum: ............', rightCol, lineY + 14);
-        y = lineY + 18;
+        doc.text('Datum: ' + (meta.date || '............'), leftX, dateY);
+        doc.text('Datum: ............', rightCol, dateY);
+        y = dateY + 6;
     }
 
     /* ---------- FOOTER on every page ---------- */
@@ -355,10 +374,10 @@ export function buildPdf(state, JsPDF) {
         const lh = 3.5;
         const ty = fy + 4.8;
 
-        // left: company / email / phone
+        // left: company / email / phone (company truncated so it never hits the centre column)
         let ly = ty;
-        if (sender.company) { doc.text(sender.company, M, ly); ly += lh; }
-        if (sender.email) { doc.text(sender.email, M, ly); ly += lh; }
+        if (sender.company) { doc.text(doc.splitTextToSize(sender.company, 72)[0], M, ly); ly += lh; }
+        if (sender.email) { doc.text(doc.splitTextToSize(sender.email, 72)[0], M, ly); ly += lh; }
         if (sender.phone) { doc.text(sender.phone, M, ly); ly += lh; }
 
         // center: KVK / btw / IBAN

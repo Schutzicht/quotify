@@ -1877,3 +1877,174 @@ input::placeholder {
 .color-options {
     flex-wrap: wrap;
 }
+
+/* ===========================================================
+   LONG-CONTENT SAFETY: never let text break the A4 layout.
+   Long descriptions, URLs without spaces, big company names
+   and long notes must wrap instead of pushing the page wider.
+   =========================================================== */
+.paper-a4 {
+    overflow-x: clip;
+    /* last-resort guard; real fix is the wrapping rules below */
+}
+
+.paper-a4 .modern-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.paper-a4 .modern-table th,
+.paper-a4 .modern-table td,
+.paper-a4 .modern-table td > div,
+.paper-a4 .addr-col,
+.paper-a4 .addr-lines,
+.paper-a4 .addr-lines strong,
+.paper-a4 .notes-preview,
+.paper-a4 .group-header,
+.paper-a4 .doc-type,
+.paper-a4 .project-meta,
+.paper-a4 #prev-project-line,
+.paper-a4 .meta-item .val,
+.paper-a4 .sig-label,
+.paper-a4 .sig-label strong {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* keep the editor item description input from blowing out its card */
+.item-row .i-desc {
+    text-overflow: ellipsis;
+}
+
+/* ===========================================================
+   HELP BUTTON + GUIDED TOUR
+   =========================================================== */
+.t-help {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: #4338ca;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.t-help:hover {
+    background: #fff;
+    transform: translateY(-1px);
+}
+
+.t-help svg {
+    width: 17px;
+    height: 17px;
+}
+
+.tour-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+}
+
+.tour-spot {
+    position: absolute;
+    border-radius: 12px;
+    box-shadow: 0 0 0 3px var(--c-accent), 0 0 0 9999px rgba(2, 6, 23, 0.55);
+    transition: all 0.25s ease;
+    pointer-events: none;
+}
+
+.tour-tip {
+    position: fixed;
+    z-index: 201;
+    width: 310px;
+    max-width: calc(100vw - 32px);
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    padding: 18px 20px 16px;
+}
+
+.tour-tip h4 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.tour-tip p {
+    margin: 0 0 14px;
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.55;
+}
+
+.tour-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.tour-step-count {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    font-weight: 700;
+}
+
+.tour-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.tour-btns button {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    color: #475569;
+    transition: all 0.15s;
+}
+
+.tour-btns .tour-prev:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+}
+
+.tour-btns .tour-next {
+    background: linear-gradient(135deg, var(--c-accent), #4338ca);
+    color: #fff;
+    border: none;
+}
+
+.tour-skip {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: inherit;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .t-help-label {
+        display: none;
+    }
+    .t-help {
+        padding: 0 11px;
+    }
+}

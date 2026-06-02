@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
         b.addEventListener('click', () => applyTemplate(b.dataset.tpl))
     );
 
+    initTour();
+
     // Make the preview accent follow the chosen brand colour (matches the PDF)
     document.documentElement.style.setProperty('--accent', state.branding.primaryColor || '#6366F1');
 
@@ -337,6 +339,107 @@ function flashSaved() {
     el.classList.add('saved');
     clearTimeout(savedTimer);
     savedTimer = setTimeout(() => el.classList.remove('saved'), 1200);
+}
+
+/* --- GUIDED TOUR (helpt nieuwe gebruikers: wat hoort waar?) --- */
+function initTour() {
+    const steps = [
+        { sel: '.quick-start', tab: 'config', title: 'Snel beginnen', body: 'Geen zin in een leeg scherm? Klik op een voorbeeld (Uurtarief, Project of Abonnement) om meteen regels te vullen die je daarna aanpast.' },
+        { sel: '#logo-dropzone', tab: 'config', title: 'Jouw huisstijl', body: 'Upload je logo en kies een accentkleur. Je offerte krijgt automatisch jouw uitstraling, ook in de PDF.' },
+        { sel: '#sender-form', tab: 'config', title: 'Jouw gegevens', body: 'Vul je bedrijfsnaam en contactgegevens in. Deze komen netjes bovenaan de offerte te staan.' },
+        { sel: '#client-form', tab: 'config', title: 'De klant', body: 'Voor wie is de offerte? Vul hier de naam en gegevens van je klant in.' },
+        { sel: '.items-section', tab: 'config', title: 'De regels', body: 'Het hart van je offerte. Voeg per onderdeel een omschrijving, aantal, prijs en BTW toe. Het totaal rekent zichzelf uit, je ziet het meteen.' },
+        { sel: '#download-trigger', tab: 'preview', title: 'Downloaden', body: 'Tevreden? Klik op Download PDF om je offerte als nette PDF op te slaan en naar je klant te sturen.' },
+    ];
+
+    const overlay = document.createElement('div');
+    overlay.className = 'tour-overlay';
+    overlay.style.display = 'none';
+    const spot = document.createElement('div');
+    spot.className = 'tour-spot';
+    overlay.appendChild(spot);
+    const tip = document.createElement('div');
+    tip.className = 'tour-tip';
+    tip.style.display = 'none';
+    tip.innerHTML = `
+        <h4 class="tour-title"></h4>
+        <p class="tour-body"></p>
+        <div class="tour-foot">
+            <span class="tour-step-count"></span>
+            <div class="tour-btns">
+                <button class="tour-prev" type="button">Vorige</button>
+                <button class="tour-next" type="button">Volgende</button>
+            </div>
+        </div>
+        <button class="tour-skip" type="button">Overslaan</button>`;
+    document.body.appendChild(overlay);
+    document.body.appendChild(tip);
+
+    const isMobile = () => window.innerWidth <= 768;
+    const setTab = (tab) => {
+        const layout = document.querySelector('.gen3-layout');
+        if (!layout) return;
+        layout.classList.toggle('tab-config', tab === 'config');
+        layout.classList.toggle('tab-preview', tab === 'preview');
+        document.querySelectorAll('.mn-btn').forEach((b) => b.classList.toggle('active', b.dataset.tab === tab));
+    };
+
+    let idx = 0;
+    const close = () => {
+        overlay.style.display = 'none';
+        tip.style.display = 'none';
+        try { localStorage.setItem('offertje_tour_seen', '1'); } catch (e) { /* ignore */ }
+    };
+
+    const position = (el) => {
+        const r = el.getBoundingClientRect();
+        const pad = 8;
+        spot.style.left = Math.max(4, r.left - pad) + 'px';
+        spot.style.top = Math.max(4, r.top - pad) + 'px';
+        spot.style.width = Math.min(window.innerWidth - 8, r.width + pad * 2) + 'px';
+        spot.style.height = (r.height + pad * 2) + 'px';
+
+        tip.style.display = 'block';
+        const tr = tip.getBoundingClientRect();
+        let top = r.bottom + 14;
+        if (top + tr.height > window.innerHeight - 10) top = Math.max(10, r.top - tr.height - 14);
+        let left = r.left;
+        if (left + tr.width > window.innerWidth - 10) left = window.innerWidth - tr.width - 10;
+        if (left < 10) left = 10;
+        tip.style.top = top + 'px';
+        tip.style.left = left + 'px';
+    };
+
+    const show = () => {
+        const step = steps[idx];
+        if (isMobile() && step.tab) setTab(step.tab);
+        overlay.style.display = 'block';
+        const el = document.querySelector(step.sel);
+        if (!el) { if (idx < steps.length - 1) { idx++; show(); } else close(); return; }
+        el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        tip.querySelector('.tour-title').textContent = step.title;
+        tip.querySelector('.tour-body').textContent = step.body;
+        tip.querySelector('.tour-step-count').textContent = `Stap ${idx + 1} van ${steps.length}`;
+        tip.querySelector('.tour-prev').style.visibility = idx === 0 ? 'hidden' : 'visible';
+        tip.querySelector('.tour-next').textContent = idx === steps.length - 1 ? 'Klaar' : 'Volgende';
+        setTimeout(() => position(el), 340);
+    };
+
+    tip.querySelector('.tour-next').addEventListener('click', () => { if (idx < steps.length - 1) { idx++; show(); } else close(); });
+    tip.querySelector('.tour-prev').addEventListener('click', () => { if (idx > 0) { idx--; show(); } });
+    tip.querySelector('.tour-skip').addEventListener('click', close);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.style.display === 'block') close(); });
+    window.addEventListener('resize', () => { if (overlay.style.display === 'block') { const el = document.querySelector(steps[idx].sel); if (el) position(el); } });
+
+    const start = () => { idx = 0; show(); };
+    const btn = $('tour-btn');
+    if (btn) btn.addEventListener('click', start);
+
+    // First-time visitors get the tour automatically (once).
+    try {
+        if (!localStorage.getItem('offertje_tour_seen')) setTimeout(start, 800);
+    } catch (e) { /* ignore */ }
 }
 
 function renderItemsUI() {
