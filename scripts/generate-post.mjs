@@ -32,7 +32,10 @@ const NO_BUILD = flag('no-build');
 const COUNT = Math.max(1, parseInt(val('count', '1'), 10) || 1);
 const ONLY_SLUG = val('slug', null);
 const MODEL = val('model', undefined);
+// Pause between posts so the free Groq tier (tokens-per-minute) does not 429.
+const DELAY = Math.max(0, parseInt(val('delay', '65'), 10) || 0);
 const apiKey = process.env.GROQ_API_KEY;
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 if (!DRY && !apiKey) {
     console.error('Geen GROQ_API_KEY gevonden. Zet hem in je omgeving, of gebruik --dry om de pijplijn te testen.');
@@ -70,6 +73,10 @@ const run = async () => {
         if (check.status !== 0) console.warn(`  Let op: node --check faalde voor ${path}\n${check.stderr}`);
 
         if (ONLY_SLUG) break;
+        if (i < COUNT - 1 && DELAY && !DRY) {
+            console.log(`  even wachten (${DELAY}s) i.v.m. de gratis Groq-limiet ...`);
+            await sleep(DELAY * 1000);
+        }
     }
 
     if (!made.length) return;

@@ -24,15 +24,15 @@ Je antwoordt UITSLUITEND met een geldig JSON-object met exact deze velden:
 
 Regels voor bodyHtml (gewone HTML-string, GEEN markdown, GEEN <h1>):
 - Begin met een sterke intro-<p>.
-- Secties met <h2 id="kebab-id">Titel</h2> (meerdere), subkopjes <h3>.
+- Gebruik MINIMAAL 6 secties met <h2 id="kebab-id">Titel</h2>, en schrijf onder elke h2 minstens 2 volledige alinea's (of een alinea plus een lijst/tabel). Subkopjes <h3> waar nuttig. Dit is een harde eis: een artikel met minder secties of een paar zinnen per sectie is afgekeurd.
 - Toegestaan: <p>, <ul>/<ol>/<li>, <table><thead><tbody><tr><th><td>, <blockquote>, <strong>.
 - Voor een branche-artikel: voeg een realistische voorbeeld-offertetabel toe (omschrijving, aantal/eenheid, prijs, BTW, totaal) plus een totaaloverzicht met BTW uitgesplitst. Bedragen illustratief, reken ze correct.
 - Optioneel bovenaan: <div class="key-takeaways"><strong>In het kort</strong><ul><li>...</li></ul></div>
 - Tip-box: <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><p>Tekst.</p></div>
 - Plaats exact 1 keer de letterlijke tekst {{CTA}} ongeveer halverwege (wordt later een CTA-blok naar /app).
 - Interne links: 4 tot 8 keer, naar de tool <a href="/app">...</a> en naar bestaande artikelen <a href="/blog/SLUG/">...</a> waarbij SLUG uit de meegegeven lijst komt.
-- Euro's in Nederlandse notatie, bijvoorbeeld &euro; 1.250,00. BTW als 21%, 9% of 0%.
-- Lengte 1100 tot 1600 woorden. Accuraat voor Nederland; verzin geen wetsartikelen. Fiscale claims algemeen houden.
+- Euro's in Nederlandse notatie, bijvoorbeeld &euro; 1.250,00. BTW als 21%, 9% of 0%. Gebruik gewone koppeltekens (-), geen typografische streepjes.
+- Lengte: minimaal 1100 woorden, streef naar 1300 tot 1600. Schrijf elke sectie volledig uit met meerdere alinea's. Lever GEEN samenvatting of korte tekst; vul de body echt.
 
 Stijl: Nederlands, professioneel maar toegankelijk, actieve stem, je-vorm. GEEN emoji. GEEN em-dash (gebruik komma, punt of koppelteken). GEEN cursief/<em> (gebruik <strong>). Merknaam in tekst is Offertje.`;
 
@@ -82,8 +82,16 @@ export function validatePost(obj, topic, slugSet) {
     if (/<h1[\s>]/i.test(out.bodyHtml)) out.bodyHtml = out.bodyHtml.replace(/<\/?h1[^>]*>/gi, '');
     out.bodyHtml = out.bodyHtml.replace(/—/g, '-'); // strip em-dash defensively
 
+    // metaDescription length
+    if (out.metaDescription.length > 162) out.metaDescription = out.metaDescription.slice(0, 159).trim() + '...';
+
     // faq
     out.faq = Array.isArray(obj.faq) ? obj.faq.filter((f) => f && f.q && f.a).slice(0, 5) : [];
+
+    // normalise fancy unicode hyphens/dashes (cv-ketel etc.) to plain ASCII
+    const deDash = (s) => (typeof s === 'string' ? s.replace(/[‐-―−]/g, '-') : s);
+    for (const k of ['title', 'metaTitle', 'metaDescription', 'excerpt', 'bodyHtml']) out[k] = deDash(out[k]);
+    out.faq = out.faq.map((f) => ({ q: deDash(f.q), a: deDash(f.a) }));
 
     // related: keep only existing slugs, fall back to topic.related, then to staples
     const staples = ['offerte-maken', 'offerte-voorbeeld', 'wat-moet-er-op-een-offerte-staan'];
@@ -130,22 +138,27 @@ export async function generatePostObject(topic, opts = {}) {
     // Model resolution: explicit --model > GROQ_MODEL env > sensible default.
     const model = opts.model || process.env.GROQ_MODEL || DEFAULT_MODEL;
 
+    const body = {
+        model,
+        temperature: 0.6,
+        max_tokens: 6000,
+        response_format: { type: 'json_object' },
+        messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            { role: 'user', content: userPrompt(topic, slugList) },
+        ],
+    };
+    // Reasoning models (gpt-oss, qwen) otherwise spend their token budget on
+    // "thinking" and write a thin article. Keep reasoning low so they actually write.
+    if (/gpt-oss|qwen/i.test(model)) body.reasoning_effort = 'low';
+
     const res = await fetch(GROQ_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${opts.apiKey}`,
         },
-        body: JSON.stringify({
-            model,
-            temperature: 0.6,
-            max_tokens: 6000,
-            response_format: { type: 'json_object' },
-            messages: [
-                { role: 'system', content: SYSTEM_PROMPT },
-                { role: 'user', content: userPrompt(topic, slugList) },
-            ],
-        }),
+        body: JSON.stringify(body),
     });
 
     if (!res.ok) {
