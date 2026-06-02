@@ -140,6 +140,7 @@ const headTags = ({ title, description, canonical, image, jsonld }) => `
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/logo.svg">
   <link rel="stylesheet" href="/blog/assets/blog.css">
+  <script defer src="/_vercel/insights/script.js"></script>
   ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n  ')}`;
 
 /* ---------------- post page ---------------- */
