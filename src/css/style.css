@@ -1737,3 +1737,143 @@ input::placeholder {
 .meta-item .val {
     font-variant-numeric: tabular-nums;
 }
+
+/* ===========================================================
+   TOOL UX ADDITIONS (quick-start, live total, item buttons)
+   =========================================================== */
+
+/* Quick-start example buttons */
+.quick-start {
+    margin-top: 0.85rem;
+}
+
+.qs-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 0.45rem;
+}
+
+.qs-btns {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.qs-btn {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    color: #475569;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.78rem;
+    padding: 0.5rem 0.25rem;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.qs-btn:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+    background: #f8faff;
+}
+
+.autosave-hint {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 0.7rem;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    transition: color 0.3s;
+}
+
+.autosave-hint svg {
+    width: 13px;
+    height: 13px;
+    color: #cbd5e1;
+    transition: color 0.3s;
+}
+
+.autosave-hint.saved,
+.autosave-hint.saved svg {
+    color: #16a34a;
+}
+
+/* Item row: description grows, action buttons fixed */
+.row-top .i-desc {
+    flex: 1;
+    min-width: 0;
+}
+
+.row-top .btn-dup,
+.row-top .btn-remove {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: all 0.15s;
+    padding: 0;
+}
+
+.row-top .btn-dup:hover {
+    color: var(--c-accent);
+    border-color: var(--c-accent);
+    background: #f8faff;
+}
+
+.row-top .btn-remove {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.row-top .btn-remove:hover {
+    color: #dc2626;
+    border-color: #dc2626;
+    background: #fef2f2;
+}
+
+/* Live running total in the sidebar */
+.live-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.9rem;
+    padding: 0.7rem 0.9rem;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    border: 1px solid #e0e7ff;
+    border-radius: 10px;
+}
+
+.live-total span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.live-total strong {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--accent, #0f172a);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Preview-only placeholders for empty sender/client */
+.prev-ph {
+    color: #cbd5e1 !important;
+    font-weight: 600;
+}
+
+/* allow accent swatches to wrap to a second row */
+.color-options {
+    flex-wrap: wrap;
+}

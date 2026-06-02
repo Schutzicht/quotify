@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setCurrentDate();
     resetToDefaultItems();
+    renderItemsUI(); // always render rows (also for state restored from localStorage)
 
     // Check if we just paid
     checkPaymentSuccess();
@@ -353,16 +354,16 @@ function renderItemsUI() {
                 <button class="btn-remove" type="button" title="Verwijder regel" aria-label="Verwijder regel">×</button>
             </div>
             <div class="row-bot">
-                <div class="input-group-mini" style="flex:0 0 50px">
+                <div class="input-group-mini" style="flex:0 0 52px" title="Aantal">
                     <input type="text" inputmode="decimal" class="i-qty" value="${item.quantity}" placeholder="#">
                 </div>
-                <div class="input-group-mini" style="flex:0 0 60px">
+                <div class="input-group-mini" style="flex:0 0 58px" title="Eenheid">
                      <input type="text" class="i-unit" value="${escapeHtml(item.unit || '')}" placeholder="Eenh.">
                 </div>
-                <div class="input-group-mini" style="flex:1">
-                    <input type="text" inputmode="decimal" class="i-price" value="${item.price}" placeholder="Prijs">
+                <div class="input-group-mini" style="flex:1 1 110px; min-width:110px" title="Prijs per stuk">
+                    <input type="text" inputmode="decimal" class="i-price" value="${item.price}" placeholder="Prijs &euro;">
                 </div>
-                <div class="input-group-mini" style="flex:0 0 48px" title="Korting %">
+                <div class="input-group-mini" style="flex:0 0 52px" title="Korting %">
                     <input type="number" class="i-disc" value="${item.discount}" placeholder="-%" min="0" max="100">
                 </div>
                 <div class="select-wrapper" style="flex:0 0 68px; min-width:68px" title="BTW-tarief">
@@ -473,6 +474,7 @@ function updatePreview() {
 
     // SAVE STATE (For Payment Return)
     localStorage.setItem('offertje_state', JSON.stringify(state));
+    flashSaved();
 }
 
 function loadState() {
@@ -646,6 +648,14 @@ function renderItemsTable() {
     }
 
     state.total = q.grandTotal;
+
+    const liveAmt = $('live-total-amt');
+    if (liveAmt) {
+        let txt = fmtEUR(q.grandTotal);
+        const monthly = q.groups['monthly'];
+        if (monthly && monthly.subtotal > 0) txt += ` + ${fmtEUR(monthly.subtotal)}/mnd`;
+        liveAmt.textContent = txt;
+    }
 
     if (notesSection) paperBody.appendChild(notesSection);
 }
