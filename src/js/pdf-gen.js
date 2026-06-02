@@ -127,7 +127,6 @@ export function buildPdf(state, JsPDF) {
         if (data.contact) { doc.text('T.a.v. ' + data.contact, x, cy); cy += 4.6; }
         if (data.address) { doc.text(data.address, x, cy); cy += 4.6; }
         if (data.zip || data.city) { doc.text(`${data.zip || ''} ${data.city || ''}`.trim(), x, cy); cy += 4.6; }
-        if (data.country) { doc.text(data.country, x, cy); cy += 4.6; }
         if (data.reference) { doc.text('Ref: ' + data.reference, x, cy); cy += 4.6; }
         return cy;
     };

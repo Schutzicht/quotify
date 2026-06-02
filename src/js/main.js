@@ -315,14 +315,14 @@ function renderItemsUI() {
                 <div class="input-group-mini" style="flex:0 0 48px" title="Korting %">
                     <input type="number" class="i-disc" value="${item.discount}" placeholder="-%" min="0" max="100">
                 </div>
-                <div class="select-wrapper" style="flex:0 0 66px" title="BTW-tarief">
+                <div class="select-wrapper" style="flex:0 0 68px; min-width:68px" title="BTW-tarief">
                     <select class="i-vat">
                         <option value="21" ${Number(item.vat) === 21 ? 'selected' : ''}>21%</option>
                         <option value="9" ${Number(item.vat) === 9 ? 'selected' : ''}>9%</option>
                         <option value="0" ${Number(item.vat) === 0 ? 'selected' : ''}>0%</option>
                     </select>
                 </div>
-                <div class="select-wrapper" style="flex:0 0 105px">
+                <div class="select-wrapper" style="flex:0 0 112px; min-width:112px">
                     <select class="i-period">
                         <option value="one-off" ${item.period === 'one-off' ? 'selected' : ''}>Eenmalig</option>
                         <option value="weekly" ${item.period === 'weekly' ? 'selected' : ''}>Wekelijks</option>
@@ -657,32 +657,81 @@ function initPreviewZoom() {
     let zoom = 1;
     const page = $('pdf-preview');
     if (!page) return;
-    $('zoom-in').addEventListener('click', () => { if (zoom < 1.4) { zoom += 0.1; page.style.transform = `scale(${zoom})`; } });
-    $('zoom-out').addEventListener('click', () => { if (zoom > 0.6) { zoom -= 0.1; page.style.transform = `scale(${zoom})`; } });
+    const lbl = document.querySelector('.zoom-lbl');
+    const apply = () => {
+        page.style.transform = `scale(${zoom})`;
+        if (lbl) lbl.textContent = Math.round(zoom * 100) + '%';
+    };
+    const zin = $('zoom-in'); const zout = $('zoom-out');
+    if (zin) zin.addEventListener('click', () => { if (zoom < 1.5) { zoom = Math.round((zoom + 0.1) * 10) / 10; apply(); } });
+    if (zout) zout.addEventListener('click', () => { if (zoom > 0.5) { zoom = Math.round((zoom - 0.1) * 10) / 10; apply(); } });
 }
 
+let modalRightHTML = null;
+
 function initModal() {
-    ['download-trigger'].forEach(t => { const btn = $(t); if (btn) btn.addEventListener('click', openModal); });
-    $('modal-close').addEventListener('click', closeModal);
+    const mr = document.querySelector('.modal-right');
+    if (mr) modalRightHTML = mr.innerHTML; // remember the payment panel
+    const dl = $('download-trigger');
+    if (dl) dl.addEventListener('click', openModal);
+    const mc = $('modal-close');
+    if (mc) mc.addEventListener('click', closeModal);
+}
+
+function fillModalThumb() {
+    const thumbBox = $('modal-thumb');
+    const original = $('pdf-preview');
+    if (thumbBox && original) {
+        thumbBox.innerHTML = '';
+        thumbBox.appendChild(original.cloneNode(true));
+    }
+}
+
+function showModal() {
+    const modal = $('payment-modal');
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    setTimeout(() => modal.classList.add('active'), 10);
+}
+
+function quoteIsEmpty() {
+    return !state.items.some((i) => (i.description && i.description.trim()) || Number(i.price) > 0);
 }
 
 function openModal() {
-    const modal = $('payment-modal');
-    const thumbBox = $('modal-thumb');
-    const original = $('pdf-preview');
-    if (!modal || !original) return;
+    if (quoteIsEmpty()) {
+        alert('Vul eerst je offerte in: voeg minstens een regel met een omschrijving of prijs toe.');
+        return;
+    }
+    // Restore the payment panel (it may have been swapped to the success view).
+    const mr = document.querySelector('.modal-right');
+    if (mr && modalRightHTML != null) mr.innerHTML = modalRightHTML;
 
-    // Preview
-    const clone = original.cloneNode(true);
-    thumbBox.innerHTML = '';
-    thumbBox.appendChild(clone);
-
-    // Show Modal
-    modal.classList.remove('hidden');
-    setTimeout(() => modal.classList.add('active'), 10);
-
-    // AUTO MOUNT PAYMENT
+    fillModalThumb();
+    showModal();
     mountCheckout();
+}
+
+function showPaymentSuccess() {
+    fillModalThumb();
+    const mr = document.querySelector('.modal-right');
+    if (mr) {
+        mr.innerHTML = `
+            <div style="display:flex; flex-direction:column; align-items:flex-start;">
+                <div style="width:56px; height:56px; border-radius:50%; background:#dcfce7; color:#16a34a; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <h2 style="margin:0 0 0.4rem;">Betaling geslaagd</h2>
+                <p style="color:#64748B; font-size:0.92rem; margin:0 0 1.5rem;">Je offerte staat klaar. Klik hieronder om de PDF te downloaden.</p>
+                <button class="btn-primary" id="download-paid" style="width:100%;">Download offerte (PDF)</button>
+                <button id="success-close" style="background:none; border:none; color:#94a3b8; cursor:pointer; text-decoration:underline; font-family:inherit; margin-top:0.9rem; font-size:0.85rem;">Sluiten</button>
+            </div>`;
+        const dl = $('download-paid');
+        if (dl) dl.addEventListener('click', () => generatePDF(state));
+        const sc = $('success-close');
+        if (sc) sc.addEventListener('click', closeModal);
+    }
+    showModal();
 }
 
 function closeModal() {

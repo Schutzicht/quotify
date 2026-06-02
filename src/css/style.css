@@ -102,22 +102,6 @@ body {
     color: #0f172a;
 }
 
-/* WATERMARK STYLES */
-.watermark-creative {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-10deg) scale(1.5);
-    width: 80%;
-    height: auto;
-    opacity: 0.03;
-    /* Very subtle */
-    pointer-events: none;
-    z-index: 0;
-    filter: grayscale(100%);
-    mix-blend-mode: multiply;
-}
-
 .config-scroll {
     flex: 1;
     overflow-y: auto;
