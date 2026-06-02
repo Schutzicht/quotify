@@ -1,6 +1,6 @@
 # Offertje blog - schrijfbrief voor SEO-artikelen
 
-Je schrijft Nederlandse SEO-artikelen voor **Offertje** (offertje.nl), een online offerte-generator (betaalde tool op `/app`, 0,50 euro per gedownloade PDF). Doel: ranken in Google.nl en lezers naar de tool sturen.
+Je schrijft Nederlandse SEO-artikelen voor **Offertje** (offertje.nl), een online offerte-tool op `/app` waarmee je gratis een offerte opstelt en als PDF downloadt (noem geen prijs of bedrag voor Offertje zelf). Doel: ranken in Google.nl en lezers naar de tool sturen.
 
 ## Output
 Per post een bestand `content/blog/<slug>.mjs` met `export default { ... }`. Wijzig geen ander bestand.

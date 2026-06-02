@@ -56,7 +56,7 @@ export default {
 
 <h3 id="nadelen-generator">Nadelen van een generator</h3>
 <ul>
-  <li><strong>Soms een klein bedrag per offerte.</strong> Veel tools werken met een laag tarief per download in plaats van gratis. Bij Offertje is dat 0,50 euro per offerte.</li>
+  <li><strong>Je hebt internet nodig.</strong> Een online generator werkt in je browser, dus je hebt een internetverbinding nodig. Voor de meeste ondernemers is dat geen enkel probleem.</li>
   <li><strong>Minder eindeloze vrijheid.</strong> Je werkt binnen een vormgegeven sjabloon, dus je hebt iets minder ruimte voor exotische opmaakwensen. Voor de meeste ondernemers is dat juist een voordeel, want het houdt het strak.</li>
 </ul>
 

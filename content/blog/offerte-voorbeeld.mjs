@@ -82,7 +82,7 @@ export default {
     faq: [
         {
             q: 'Is er een gratis offerte template?',
-            a: 'Ja. In plaats van een statisch Word-bestand kun je met <a href="/app">Offertje</a> gratis een offerte opstellen volgens dit voorbeeld. Je betaalt alleen wanneer je de PDF downloadt.',
+            a: 'Ja. In plaats van een statisch Word-bestand kun je met <a href="/app">Offertje</a> gratis een offerte opstellen volgens dit voorbeeld. Je bewerkt alles direct online in je eigen huisstijl.',
         },
         {
             q: 'Moet ik alle bedragen inclusief of exclusief BTW tonen?',

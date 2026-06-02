@@ -60,7 +60,7 @@ const renderBody = (post) => {
     let html = post.bodyHtml;
     // Replace {{CTA}} tokens (optionally {{CTA:Heading|Text}})
     html = html.replace(/\{\{CTA(?::([^|]+)\|([^}]+))?\}\}/g, (_, h, t) =>
-        ctaBox(h || 'Klaar om je offerte te maken?', t || 'Maak in 2 minuten een professionele offerte als PDF. Gratis opstellen, 0,50 euro per download.')
+        ctaBox(h || 'Klaar om je offerte te maken?', t || 'Maak in 2 minuten een professionele offerte als PDF, in je eigen huisstijl. Gratis opstellen, geen account.')
     );
     return html;
 };
@@ -100,7 +100,6 @@ const footer = (posts) => {
         <h4>Product</h4>
         <a href="${SITE.appUrl}">Offerte maken</a>
         <a href="/#functies">Functies</a>
-        <a href="/#prijs">Prijs</a>
       </div>
       <div class="footer-col">
         <h4>Populaire gidsen</h4>
@@ -349,7 +348,7 @@ ${header()}
   <section class="wrap">
     <div class="cta-band">
       <h2>Begin met je eigen offerte</h2>
-      <p>Zet wat je leest direct om in de praktijk. Gratis opstellen, 0,50 euro per download.</p>
+      <p>Zet wat je leest direct om in de praktijk. Gratis opstellen, geen account, geen gedoe.</p>
       <a href="${SITE.appUrl}" class="btn btn-primary btn-lg">Offerte maken met Offertje</a>
     </div>
   </section>

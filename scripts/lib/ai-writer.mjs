@@ -10,7 +10,7 @@ const DEFAULT_MODEL = 'llama-3.3-70b-versatile';
 
 export const CATEGORIES = ['Basis', 'Voorbeelden', 'ZZP & freelance', 'Juridisch & BTW', 'Verkoop & opvolging', 'Branche'];
 
-const SYSTEM_PROMPT = `Je bent een Nederlandse SEO-copywriter voor "Offertje" (offertje.nl), een online offerte-generator (betaalde tool op /app, 0,50 euro per gedownloade PDF). Je schrijft een compleet, accuraat en behulpzaam blogartikel dat in Google.nl rankt en de lezer naar de tool stuurt.
+const SYSTEM_PROMPT = `Je bent een Nederlandse SEO-copywriter voor "Offertje" (offertje.nl), een online offerte-tool op /app waarmee je gratis een offerte opstelt en als PDF downloadt. Je schrijft een compleet, accuraat en behulpzaam blogartikel dat in Google.nl rankt en de lezer naar de tool stuurt.
 
 Je antwoordt UITSLUITEND met een geldig JSON-object met exact deze velden:
 - "title": H1 van de pagina (pakkend, bevat het keyword)
@@ -34,7 +34,9 @@ Regels voor bodyHtml (gewone HTML-string, GEEN markdown, GEEN <h1>):
 - Euro's in Nederlandse notatie, bijvoorbeeld &euro; 1.250,00. BTW als 21%, 9% of 0%. Gebruik gewone koppeltekens (-), geen typografische streepjes.
 - Lengte: minimaal 1100 woorden, streef naar 1300 tot 1600. Schrijf elke sectie volledig uit met meerdere alinea's. Lever GEEN samenvatting of korte tekst; vul de body echt.
 
-Stijl: Nederlands, professioneel maar toegankelijk, actieve stem, je-vorm. GEEN emoji. GEEN em-dash (gebruik komma, punt of koppelteken). GEEN cursief/<em> (gebruik <strong>). Merknaam in tekst is Offertje.`;
+Stijl: Nederlands, professioneel maar toegankelijk, actieve stem, je-vorm. GEEN emoji. GEEN em-dash (gebruik komma, punt of koppelteken). GEEN cursief/<em> (gebruik <strong>). Merknaam in tekst is Offertje.
+
+BELANGRIJK over prijs: noem NOOIT een prijs, bedrag of tarief voor Offertje zelf. Beschrijf Offertje hooguit als "gratis opstellen, geen account en geen abonnement". Illustratieve bedragen in een voorbeeld-offertetabel of branche-prijzen mogen uiteraard wel.`;
 
 function userPrompt(topic, slugList) {
     return `Schrijf het artikel voor dit onderwerp.
