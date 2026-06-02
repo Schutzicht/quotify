@@ -2111,3 +2111,29 @@ input::placeholder {
         overflow: visible !important;
     }
 }
+
+/* ===========================================================
+   AUTHORITATIVE DESKTOP SIDEBAR SCROLL FIX
+   The old design pinned "Regels" to the bottom and let
+   .config-scroll take the remaining flex space. Once a preset
+   added several lines, the Regels block ate all the height and
+   .config-scroll collapsed to 0px, hiding the company/client
+   fields completely. Make the WHOLE sidebar one scroll
+   container instead, so every section is always reachable.
+   =========================================================== */
+@media (min-width: 769px) {
+    .sidebar {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    .config-scroll {
+        flex: 0 0 auto !important;
+        overflow: visible !important;
+        min-height: 0 !important;
+    }
+
+    .items-section {
+        flex: 0 0 auto !important;
+    }
+}
