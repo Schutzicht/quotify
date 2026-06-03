@@ -5,6 +5,10 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+// Server-side PDF (static imports so Vercel reliably bundles jsPDF + engine)
+import { jsPDF } from 'jspdf';
+import { buildPdf, pdfFilename } from '../src/js/pdf-gen.js';
+
 // Auto-blog engine (static imports so Vercel bundles them with the function)
 import autoTopics from '../content/blog/_topics.mjs';
 import { generatePostObject } from '../scripts/lib/ai-writer.mjs';
@@ -94,9 +98,6 @@ app.post('/api/generate-pdf', async (req, res) => {
             return res.status(402).json({ error: 'Betaling niet gevonden of nog niet voltooid.' });
         }
 
-        // Load the PDF engine lazily so other API routes stay lightweight.
-        const { jsPDF } = await import('jspdf');
-        const { buildPdf, pdfFilename } = await import('../src/js/pdf-gen.js');
         const doc = buildPdf(state, jsPDF);
         const buf = Buffer.from(doc.output('arraybuffer'));
         const safeName = (pdfFilename(state) || 'Offerte.pdf').replace(/[^\w\d.\- ]+/g, '').trim() || 'Offerte.pdf';
