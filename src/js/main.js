@@ -911,11 +911,20 @@ function showPaymentSuccess() {
     showModal();
 }
 
+function destroyCheckout() {
+    if (checkout) {
+        try { checkout.destroy(); } catch (e) { /* already gone */ }
+        checkout = null;
+    }
+}
+
 function closeModal() {
     const modal = $('payment-modal');
     if (!modal) return;
     modal.classList.remove('active');
     setTimeout(() => modal.classList.add('hidden'), 300);
+    // Stripe allows only one embedded checkout at a time; tear it down on close.
+    destroyCheckout();
 }
 
 const stripePromise = Stripe('pk_test_51Suu3SBsNgRS4dt78EEy63mwHhi29Rc1lSdDmj2xGvwHkHonR6z2SAn25pNfCwgaVFYr7DagJZ8mc8nmBwA0bhEv00STzG4iuO');
@@ -924,6 +933,9 @@ let checkout = null;
 async function mountCheckout() {
     const mountPoint = document.getElementById('checkout-mount');
     if (!mountPoint) return;
+
+    // Destroy any previous embedded checkout first (Stripe permits only one).
+    destroyCheckout();
 
     // Reset/Loading
     mountPoint.innerHTML = '<div style="padding:2rem;text-align:center;color:#64748B">Laden van betaalmodule...</div>';
@@ -957,11 +969,12 @@ async function mountCheckout() {
         }
     } catch (e) {
         console.error('Mount Critical Error', e);
-        mountPoint.innerHTML = `<div style="color:red; font-size: 0.8rem; padding: 1rem;">
-            Fout bij laden betaling.<br>
-            <small>${e.message || e}</small><br>
-            <button onclick="mountCheckout()" style="margin-top:10px; padding: 5px 10px;">Probeer opnieuw</button>
+        mountPoint.innerHTML = `<div style="color:#dc2626; font-size: 0.85rem; padding: 1rem; text-align:center;">
+            Het laden van de betaling lukte even niet.<br>
+            <button id="retry-pay" type="button" style="margin-top:12px; padding:8px 16px; border:none; border-radius:8px; background:#4338ca; color:#fff; font-weight:700; cursor:pointer;">Probeer opnieuw</button>
         </div>`;
+        const rb = document.getElementById('retry-pay');
+        if (rb) rb.addEventListener('click', mountCheckout);
     }
 }
 
