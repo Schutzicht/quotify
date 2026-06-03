@@ -1,5 +1,8 @@
-import { generatePDF } from './pdf-gen.js';
 import { computeQuote, fmtEUR } from './calc.js';
+
+// The PDF is generated server-side (only after verified payment), so there is
+// no client-side PDF generation here. See /api/generate-pdf + downloadPaidPdf().
+let paidSessionId = null;
 
 /* --- STATE MANAGEMENT --- */
 const state = {
@@ -95,11 +98,44 @@ async function checkPaymentSuccess() {
     const sessionId = urlParams.get('session_id');
 
     if (sessionId) {
+        paidSessionId = sessionId;
         // Clean the URL so a refresh does not re-trigger the success state.
         window.history.replaceState({}, document.title, window.location.pathname);
-        // Show a success panel with a download button (a click guarantees the
-        // browser allows the download, unlike an automatic save).
+        // Show a success panel with a download button that fetches the PDF
+        // from the server (which re-checks the payment before generating it).
         setTimeout(showPaymentSuccess, 400);
+    }
+}
+
+// Download the clean PDF from the server. The server verifies the Stripe
+// session is paid before generating, so this is the only path to a real PDF.
+async function downloadPaidPdf(sessionId, btn) {
+    if (!sessionId) { alert('Geen geldige betaalsessie gevonden. Ververs de pagina en probeer opnieuw.'); return; }
+    const original = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'PDF voorbereiden...'; }
+    try {
+        const res = await fetch('/api/generate-pdf', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sessionId, state }),
+        });
+        if (!res.ok) throw new Error('Serverfout ' + res.status);
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        const num = state.meta && state.meta.number ? state.meta.number + ' - ' : '';
+        const client = (state.client && state.client.company) || 'Klant';
+        a.href = url;
+        a.download = `Offerte ${num}${client}.pdf`.replace(/\s+/g, ' ').trim();
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+        if (btn) { btn.disabled = false; btn.textContent = 'Opnieuw downloaden'; }
+    } catch (e) {
+        console.error('PDF download error:', e);
+        if (btn) { btn.disabled = false; btn.textContent = original || 'Download offerte (PDF)'; }
+        alert('Het downloaden lukte niet. Probeer het zo nog een keer.');
     }
 }
 
@@ -904,7 +940,7 @@ function showPaymentSuccess() {
                 <button id="success-close" style="background:none; border:none; color:#94a3b8; cursor:pointer; text-decoration:underline; font-family:inherit; margin-top:0.9rem; font-size:0.85rem;">Sluiten</button>
             </div>`;
         const dl = $('download-paid');
-        if (dl) dl.addEventListener('click', () => generatePDF(state));
+        if (dl) dl.addEventListener('click', () => downloadPaidPdf(paidSessionId, dl));
         const sc = $('success-close');
         if (sc) sc.addEventListener('click', closeModal);
     }

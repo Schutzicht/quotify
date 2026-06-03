@@ -38,7 +38,8 @@ app.use((req, res, next) => {
     if (req.originalUrl.startsWith('/api/webhooks')) {
         next();
     } else {
-        express.json()(req, res, next);
+        // 6mb so an offerte with a base64 logo + signature fits.
+        express.json({ limit: '6mb' })(req, res, next);
     }
 });
 
@@ -74,6 +75,38 @@ app.post('/api/create-payment', async (req, res) => {
     } catch (err) {
         console.error('Stripe Error:', err);
         res.status(500).json({ error: err.message });
+    }
+});
+
+// 1b. Generate the PDF SERVER-SIDE, only after verifying the payment.
+//     This is the only place a clean (watermark-free) PDF is produced, so the
+//     paywall can't be bypassed by the client. The offerte data is posted by
+//     the client; we just check that the Stripe session is actually paid.
+app.post('/api/generate-pdf', async (req, res) => {
+    try {
+        const { sessionId, state } = req.body || {};
+        if (!sessionId || !state || !Array.isArray(state.items)) {
+            return res.status(400).json({ error: 'sessionId en state zijn vereist.' });
+        }
+
+        const session = await stripe.checkout.sessions.retrieve(sessionId);
+        if (!session || session.payment_status !== 'paid') {
+            return res.status(402).json({ error: 'Betaling niet gevonden of nog niet voltooid.' });
+        }
+
+        // Load the PDF engine lazily so other API routes stay lightweight.
+        const { jsPDF } = await import('jspdf');
+        const { buildPdf, pdfFilename } = await import('../src/js/pdf-gen.js');
+        const doc = buildPdf(state, jsPDF);
+        const buf = Buffer.from(doc.output('arraybuffer'));
+        const safeName = (pdfFilename(state) || 'Offerte.pdf').replace(/[^\w\d.\- ]+/g, '').trim() || 'Offerte.pdf';
+
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename="${safeName}"`);
+        return res.status(200).send(buf);
+    } catch (err) {
+        console.error('generate-pdf error:', err);
+        return res.status(500).json({ error: err.message });
     }
 });
 
