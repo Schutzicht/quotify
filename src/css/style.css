@@ -2137,3 +2137,25 @@ input::placeholder {
         flex: 0 0 auto !important;
     }
 }
+
+/* ===========================================================
+   ANTI-BYPASS WATERMARK (preview only)
+   A screenshot of the on-screen preview shows a repeating
+   "VOORBEELD" watermark, so it cannot be used as a finished,
+   unpaid offerte. The downloaded PDF is generated separately
+   (jsPDF in pdf-gen.js), so it is clean and watermark-free.
+   =========================================================== */
+.paper-a4 {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.paper-a4::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='190'%3E%3Ctext x='6' y='120' transform='rotate(-26 150 95)' font-family='Arial, Helvetica, sans-serif' font-size='27' font-weight='800' fill='%2364748b' fill-opacity='0.13'%3EVOORBEELD%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat;
+}
